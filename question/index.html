@@ -1399,20 +1399,32 @@ Ball:
   <option value="Ultra">Ultra</option>
 </select><br>
 Extra information: <textarea id="extra" rows="3" cols="20"></textarea><br>
-Amount to giveaway: 
-<select id="amount">
-  <option value="1">1</option>
-  <option value="2">2</option>
-  <option value="3">3</option>
-  <option value="4">4</option>
-  <option value="5">5</option>
-</select><br>
+Question: <input type="text" id="question" size="50"><br>
+<div id="answers">
+  Answer: <input type="text" id="answer0"><br>
+</div>
+<button onclick="addAnswer()">Add answer</button><br>
 Is it okay for the winner to giveaway this Pokémon in the future: <input type="radio" name="ok2ga" id="y" checked> Yes <input type="radio" name="ok2ga" id="n"> No<br>
 <button onclick="submit()">Submit</button><br>
 
 <textarea id="result" rows="6" cols="40"></textarea><br>
 
 <script>
+var numAnswers = 1;
+
+function addAnswer() {
+  var answers = document.getElementById("answers");
+  var newText = document.createTextNode("Answer: ");
+  var newInput = document.createElement("input");
+  newInput.setAttribute("type", "text");
+  newInput.setAttribute("id", "answer" + numAnswers);
+  numAnswers += 1;
+  var br = document.createElement("br");
+  answers.appendChild(newText);
+  answers.appendChild(newInput);
+  answers.appendChild(br);
+}
+
 function submit() {
 	var username = document.getElementById("username").value;
 	var fc = document.getElementById("fc").value;
@@ -1427,8 +1439,12 @@ function submit() {
 	var ballSelect = document.getElementById("ball");
 	var ball = ballSelect[ballSelect.selectedIndex].value;
 	var extra = document.getElementById("extra").value;
-	var amountSelect = document.getElementById("amount");
-	var amount = amountSelect[amountSelect.selectedIndex].value;
+	var question = document.getElementById("question").value;
+  var answers = [];
+  for (var i = 0; i < numAnswers; i++) {
+    var answer = document.getElementById("answer" + i).value;
+    answers.push(answer);
+  }
 	var result = document.getElementById("result");
 
 	result.value = "//lg " + username + "|" + ot + "|" + tid + "|" + fc + "|";
@@ -1450,7 +1466,11 @@ function submit() {
 	if (extra != "") {
 		result.value += " - " + extra;
 	}
-	result.value += "|" + amount;
+	result.value += "|" + question;
+  console.log(answers);
+  for (var i = 0; i < numAnswers; i++) {
+    result.value += "|" + answers[i];
+  }
 }
 </script>
 
