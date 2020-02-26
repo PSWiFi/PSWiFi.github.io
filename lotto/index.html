@@ -2,7 +2,7 @@
 <html>
 <body>
 
-<h1>WiFi Lotto GA</h1>
+<h3>WiFi Lotto GA</h3>
 
 PS! username: <input type="text" id="username"><br>
 FC: <input type="text" id="fc"><br>
@@ -1408,7 +1408,9 @@ Amount to giveaway:
   <option value="5">5</option>
 </select><br>
 Is it okay for the winner to giveaway this Pokémon in the future: <input type="radio" name="ok2ga" id="y" checked> Yes <input type="radio" name="ok2ga" id="n"> No<br>
-<button onclick="submit()">Submit</button><br>
+<button onclick="submit()">Submit</button>
+
+<div id="prompt" hidden="true">Copy this form and PM it to a room staff member (start from % and go up)<br>politely to start your GA.</div><br>
 
 <textarea id="result" rows="6" cols="40"></textarea><br>
 
@@ -1451,6 +1453,8 @@ function submit() {
 		result.value += " - " + extra;
 	}
 	result.value += "|" + amount;
+
+  document.getElementById("prompt").hidden = false;
 }
 </script>
 
