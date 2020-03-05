@@ -32,7 +32,6 @@ textarea {
 
 <div class="form">
 PS! username: <input type="text" id="username"><br>
-FC: <input type="text" id="fc"><br>
 How did you obtain this Pokémon: <br>
 <input type="radio" name="obtain" id="self" checked> I caught/bred this Pokémon or received it as a gift myself. <br>
 <input type="radio" name="obtain" id="won"> I won this Pokémon from a previous giveaway that was marked as OK2GA.<br>
@@ -1458,7 +1457,6 @@ function addAnswer() {
 
 function submit() {
 	var username = document.getElementById("username").value;
-	var fc = document.getElementById("fc").value;
 	var ot = document.getElementById("ot").value;
 	var tid = document.getElementById("tid").value;
 	var speciesSelect = document.getElementById("species");
@@ -1478,7 +1476,7 @@ function submit() {
   }
 	var result = document.getElementById("result");
 
-	result.value = "//lg " + username + "|" + ot + "|" + tid + "|" + fc + "|";
+	result.value = "//lg " + username + "|" + ot + "|" + tid + "|";
 	if (document.getElementById("y").checked) {
 		result.value += "[OK2GA] ";
 	}
