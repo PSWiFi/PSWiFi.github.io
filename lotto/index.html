@@ -3,8 +3,6 @@
 
 <style type="text/css">
 body {
-  width: 600px;
-  margin: 0 auto;
   background: #e0fbfe;
 }
 
@@ -16,6 +14,11 @@ h3 {
   border: none;
 }
 
+.form {
+  width: 600px;
+  margin: 0 auto;
+}
+
 textarea {
   vertical-align: top;
 }
@@ -23,8 +26,11 @@ textarea {
 
 <body>
 
+<div class="title">
 <h3>WiFi Lotto GA</h3>
+</div>
 
+<div class="form">
 PS! username: <input type="text" id="username"><br>
 FC: <input type="text" id="fc"><br>
 How did you obtain this Pokémon: <br>
@@ -1434,6 +1440,8 @@ Is it okay for the winner to giveaway this Pokémon in the future: <input type="
 <div id="prompt" hidden="true">Copy this form and PM it to a room staff member (start from % and go up)<br>politely to start your GA.</div><br>
 
 <textarea id="result" rows="6" cols="40"></textarea><br>
+
+</div>
 
 <script>
 function submit() {
