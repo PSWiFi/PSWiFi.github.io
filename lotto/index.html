@@ -1460,6 +1460,21 @@ function submit() {
 	var amount = amountSelect[amountSelect.selectedIndex].value;
 	var result = document.getElementById("result");
 
+  if (username == "") {
+    alert("Username can't be empty!");
+    return;
+  }
+
+  if (ot == "") {
+    alert("OT can't be empty!");
+    return;
+  }
+
+  if (tid == "") {
+    alert("TID can't be empty!");
+    return;
+  }
+
 	result.value = "//lg " + username + "|" + ot + "|" + tid + "|";
 	if (document.getElementById("y").checked) {
 		result.value += "[OK2GA] ";
@@ -1479,7 +1494,7 @@ function submit() {
 	if (extra != "") {
 		result.value += " - " + extra;
 	}
-	result.value += "|" + amount;
+	result.value += " |" + amount;
 
   document.getElementById("prompt").hidden = false;
 }

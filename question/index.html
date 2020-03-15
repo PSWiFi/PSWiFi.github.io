@@ -1469,12 +1469,41 @@ function submit() {
 	var ball = ballSelect[ballSelect.selectedIndex].value;
 	var extra = document.getElementById("extra").value;
 	var question = document.getElementById("question").value;
+
+  if (question == "") {
+    alert("Question can't be empty!");
+    return;
+  }
+
   var answers = [];
   for (var i = 0; i < numAnswers; i++) {
     var answer = document.getElementById("answer" + i).value;
-    answers.push(answer);
+    if (answer != "") {
+      answers.push(answer);
+    }
   }
+
+  if (answers.length == 0) {
+    alert("Answer can't be empty!");
+    return;
+  }
+
 	var result = document.getElementById("result");
+
+  if (username == "") {
+    alert("Username can't be empty!");
+    return;
+  }
+
+  if (ot == "") {
+    alert("OT can't be empty!");
+    return;
+  }
+
+  if (tid == "") {
+    alert("TID can't be empty!");
+    return;
+  }
 
 	result.value = "//lg " + username + "|" + ot + "|" + tid + "|";
 	if (document.getElementById("y").checked) {
@@ -1495,9 +1524,9 @@ function submit() {
 	if (extra != "") {
 		result.value += " - " + extra;
 	}
-	result.value += "|" + question;
-  for (var i = 0; i < numAnswers; i++) {
-    result.value += "|" + answers[i];
+	result.value += " |" + question;
+  for (var i = 0; i < answers.length; i++) {
+    result.value += " |" + answers[i];
   }
 
   document.getElementById("prompt").hidden = false;
