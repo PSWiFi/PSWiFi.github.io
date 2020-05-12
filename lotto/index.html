@@ -35,6 +35,7 @@ PS! username: <input type="text" id="username"><br>
 How did you obtain this Pokémon: <br>
 <input type="radio" name="obtain" id="self" checked> I caught/bred this Pokémon or redeemed it as a gift myself. <br>
 <input type="radio" name="obtain" id="won"> I won this Pokémon from a previous giveaway that was marked as OK2GA.<br>
+Is the Pokémon originated from Gen 8? <input type="radio" name="gen" id="gen8" checked>Yes <input type="radio" name="gen" id="oldgen">No<br>
 Pokémon OT: <input type="text" id="ot"><br>
 Pokémon TID: <input type="text" id="tid"><br>
 Pokémon species: 
@@ -1476,6 +1477,9 @@ function submit() {
   }
 
 	result.value = "//lg " + username + "|" + ot + "|" + tid + "|";
+  if (document.getElementById("gen8").checked) {
+    result.value += "[Gen 8 born] ";
+  }
 	if (document.getElementById("y").checked) {
 		result.value += "[OK2GA] ";
 	}
