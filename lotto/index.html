@@ -27,22 +27,15 @@ textarea {
 <body>
 
 <div class="title">
-<h2>WiFi Lotto GA</h2>
+<h2>P.A.C.T. Form</h2>
 </div>
 
+	
 <div class="form">
-PS! username: <input type="text" id="username"><br>
-How did you obtain this Pokémon: <br>
-<input type="radio" name="obtain" id="self" checked> I caught/bred this Pokémon or redeemed it as a gift myself. <br>
-<input type="radio" name="obtain" id="won"> I won this Pokémon from a previous giveaway that was marked as OK2GA.<br>
-Is the Pokémon originated from Gen 8? <input type="radio" name="gen" id="gen8" checked onclick="showRaidOption()">Yes <input type="radio" name="gen" id="oldgen" onclick="hideRaidOption()">No<br>
-<div id="raid-option">
-  Is it from a raid? <input type="radio" name="raid" id="raided">Yes <input type="radio" name="raid" id="nonraid" checked>No<br>
-</div>
-Pokémon OT: <input type="text" id="ot"><br>
-Pokémon TID: <input type="text" id="tid"><br>
+	
 Pokémon species: 
 <select id="species">
+  <option value=" ">Select one</option>
   <option value="Abomasnow-F">Abomasnow-F</option>
   <option value="Abomasnow-Mega">Abomasnow-Mega</option>
   <option value="Abomasnow">Abomasnow</option>
@@ -1353,13 +1346,10 @@ Pokémon species:
   <option value="Zygarde-Complete">Zygarde-Complete</option>
   <option value="Zygarde">Zygarde</option>
 </select><br>
-Pokémon nickname: <input type="text" id="nickname"> (Leave blank if it doesn't have one)<br>
-Shiny? <input type="radio" name="shiny" id="shiny" checked> Yes <input type="radio" name="shiny" id="non"> No<br>
-Pokémon ability: <input type="text" id="ability"><br>
-Pokémon nature: <input type="text" id="nature"><br>
-Pokémon IVs: <input type="text" id="iv"><br>
+Shiny? <input type="radio" name="isitshiny" id="star">Star <input type="radio" name="isitshiny" id="square">Square <input type="radio" name="isitshiny" id="notshiny">No<br>
 Ball: 
 <select id="ball">
+  <option value=" ">Select one</option>
   <option value="Beast">Beast</option>
   <option value="Cherish">Cherish</option>
   <option value="Dive">Dive</option>
@@ -1387,44 +1377,113 @@ Ball:
   <option value="Timer">Timer</option>
   <option value="Ultra">Ultra</option>
 </select><br>
-Extra information: <textarea id="extra" rows="3" cols="20"></textarea><br>
-Amount to giveaway: 
-<select id="amount">
-  <option value="1">1</option>
-  <option value="2">2</option>
-  <option value="3">3</option>
-  <option value="4">4</option>
-  <option value="5">5</option>
+Nature: 
+<select id="nature">
+  <option value =" ">Select one</option>
+  <option value ="Hardy">Hardy</option>
+  <option value ="Lonely">Lonely</option>
+  <option value ="Brave">Brave</option>
+  <option value ="Adamant">Adamant</option>
+  <option value ="Naughty">Naughty</option>
+  <option value ="Bold">Bold</option>
+  <option value ="Docile">Docile</option>
+  <option value ="Relaxed">Relaxed</option>
+  <option value ="Impish">Impish</option>
+  <option value ="Lax">Lax</option>
+  <option value ="Timid">Timid</option>
+  <option value ="Hasty">Hasty</option>
+  <option value ="Serious">Serious</option>
+  <option value ="Jolly">Jolly</option>
+  <option value ="Naive">Naive</option>
+  <option value ="Modest">Modest</option>
+  <option value ="Mild">Mild</option>
+  <option value ="Quiet">Quiet</option>
+  <option value ="Bashful">Bashful</option>
+  <option value ="Rash">Rash</option>
+  <option value ="Calm">Calm</option>
+  <option value ="Gentle">Gentle</option>
+  <option value ="Sassy">Sassy</option>
+  <option value ="Careful">Careful</option>
+  <option value ="Quirky">Quirky</option>
 </select><br>
-Is it okay for the winner to giveaway this Pokémon in the future: <input type="radio" name="ok2ga" id="y"> Yes <input type="radio" name="ok2ga" id="n" checked> No<br>
+Ability: <input type="text" id="ability"><br>
+OT (caps sensitive): <input type="text" id="ot"><br>
+ID No.: <input type="text" id="tid"><br>
+IVs (HP/Atk/Def/Sp.A/Sp.D/Spe): <input type="text" id="iv"><br>
+Language: <input type="text" id="language"><br> (ENG, SPA, etc.)
+Nickname: <input type="text" id="nickname"> (Leave blank if it doesn't have one)<br>
+Level: <input type="text" id="level">
+Gender: 
+<select id="gender">
+  <option value ="M">Male</option>
+  <option value ="F">Female</option>
+  <option value ="-">Genderless</option>
+</select><br>
+Origin Stamp:
+<select id="origin">
+  <option value ="Galar">Galar</option>
+  <option value ="LGPE">LGPE</option>
+  <option value ="POGO">POGO</option>
+  <option value ="Alola">Alola</option>
+  <option value ="Gen 6">Gen 6 Pentagon</option>
+  <option value ="VC">VC</option>
+  <option value ="None">a stampless generation</option>
+</select><br>
+Ribbons and Marks: <input type="text" id="ribmark"><br>
+Encounter Description: <textarea id="encounter" rows="3" cols="30"></textarea><br>
+	
+What user did you get this from? State the method if you don't remember. <input type="text" id="previous"><br>
+
 <button onclick="submit()">Submit</button>
 
-<div id="prompt" hidden="true">Copy this form and PM it to a room staff member (start from % and go up)<br>politely to start your GA.</div><br>
+<div id="prompt" hidden="true">Copy this form and paste it in #requests (start from % and go up)<br>politely to enter the queue.</div><br>
 
-<textarea id="result" rows="6" cols="40"></textarea><br>
+<textarea id="result" rows="7" cols="60"></textarea><br>
 
 </div>
 
 <script>
 function submit() {
-	var username = document.getElementById("username").value;
-	var ot = document.getElementById("ot").value;
-	var tid = document.getElementById("tid").value;
 	var speciesSelect = document.getElementById("species");
 	var species = speciesSelect[speciesSelect.selectedIndex].value;
-	var nickname = document.getElementById("nickname").value;
-	var ability = document.getElementById("ability").value;
-	var nature = document.getElementById("nature").value;
-	var iv = document.getElementById("iv").value;
 	var ballSelect = document.getElementById("ball");
 	var ball = ballSelect[ballSelect.selectedIndex].value;
-	var extra = document.getElementById("extra").value;
-	var amountSelect = document.getElementById("amount");
-	var amount = amountSelect[amountSelect.selectedIndex].value;
+	var natureSelect = document.getElementById("nature");
+	var nature = natureSelect[natureSelect.selectedIndex].value;
+	var ability = document.getElementById("ability").value;
+	var ot = document.getElementById("ot").value;
+	var tid = document.getElementById("tid").value;
+	var iv = document.getElementById("iv").value;
+	var language = document.getElementById("language").value;
+	var nickname = document.getElementById("nickname").value;
+	var level = document.getElementById("level").value;
+	var genderSelect = document.getElementById("gender");
+	var gender = genderSelect[genderSelect.selectedIndex].value;
+	var originSelect = document.getElementById("origin");
+	var origin = originSelect[originSelect.selectedIndex].value;
+	var ribmark = document.getElementById("ribmark").value;
+	var encounter = document.getElementById("encounter");
+	var previous = document.getElementById("previous");
 	var result = document.getElementById("result");
 
-  if (username == "") {
-    alert("Username can't be empty!");
+	
+  if (species == " ") {
+    alert("Species can't be empty!");
+    return;
+  }
+	
+  if (ball == " ") {
+    alert("Ball can't be empty!");
+    return;
+  }
+	
+  if (nature == " ") {
+    alert("Nature can't be empty!");
+    return;
+  }
+
+  if (ability == "") {
+    alert("Ability can't be empty!");
     return;
   }
 
@@ -1432,49 +1491,53 @@ function submit() {
     alert("OT can't be empty!");
     return;
   }
-
+	
   if (tid == "") {
-    alert("TID can't be empty!");
+    alert("ID No. can't be empty!");
+    return;
+  }	
+	
+  if (iv == "") {
+    alert("IVs can't be empty!");
+    return;
+  }	
+	
+  if (language == "") {
+    alert("Language can't be empty!");
+    return;
+  }	
+	
+  if (level == "") {
+    alert("Level can't be empty!");
+    return;
+  }	
+
+  if (encounter == "") {
+    alert("Encounter Description can't be empty!");
+    return;
+  }
+	
+  if (previous == "") {
+    alert("Trader/Method can't be empty!");
     return;
   }
 
-	result.value = "//lg " + username + "|" + ot + "|" + tid + "|";
-  if (document.getElementById("gen8").checked) {
-    result.value += "[Gen 8 born] ";
-    if (document.getElementById("raided").checked) {
-      result.value += "[Raid] ";
-    }
-  }
-	if (document.getElementById("y").checked) {
-		result.value += "[OK2GA] ";
-	}
-	if (document.getElementById("self").checked) {
-		result.value += "Self-Obtained ";
-	} else {
-		result.value += "GA-Won ";
-	}
+	result.value = "//lg " + "|" + ot + "|" + tid + "|" + "[" + ball + "]";
+
 	if (nickname != "") {
 		result.value += nickname + " the ";
 	}
-	if (document.getElementById("shiny").checked) {
-		result.value += "shiny ";
+	if (document.getElementById("star").checked) {
+		result.value += "★ - ";
 	}
-	result.value += species + " - " + nature + " - ``[[item: " + ball + " Ball]]`` - " + ability + " - " + iv;
-	if (extra != "") {
-		result.value += " - " + extra;
+	if (document.getElementById("square").checked) {
+		result.value += "■ - ";
 	}
-	result.value += " |" + amount;
+	result.value += species + " (" + gender + ")" + " - " + nature + " - " + ability + " - " + language + " - " + iv + ". " + "Lv." + level + " from " + origin + " - " ribmark + " - " + encounter + "|" + previous + "|" ;
 
   document.getElementById("prompt").hidden = false;
 }
 
-function hideRaidOption() {
-  document.getElementById("raid-option").hidden = true;
-}
-
-function showRaidOption() {
-  document.getElementById("raid-option").hidden = false;
-}
 </script>
 
 </body>
