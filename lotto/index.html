@@ -32,7 +32,7 @@ textarea {
 
 	
 <div class="form">
-	
+<br>	
 Pokémon species: 
 <select id="species">
   <option value=" ">Select one</option>
@@ -1346,7 +1346,7 @@ Pokémon species:
   <option value="Zygarde-Complete">Zygarde-Complete</option>
   <option value="Zygarde">Zygarde</option>
 </select><br>
-Shiny? <input type="radio" name="isitshiny" id="star">Star <input type="radio" name="isitshiny" id="square">Square <input type="radio" name="isitshiny" id="notshiny">No<br>
+Shiny? <input type="radio" name="isitshiny" id="star">Star <input type="radio" name="isitshiny" id="square">Square <input type="radio" name="isitshiny" id="notshiny" checked>No<br>
 Ball: 
 <select id="ball">
   <option value=" ">Select one</option>
@@ -1409,10 +1409,82 @@ Nature:
 Ability: <input type="text" id="ability"><br>
 OT (caps sensitive): <input type="text" id="ot"><br>
 ID No.: <input type="text" id="tid"><br>
-IVs (HP/Atk/Def/Sp.A/Sp.D/Spe): <input type="text" id="iv"><br>
-Language: <input type="text" id="language"><br> (ENG, SPA, etc.)
+IVs:(Best, Fantastic, Very Good, Pretty Good, Decent, No Good)<br>
+HP:
+<select id="hp">
+  <option value=" ">-</option>
+  <option value="B">B</option>
+  <option value="F">F</option>
+  <option value="VG">VG</option>
+  <option value="PG">PG</option>
+  <option value="D">D</option>
+  <option value="NG">NG</option>
+</select>
+Atk:
+<select id="atk">
+  <option value=" ">-</option>
+  <option value="B">B</option>
+  <option value="F">F</option>
+  <option value="VG">VG</option>
+  <option value="PG">PG</option>
+  <option value="D">D</option>
+  <option value="NG">NG</option>
+</select>
+Def:
+<select id="def">
+  <option value=" ">-</option>
+  <option value="B">B</option>
+  <option value="F">F</option>
+  <option value="VG">VG</option>
+  <option value="PG">PG</option>
+  <option value="D">D</option>
+  <option value="NG">NG</option>
+</select>
+Sp.A:
+<select id="spa">
+  <option value=" ">-</option>
+  <option value="B">B</option>
+  <option value="F">F</option>
+  <option value="VG">VG</option>
+  <option value="PG">PG</option>
+  <option value="D">D</option>
+  <option value="NG">NG</option>
+</select>
+Sp.D:
+<select id="spd">
+  <option value=" ">-</option>
+  <option value="B">B</option>
+  <option value="F">F</option>
+  <option value="VG">VG</option>
+  <option value="PG">PG</option>
+  <option value="D">D</option>
+  <option value="NG">NG</option>
+</select>
+Spe:
+<select id="spe">
+  <option value=" ">-</option>
+  <option value="B">B</option>
+  <option value="F">F</option>
+  <option value="VG">VG</option>
+  <option value="PG">PG</option>
+  <option value="D">D</option>
+  <option value="NG">NG</option>
+</select><br>
+Language:
+<select id="language">
+  <option value=" ">Select one</option>
+  <option value="ENG">ENG</option>
+  <option value="SPA">SPA</option>
+  <option value="JPN">JPN</option>
+  <option value="FRE">FRE</option>
+  <option value="GER">GER</option>
+  <option value="ITA">ITA</option>
+  <option value="KOR">KOR</option>
+  <option value="CHS">CHS</option>
+  <option value="CHT">CHT</option>
+</select><br>
 Nickname: <input type="text" id="nickname"> (Leave blank if it doesn't have one)<br>
-Level: <input type="text" id="level">
+Level: <input type="text" id="level"><br>
 Gender: 
 <select id="gender">
   <option value ="M">Male</option>
@@ -1433,10 +1505,11 @@ Ribbons and Marks: <input type="text" id="ribmark"><br>
 Encounter Description: <textarea id="encounter" rows="3" cols="30"></textarea><br>
 	
 What user did you get this from? State the method if you don't remember. <input type="text" id="previous"><br>
-
+<br>
+	
 <button onclick="submit()">Submit</button>
 
-<div id="prompt" hidden="true">Copy this form and paste it in #requests (start from % and go up)<br>politely to enter the queue.</div><br>
+<div id="prompt" hidden="true">Please copy this form and paste it in #requests <br>to enter the queue.</div><br>
 
 <textarea id="result" rows="7" cols="60"></textarea><br>
 
@@ -1453,8 +1526,20 @@ function submit() {
 	var ability = document.getElementById("ability").value;
 	var ot = document.getElementById("ot").value;
 	var tid = document.getElementById("tid").value;
-	var iv = document.getElementById("iv").value;
-	var language = document.getElementById("language").value;
+	var hpSelect = document.getElementById("hp");
+	var hp = hpSelect[hpSelect.selectedIndex].value;
+	var atkSelect = document.getElementById("atk");
+	var atk = atkSelect[atkSelect.selectedIndex].value;
+	var defSelect = document.getElementById("def");
+	var def = defSelect[defSelect.selectedIndex].value;
+	var spaSelect = document.getElementById("spa");
+	var spa = spaSelect[spaSelect.selectedIndex].value;
+	var spdSelect = document.getElementById("spd");
+	var spd = spdSelect[spdSelect.selectedIndex].value;
+	var speSelect = document.getElementById("spe");
+	var spe = speSelect[speSelect.selectedIndex].value;
+	var languageSelect = document.getElementById("language");
+	var language = languageSelect[languageSelect.selectedIndex].value;
 	var nickname = document.getElementById("nickname").value;
 	var level = document.getElementById("level").value;
 	var genderSelect = document.getElementById("gender");
@@ -1462,8 +1547,8 @@ function submit() {
 	var originSelect = document.getElementById("origin");
 	var origin = originSelect[originSelect.selectedIndex].value;
 	var ribmark = document.getElementById("ribmark").value;
-	var encounter = document.getElementById("encounter");
-	var previous = document.getElementById("previous");
+	var encounter = document.getElementById("encounter").value;
+	var previous = document.getElementById("previous").value;
 	var result = document.getElementById("result");
 
 	
@@ -1497,12 +1582,37 @@ function submit() {
     return;
   }	
 	
-  if (iv == "") {
+  if (hp == " ") {
+    alert("IVs can't be empty!");
+    return;
+  }	
+		
+  if (atk == " ") {
+    alert("IVs can't be empty!");
+    return;
+  }	
+		
+  if (def == " ") {
+    alert("IVs can't be empty!");
+    return;
+  }	
+		
+  if (spa == " ") {
+    alert("IVs can't be empty!");
+    return;
+  }	
+		
+  if (spd == " ") {
+    alert("IVs can't be empty!");
+    return;
+  }	
+		
+  if (spe == " ") {
     alert("IVs can't be empty!");
     return;
   }	
 	
-  if (language == "") {
+  if (language == " ") {
     alert("Language can't be empty!");
     return;
   }	
@@ -1522,7 +1632,7 @@ function submit() {
     return;
   }
 
-	result.value = "//lg " + "|" + ot + "|" + tid + "|" + "[" + ball + "]";
+	result.value = "|" + ot + "|" + tid + "|" + "[" + ball + "] ";
 
 	if (nickname != "") {
 		result.value += nickname + " the ";
@@ -1533,7 +1643,7 @@ function submit() {
 	if (document.getElementById("square").checked) {
 		result.value += "■ - ";
 	}
-	result.value += species + " (" + gender + ")" + " - " + nature + " - " + ability + " - " + language + " - " + iv + ". " + "Lv." + level + " from " + origin + " - " ribmark + " - " + encounter + "|" + previous + "|" ;
+	result.value += species + " (" + gender + ") - " + nature + " - " + ability + " - " + language + " - " + hp + "/" + atk + "/" + def + "/" + spa + "/" + spd + "/" + spe + ". Lv." + level + " from " + origin + " - " + ribmark + " - " + encounter + "|" + previous + "|";
 
   document.getElementById("prompt").hidden = false;
 }
