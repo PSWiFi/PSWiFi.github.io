@@ -1445,6 +1445,7 @@
             <label for="hp">HP IV</label>
             <select class="form-control" id="hp">
               <option value=" ">-</option>
+              <option value="HT">HT</option>
               <option value="B">B</option>
               <option value="F">F</option>
               <option value="VG">VG</option>
@@ -1457,6 +1458,7 @@
             <label for="atk">Atk IV</label>
             <select class="form-control" id="atk">
               <option value=" ">-</option>
+              <option value="HT">HT</option>
               <option value="B">B</option>
               <option value="F">F</option>
               <option value="VG">VG</option>
@@ -1469,6 +1471,7 @@
             <label for="def">Def IV</label>
             <select class="form-control" id="def">
               <option value=" ">-</option>
+              <option value="HT">HT</option>
               <option value="B">B</option>
               <option value="F">F</option>
               <option value="VG">VG</option>
@@ -1481,6 +1484,7 @@
             <label for="spa">Sp. Atk IV</label>
             <select class="form-control" id="spa">
               <option value=" ">-</option>
+              <option value="HT">HT</option>
               <option value="B">B</option>
               <option value="F">F</option>
               <option value="VG">VG</option>
@@ -1493,6 +1497,7 @@
             <label for="spd">Sp. Def IV</label>
             <select class="form-control" id="spd">
               <option value=" ">-</option>
+              <option value="HT">HT</option>
               <option value="B">B</option>
               <option value="F">F</option>
               <option value="VG">VG</option>
@@ -1505,6 +1510,7 @@
             <label for="spe">Spe IV</label>
             <select class="form-control" id="spe">
               <option value=" ">-</option>
+              <option value="HT">HT</option>
               <option value="B">B</option>
               <option value="F">F</option>
               <option value="VG">VG</option>
@@ -1514,7 +1520,7 @@
             </select>
           </div>
         </div>
-        <small id="ivDesc" class="form-text text-muted">31: B | 30: F | 26-29: VG | 16-25: PG | 1-15: D | 0: NG</small>
+        <small id="ivDesc" class="form-text text-muted"> HT: Hyper Trained | 31: B | 30: F | 26-29: VG | 16-25: PG | 1-15: D | 0: NG</small>
       </div>
 
       <!-- Language -->
@@ -1551,6 +1557,7 @@
       <div class="form-group">
         <label for="gender">Gender</label>
         <select class="form-control" id="gender">
+          <option value=" ">Select One...</option>
           <option value="M">Male (&#x2642;)</option>
           <option value="F">Female (&#x2640;)</option>
           <option value="-">Genderless</option>
@@ -1561,24 +1568,48 @@
       <div class="form-group">
         <label for="origin">Origin Stamp</label>
         <select class="form-control" id="origin">
+          <option value=" ">Select one...</option>
           <option value="Galar">Galar</option>
           <option value="LGPE">LGPE</option>
           <option value="POGO">POGO</option>
           <option value="Alola">Alola</option>
           <option value="Gen 6">Gen 6 Pentagon</option>
           <option value="VC">VC</option>
-          <option value="a stampless generation">None</option>
+          <option value="None">None</option>
         </select>
       </div>
 
+      <!-- Moves -->
+      <div class="form-group">
+        <div class="form-row">
+          <div class="col">
+            <label for="moves">Move 1</label>
+            <input class="form-control" type="text" id="move1" placeholder="Payback">
+          </div>
+          <div class="col">
+            <label for="moves">Move 2</label>
+            <input class="form-control" type="text" id="move2" placeholder="Attract">
+          </div>
+          <div class="col">
+            <label for="moves">Move 3</label>
+            <input class="form-control" type="text" id="move3" placeholder="Cut">
+          </div>
+          <div class="col">
+            <label for="moves">Move 4</label>
+            <input class="form-control" type="text" id="move4" placeholder="Taunt">
+          </div>
+        </div>
+        <small id="movesDesc" class="form-text text-muted">Please list the moves on your Pok&eacute;mon.</small>
+      </div><br>
+ 
       <!-- Ribbons/Marks -->
       <div class="form-group">
         <label for="ribmark">Ribbons &amp; Marks</label>
         <input class="form-control" type="text" id="ribmark" placeholder="Ribbon/Mark Name">
-        <small id="ribbonDesc" class="form-text text-muted">Please leave this blank if it doesn't have any!</small>
+        <small id="ribbonDesc" class="form-text text-muted">Leave this blank if it doesn't have any!</small>
       </div>
 
-      <!-- Enconuter Description -->
+      <!-- Encounter Description -->
       <div class="form-group">
         <label for="encounter">Encounter Description</label>
         <textarea class="form-control" id="encounter" rows="4"></textarea>
@@ -1589,14 +1620,14 @@
       <div class="form-group">
         <label for="previous">History</label>
         <input class="form-control" type="text" id="previous" placeholder="Skadiv#6984 from the &quot;Akala Meadow&quot; Discord server">
-        <small id="ribbonDesc" class="form-text text-muted">What user did you get this Pok&eacute;mon from? State the method if you don't remember.</small>
+        <small id="historyDesc" class="form-text text-muted">What user did you get this Pok&eacute;mon from? State the method if you don't remember.</small>
       </div>
     </form>
     <br>
 
     <button type="button" class="btn btn-outline-primary btn-block" onclick="submit()">Submit</button>
 
-    <div class="w-100 pt-3 d-none" id="prompt">Please copy the below output and paste it in #requests to enter the queue.</div>
+    <div class="w-100 pt-3 d-none" id="prompt">Please copy ALL of the output below and paste it in #requests.</div>
     <br />
     <textarea class="form-control d-none" id="result" rows="7" cols="60"></textarea><br>
 
@@ -1633,6 +1664,10 @@
       var gender = genderSelect[genderSelect.selectedIndex].value;
       var originSelect = document.getElementById("origin");
       var origin = originSelect[originSelect.selectedIndex].value;
+      var move1 = document.getElementById("move1").value;
+      var move2 = document.getElementById("move2").value;
+      var move3 = document.getElementById("move3").value;
+      var move4 = document.getElementById("move4").value;
       var ribmark = document.getElementById("ribmark").value;
       var encounter = document.getElementById("encounter").value;
       var previous = document.getElementById("previous").value;
@@ -1709,18 +1744,33 @@
         return;
       }
 
+      if (origin == " ") {
+        alert("Origin Stamp can't be empty! Select 'None' if it doesn't have one.");
+        return;
+      }
+
       if (encounter == "") {
         alert("Encounter Description can't be empty!");
         return;
       }
 
+      if (gender == " ") {
+        alert("Level can't be empty!");
+        return;
+      }
+
+      if (move1 == "") {
+        alert("Moveset can't be empty!");
+        return;
+      }
+      
       if (previous == "") {
         alert("History can't be empty!");
         return;
       }
 
-      result.value = "|" + ot + "|" + tid + "|" + "[" + ball + "] ";
-
+      result.value = "";
+      
       if (nickname != "") {
         result.value += nickname + " the ";
       }
@@ -1730,8 +1780,37 @@
       if (document.getElementById("squareShiny").checked) {
         result.value += "\u{25A0} - ";
       }
-      result.value += species + " (" + gender + ") - " + nature + " - " + ability + " - " + language + " - " + hp + "/" + atk + "/" + def + "/" + spa + "/" + spd + "/" + spe + ". Lv." + level + " from " + origin + " - " + ribmark + " - " + encounter +
-        "|" + previous + "|";
+
+      result.value += species + " (" + gender + ")" + "\n";
+      result.value += "```Pokeball:      " + ball + "\n";
+      result.value += "Nature:        " + nature + "\n";
+      result.value += "Ability:       " + ability + "\n";
+      result.value += "OT:            " + ot + "\n";
+      result.value += "ID No.:        " + tid + "\n";
+      result.value += "IVs:           " + hp + "/" + atk + "/" + def + "/" + spa + "/" + spd + "/" + spe + "\n";
+      result.value += "Language:      " + language + "\n";
+      result.value += "Level:         " + level + "\n";
+      result.value += "Moves:         " + move1 + "\n";
+      if (move2 != "") {
+        result.value += "               " + move2 + "\n";
+      }
+     
+      if (move3 != "") {
+        result.value += "               " + move3 + "\n";
+      }
+
+      if (move4 != "") {
+        result.value += "               " + move4 + "\n";
+      }
+
+      if (ribmark != "") {
+        result.value += "Ribbons/Marks: " + ribmark + "\n";
+      }
+
+
+      result.value += "Obtained From: " + previous + "\n";
+      result.value += "Origin Stamp:  " + origin + "\n";
+      result.value += "Encounter:     " + encounter + "```" + "\n";
 
       $("#prompt").removeClass("d-none");
       $("#result").removeClass("d-none");
