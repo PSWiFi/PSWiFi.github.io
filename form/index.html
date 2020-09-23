@@ -373,101 +373,65 @@
       var previous = document.getElementById("previous").value;
       var result = document.getElementById("result");
 
+      var problems = [];
 
       if (species == " ") {
-        alert("Species can't be empty!");
-        return;
+        problems.push("Species can't be empty!");
       }
 
       if (ball == " ") {
-        alert("Ball can't be empty!");
-        return;
+        problems.push("Ball can't be empty!");
       }
 
       if (nature == " ") {
-        alert("Nature can't be empty!");
-        return;
+        problems.push("Nature can't be empty!");
       }
 
       if (ability == "") {
-        alert("Ability can't be empty!");
-        return;
+        problems.push("Ability can't be empty!");
       }
 
       if (ot == "") {
-        alert("OT can't be empty!");
-        return;
+        problems.push("OT can't be empty!");
       }
 
       if (tid == "") {
-        alert("ID No. can't be empty!");
-        return;
+        problems.push("ID No. can't be empty!");
       }
 
-      if (hp == " ") {
-        alert("IVs can't be empty!");
-        return;
-      }
-
-      if (atk == " ") {
-        alert("IVs can't be empty!");
-        return;
-      }
-
-      if (def == " ") {
-        alert("IVs can't be empty!");
-        return;
-      }
-
-      if (spa == " ") {
-        alert("IVs can't be empty!");
-        return;
-      }
-
-      if (spd == " ") {
-        alert("IVs can't be empty!");
-        return;
-      }
-
-      if (spe == " ") {
-        alert("IVs can't be empty!");
-        return;
+      if (hp == " " || atk == " " || def == " " || spa == " " || spd == " " || spe == " ") {
+        problems.push("IVs can't be empty!");
       }
 
       if (language == " ") {
-        alert("Language can't be empty!");
-        return;
+        problems.push("Language can't be empty!");
       }
 
-      if (level == "") {
-        alert("Level can't be empty!");
-        return;
-      }
-
-      if (origin == " ") {
-        alert("Origin Stamp can't be empty! Select 'None' if it doesn't have one.");
-        return;
-      }
-
-      if (encounter == "") {
-        alert("Encounter Description can't be empty!");
-        return;
+      if (level == "" || parseInt(level) < 0 || parseInt(level) > 100) {
+        problems.push("Level can't be empty!");
       }
 
       if (gender == " ") {
-        alert("Level can't be empty!");
-        return;
+        problems.push("Gender can't be empty!");
       }
 
-      if (move1 == "") {
-        alert("Moveset can't be empty!");
-        return;
+      if (origin == " ") {
+        problems.push("Origin Stamp can't be empty! Select 'None' if it doesn't have one.");
+      }
+
+      if (encounter == "") {
+        problems.push("Encounter Description can't be empty!");
+      }
+
+      if (move1 == " ") {
+        problems.push("Moveset can't be empty!");
       }
 
       if (previous == "") {
-        alert("History can't be empty!");
-        return;
+        problems.push("History can't be empty!");
       }
+
+      if (problems.length) return alert("There " + (problems.length === 1 ? "was a problem " : "were problems ") + "with the form:\n - " + problems.join("\n - ") + "\n\nPlease fix these issues and try resubmitting.");
 
       result.value = "";
 
@@ -493,19 +457,19 @@
       result.value += "Level:         " + level + "\n";
       result.value += "Origin Stamp:  " + origin + "\n";
       result.value += "Moves:         " + move1 + "\n";
-      if (move2 != "") {
+      if (move2 != " ") {
         result.value += "               " + move2 + "\n";
       }
 
-      if (move3 != "") {
+      if (move3 != " ") {
         result.value += "               " + move3 + "\n";
       }
 
-      if (move4 != "") {
+      if (move4 != " ") {
         result.value += "               " + move4 + "\n";
       }
 
-      if (ribmark != "") {
+      if (ribmark != " ") {
         result.value += "Ribbons/Marks: " + ribmark + "\n";
       }
 
