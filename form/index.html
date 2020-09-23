@@ -482,7 +482,8 @@
       }
 
       result.value += species + " (" + gender + ")" + "\n";
-      result.value += "```Pokeball:      " + ball + "\n";
+      result.value += "```\n";
+      result.value += "Pokeball:      " + ball + "\n";
       result.value += "Nature:        " + nature + "\n";
       result.value += "Ability:       " + ability + "\n";
       result.value += "OT:            " + ot + "\n";
@@ -510,7 +511,7 @@
 
 
       result.value += "Obtained From: " + previous + "\n";
-      result.value += "Encounter:     " + encounter + "```" + "\n";
+      result.value += "Encounter:     " + encounter + "```\n";
 
       // Unhide results
       $("#prompt").removeClass("d-none");
@@ -571,9 +572,25 @@
             $("#move" + i).append("<option value=\"" + move + "\">" + move + "</option>");
           }
         }
+
+        // Populate Gender
+        if (pokemon.gender) {
+          if (pokemon.gender === "F") {
+            $("#gender").html("<option value=\" \">Select One...</option><option value=\"F\">Female (&#x2640;)</option>");
+          } else if (pokemon.gender === "M") {
+            $("#gender").html("<option value=\" \">Select One...</option><option value=\"M\">Male (&#x2642;)</option>");
+          } else if (pokemon.gender === "N") {
+            $("#gender").html("<option value=\" \">Select One...</option><option value=\"-\">Genderless</option>");
+          } else {
+            $("#gender").html("<option value=\" \">Select One...</option><option value=\"F\">Female (&#x2640;)</option><option value=\"M\">Male (&#x2642;)</option><option value=\"-\">Genderless</option>");
+          }
+        } else {
+          $("#gender").html("<option value=\" \">Select One...</option><option value=\"F\">Female (&#x2640;)</option><option value=\"M\">Male (&#x2642;)</option><option value=\"-\">Genderless</option>");
+        }
       } else {
         // Reset fields
         $("#ability").html("<option value=\" \">Select one...</option>");
+        $("#gender").html("<option value=\" \">Select One...</option><option value=\"F\">Female (&#x2640;)</option><option value=\"M\">Male (&#x2642;)</option><option value=\"-\">Genderless</option>");
         for (var i = 1; i < 5; i++) {
           $("#move" + i).html("<option value=\" \">(No Move)</option>");
         }
