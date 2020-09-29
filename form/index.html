@@ -524,7 +524,7 @@
       $("#species").change();
     });
 
-    $("#species").on("change", function() {
+    $("#species").change(function() {
       var monName = $(this).children("option:selected").val().toLowerCase().replace(/[^a-z0-9]/g, "");
       var pokemon = Dex.getSpecies(monName);
       if (monName && pokemon) {
@@ -536,7 +536,7 @@
         }
 
         // Populate Moves
-        Dex.getLearnset(monName).then(function (learnset) {
+        Dex.getLearnset(monName).then(function(learnset) {
           var set = Object.keys(learnset.learnset);
           for (var i = 1; i <= 4; i++) {
             $("#move" + i).html("<option value=\" \">(No Move)</option>");
@@ -544,7 +544,7 @@
               var move = Dex.getMove(set[j]).name;
               // Filter out CAP moves
               if (move.isNonstandard && move.isNonstandard === "CAP") continue;
-              $("#move" + i).append("<option value=\"" + move + "\">" + move + "</option>");
+              $("#move" + i).append("<option id=\"move" + i + "-" + move.split(" ").join("_") + "\" value=\"" + move + "\">" + move + "</option>");
             }
           }
         });
@@ -601,6 +601,53 @@
         var newNum = parseInt(resultArr.join(""));
         $("#level").val(Math.min(100, newNum));
       }
+    });
+
+    var disabledMoves = {
+      m1: "",
+      m2: "",
+      m3: "",
+      m4: "",
+    };
+
+    $("#move1").change(function() {
+      $("#move2-" + disabledMoves.m1).prop("disabled", false);
+      $("#move3-" + disabledMoves.m1).prop("disabled", false);
+      $("#move4-" + disabledMoves.m1).prop("disabled", false);
+      disabledMoves.m1 = this.value.split(" ").join("_");
+      $("#move2-" + disabledMoves.m1).prop("disabled", true);
+      $("#move3-" + disabledMoves.m1).prop("disabled", true);
+      $("#move4-" + disabledMoves.m1).prop("disabled", true);
+    });
+
+    $("#move2").change(function() {
+      $("#move1-" + disabledMoves.m2).prop("disabled", false);
+      $("#move3-" + disabledMoves.m2).prop("disabled", false);
+      $("#move4-" + disabledMoves.m2).prop("disabled", false);
+      disabledMoves.m2 = this.value.split(" ").join("_");
+      $("#move1-" + disabledMoves.m2).prop("disabled", true);
+      $("#move3-" + disabledMoves.m2).prop("disabled", true);
+      $("#move4-" + disabledMoves.m2).prop("disabled", true);
+    });
+
+    $("#move3").change(function() {
+      $("#move1-" + disabledMoves.m3).prop("disabled", false);
+      $("#move2-" + disabledMoves.m3).prop("disabled", false);
+      $("#move4-" + disabledMoves.m3).prop("disabled", false);
+      disabledMoves.m3 = this.value.split(" ").join("_");
+      $("#move1-" + disabledMoves.m3).prop("disabled", true);
+      $("#move2-" + disabledMoves.m3).prop("disabled", true);
+      $("#move4-" + disabledMoves.m3).prop("disabled", true);
+    });
+
+    $("#move4").change(function() {
+      $("#move1-" + disabledMoves.m4).prop("disabled", false);
+      $("#move2-" + disabledMoves.m4).prop("disabled", false);
+      $("#move3-" + disabledMoves.m4).prop("disabled", false);
+      disabledMoves.m4 = this.value.split(" ").join("_");
+      $("#move1-" + disabledMoves.m4).prop("disabled", true);
+      $("#move2-" + disabledMoves.m4).prop("disabled", true);
+      $("#move3-" + disabledMoves.m4).prop("disabled", true);
     });
   </script>
 </body>
