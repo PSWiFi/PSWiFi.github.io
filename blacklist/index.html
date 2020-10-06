@@ -47,7 +47,6 @@
         <br />
         <div class="form-group">
           <label id="result-label" for="results">Results</label>
-          <!--<textarea class="form-control" id="results" rows="10" style="resize: none" readonly></textarea>-->
           <div class="table-container border" style="height: 240px; overflow: auto;">
             <table class="table table-striped">
               <thead class="thead-dark">
@@ -73,8 +72,10 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/fuse.js@6.4.1/dist/fuse.js" integrity="sha384-U2HBuKzcVBmu3+scbSdB3/MI2tVE2A4MBPwrhUxfh74ICJ5pybEyBoz7nXsY5Po0" crossorigin="anonymous"></script>
   <script>
+    // Store the Blacklist object once gooss retrieves it from the sheet
     var bl = [];
     $(function() {
+      // Fetch data from the sheet
       gooss.data({
           Blacklist: {
             url: "https://docs.google.com/spreadsheet/ccc?key=17ycX1S3Hhbu8IoGpnioDCbAtjVrLSY3fNWivRN8n37I",
@@ -83,6 +84,7 @@
         },
         function(err, data) {
           if (err) return alert(err);
+          // Sort sheet data alphabetically and store results
           bl = data.Blacklist.sort(function(a, b) {
             if (a.OT < b.OT) {
               return -1;
@@ -92,11 +94,17 @@
             }
             return 0;
           });
-          $("#result-label").html("Results (" + bl.length + ")");
+
+          // Page is ready! Get rid of the loader and display the contents
+          updateResults(bl.length);
           $("#loader").addClass("d-none");
           $("#content").removeClass("d-none");
           $("#footer").removeClass("d-none");
+
+          // Log blacklist object - useful in case something goes wrong!
           console.log(bl);
+
+          // Populate results table with the data
           var $results = $("#results");
           for (var entry of bl) {
             $results.append(formatEntry(entry));
@@ -106,6 +114,8 @@
     });
 
     $("#id-search").keyup(function() {
+      // Test validity of input - Numeric, 6 digits max
+      // There's probably a better way to do this...
       var testArr = $(this).val().split("");
       var resultArr = [];
       var isNum = new RegExp("[0-9]+");
@@ -115,47 +125,54 @@
         }
         $(this).val(resultArr.join(""));
       }
+
+      // Empty results table in preparation for populating it with the search data
       var $results = $("#results");
       $results.html("");
+
       if ($(this).val().trim() === "") {
+        // If the id search box is blank, populate table with all entries
         for (var entry of bl) {
           $results.append(formatEntry(entry));
         }
+        // id search box is blank, so we can allow the ot search box to be typed in again
         $("#ot-search").prop("disabled", false);
-        $("#result-label").html("Results (" + bl.length + ")");
+        updateResults(bl.length);
       } else {
+        // id seach box is not blank and we don't support searching by both id
+        // and ot, so blank out the ot serach box
         $("#ot-search").prop("disabled", true);
+        // empty it (just in case!)
         $("#ot-search").html("");
+
+        // Set up options for our fuzzy search
         var options = {
           includeScore: true,
-          threshold: 0.3,
-          keys: [
-            "ID #s",
-          ]
+          threshold: 0.3, // More or less arbitrary, lower value = less "fuzziness" i.e. user must type more accurately
+          keys: ["ID #s"],
         };
+        // Initialize and run search
         var fuse = new Fuse(bl, options);
         var search = fuse.search($(this).val());
+
+        // Add entries with "Multiple IDs" to results
         for (var entry of bl) {
           if (entry["ID #s"].includes("IDs")) search.push(entry);
         }
+
         var i = 0;
         for (var result of search) {
-          if (result.item) {
-            if (!$("#results").html().includes(formatEntry(result.item))) {
-              $results.append(formatEntry(result.item));
-            }
-          } else {
-            if (!$("#results").html().includes(formatEntry(result))) {
-              $results.append(formatEntry(result));
-            }
-          }
+          // Add our search results to the table
+          addToTable(result, $results);
           i++;
         }
-        $("#result-label").html("Results (" + i + ")");
+        updateResults(i);
       }
     });
 
     $("#ot-search").keyup(function() {
+      // Test validity of input - All characters, 12 digits max
+      // There's probably a better way to do this...
       var testArr = $(this).val().split("");
       var resultArr = [];
       for (var i in testArr) {
@@ -164,43 +181,47 @@
         }
         $(this).val(resultArr.join(""));
       }
+
+      // Empty results table in preparation for populating it with the search data
       var $results = $("#results");
       $results.html("");
+
       if ($(this).val().trim() === "") {
+        // If the ot search box is blank, populate table with all entries
         for (var entry of bl) {
           $results.append(formatEntry(entry));
         }
+        // ot search box is blank, so we can allow the id search box to be typed in again
         $("#id-search").prop("disabled", false);
-        $("#result-label").html("Results (" + bl.length + ")");
+        updateResults(bl.length);
       } else {
+        // ot seach box is not blank and we don't support searching by both id
+        // and ot, so blank out the id serach box
         $("#id-search").prop("disabled", true);
+        // empty it (just in case!)
         $("#id-search").html("");
+
+        // Set up options for our fuzzy search
         var options = {
           includeScore: true,
-          threshold: 0.3,
-          keys: [
-            "OT",
-          ]
+          threshold: 0.3, // More or less arbitrary, lower value = less "fuzziness" i.e. user must type more accurately
+          keys: ["OT"],
         };
+        // Initialize and run search
         var fuse = new Fuse(bl, options);
         var search = fuse.search($(this).val());
+
+        // Add entries with "Multiple OTs" to results
         for (var entry of bl) {
           if (entry.OT.includes("Multiple")) search.push(entry);
         }
         var i = 0;
         for (var result of search) {
-          if (result.item) {
-            if (!$("#results").html().includes(formatEntry(result.item))) {
-              $results.append(formatEntry(result.item));
-            }
-          } else {
-            if (!$("#results").html().includes(formatEntry(result))) {
-              $results.append(formatEntry(result));
-            }
-          }
+          // Add our search results to the table
+          addToTable(result, $results);
           i++;
         }
-        $("#result-label").html("Results (" + i + ")");
+        updateResults(i);
       }
     });
 
@@ -210,6 +231,25 @@
         "<td>" + entry["ID #s"] + "</td>" + "\n" +
         "<td>" + (entry["User tags / Comments"] ? entry["User tags / Comments"] : "&mdash;") + "</td>" + "\n" +
         "<td>" + (entry["(+ all link/youtuber/twitch/ebay/etc. OTs)"] ? entry["(+ all link/youtuber/twitch/ebay/etc. OTs)"] : "&mdash;") + "</td>";
+    }
+
+    function updateResults(num) {
+      return $("#result-label").html("Results (" + num + ")");
+    }
+
+    function addToTable(result, $results) {
+      // Results returned by the search will have the .item property, ones that we added manually will not
+      if (result.item) {
+        // Check for duplicates - we don't want to add the same entry twice in the case that we search for "Multiple"
+        if (!$("#results").html().includes(formatEntry(result.item))) {
+          $results.append(formatEntry(result.item));
+        }
+      } else {
+        // Check for duplicates - we don't want to add the same entry twice in the case that we search for "Multiple"
+        if (!$("#results").html().includes(formatEntry(result))) {
+          $results.append(formatEntry(result));
+        }
+      }
     }
   </script>
 </body>
