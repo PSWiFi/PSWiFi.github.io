@@ -1379,7 +1379,8 @@
         <div class="form-group">
           <label for="previous">History</label>
           <input class="form-control" type="text" id="previous" placeholder="Skadiv#6984 from the &quot;Akala Meadow&quot; Discord server">
-          <small id="historyDesc" class="form-text text-muted">What user did you get this Pok&eacute;mon from? State the method if you don't remember. Inability for us to trace the Pok&eacute;mon back to its origin (e.g. You can't remember/got it from random trade/got it from GTS) will result in an &quot;uncertain but legal&quot; verdict at best.</small>
+          <small id="historyDesc" class="form-text text-muted">What user did you get this Pok&eacute;mon from? State the method if you don't remember. Inability for us to trace the Pok&eacute;mon back to its origin (e.g. You can't remember/got it
+            from random trade/got it from GTS) will result in an &quot;uncertain but legal&quot; verdict at best.</small>
         </div>
       </form>
       <br />
@@ -1709,15 +1710,8 @@
         } else {
           $("#gender").html("<option value=\" \">Select One...</option><option value=\"F\">Female (&#x2640;)</option><option value=\"M\">Male (&#x2642;)</option><option value=\"-\">Genderless</option>");
         }
-      } else {
-        // Reset fields
-        $("#formes").html("<option value=\" \">Select one...</option>");
-        $("#forme-container").addClass("d-none");
-        $("#ability").html("<option value=\" \">Select one...</option>");
-        $("#gender").html("<option value=\" \">Select One...</option><option value=\"F\">Female (&#x2640;)</option><option value=\"M\">Male (&#x2642;)</option><option value=\"-\">Genderless</option>");
-        for (var i = 1; i < 5; i++) {
-          $("#move" + i).html("<option value=\" \">(No Move)</option>");
-        }
+        // } else {
+        // Blank forme, so leave it as-is
       }
     });
 
@@ -1798,7 +1792,23 @@
       $("#move3-" + disabledMoves.m4).prop("disabled", true);
     });
 
-    $("#species, #forme, #ball, #nature, #ability, #ot, #tid, #hp, #atk, #def, #spa, #spd, #spe, #language, #level, #gender, #origin, #move1, #encounter, #previous").focusout(function() {
+    $("#species").focusout(function() {
+      if (this.value === " " || this.value === "") {
+        $(this).parent().parent().parent().addClass("alert alert-warning");
+      } else {
+        $(this).parent().parent().parent().removeClass("alert alert-warning");
+      }
+    });
+
+    $("#formes").focusout(function() {
+      if (!$(this).parent().hasClass("d-none") && (this.value === " " || this.value === "")) {
+        $(this).parent().parent().parent().addClass("alert alert-warning");
+      } else {
+        $(this).parent().parent().parent().removeClass("alert alert-warning");
+      }
+    });
+
+    $("#ball, #nature, #ability, #ot, #tid, #hp, #atk, #def, #spa, #spd, #spe, #language, #level, #gender, #origin, #move1, #encounter, #previous").focusout(function() {
       if (this.value === " " || this.value === "") {
         $(this).parent().addClass("alert alert-warning");
       } else {
