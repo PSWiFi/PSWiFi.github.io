@@ -1,12 +1,9 @@
 # Blacklist
----
 
 ## Editing the list
 
 Data for the blacklist is sourced from [this spreadsheet](https://spo.ink/pactbl). Need to
 make a change? Ask Skadiv or Lego for access in [the Discord](https://spo.ink/pact).
-
----
 
 ## Editing the page
 
