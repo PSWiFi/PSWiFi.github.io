@@ -1,6 +1,6 @@
 # pact
 
-[<img src="https://discord.com/api/guilds/729579925635334191/widget.png?style=banner2">](https://spo.ink/pact)
+[<img src="https://discord.com/api/guilds/729579925635334191/widget.png?style=shield">](https://spo.ink/moodedev)
 
 https://projectakala.github.io/pact/
 
