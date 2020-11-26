@@ -1,5 +1,7 @@
 # pact
 
+[<img src="https://discord.com/api/guilds/729579925635334191/widget.png?style=banner2">](https://spo.ink/pact)
+
 https://projectakala.github.io/pact/
 
 Houses a GitHub page for a Pokemon hack check form for the P.A.C.T. team.
