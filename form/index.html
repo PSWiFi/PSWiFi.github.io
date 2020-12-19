@@ -1586,15 +1586,19 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/@pkmn/dex/build/learnsets.min.js"></script>
   <script src="https://unpkg.com/@pkmn/dex"></script>
+  <script src="https://unpkg.com/@pkmn/data"></script>
   <script>
-    var dex = Object.keys(Dex.data.Species).sort();
+    var gens = new Generations(Dex);
+    var dex = gens.get(8);
+    var speciesList = Object.keys(dex.species.dex.data.Species).sort();
 
     $(function() {
-      for (var i = 0; i < dex.length; i++) {
-        var pokemon = Dex.getSpecies(dex[i]);
+      for (var i = 0; i < speciesList.length; i++) {
+        var pokemon = dex.species.get(speciesList[i]);
 
         // Filter Pokemon
         //////////////////
+        if (!pokemon || !pokemon.exists) continue;
 
         // Alt formes
         if (pokemon.baseSpecies && pokemon.baseSpecies !== pokemon.name) continue;
@@ -1613,7 +1617,7 @@
 
     $("#species").change(function() {
       var monName = $(this).children("option:selected").val().toLowerCase().replace(/[^a-z0-9]/g, "");
-      var pokemon = Dex.getSpecies(monName);
+      var pokemon = dex.species.get(monName);
       if (monName && pokemon) {
         // Populate Abilities
         $("#ability").html("<option value=\" \">Select one...</option>");
@@ -1623,8 +1627,8 @@
         }
 
         // Populate Moves
-        Dex.getLearnset(monName).then(function(learnset) {
-          var set = Object.keys(learnset.learnset);
+        dex.learnsets.learnable(monName).then(function(learnset) {
+          var set = Object.keys(learnset);
           for (var i = 1; i <= 4; i++) {
             $("#move" + i).html("<option value=\" \">(No Move)</option>");
             for (var j = 0; j < set.length; j++) {
@@ -1640,8 +1644,9 @@
         var altFormes = [];
         var formeBlacklist = ["-Mega", "-Mega-Y", "-Mega-X", "-Blade", "-Neutral", "-Ultra", "-White", "-Black", "-Dawn-Wings", "-Dusk-Mane", "-Pirouette"];
         $("#formes").html("<option value=\" \">Select one...</option>");
-        for (var i = 0; i < dex.length; i++) {
-          var species = Dex.getSpecies(dex[i]);
+        for (var i = 0; i < speciesList.length; i++) {
+          var species = dex.species.get(speciesList[i]);
+          if (!species || !species.exists) continue;
           if (species.baseSpecies === pokemon.name) {
             var addForme = true;
             for (var f of formeBlacklist) {
