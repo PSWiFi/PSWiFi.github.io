@@ -1590,7 +1590,7 @@
   <script>
     var gens = new Generations(Dex);
     var dex = gens.get(8);
-    var speciesList = Object.keys(dex.species.dex.data.Species).sort();
+    var speciesList = Array.from(dex.species).sort();
 
     $(function() {
       for (var i = 0; i < speciesList.length; i++) {
@@ -1598,7 +1598,6 @@
 
         // Filter Pokemon
         //////////////////
-        if (!pokemon || !pokemon.exists) continue;
 
         // Alt formes
         if (pokemon.baseSpecies && pokemon.baseSpecies !== pokemon.name) continue;
@@ -1646,7 +1645,6 @@
         $("#formes").html("<option value=\" \">Select one...</option>");
         for (var i = 0; i < speciesList.length; i++) {
           var species = dex.species.get(speciesList[i]);
-          if (!species || !species.exists) continue;
           if (species.baseSpecies === pokemon.name) {
             var addForme = true;
             for (var f of formeBlacklist) {
