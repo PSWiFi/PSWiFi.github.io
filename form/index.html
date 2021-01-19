@@ -1590,6 +1590,7 @@
   <script>
     var gens = new Generations(Dex);
     var dex = gens.get(8);
+    var dex7 = gens.get(7);
     var speciesList = Array.from(dex.species).sort();
 
     $(function() {
@@ -1626,18 +1627,37 @@
         }
 
         // Populate Moves
+        var learnable = [];
         dex.learnsets.learnable(monName).then(function(learnset) {
           var set = Object.keys(learnset);
-          for (var i = 1; i <= 4; i++) {
-            $("#move" + i).html("<option value=\" \">(No Move)</option>");
-            for (var j = 0; j < set.length; j++) {
-              var move = Dex.getMove(set[j]).name;
-              // Filter out CAP moves
-              if (move.isNonstandard && move.isNonstandard === "CAP") continue;
-              $("#move" + i).append("<option id=\"move" + i + "-" + move.split(" ").join("_") + "\" value=\"" + move + "\">" + move + "</option>");
-            }
+          for (var j = 0; j < set.length; j++) {
+            var move = Dex.getMove(set[j]).name;
+            // Filter out CAP moves
+            if (move.isNonstandard && move.isNonstandard === "CAP") continue;
+            learnable.push(move);
           }
+          // We need to get Gen 7 moves too...
+          dex7.learnsets.learnable(monName).then(function(learnset7) {
+            if (learnset7) {
+              var set7 = Object.keys(learnset7);
+              for (var j = 0; j < set7.length; j++) {
+                var move = Dex.getMove(set7[j]).name;
+                // Filter out CAP moves
+                if (move.isNonstandard && move.isNonstandard === "CAP") continue;
+                learnable.push(move);
+              }
+            }
+            learnable = Array.from(new Set(learnable)).sort();
+            for (var i = 1; i <= 4; i++) {
+              $("#move" + i).html("<option value=\" \">(No Move)</option>");
+              for (var j = 0; j < learnable.length; j++) {
+                var move = learnable[j];
+                $("#move" + i).append("<option id=\"move" + i + "-" + move.split(" ").join("_") + "\" value=\"" + move + "\">" + move + "</option>");
+              }
+            }
+          });
         });
+
 
         // Populate formes
         var altFormes = [];
@@ -1700,19 +1720,35 @@
         }
 
         // Populate Moves
-        Dex.getLearnset(monName).then(function(learnset) {
-          if (learnset.learnset) {
-            var set = Object.keys(learnset.learnset);
-            for (var i = 1; i <= 4; i++) {
-              $("#move" + i).html("<option value=\" \">(No Move)</option>");
-              for (var j = 0; j < set.length; j++) {
-                var move = Dex.getMove(set[j]).name;
+        var learnable = [];
+        dex.learnsets.learnable(monName).then(function(learnset) {
+          var set = Object.keys(learnset);
+          for (var j = 0; j < set.length; j++) {
+            var move = Dex.getMove(set[j]).name;
+            // Filter out CAP moves
+            if (move.isNonstandard && move.isNonstandard === "CAP") continue;
+            learnable.push(move);
+          }
+          // We need to get Gen 7 moves too...
+          dex7.learnsets.learnable(monName).then(function(learnset7) {
+            if (learnset7) {
+              var set7 = Object.keys(learnset7);
+              for (var j = 0; j < set7.length; j++) {
+                var move = Dex.getMove(set7[j]).name;
                 // Filter out CAP moves
                 if (move.isNonstandard && move.isNonstandard === "CAP") continue;
+                learnable.push(move);
+              }
+            }
+            learnable = Array.from(new Set(learnable)).sort();
+            for (var i = 1; i <= 4; i++) {
+              $("#move" + i).html("<option value=\" \">(No Move)</option>");
+              for (var j = 0; j < learnable.length; j++) {
+                var move = learnable[j];
                 $("#move" + i).append("<option id=\"move" + i + "-" + move.split(" ").join("_") + "\" value=\"" + move + "\">" + move + "</option>");
               }
             }
-          }
+          });
         });
 
         // Populate Gender
