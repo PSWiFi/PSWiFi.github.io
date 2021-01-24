@@ -1518,7 +1518,7 @@
         return alert("There " + (problems.length === 1 ? "was a problem " : "were problems ") + "with the form:\n - " + problems.join("\n - ") + "\n\nPlease fix these issues and try resubmitting.");
       }
 
-      result.value = "";
+      result.value = "```\n";
 
       if (nickname != "") {
         result.value += nickname + " the ";
@@ -1530,7 +1530,7 @@
       }
 
       result.value += (forme !== " " ? forme : species) + " (" + gender + ")" + "\n";
-      result.value += "```\n";
+      result.value += "\n";
       result.value += "Pok\u{00E9}ball:      " + ball + "\n";
       result.value += "Nature:        " + nature + "\n";
       result.value += "Ability:       " + ability + "\n";
