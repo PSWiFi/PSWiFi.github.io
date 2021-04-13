@@ -1584,9 +1584,9 @@
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/@pkmn/dex@0.3.22/build/learnsets.min.js"></script>
-  <script src="https://unpkg.com/@pkmn/dex@0.3.22"></script>
-  <script src="https://unpkg.com/@pkmn/data@0.3.22"></script>
+  <script src="https://unpkg.com/@pkmn/dex/build/learnsets.min.js"></script>
+  <script src="https://unpkg.com/@pkmn/dex"></script>
+  <script src="https://unpkg.com/@pkmn/data"></script>
   <script>
     var gens = new Generations(Dex);
     var dex = gens.get(8);
@@ -1595,7 +1595,7 @@
 
     $(function() {
       for (var i = 0; i < speciesList.length; i++) {
-        var pokemon = dex.species.get(speciesList[i]);
+        var pokemon = dex.species.get(speciesList[i].id);
 
         // Filter Pokemon
         //////////////////
@@ -1631,7 +1631,7 @@
         dex.learnsets.learnable(monName).then(function(learnset) {
           var set = Object.keys(learnset);
           for (var j = 0; j < set.length; j++) {
-            var move = Dex.getMove(set[j]).name;
+            var move = Dex.moves.get(set[j]).name;
             // Filter out CAP moves
             if (move.isNonstandard && move.isNonstandard === "CAP") continue;
             learnable.push(move);
@@ -1641,7 +1641,7 @@
             if (learnset7) {
               var set7 = Object.keys(learnset7);
               for (var j = 0; j < set7.length; j++) {
-                var move = Dex.getMove(set7[j]).name;
+                var move = Dex.moves.get(set7[j]).name;
                 // Filter out CAP moves
                 if (move.isNonstandard && move.isNonstandard === "CAP") continue;
                 learnable.push(move);
@@ -1664,7 +1664,7 @@
         var formeBlacklist = ["-Mega", "-Mega-Y", "-Mega-X", "-Blade", "-Neutral", "-Ultra", "-White", "-Black", "-Dawn-Wings", "-Dusk-Mane", "-Pirouette"];
         $("#formes").html("<option value=\" \">Select one...</option>");
         for (var i = 0; i < speciesList.length; i++) {
-          var species = dex.species.get(speciesList[i]);
+          var species = dex.species.get(speciesList[i].id);
           if (species.baseSpecies === pokemon.name) {
             var addForme = true;
             for (var f of formeBlacklist) {
@@ -1710,7 +1710,7 @@
 
     $("#formes").change(function() {
       var monName = $(this).children("option:selected").val().toLowerCase().replace(/[^a-z0-9]/g, "");
-      var pokemon = Dex.getSpecies(monName);
+      var pokemon = dex.species.get(monName);
       if (monName && pokemon) {
         // Populate Abilities
         $("#ability").html("<option value=\" \">Select one...</option>");
@@ -1724,7 +1724,7 @@
         dex.learnsets.learnable(monName).then(function(learnset) {
           var set = Object.keys(learnset);
           for (var j = 0; j < set.length; j++) {
-            var move = Dex.getMove(set[j]).name;
+            var move = Dex.moves.get(set[j]).name;
             // Filter out CAP moves
             if (move.isNonstandard && move.isNonstandard === "CAP") continue;
             learnable.push(move);
@@ -1734,7 +1734,7 @@
             if (learnset7) {
               var set7 = Object.keys(learnset7);
               for (var j = 0; j < set7.length; j++) {
-                var move = Dex.getMove(set7[j]).name;
+                var move = Dex.moves.get(set7[j]).name;
                 // Filter out CAP moves
                 if (move.isNonstandard && move.isNonstandard === "CAP") continue;
                 learnable.push(move);
