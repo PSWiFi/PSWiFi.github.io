@@ -53,10 +53,10 @@
                 <option value=" ">Select one...</option>
               </select>
             </div>
-            <!-- Forme -->
-            <div id="forme-container" class="col d-none">
-              <label for="formes">Pok&eacute;mon Forme</label>
-              <select class="form-control" id="formes">
+            <!-- Forms -->
+            <div id="forms-container" class="col d-none">
+              <label for="forms">Pok&eacute;mon Form</label>
+              <select class="form-control" id="forms">
                 <option value=" ">Select one...</option>
               </select>
             </div>
@@ -1415,8 +1415,8 @@
     function submit() {
       var speciesSelect = document.getElementById("species");
       var species = speciesSelect[speciesSelect.selectedIndex].value;
-      var formeSelect = document.getElementById("formes");
-      var forme = formeSelect[formeSelect.selectedIndex].value;
+      var formsSelect = document.getElementById("forms");
+      var forms = formsSelect[formsSelect.selectedIndex].value;
       var ballSelect = document.getElementById("ball");
       var ball = ballSelect[ballSelect.selectedIndex].value;
       var natureSelect = document.getElementById("nature");
@@ -1455,8 +1455,8 @@
 
       var problems = [];
 
-      if (formeSelect.options.length >= 3 && forme === " ") {
-        problems.push("Forme can't be empty!");
+      if (formsSelect.options.length >= 3 && forms === " ") {
+        problems.push("Please select a Form!");
       } else if (species == " ") {
         problems.push("Species can't be empty!");
       }
@@ -1530,7 +1530,7 @@
         result.value += "\u{25A0} - ";
       }
 
-      result.value += (forme !== " " ? forme : species) + " (" + gender + ")" + "\n";
+      result.value += (forms !== " " ? forms : species) + " (" + gender + ")" + "\n";
       result.value += "\n";
       result.value += "Pok\u{00E9}ball:      " + ball + "\n";
       result.value += "Nature:        " + nature + "\n";
@@ -1601,7 +1601,7 @@
         // Filter Pokemon
         //////////////////
 
-        // Alt formes
+        // Alt forms
         if (pokemon.baseSpecies && pokemon.baseSpecies !== pokemon.name) continue;
         // CAP + MissingNo.
         if (pokemon.num <= 0) continue;
@@ -1660,27 +1660,27 @@
         });
 
 
-        // Populate formes
-        var altFormes = [];
-        var formeBlacklist = ["-Mega", "-Mega-Y", "-Mega-X", "-Blade", "-Neutral", "-Ultra", "-White", "-Black", "-Dawn-Wings", "-Dusk-Mane", "-Pirouette"];
-        $("#formes").html("<option value=\" \">Select one...</option>");
+        // Populate forms
+        var altForms = [];
+        var formsBlacklist = ["-Mega", "-Mega-Y", "-Mega-X", "-Blade", "-Neutral", "-Ultra", "-White", "-Black", "-Dawn-Wings", "-Dusk-Mane", "-Pirouette"];
+        $("#forms").html("<option value=\" \">Select one...</option>");
         for (var i = 0; i < speciesList.length; i++) {
           var species = dex.species.get(speciesList[i].id);
           if (species.baseSpecies === pokemon.name) {
-            var addForme = true;
-            for (var f of formeBlacklist) {
-              if (species.name === species.baseSpecies + f) addForme = false;
+            var addForm = true;
+            for (var f of formsBlacklist) {
+              if (species.name === species.baseSpecies + f) addForm = false;
             }
-            if (addForme) altFormes.push(species.name);
+            if (addForm) altForms.push(species.name);
           }
         }
-        if (altFormes.length >= 2) {
-          $("#forme-container").removeClass("d-none");
+        if (altForms.length >= 2) {
+          $("#forms-container").removeClass("d-none");
         } else {
-          $("#forme-container").addClass("d-none");
+          $("#forms-container").addClass("d-none");
         }
-        for (var i = 0; i < altFormes.length; i++) {
-          $("#formes").append("<option value=\"" + altFormes[i] + "\">" + altFormes[i] + "</option>");
+        for (var i = 0; i < altForms.length; i++) {
+          $("#forms").append("<option value=\"" + altForms[i] + "\">" + altForms[i] + "</option>");
         }
 
         // Populate Gender
@@ -1699,8 +1699,8 @@
         }
       } else {
         // Reset fields
-        $("#formes").html("<option value=\" \">Select one...</option>");
-        $("#forme-container").addClass("d-none");
+        $("#forms").html("<option value=\" \">Select one...</option>");
+        $("#forms-container").addClass("d-none");
         $("#ability").html("<option value=\" \">Select one...</option>");
         $("#gender").html("<option value=\" \">Select One...</option><option value=\"F\">Female (&#x2640;)</option><option value=\"M\">Male (&#x2642;)</option><option value=\"-\">Genderless</option>");
         for (var i = 1; i < 5; i++) {
@@ -1709,7 +1709,7 @@
       }
     });
 
-    $("#formes").change(function() {
+    $("#forms").change(function() {
       var monName = $(this).children("option:selected").val().toLowerCase().replace(/[^a-z0-9]/g, "");
       var pokemon = dex.species.get(monName);
       if (monName && pokemon) {
@@ -1767,7 +1767,7 @@
           $("#gender").html("<option value=\" \">Select One...</option><option value=\"F\">Female (&#x2640;)</option><option value=\"M\">Male (&#x2642;)</option>");
         }
         // } else {
-        // Blank forme, so leave it as-is
+        // Blank form, so leave it as-is
       }
     });
 
@@ -1856,7 +1856,7 @@
       }
     });
 
-    $("#formes").focusout(function() {
+    $("#forms").focusout(function() {
       if (!$(this).parent().hasClass("d-none") && (this.value === " " || this.value === "")) {
         $(this).parent().parent().parent().addClass("alert alert-warning");
       } else {
