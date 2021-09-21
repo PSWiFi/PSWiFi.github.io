@@ -85,35 +85,42 @@
         <!-- Ball -->
         <div class="form-group">
           <label for="ball">Pok&eacute;ball</label>
-          <select class="form-control" id="ball">
-            <option value=" ">Select one...</option>
-            <option value="Beast">Beast</option>
-            <option value="Cherish">Cherish</option>
-            <option value="Dive">Dive</option>
-            <option value="Dream">Dream</option>
-            <option value="Dusk">Dusk</option>
-            <option value="Fast">Fast</option>
-            <option value="Friend">Friend</option>
-            <option value="Great">Great</option>
-            <option value="Heal">Heal</option>
-            <option value="Heavy">Heavy</option>
-            <option value="Level">Level</option>
-            <option value="Love">Love</option>
-            <option value="Lure">Lure</option>
-            <option value="Luxury">Luxury</option>
-            <option value="Master">Master</option>
-            <option value="Moon">Moon</option>
-            <option value="Nest">Nest</option>
-            <option value="Net">Net</option>
-            <option value="Pok&eacute;">Pok&eacute;</option>
-            <option value="Premier">Premier</option>
-            <option value="Quick">Quick</option>
-            <option value="Repeat">Repeat</option>
-            <option value="Safari">Safari</option>
-            <option value="Sport">Sport</option>
-            <option value="Timer">Timer</option>
-            <option value="Ultra">Ultra</option>
-          </select>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <span id="ball-icon"></span>
+              </div>
+            </div>
+            <select class="form-control" id="ball">
+              <option value=" ">Select one...</option>
+              <option value="Beast">Beast</option>
+              <option value="Cherish">Cherish</option>
+              <option value="Dive">Dive</option>
+              <option value="Dream">Dream</option>
+              <option value="Dusk">Dusk</option>
+              <option value="Fast">Fast</option>
+              <option value="Friend">Friend</option>
+              <option value="Great">Great</option>
+              <option value="Heal">Heal</option>
+              <option value="Heavy">Heavy</option>
+              <option value="Level">Level</option>
+              <option value="Love">Love</option>
+              <option value="Lure">Lure</option>
+              <option value="Luxury">Luxury</option>
+              <option value="Master">Master</option>
+              <option value="Moon">Moon</option>
+              <option value="Nest">Nest</option>
+              <option value="Net">Net</option>
+              <option value="Pok&eacute;">Pok&eacute;</option>
+              <option value="Premier">Premier</option>
+              <option value="Quick">Quick</option>
+              <option value="Repeat">Repeat</option>
+              <option value="Safari">Safari</option>
+              <option value="Sport">Sport</option>
+              <option value="Timer">Timer</option>
+              <option value="Ultra">Ultra</option>
+            </select>
+          </div>
         </div>
 
         <!-- Nature -->
@@ -1588,6 +1595,7 @@
   <script src="https://unpkg.com/@pkmn/dex/build/learnsets.min.js"></script>
   <script src="https://unpkg.com/@pkmn/dex"></script>
   <script src="https://unpkg.com/@pkmn/data"></script>
+  <script src="https://unpkg.com/@pkmn/img@0.1.0/build/production.min.js" integrity="sha384-snWQ8PgpdlP7pg2QntF6sVHEiPQkI1Q5Dn5/rq7IS2Z89Jvr9MM36hhJGTnF0kgY" crossorigin="anonymous"></script>
   <script>
     var gens = new Generations(Dex);
     var dex = gens.get(8);
@@ -1595,6 +1603,7 @@
     var speciesList = Array.from(dex.species).sort();
 
     $(function() {
+      document.getElementById("ball-icon").style = "display: inline-block; width: 24px; height: 24px; image-rendering: pixelated; background: url('https://play.pokemonshowdown.com/sprites/itemicons/0.png') 0px 0px no-repeat scroll transparent;"
       for (var i = 0; i < speciesList.length; i++) {
         var pokemon = dex.species.get(speciesList[i].id);
 
@@ -1887,6 +1896,13 @@
         $("#select-all-marks").prop("disabled", true);
         $("#deselect-all-marks").prop("disabled", true);
       }
+    });
+
+    $("#ball").change(function() {
+      var icon = $(this).val() !== " " ? PokemonIcons.getItem($(this).val().replace("\u{00E9}", "e") + " Ball") : {
+        style: 'display: inline-block; width: 24px; height: 24px; image-rendering: pixelated; background: url("https://play.pokemonshowdown.com/sprites/itemicons/0.png") 0px 0px no-repeat scroll transparent;'
+      }
+      document.getElementById("ball-icon").style = icon.style;
     });
 
     $(".form-check-input").change(function() {
