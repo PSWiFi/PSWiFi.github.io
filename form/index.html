@@ -1873,7 +1873,15 @@
       }
     });
 
-    $("#ball, #nature, #ability, #ot, #tid, #hp, #atk, #def, #spa, #spd, #spe, #language, #level, #gender, #origin, #move1, #encounter, #previous").focusout(function() {
+    $("#ball").focusout(function() {
+      if (this.value === " " || this.value === "") {
+        $(this).parent().parent().addClass("alert alert-warning");
+      } else {
+        $(this).parent().parent().removeClass("alert alert-warning");
+      }
+    });
+
+    $("#nature, #ability, #ot, #tid, #hp, #atk, #def, #spa, #spd, #spe, #language, #level, #gender, #origin, #move1, #encounter, #previous").focusout(function() {
       if (this.value === " " || this.value === "") {
         $(this).parent().addClass("alert alert-warning");
       } else {
