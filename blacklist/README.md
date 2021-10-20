@@ -3,7 +3,7 @@
 ## Editing the list
 
 Data for the blacklist is sourced from [this spreadsheet](https://spo.ink/pactbl). Need to
-make a change? Ask Skadiv or Lego for access in [the Discord](https://spo.ink/pact).
+make a change? Ask for access in [the Discord](https://spo.ink/pact).
 
 ## Editing the page
 
@@ -23,6 +23,4 @@ so it's super convenient!
 
 :warning:**Important note**:warning:: Running `jekyll serve` will create a `.jekyll-cache/`
 and `_site/` folder. It's usually best to ignore these and pretend that they don't exist -
-don't delete them, don't edit them; just let them be! If you like, you can create a file
-named `.gitignore` in the PACT directory and add `_site` and `.jekyll-cache` to it - this
-ensures that you won't accidentally commit them.
+don't delete them, don't edit them; just let them be!
