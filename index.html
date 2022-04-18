@@ -2,12 +2,58 @@
 <html>
 
 <head>
+<!-- This is the current style of our top navigation bar...-->
+
+<!-- Order: Font, Background Colour, Text Colour, Hover Text Colour, Home Button Colour...-->
+<style>
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #3c0258;
+}
+
+.topnav a {
+  float: left;
+  color: #ffffff;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #bbb;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #7e02ab;
+  color: white;
+}
+</style>
+
+<!-- This is the contents within our Navigation bar...-->
+<div class="topnav">
+  <a class="active" href="#home">Home</a>
+  <a href="#Rules">Rules</a>
+  <a href="#ProofingGuidelines">Proof Guidelines</a>
+  <a href="#EventsOverview">Events Overview</a>
+  <a href="#EventsOverview">Terms & Jargon</a>
+</div>
+
+<!-- The title of the current page...-->
 	<link rel="icon" href="./template.ico" type="image/x-icon" />
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
 	<title>PS! Wi-Fi</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 
+<!-- This style of the current page.-->
 <body class="bg-light">
 
 	<div class="bg-dark title sticky-top">
@@ -15,6 +61,8 @@
 	</div>
 
 	<div class="text-dark container" style="max-width: 700px;">
+    
+    <!-- Text within the page.-->
 		<h2>Room Overview:</h2>
         
 		The <strong>Showdown! Wi-Fi Room</strong> is a place for players to Battle, Trade and connect online in the main-line Pokemon games! We currently support all 3DS and Nintendo Switch titles. The possibilities are endless!<br/><br/>
