@@ -3,47 +3,114 @@
 
 <head>
 <!-- This is the current style of our top navigation bar...-->
-
-<!-- Order: Font, Background Colour, Text Colour, Hover Text Colour, Home Button Colour...-->
 <style>
-
 body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Trebuchet MS, sans-serif;
 }
 
-.topnav {
+.navbar {
   overflow: hidden;
-  background-color: #3c0258;
+  background-color: #333;
 }
 
-.topnav a {
+.navbar a {
   float: left;
-  color: #ffffff;
+  font-size: 16px;
+  color: white;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-size: 17px;
 }
 
-.topnav a:hover {
-  background-color: #bbb;
-  color: black;
+.dropdown {
+  float: left;
+  overflow: hidden;
 }
 
-.topnav a.active {
-  background-color: #7e02ab;
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
   color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: purple;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
 }
 </style>
 
 <!-- This is the contents within our Navigation bar...-->
-<div class="topnav">
-  <a class="active" href="#home">Home</a>
-  <a href="#Rules">Rules</a>
-  <a href="#ProofingGuidelines">Proof Guidelines</a>
-  <a href="#EventsOverview">Events Overview</a>
-  <a href="#EventsOverview">Terms & Jargon</a>
+<div class="navbar">
+<a class="active" href="#home">Home</a>
+  <div class="dropdown">
+    <div class="topnav">
+    <button class="dropbtn">Rules 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="#">Room Rules</a>
+      <a href="#">Trading Rules</a>
+      <a href="#">Giveaway Rules</a>
+    </div>
+  </div> 
+</div>
+<div class="dropdown">
+    <div class="topnav">
+    <button class="dropbtn">Proof Guidelines 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="#">Switch</a>
+      <a href="#">3DS</a>
+      <a href="#">DS</a>
+      <a href="#">GBA</a>
+      <a href="#">Gamecube</a>
+      <a href="#">Virtual Console</a>
+      <a href="#">GO</a>
+      <a href="#">Does my Pokemon need proof?</a>
+    </div>
+  </div> 
+</div>
+  <div class="dropdown">
+    <button class="dropbtn">Misc 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="#">Wi-Fi Events Overview</a>
+      <a href="#">Check out our talented artists!</a>
+      <a href="#">Cloning information</a>
+    </div>
+  </div> 
 </div>
 
 <!-- The title of the current page...-->
