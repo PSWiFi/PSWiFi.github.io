@@ -2,164 +2,104 @@
 <html>
 
 <head>
-<!-- This is the current style of our top navigation bar...-->
-<style>
-body {
-  font-family: Trebuchet MS, sans-serif;
-}
-
-.navbar {
-  overflow: visible;
-  background-color: #333;
-}
-
-.navbar a {
-  float: left;
-  font-size: 16px;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-.dropdown {
-  float: left;
-  overflow: visible;
-}
-
-.dropdown .dropbtn {
-  font-size: 16px;  
-  border: none;
-  outline: none;
-  color: white;
-  padding: 18px 20px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 100;
-  
-}
-
-.navbar a:hover, .dropdown:hover .dropbtn {
-  background-color: purple;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  float: none;
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-
-.dropdown-content a:hover {
-  background-color: #ddd;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-</style>
-
-<!-- This is the contents within our Navigation bar...-->
-<div class="navbar">
-<a class="active" href="#home">Home</a>
-  <div class="dropdown">
-    <div class="topnav">
-    <button class="dropbtn">Rules 
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-content">
-      <a href="#">Room Rules</a>
-      <a href="#">Trading Rules</a>
-      <a href="#">Giveaway Rules</a>
-    </div>
-  </div> 
-</div>
-<div class="dropdown">
-    <div class="topnav">
-    <button class="dropbtn">Proof Guidelines 
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-content">
-      <a href="#">Switch</a>
-      <a href="#">3DS</a>
-      <a href="#">DS</a>
-      <a href="#">GBA</a>
-      <a href="#">Gamecube</a>
-      <a href="#">Virtual Console</a>
-      <a href="#">GO</a>
-      <a href="#">Does my Pokemon need proof?</a>
-    </div>
-  </div> 
-</div>
-  <div class="dropdown">
-    <button class="dropbtn">Misc 
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-content">
-      <a href="#">Wi-Fi Events Overview</a>
-      <a href="#">Check out our talented artists!</a>
-      <a href="#">Cloning information</a>
-    </div>
-  </div> 
-</div>
-
-<!-- The title of the current page...-->
-	<link rel="icon" href="./template.ico" type="image/x-icon" />
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
-	<title>PS! Wi-Fi</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- The title of the current page...-->
+  <link rel="icon" href="./template.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
+  <title>PS! Wi-Fi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 
 <!-- This style of the current page.-->
+
 <body class="bg-light">
+  <!-- This is the contents within our Navigation bar...-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">PS Wi-Fi</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-	<div class="bg-dark title">
-		<h1 class="text-light text-center pt-3 pb-3">Welcome to Wi-Fi!</h1>
-	</div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="RulesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Rules
+          </a>
+          <div class="dropdown-menu" aria-labelledby="RulesDropdown">
+            <a class="dropdown-item" href="#">Room Rules</a>
+            <a class="dropdown-item" href="#">Trading Rules</a>
+            <a class="dropdown-item" href="#">Giveaway Rules</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="ProofDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Proof Guidelines
+          </a>
+          <div class="dropdown-menu" aria-labelledby="ProofDropdown">
+            <a class="dropdown-item" href="#">Switch</a>
+            <a class="dropdown-item" href="#">3DS</a>
+            <a class="dropdown-item" href="#">DS</a>
+            <a class="dropdown-item" href="#">GBA</a>
+            <a class="dropdown-item" href="#">Gamecube</a>
+            <a class="dropdown-item" href="#">Virtual Console</a>
+            <a class="dropdown-item" href="#">GO</a>
+            <a class="dropdown-item" href="#">Does my Pok&eacute;mon need proof?</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="MiscDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Misc
+          </a>
+          <div class="dropdown-menu" aria-labelledby="MiscDropdown">
+            <a class="dropdown-item" href="#">Wi-Fi Events Overview</a>
+            <a class="dropdown-item" href="#">Check out our talented artists!</a>
+            <a class="dropdown-item" href="#">Cloning information</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
-	<div class="text-dark container" style="max-width: 700px;">
-    
+  <div class="bg-dark title">
+    <h1 class="text-light text-center pt-3 pb-3">Welcome to Wi-Fi!</h1>
+  </div>
+
+  <div class="text-dark container" style="max-width: 700px;">
+
     <!-- Text within the page.-->
-		<h2>Room Overview:</h2>
-        
-		The <strong>Showdown! Wi-Fi Room</strong> is a place for players to Battle, Trade and connect online in the main-line Pokemon games! We currently support all 3DS and Nintendo Switch titles. The possibilities are endless!<br/><br/>
-        
-        Be sure to familiarize yourself with our rules. You can find them using the button at the top of the page you are currently viewing. <br /> <br />
-        
-        We pride ourselves on being a legitimate trading community. All hacks and hacking methods are banned! If you believe you have recieved a hacked Pokemon in a trade from <strong>someone in our community</strong> be sure to report it to an active member of Room Staff.<br/><br/>
+    <h2>Room Overview:</h2>
 
-		<a type="button" class="list-group-item list-group-item-primary text-right" style="border-radius: 0.25rem;" href="./RoomRules/">
-			Take me to the Room Rules
-			<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-				<path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-			</svg>
-		</a>
+    The <strong>Showdown! Wi-Fi Room</strong> is a place for players to Battle, Trade and connect online in the main-line Pokemon games! We currently support all 3DS and Nintendo Switch titles. The possibilities are endless!<br /><br />
 
-		<br />
+    Be sure to familiarize yourself with our rules. You can find them using the button at the top of the page you are currently viewing. <br /> <br />
 
-		<a type="button" class="list-group-item list-group-item-primary text-right" style="border-radius: 0.25rem;" href="./ProofGuidelines/" id="ProofGuidelines-link">
-			Take me to the Proof Guidelines
-			<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-				<path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-			</svg>
-		</a>
-	</div>
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    We pride ourselves on being a legitimate trading community. All hacks and hacking methods are banned! If you believe you have recieved a hacked Pokemon in a trade from <strong>someone in our community</strong> be sure to report it to an active
+    member of Room Staff.<br /><br />
+
+    <a type="button" class="list-group-item list-group-item-primary text-right" style="border-radius: 0.25rem;" href="./RoomRules/">
+      Take me to the Room Rules
+      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+      </svg>
+    </a>
+
+    <br />
+
+    <a type="button" class="list-group-item list-group-item-primary text-right" style="border-radius: 0.25rem;" href="./ProofGuidelines/" id="ProofGuidelines-link">
+      Take me to the Proof Guidelines
+      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+      </svg>
+    </a>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 
 <footer class="text-dark container text-muted text-center pt-3 pb-3" style="max-width: 700px;">
-	<div><small>Site by PS! Wi-Fi,</a> With help from the P.A.C.T  <a href="https://github.com/ProjectAkala/pact">(ProjectAkala) team</a></small></div>
+  <div><small>Site by PS! Wi-Fi,</a> With help from the P.A.C.T <a href="https://github.com/ProjectAkala/pact">(ProjectAkala) team</a></small></div>
 </footer>
