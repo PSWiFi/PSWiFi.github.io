@@ -1,0 +1,20 @@
+<script type="text/javascript">
+  var url = window.location.pathname;
+  var pathname = url.slice(1, url.indexOf("/", 1)).toLowerCase();
+  switch (pathname) {
+    case "misc":
+      $("#nav-misc").addClass("active").css("color", "#fff");
+      break;
+
+    case "proof-guidelines":
+      $("#nav-proof").addClass("active").css("color", "#fff");
+      break;
+
+    case "rules":
+      $("#nav-rules").addClass("active").css("color", "#fff");
+      break;
+
+    default:
+      $("#nav-home").addClass("active").css("color", "#fff");
+  }
+</script>

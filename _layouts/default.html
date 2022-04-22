@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="{{ site.lang }}" class="h-100">
+
+{% include head.html %}
+
+<body class="bg-light d-flex flex-column h-100">
+
+  {% include header.html %}
+
+  <div id="top">
+
+  </div>
+
+  <div class="container text-dark" style="max-width: 700px;">
+
+    <br />
+
+    {{ content }}
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+</body>
+
+{% include footer.html %}
+
+</html>
