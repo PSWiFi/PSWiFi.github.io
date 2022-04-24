@@ -4,11 +4,11 @@ Test repository for the PS! Wi-Fi GitHub site.
 ## Credits
 
 - Many thanks to [ProjectAkala](https://projectakala.github.io/pact/) for the site template.
-- Huge thanks to [@LegoFigure11](https://github.com/LegoFigure11) for migrating the site to jekyll, adding a fancy navigation bar, and other assorted fixes!
+- Huge thanks to [@LegoFigure11](https://github.com/LegoFigure11) for migrating the site to jekyll, adding a fancy navigation bar, making the blacklist page, and other assorted fixes!
 
 ## How to edit this site
 
-This site is powered by the [Jekyll](https://jekyllrb.com/) gem! You can see [their docs](https://jekyllrb.com/docs/) for more information. 
+This site is powered by the [Jekyll](https://jekyllrb.com/) gem! You can see [their docs](https://jekyllrb.com/docs/) for more information.
 
 ### Prerequisites
 - Install [Ruby](https://www.ruby-lang.org/en/). For more information, please see "Installing Ruby" in the [Ruby docs](https://www.ruby-lang.org/en/documentation/installation/).
