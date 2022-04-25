@@ -1,5 +1,5 @@
 # PS! Wi-Fi
-Test repository for the PS! Wi-Fi GitHub site.
+Official repository for the PS! Wi-Fi GitHub site.
 
 ## Credits
 
