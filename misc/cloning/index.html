@@ -103,15 +103,14 @@ Here is a list of the approved cloners found in the PS! Wi-Fi room. (This search
     $results.html("");
     if ($(this).val().trim() === "") {
 
-      // If the id search box is blank, populate table with all entries
       for (var entry of cloner) {
         $results.append(formatEntry(entry));
       }
-      // game search box is blank, so we can allow the username search box to be typed in again
+
       $("#console-search").prop("disabled", false);
       updateResults(cloner.length);
     } else {
-      // id seach box is not blank and we don't support searching by both ID and OT, empty just in case
+
       $("#console-search").prop("disabled", true);
       $("#console-search").html("");
 
@@ -153,11 +152,10 @@ Here is a list of the approved cloners found in the PS! Wi-Fi room. (This search
     $results.html("");
     if ($(this).val().trim() === "") {
 
-      // If the ot search box is blank, populate table with all entries
       for (var entry of cloner) {
         $results.append(formatEntry(entry));
       }
-      // ot search box is blank, so we can allow the id search box to be typed in again
+
       $("#username-search").prop("disabled", false);
       updateResults(cloner.length);
     } else {
