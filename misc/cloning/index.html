@@ -90,11 +90,11 @@ Here is a list of the approved cloners found in the PS! Wi-Fi room. (This search
   });
 
   $("#username-search").keyup(function() {
-    // Test validity of input - All characters, 30 digits max, then populate the table with search data
+    // Test validity of input - All characters, 19 digits max as per the Showdown name limit, then populate the table with search data
     var testArr = $(this).val().split("");
     var resultArr = [];
     for (var i in testArr) {
-      if (i < 30) {
+      if (i < 19) {
         resultArr.push(testArr[i]);
       }
       $(this).val(resultArr.join(""));
@@ -139,11 +139,11 @@ Here is a list of the approved cloners found in the PS! Wi-Fi room. (This search
   });
 
   $("#console-search").keyup(function() {
-    // Test validity of input in console field- All characters, 5 digits max, then populate the table with search data
+    // Test validity of input in console field- All characters, 6 digits max, then populate the table with search data
     var testArr = $(this).val().split("");
     var resultArr = [];
     for (var i in testArr) {
-      if (i < 5) {
+      if (i < 6) {
         resultArr.push(testArr[i]);
       }
       $(this).val(resultArr.join(""));
