@@ -119,15 +119,17 @@ Here is a list of the approved cloners found in the PS! Wi-Fi room. (This search
     var $results = $("#results");
     $results.html("");
 
+    var i = 0;
     if ($("#username-search").val().trim() === "") {
       for (var entry of cloner) {
         // Filter by console checkboxes
         if (checkResultValidGame(entry)) {
           // Passes, update
           $results.append(formatEntry(entry));
+          i++;
         }
       }
-      updateResults(cloner.length);
+      updateResults(i);
     } else {
       // Set up options for our fuzzy search
       var options = {
