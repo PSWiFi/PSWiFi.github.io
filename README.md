@@ -15,13 +15,13 @@ This site is powered by the [Jekyll](https://jekyllrb.com/) gem! You can see [th
 - Install [Bundler](https://bundler.io/).
 - Open a command prompt or terminal window.
 - Navigate to the folder on your computer containing this repository in the command line with the `cd` command.
-    - Example: `cd C:\Users\ExampleUser\Documents\GitHub\Billo-PS.github.io`
+    - Example: `cd C:\Users\ExampleUser\Documents\GitHub\PSWiFi.github.io`
 - Run the command `bundle install`.
 
 ### Generating the site
 - Open a command prompt or terminal window.
 - Navigate to the folder on your computer containing this repository in the command line with the `cd` command.
-    - Example: `cd C:\Users\ExampleUser\Documents\GitHub\Billo-PS.github.io`
+    - Example: `cd C:\Users\ExampleUser\Documents\GitHub\PSWiFi.github.io`
 - Run the command `bundle exec jekyll serve`.
 - You can now view the generated site by navigating to `http://localhost:4000` in your browser!
 - Once you're done, commit your changes and send a Pull Request!
