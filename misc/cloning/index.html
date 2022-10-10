@@ -9,7 +9,7 @@ permalink: /misc/cloning/
 </div>
 
 <hr />
-Here is a list of the approved cloners found in the PS! Wi-Fi room. (This searcher is currently unfinished, check back in later!)
+Here is a list of the approved cloners found in the PS! Wi-Fi room.
 <br />
 <br />
 <form>
@@ -168,9 +168,20 @@ Here is a list of the approved cloners found in the PS! Wi-Fi room. (This search
     return "<tr>" + "\n" +
       "<th scope=\"row\">" + (entry.USERNAME ? entry.USERNAME : "&mdash;") + "</th>" + "\n" +
       "<td>" + (entry.CONSOLE ? entry.CONSOLE : "&mdash;") + "</th>" + "\n" +
-      "<td>" + (entry["GAME"] ? entry["GAME"] : "&mdash;") + "</td>" + "\n" +
+      "<td>" + (entry["GAME"] ? formatGames(entry["GAME"]) : "&mdash;") + "</td>" + "\n" +
       "<td>" + (entry["OT"] ? entry["OT"] : "&mdash;") + "</td>" + "\n" +
       "<td>" + (entry["Cloner Notes"] ? entry["Cloner Notes"] : "&mdash;") + "</td>";
+  }
+
+  function formatGames(gameString) {
+    var games = gameString.trim().split("/");
+    var o = [];
+    for (var i = 0; i < games.length; i++) {
+      var game = games[i].toLowerCase().replace(/![a-zA-Z]/g, "");
+      console.log(game);
+      o.push("<img alt=\"" + game + "\" title=\"" + games[i] + "\" src=\"../../images/icons/home/gameicon/" + game + ".png\" width=\"20\" height=\"20\">");
+    }
+    return o.join(" ");
   }
 
   function updateResults(num) {
