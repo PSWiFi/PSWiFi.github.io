@@ -179,7 +179,7 @@ Here is a list of the approved cloners found in the PS! Wi-Fi room.
     var o = [];
     for (var i = 0; i < games.length; i++) {
       var game = games[i].toLowerCase().replace(/![a-zA-Z]/g, "");
-      o.push("<img alt=\"" + game + "\" title=\"" + games[i] + "\" src=\"/images/icons/home/gameicon/" + game + ".png\" width=\"20\" height=\"20\">");
+      o.push("<img alt=\"" + game + "\" title=\"" + games[i] + "\" src=\"/images/icons/home/gameicon/" + game[0].toUpperCase() + game.slice(1) + ".png\" width=\"20\" height=\"20\">");
     }
     return o.join(" ");
   }
