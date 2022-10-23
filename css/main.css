@@ -1,6 +1,8 @@
 /* General */
 .card-bg {
   background-color: #d1d1d1;
+  border-bottom-right-radius: 0.20rem !important;
+  border-bottom-left-radius: 0.20rem !important;
 }
 
 .warn {
