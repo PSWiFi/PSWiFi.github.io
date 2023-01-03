@@ -19,7 +19,9 @@
     <br />
     <span class="fw-bold">Loading...</span>
     <br />
+    {% if page.sheet %}
     <span>If something goes wrong, head on over to <a href={{ page.sheet }}>our google sheet</a> to search manually!</span>
+    {% endif %}
   </div>
 
   <div id="content" class="container text-dark d-none" style="max-width: 700px;">
