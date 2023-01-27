@@ -100,60 +100,45 @@ Use the navigation bar at the top of this page to quickly jump between pages in 
 
 Here you can find a list of important changes to policies in the room over a long period of time. This will mostly include rule changes, and changes to the proofing guidelines.<br /><br />
 
-<details>
-  <summary>2022 Changelog (Click to expand!)</summary>
-  <span class="fw-bold">January</span>
-  <ul>
-    <li>Date | Type of Change | Description of Change
-  </ul>
-  <span class="fw-bold">Febuary</span>
-  <ul>
+Changelog:
+<select class="form-select mt-2" aria-label="Changelog select" id="changelog">
+  <option selected>Choose a date...</option>
+  <option value="jan-23">January 2023</option>
+  <option value="aug-22">August 2022</option>
+  <option value="jul-22">July 2022</option>
+  <option value="mar-22">March 2022</option>
+  <option value="feb-22">February 2022</option>
+</select>
+<div class="mt-3">
+  <ul class="changelog-entry d-none" id="feb-22">
     <li>02/11/2022 | Giveaway Rules | Giveaway rules updated; PS! Wi-Fi now supports unofficial giveaways in Legends: Arceus.</li>
     <li>02/12/2022 | Trade Rules | Trade rules updated; shiny eggs can no longer be traded in the PS! Wi-Fi room.</li>
     <li>02/20/2022 | Trade Rules | Trade rules updated; 6 IV / Flawless Manaphy still in an egg from Brilliant Diamond/Shining Pearl can no longer be traded in the PS! Wi-Fi room.</li>
     <li>02/23/2022 | Proofing Rules | Proofing rules updated; section for Let's Go Pikachu/Let's Go Eevee added, proof rules established for LGPE.</li>
     <li>02/26/2022 | Proofing Rules | Proofing rules updated; shiny legendary birds from overworld encounters in Let's Go must now provide a video of the initial encounter in their proofing.</li>
   </ul>
-  <span class="fw-bold">March</span>
-  <ul>
+  <ul class="changelog-entry d-none" id="mar-22">
     <li>03/04/2022 | Proofing Rules | Proofing rules updated; section for Legends: Arceus added, proof rules established for Legends: Arceus.</li>
   </ul>
-  <span class="fw-bold">April</span>
-  <ul>
-    <li></li>
-  </ul>
-  <span class="fw-bold">May</span>
-  <ul>
-    <li></li>
-  </ul>
-  <span class="fw-bold">June</span>
-  <ul>
-    <li></li>
-  </ul>
-  <span class="fw-bold">July</span>
-  <ul>
+  <ul class="changelog-entry d-none" id="jul-22">
     <li>
       07/08/2022 | Proofing Rules | Proof rules updated; mystery gift / event distribution proof for Generation 8 Pok&eacute;mon has now been simplified! "Global" and "Unique" code specific proof guidelines have now been replaced with an IV floor.
     </li>
   </ul>
-  <span class="fw-bold">August</span>
-  <ul>
+  <ul class="changelog-entry d-none" id="aug-22">
     <li>08/13/2022 | Proofing Rules | Proof rules updated; added examples and clarification on scripted &amp; legendary encounter proofing in Pok&eacute;mon Legends: Arceus.</li>
   </ul>
-  <span class="fw-bold">September</span>
-  <ul>
-    <li></li>
+  <ul class="changelog-entry d-none" id="jan-23">
+    <li>01/28/2023 | Main Page | Changelog upgraded.</li>
   </ul>
-  <span class="fw-bold">October</span>
-  <ul>
-    <li></li>
-  </ul>
-  <span class="fw-bold">November</span>
-  <ul>
-    <li></li>
-  </ul>
-  <span class="fw-bold">December</span>
-  <ul>
-    <li></li>
-  </ul>
-</details>
+
+  <script>
+    $("#changelog").change(function() {
+      var selected = $("#changelog :selected").val();
+      if (document.getElementById(selected)) {
+        $(".changelog-entry").addClass("d-none");
+        $("#" + selected).removeClass("d-none");
+      }
+    });
+  </script>
+</div>
