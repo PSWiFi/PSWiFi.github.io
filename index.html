@@ -135,8 +135,8 @@ Changelog:
   <script>
     $("#changelog").change(function() {
       var selected = $("#changelog :selected").val();
+      $(".changelog-entry").addClass("d-none"); // Needs to be outside if to hide logs if "Choose a date..." is selected
       if (document.getElementById(selected)) {
-        $(".changelog-entry").addClass("d-none");
         $("#" + selected).removeClass("d-none");
       }
     });
