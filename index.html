@@ -2,6 +2,14 @@
 layout: default
 title: Home
 ---
+<style>
+  table,
+  th,
+  td {
+    border: 1px solid black;
+  }
+</style>
+
 <div class="title" style="background-color: #08265e;">
   <h1 class="text-light text-center pt-3 pb-3">Welcome to Wi-Fi!</h1>
 </div>
@@ -13,14 +21,14 @@ endless!<br /><br />
 Use the navigation bar at the top of this page to quickly jump between pages in order to find the information you need, or continue reading this page for a room overview, and to see how you can get involved!<br /><br />
 
 <div class="card">
-  <div class="card-header text-white" id="RoomOverviewHeader" style="background-color: #08265e;">
+  <div class="card-header text-white" id="RoomOverview" style="background-color: #08265e;">
     <div class="card-header">
       <h5 class="mb-0">
         <span class="fw-bold">Room Overview:</span>
       </h5>
     </div>
 
-    <div class="card-body text-dark" id="RoomOverviewBody" style="background-color: #ffffff9f;">
+    <div class="card-body text-dark" style="background-color: #ffffff9f;">
 
       <h5><span class="fw-bold" style="color:#08265e;">Important Information:</span></h5>
       <p>All Showdown rooms and trading communities have differing rulesets, so we encourage becoming familiar with the <a href="/rules/room-rules">rules</a> in order to gain an understanding of how PS! Wi-Fi operates.</p>
@@ -93,48 +101,547 @@ Use the navigation bar at the top of this page to quickly jump between pages in 
 </a><br />
 
 <hr />
-<div class="title" style="background-color: #0c0038;" id="ChangeLogs">
+<div class="title" style="background-color: #0c0038;" id="ChangeLogTitle">
   <h1 class="text-light text-center pt-3 pb-3">Change Logs</h1>
 </div>
 <hr />
 
 Here you can find a list of important changes to policies in the room over a long period of time. This will mostly include rule changes, and changes to the proofing guidelines.<br /><br />
 
-Changelog:
-<select class="form-select mt-2" aria-label="Changelog select" id="changelog">
+<!-- 2023 Changelog starts here...-->
+<span class="fw-bold"> 2023 Changelog:</span>
+<select class="form-select mt-2" aria-label="Changelog select" id="changelog2023">
   <option selected>Choose a date...</option>
+  <!--<option value="dec-23">December 2023</option>
+  <option value="nov-23">November 2023</option>
+  <option value="oct-23">October 2023</option>
+  <option value="sep-23">September 2023</option>
+  <option value="aug-23">August 2023</option>
+  <option value="jul-23">July 2023</option>
+  <option value="jun-23">June 2023</option>
+  <option value="may-23">May 2023</option>
+  <option value="apr-23">April 2023</option>
+  <option value="mar-23">March 2023</option>.-->
+  <option value="feb-23">February 2023</option>
   <option value="jan-23">January 2023</option>
+</select>
+
+
+<div class="mt-3">
+  
+  <!-- Jan 2023 table-->
+  <table class="table table-striped changelog-entry d-none" id="jan-23">
+    <thead class="table text-light" style="background-color: #0c0038;">
+      <tr class="sticky-top">
+        <th scope="col" style="text-align: center;">Date</th>
+        <th scope="col" style="text-align: center;">Type</th>
+        <th scope="col" style="text-align: center;">Description of change(s)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>01/20/2023</td>
+        <td>Trade Rules</td>
+        <td>Only wild-caught pokemon that qualify for the Jumbo or Teensy mark may be traded in the room. Mystery Gifts, Static Encounters, and Shiny pokemon from eggs/raids cannot be traded if they qualify for either mark.</td>
+      </tr>
+      <tr>
+        <td>01/28/2023</td>
+        <td>Main Page</td>
+        <td>Changelog upgraded.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Feb 2023 table-->
+  <table class="table table-striped changelog-entry d-none" id="feb-23">
+    <thead class="table text-light" style="background-color: #0c0038;">
+      <tr class="sticky-top">
+        <th scope="col" style="text-align: center;">Date</th>
+        <th scope="col" style="text-align: center;">Type</th>
+        <th scope="col" style="text-align: center;">Description of change(s)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>No important changes this month!</td>
+      </tr>
+    </tbody>
+  </table>
+
+    <!-- March 2023 table-->
+    <table class="table table-striped changelog-entry d-none" id="mar-23">
+      <thead class="table text-light" style="background-color: #0c0038;">
+        <tr class="sticky-top">
+          <th scope="col" style="text-align: center;">Date</th>
+          <th scope="col" style="text-align: center;">Type</th>
+          <th scope="col" style="text-align: center;">Description of change(s)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>No important changes this month!</td>
+        </tr>
+      </tbody>
+    </table>
+
+      <!-- April 2023 table-->
+  <table class="table table-striped changelog-entry d-none" id="apr-23">
+    <thead class="table text-light" style="background-color: #0c0038;">
+      <tr class="sticky-top">
+        <th scope="col" style="text-align: center;">Date</th>
+        <th scope="col" style="text-align: center;">Type</th>
+        <th scope="col" style="text-align: center;">Description of change(s)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>No important changes this month!</td>
+      </tr>
+    </tbody>
+  </table>
+
+    <!-- May 2023 table-->
+    <table class="table table-striped changelog-entry d-none" id="may-23">
+      <thead class="table text-light" style="background-color: #0c0038;">
+        <tr class="sticky-top">
+          <th scope="col" style="text-align: center;">Date</th>
+          <th scope="col" style="text-align: center;">Type</th>
+          <th scope="col" style="text-align: center;">Description of change(s)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>No important changes this month!</td>
+        </tr>
+      </tbody>
+    </table>
+
+      <!-- June 2023 table-->
+  <table class="table table-striped changelog-entry d-none" id="jun-23">
+    <thead class="table text-light" style="background-color: #0c0038;">
+      <tr class="sticky-top">
+        <th scope="col" style="text-align: center;">Date</th>
+        <th scope="col" style="text-align: center;">Type</th>
+        <th scope="col" style="text-align: center;">Description of change(s)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>No important changes this month!</td>
+      </tr>
+    </tbody>
+  </table>
+
+    <!-- July 2023 table-->
+    <table class="table table-striped changelog-entry d-none" id="jul-23">
+      <thead class="table text-light" style="background-color: #0c0038;">
+        <tr class="sticky-top">
+          <th scope="col" style="text-align: center;">Date</th>
+          <th scope="col" style="text-align: center;">Type</th>
+          <th scope="col" style="text-align: center;">Description of change(s)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>No important changes this month!</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <!-- August 2023 table-->
+    <table class="table table-striped changelog-entry d-none" id="aug-23">
+      <thead class="table text-light" style="background-color: #0c0038;">
+        <tr class="sticky-top">
+          <th scope="col" style="text-align: center;">Date</th>
+          <th scope="col" style="text-align: center;">Type</th>
+          <th scope="col" style="text-align: center;">Description of change(s)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>No important changes this month!</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- September 2023 table-->
+    <table class="table table-striped changelog-entry d-none" id="sep-23">
+      <thead class="table text-light" style="background-color: #0c0038;">
+        <tr class="sticky-top">
+          <th scope="col" style="text-align: center;">Date</th>
+          <th scope="col" style="text-align: center;">Type</th>
+          <th scope="col" style="text-align: center;">Description of change(s)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>No important changes this month!</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- October 2023 table-->
+    <table class="table table-striped changelog-entry d-none" id="oct-23">
+      <thead class="table text-light" style="background-color: #0c0038;">
+        <tr class="sticky-top">
+          <th scope="col" style="text-align: center;">Date</th>
+          <th scope="col" style="text-align: center;">Type</th>
+          <th scope="col" style="text-align: center;">Description of change(s)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>No important changes this month!</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- November 2023 table-->
+    <table class="table table-striped changelog-entry d-none" id="nov-23">
+      <thead class="table text-light" style="background-color: #0c0038;">
+        <tr class="sticky-top">
+          <th scope="col" style="text-align: center;">Date</th>
+          <th scope="col" style="text-align: center;">Type</th>
+          <th scope="col" style="text-align: center;">Description of change(s)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>No important changes this month!</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- December 2023 table-->
+    <table class="table table-striped changelog-entry d-none" id="dec-23">
+      <thead class="table text-light" style="background-color: #0c0038;">
+        <tr class="sticky-top">
+          <th scope="col" style="text-align: center;">Date</th>
+          <th scope="col" style="text-align: center;">Type</th>
+          <th scope="col" style="text-align: center;">Description of change(s)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>No important changes this month!</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- 2023 changelog script, should not need changing unless extra functionality is added.-->
+      <script>
+      $("#changelog2023").change(function() {
+        var selected = $("#changelog2023 :selected").val();
+        $(".changelog-entry").addClass("d-none"); // Needs to be outside if to hide logs if "Choose a date..." is selected
+        if (document.getElementById(selected)) {
+          $("#" + selected).removeClass("d-none");
+        }
+      });
+</script>
+</div>
+
+<!-- 2022 Changelog starts here...-->
+<span class="fw-bold"> 2022 Changelog:</span>
+<select class="form-select mt-2" aria-label="Changelog select" id="changelog2022">
+  <option selected>Choose a date...</option>
+  <option value="dec-22">December 2022</option>
+  <option value="nov-22">November 2022</option>
+  <option value="oct-22">October 2022</option>
+  <option value="sep-22">September 2022</option>
   <option value="aug-22">August 2022</option>
   <option value="jul-22">July 2022</option>
+  <option value="jun-22">June 2022</option>
+  <option value="may-22">May 2022</option>
+  <option value="apr-22">April 2022</option>
   <option value="mar-22">March 2022</option>
   <option value="feb-22">February 2022</option>
+  <option value="jan-22">January 2022</option>
 </select>
-<div class="mt-3">
-  <ul class="changelog-entry d-none" id="feb-22">
-    <li>02/11/2022 | Giveaway Rules | Giveaway rules updated; PS! Wi-Fi now supports unofficial giveaways in Legends: Arceus.</li>
-    <li>02/12/2022 | Trade Rules | Trade rules updated; shiny eggs can no longer be traded in the PS! Wi-Fi room.</li>
-    <li>02/20/2022 | Trade Rules | Trade rules updated; 6 IV / Flawless Manaphy still in an egg from Brilliant Diamond/Shining Pearl can no longer be traded in the PS! Wi-Fi room.</li>
-    <li>02/23/2022 | Proofing Rules | Proofing rules updated; section for Let's Go Pikachu/Let's Go Eevee added, proof rules established for LGPE.</li>
-    <li>02/26/2022 | Proofing Rules | Proofing rules updated; shiny legendary birds from overworld encounters in Let's Go must now provide a video of the initial encounter in their proofing.</li>
-  </ul>
-  <ul class="changelog-entry d-none" id="mar-22">
-    <li>03/04/2022 | Proofing Rules | Proofing rules updated; section for Legends: Arceus added, proof rules established for Legends: Arceus.</li>
-  </ul>
-  <ul class="changelog-entry d-none" id="jul-22">
-    <li>
-      07/08/2022 | Proofing Rules | Proof rules updated; mystery gift / event distribution proof for Generation 8 Pok&eacute;mon has now been simplified! "Global" and "Unique" code specific proof guidelines have now been replaced with an IV floor.
-    </li>
-  </ul>
-  <ul class="changelog-entry d-none" id="aug-22">
-    <li>08/13/2022 | Proofing Rules | Proof rules updated; added examples and clarification on scripted &amp; legendary encounter proofing in Pok&eacute;mon Legends: Arceus.</li>
-  </ul>
-  <ul class="changelog-entry d-none" id="jan-23">
-    <li>01/28/2023 | Main Page | Changelog upgraded.</li>
-  </ul>
 
+<div class="mt-3">
+  
+  <!-- Jan 2022 table-->
+  <table class="table table-striped changelog-entry d-none" id="jan-22">
+    <thead class="table text-light" style="background-color: #0c0038;">
+      <tr class="sticky-top">
+        <th scope="col" style="text-align: center;">Date</th>
+        <th scope="col" style="text-align: center;">Type</th>
+        <th scope="col" style="text-align: center;">Description of change(s)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>No important changes this month!</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Feb 2022 table-->
+  <table class="table table-striped changelog-entry d-none" id="feb-22">
+    <thead class="table text-light" style="background-color: #0c0038;">
+      <tr class="sticky-top">
+        <th scope="col" style="text-align: center;">Date</th>
+        <th scope="col" style="text-align: center;">Type</th>
+        <th scope="col" style="text-align: center;">Description of change(s)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>02/11/2022</td>
+        <td>Giveaway Rules</td>
+        <td>Unofficial Giveaways are now supported in Legends: Arceus! Non-shiny Pokemon can now be given away without using the GA form.</td>
+      </tr>
+      <tr>
+        <td>02/12/2022</td>
+        <td>Trade Rules</td>
+        <td>Shiny Pok&eacute;mon still in eggs obtained in Gen 8/9 titles can no longer be traded, eggs must now be hatched first.</td>
+      </tr>
+      <tr>
+        <td>02/20/2022</td>
+        <td>Trade Rules</td>
+        <td>6 IV / Flawless Manaphy still in an egg from Brilliant Diamond & Shining Pearl can no longer be traded.</td>
+      </tr>
+      <tr>
+        <td>02/23/2022</td>
+        <td>Proof Rules</td>
+        <td>Proof guidelines have now been updated to support Let's Go Pikachu & Eevee.</td>
+      </tr>
+      <tr>
+        <td>02/26/2022</td>
+        <td>Proof Rules</td>
+        <td>Shiny legendary birds from overworld encounters in Let's Go Pikachu & Eevee now need unique proofing to trade.</td>
+      </tr>
+    </tbody>
+  </table>
+
+    <!-- March 2022 table-->
+    <table class="table table-striped changelog-entry d-none" id="mar-22">
+      <thead class="table text-light" style="background-color: #0c0038;">
+        <tr class="sticky-top">
+          <th scope="col" style="text-align: center;">Date</th>
+          <th scope="col" style="text-align: center;">Type</th>
+          <th scope="col" style="text-align: center;">Description of change(s)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>03/04/2022</td>
+          <td>Proof Rules</td>
+          <td>Proofing guidelines for Legends: Arceus now established.</td>
+        </tr>
+      </tbody>
+    </table>
+
+      <!-- April 2022 table-->
+  <table class="table table-striped changelog-entry d-none" id="apr-22">
+    <thead class="table text-light" style="background-color: #0c0038;">
+      <tr class="sticky-top">
+        <th scope="col" style="text-align: center;">Date</th>
+        <th scope="col" style="text-align: center;">Type</th>
+        <th scope="col" style="text-align: center;">Description of change(s)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>No important changes this month!</td>
+      </tr>
+    </tbody>
+  </table>
+
+    <!-- May 2022 table-->
+    <table class="table table-striped changelog-entry d-none" id="may-22">
+      <thead class="table text-light" style="background-color: #0c0038;">
+        <tr class="sticky-top">
+          <th scope="col" style="text-align: center;">Date</th>
+          <th scope="col" style="text-align: center;">Type</th>
+          <th scope="col" style="text-align: center;">Description of change(s)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>No important changes this month!</td>
+        </tr>
+      </tbody>
+    </table>
+
+      <!-- June 2022 table-->
+  <table class="table table-striped changelog-entry d-none" id="jun-22">
+    <thead class="table text-light" style="background-color: #0c0038;">
+      <tr class="sticky-top">
+        <th scope="col" style="text-align: center;">Date</th>
+        <th scope="col" style="text-align: center;">Type</th>
+        <th scope="col" style="text-align: center;">Description of change(s)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>No important changes this month!</td>
+      </tr>
+    </tbody>
+  </table>
+
+    <!-- July 2022 table-->
+    <table class="table table-striped changelog-entry d-none" id="jul-22">
+      <thead class="table text-light" style="background-color: #0c0038;">
+        <tr class="sticky-top">
+          <th scope="col" style="text-align: center;">Date</th>
+          <th scope="col" style="text-align: center;">Type</th>
+          <th scope="col" style="text-align: center;">Description of change(s)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>07/08/2022</td>
+          <td>Proof Rules</td>
+          <td>Mystery gift / event distribution proof for Generation 8 Pok&eacute;mon has now been simplified! "Global" and "Unique" code specific proof guidelines have now been replaced with an IV floor.</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <!-- August 2022 table-->
+    <table class="table table-striped changelog-entry d-none" id="aug-22">
+      <thead class="table text-light" style="background-color: #0c0038;">
+        <tr class="sticky-top">
+          <th scope="col" style="text-align: center;">Date</th>
+          <th scope="col" style="text-align: center;">Type</th>
+          <th scope="col" style="text-align: center;">Description of change(s)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>08/13/2022</td>
+          <td>Proof Rules</td>
+          <td>Examples and clarification added for scripted &amp; legendary encounter proofing in Legends: Arceus.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- September 2022 table-->
+    <table class="table table-striped changelog-entry d-none" id="sep-22">
+      <thead class="table text-light" style="background-color: #0c0038;">
+        <tr class="sticky-top">
+          <th scope="col" style="text-align: center;">Date</th>
+          <th scope="col" style="text-align: center;">Type</th>
+          <th scope="col" style="text-align: center;">Description of change(s)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>09/15/22</td>
+          <td>Proof Rules</td>
+          <td>Gen 8 mystery gift IV proof requirements changed match previous generations.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- October 2022 table-->
+    <table class="table table-striped changelog-entry d-none" id="oct-22">
+      <thead class="table text-light" style="background-color: #0c0038;">
+        <tr class="sticky-top">
+          <th scope="col" style="text-align: center;">Date</th>
+          <th scope="col" style="text-align: center;">Type</th>
+          <th scope="col" style="text-align: center;">Description of change(s)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>No important changes this month!</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- November 2022 table-->
+    <table class="table table-striped changelog-entry d-none" id="nov-22">
+      <thead class="table text-light" style="background-color: #0c0038;">
+        <tr class="sticky-top">
+          <th scope="col" style="text-align: center;">Date</th>
+          <th scope="col" style="text-align: center;">Type</th>
+          <th scope="col" style="text-align: center;">Description of change(s)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>11/18/22</td>
+          <td>General</td>
+          <td>Scarlet/Violet release date.</td>
+        </tr>
+        <tr>
+          <td>11/24/22</td>
+          <td>Room General</td>
+          <td>Users can now request group chats to organize Tera Raids! (Groupchats will be made based on <code>/roomstaff</code> availability).</td>
+        </tr>
+        <tr>
+          <td>11/26/22</td>
+          <td>Proof Rules</td>
+          <td>Proof guidelines established for Scarlet/Violet Tera Raid Pok&eacute;mon.</td>
+        </tr>
+        <tr>
+          <td>11/27/22</td>
+          <td>Proof Rules</td>
+          <td>General proof rules for different encounter types in Scarlet/Violet now have been established.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- December 2022 table-->
+    <table class="table table-striped changelog-entry d-none" id="dec-22">
+      <thead class="table text-light" style="background-color: #0c0038;">
+        <tr class="sticky-top">
+          <th scope="col" style="text-align: center;">Date</th>
+          <th scope="col" style="text-align: center;">Type</th>
+          <th scope="col" style="text-align: center;">Description of change(s)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>12/10/22</td>
+          <td>Proof Rules</td>
+          <td>Switch section updated to include acceptable replacements for the in-game IV judge when attempting to prove a Pok&eacute;mon.</td>
+        </tr>
+        <tr>
+          <td>12/30/22</td>
+          <td>Proof Rules</td>
+          <td>6IV SHINY rare form Maushold, Dudunsparce, and the prevolutions from <u>eggs and wild encounters</u> now banned from trading.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- 2022 changelog script, should not need changing unless extra functionality is added.-->
   <script>
-    $("#changelog").change(function() {
-      var selected = $("#changelog :selected").val();
+    $("#changelog2022").change(function() {
+      var selected = $("#changelog2022 :selected").val();
       $(".changelog-entry").addClass("d-none"); // Needs to be outside if to hide logs if "Choose a date..." is selected
       if (document.getElementById(selected)) {
         $("#" + selected).removeClass("d-none");
