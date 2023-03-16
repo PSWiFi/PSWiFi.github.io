@@ -17,13 +17,9 @@
   background-color: #254581;
 }
 
-/* Staff Namecolors */
-.adamew {
-  color: #38A87B;
-}
-
-.alyxrixius {
-  color: #A648C2;
+/* Current Staff Namecolors */
+.appletunalamode {
+  color: #3E7C33;
 }
 
 .argynt {
@@ -46,6 +42,10 @@
   color: #E1197D;
 }
 
+.kaylubiso {
+  color: #BE5C36;
+}
+
 .loethalion {
   color: #18A743;
 }
@@ -60,6 +60,10 @@
 
 .oseanworld {
   color: #C78023;
+}
+
+.ouinvestigation {
+  color: #3b8091;
 }
 
 .pooof {
@@ -78,12 +82,16 @@
   color: #40A610;
 }
 
-.theblaah {
-  color: #367D39;
+.shuutsukiyama {
+  color: #c13d95;
 }
 
-.skies {
-  color: #B55A2C;
+.suzue {
+  color: #c926a3;
+}
+
+.theblaah {
+  color: #367D39;
 }
 
 .swiffix {
@@ -92,4 +100,17 @@
 
 .wigglytree {
   color: #506CC8;
+}
+
+/* Retired Staff Namecolors & Honourable Mentions */
+.adamew {
+  color: #38A87B;
+}
+
+.alyxrixius {
+  color: #A648C2;
+}
+
+.skies {
+  color: #B55A2C;
 }
