@@ -17,6 +17,7 @@ This site is powered by the [Jekyll](https://jekyllrb.com/) gem! You can see [th
 - Navigate to the folder on your computer containing this repository in the command line with the `cd` command.
     - Example: `cd C:\Users\ExampleUser\Documents\GitHub\PSWiFi.github.io`
 - Run the command `bundle install`.
+- Run the command `bundle add webrick`.
 
 ### Generating the site
 - Open a command prompt or terminal window.
