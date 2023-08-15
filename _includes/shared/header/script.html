@@ -17,4 +17,10 @@
     default:
       $("#nav-home").addClass("active").css("color", "#fff");
   }
+  if (
+    url.toLowerCase().endsWith(".git") ||
+    url.toLowerCase().endsWith("/git")
+  ) {
+    window.location.replace("https://github.com/PSWiFi/PSWiFi.github.io");
+  }
 </script>
