@@ -5,6 +5,10 @@
   border-bottom-left-radius: 0.20rem !important;
 }
 
+.tooltip-underline {
+  border-bottom: 1px dotted black;
+}
+
 .warn {
   color: #b80303;
 }
