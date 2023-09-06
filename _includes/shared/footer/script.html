@@ -5,4 +5,20 @@
   var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
     return new bootstrap.Tooltip(tooltipTriggerEl);
   });
+
+  var links = document.querySelectorAll("a");
+  var url = window.location.origin;
+  Array.prototype.forEach.call(links, (link) => {
+    if (!link.href.startsWith("{{ site.url }}") && !link.href.startsWith(url)) {
+      link.rel = "external";
+      link.target = "_blank";
+      link.title = "Opens in new tab";
+
+      var icon = document.createElement("i");
+      icon.style = "font-size:0.7rem; padding-left:0.3rem";
+      icon.classList.add("bi", "bi-box-arrow-up-right", "text-secondary");
+
+      link.appendChild(icon);
+    }
+  });
 </script>
