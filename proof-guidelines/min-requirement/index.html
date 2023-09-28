@@ -4,6 +4,23 @@ title: Proof Guidelines
 permalink: /proof-guidelines/min-requirement/
 ---
 
+<style>
+  table,
+  th,
+  td {
+    border: 1px solid black;
+  }
+
+  blockquote {
+  background: #c5c5c5;
+  border: 1px solid #9e9e9e;
+  border-left: 5px solid #7a298f;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+  }
+</style>
+
 <div class="title" style="background-color: #6d2280;">
   <h1 class="text-light text-center pt-3 pb-3">Proofing Guidelines</h1>
 </div><hr />
@@ -15,15 +32,14 @@ permalink: /proof-guidelines/min-requirement/
   </div>
   <div class="card-body card-bg">
     <p>Proof helps to verify that a Pok&eacute;mon has been legitimately obtained by a player. Generally a proof album will come in the form of a video or a compilation of pictures. Requiring proofing for specific high value Pok&eacute;mon is the PS Wi-Fi way of reassuring the community about the legitimacy of the Pok&eacute;mon received in trades from community members.</p>
-    <p>To decide if a Pok&eacute;mon requires proof, we look at two main factors, rarity and exclusivity. IV count, shiny odds, and other game specific information are all taken into account to make an informed decision on if a Pok&eacute;mon requires proof.</p>
     <p>It is advised to partially blur {% include tooltips/sensitive-info.html %} in your proof albums to prevent people from stealing your proof and / or cloning your Pok&eacute;mon illegitimately.</p>
     <hr />
 
-    <div class="card-header" style="background-color: #009443;">
+    <div class="card-header" style="background-color: #009443;" id="flawless-ivs">
       <span class="fw-bold text-light">About IV spreads:</span>
     </div>
     <div class="card-body card-bg">
-      <p>Optimal IV spreads are either defined as <u>perfect</u> or <u>flawless</u>. The amount of significant IVs & general rarity will often determine whether or not a Pok&eacute;mon requires proof.</p>
+      <p>Optimal IV spreads are either defined as <u>perfect</u> or <u>flawless</u>. The amount of significant IVs & general rarity/exclusivity will often determine whether or not a Pok&eacute;mon requires proof.</p>
 
       <h6 span class="fw-bold">Definitions:</h6>
       <ul>
@@ -40,14 +56,16 @@ permalink: /proof-guidelines/min-requirement/
           <ul>
             <li><b>31/31/31/0/31/31</b> | 6IV Perfect physical attacking IV spread.</li>
             <li><b>31/31/31/0/31/0</b> | 6IV Perfect physical attacking Trick Room IV spread.</li>
-            <li><b>31/31/31/x/31/31</b> | 5IV Flawless physical attacking IV spread. (Check if this spread requires proof depending on encounter type)</li>
+            <li><b>31/31/31/x/31/31</b> | 5IV Flawless physical attacking IV spread.</li>
+            <li><b>31/31/31/x/31/0</b> | 5IV Flawless physical attacking Trick Room IV spread.</li>
           </ul>
 
           <span class="fw-bold">Special Attackers:</span>
           <ul>
             <li><b>31/0/31/31/31/31</b> | 6IV Perfect special attacking IV spread.</li>
             <li><b>31/0/31/31/31/0</b> | 6IV Perfect special attacking Trick Room IV spread.</li>
-            <li><b>31/x/31/31/31/31</b> | 5IV Flawless special attacking IV spread. (Check if this spread requires proof depending on encounter type)</li>
+            <li><b>31/x/31/31/31/31</b> | 5IV Flawless special attacking IV spread.</li>
+            <li><b>31/x/31/31/31/0</b> | 5IV Flawless special attacking Trick Room IV spread.</li>
           </ul>
 
           <span class="fw-bold">Unique Examples:</span>
@@ -143,6 +161,8 @@ Any of the requirements listed inside box above will apply to any game Pok&eacut
       <li>6 IV Pok&eacute;mon from wild Tera encounters.</li>
       <li>5 IV+ Shiny Pok&eacute;mon from Tera Raid dens.</li>
       <li>6 IV Pok&eacute;mon from Tera Raid dens.</li>
+      <li>Shiny Sinistea-Antique & other 1% chance Shiny Encounters.</li>
+      <li><a href="#flawless-ivs">Flawless</a> Shiny & Non-Shiny Pok&eacute;mon from event distributions.</li>
     </ul>
     <hr />
 
@@ -153,7 +173,8 @@ Any of the requirements listed inside box above will apply to any game Pok&eacut
       <li>6 IV Pok&eacute;mon from Max Raid Dens or Dynamax Adventures.</li>
       <li>6 IV Pok&eacute;mon from promotional Max Raid Dens with a boosted shiny chance.</li>
       <li>Shiny Sinistea-Antique & other 1% chance Shiny Encounters.</li>
-      <li>RNG abused Pok&eacute;mon that qualify for the Jumbo/Teensy mark in Scarlet/Violet.</li>
+      <li>RNG abused Pok&eacute;mon that quailfy for the Jumbo/Teensy mark in Scarlet/Violet.</li>
+      <li><a href="#flawless-ivs">Flawless</a> Shiny & Non-Shiny Pok&eacute;mon from event distributions.</li>
     </ul>
     <hr />
 
@@ -163,6 +184,7 @@ Any of the requirements listed inside box above will apply to any game Pok&eacut
       <li>6 IV Pok&eacute;mon from Pok&eacute;Radar chains.</li>
       <li>Shiny Pok&eacute;mon from 1% chance encounters.</li>
       <li>RNG abused Pok&eacute;mon that quailfy for the Jumbo/Teensy mark in Scarlet/Violet.</li>
+      <li><a href="#flawless-ivs">Flawless</a> Shiny & Non-Shiny Pok&eacute;mon from event distributions.</li>
     </ul>
     <hr />
 
@@ -171,6 +193,7 @@ Any of the requirements listed inside box above will apply to any game Pok&eacut
       <li>5 IV+ Shiny Pok&eacute;mon from Catch Combo chains.</li>
       <li>6 IV Pok&eacute;mon from Catch Combo chains.</li>
       <li>Wild Shiny Articuno, Zapdos, and Moltres from Overworld-based encounters.</li>
+      <li><a href="#flawless-ivs">Flawless</a> Shiny & Non-Shiny Pok&eacute;mon from event distributions.</li>
     </ul>
     <hr />
 
@@ -179,6 +202,7 @@ Any of the requirements listed inside box above will apply to any game Pok&eacut
       <li>5 IV+ Shiny Pok&eacute;mon from the Overworld, Space-Time Distortions, or Outbreaks.</li>
       <li>Flawless Legendary and Mythical Pok&eacute;mon.</li>
       <li>RNG abused Pok&eacute;mon that quailfy for the Jumbo/Teensy mark in Scarlet/Violet.</li>
+      <li><a href="#flawless-ivs">Flawless</a> Shiny & Non-Shiny Pok&eacute;mon from event distributions.</li>
     </ul>
   </div>
 </div><br />
