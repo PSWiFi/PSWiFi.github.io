@@ -9,6 +9,15 @@
   border-bottom: 1px dotted black;
 }
 
+blockquote {
+  background: #c5c5c5;
+  border: 1px solid #9e9e9e;
+  border-left: 5px solid #6d2280;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+
 .warn {
   color: #b80303;
 }
