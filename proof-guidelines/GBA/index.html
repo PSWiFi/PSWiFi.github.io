@@ -10,8 +10,7 @@ permalink: /proof-guidelines/gba/
 </div>
 <hr />
 
-This page contains information and examples on how to create proof for your Pok&eacute;mon in <span class="fw-bold">Ruby/Sapphire/Emerald &amp; Fire Red/Leaf Green</span> to an acceptable standard for general trading in PS! Wi-Fi. Only information for
-the above mentioned games is provided on this page.<br /><br />
+<p>This page contains information and examples on how to create proof for your Pok&eacute;mon in <span class="fw-bold">Ruby/Sapphire/Emerald &amp; Fire Red/Leaf Green</span> to an acceptable standard for general trading in PS! Wi-Fi. Only information for the above mentioned games is provided on this page.</p>
 
 <div class="card border-dark">
   <div class="card-header" style="background-color: #7a298f;" id="GBAOverall">
@@ -50,28 +49,46 @@ the above mentioned games is provided on this page.<br /><br />
       style="width:55px;height:55px;">
 </div>
 <hr />
-This section of the page covers how to create proof for Pok&eacute;mon obtained in Gen 3 (GBA) titles. In all cases, your <span class="fw-bold">PS! Username <u>must</u> be visible</span> somewhere within your proof link so that we can easily verify exactly where the
-Pok&eacute;mon has come from.<br /> <br />
+
+<p>This section of the page covers how to create proof for Pok&eacute;mon obtained in Gen 3 (GBA) titles. In all cases, your <span class="fw-bold">PS! Username <u>must</u> be visible</span> somewhere within your proof link so that we can easily verify exactly where the Pok&eacute;mon has come from.</p>
 
 <div class="card border-dark">
-  <div class="card-header" style="background-color: #7a298f;" id="gbaWild">
+  <div class="card-header" style="background-color: #7a298f;" id="gba-encounters-eggs-gifts">
     <span class="fw-bold text-light">Obtained in Ruby/Sapphire/Emerald or FireRed/LeafGreen:</span>
   </div>
   <div class="card-body card-bg">
     <p><span class="fw-bold">If using VBA/BizHawk or a similar app with .lua scripts for RNG abuse you must provide:</span></p>
+
     <ul>
-      <li>For <span class="fw-bold"><u>Encounters</u></span>, a screenshot of the Encounter starting (i.e <code>“Pok&eacute;mon appeared!”</code>).<br />Also for <u>Roaming Encounters</u>, a screenshot of you hitting your target frame at the screen the roamer is generated on.<br />The lua output must be clearly visible on-screen for all screenshots.</li><br />
-      <li>For <span class="fw-bold"><u>Redemptions</u></span>, a screenshot of you hitting your target frame at the screen the Egg/Gift is generated on (i.e <code>“Take good care of it!”</code> or <code>"Would you like to take Pok&eacute;mon? Y/N"</code> screens respectively).<br />Also a screenshot of the Egg after hatching (i.e <code>“Would you like to nickname...”</code>), or of the Gift mon after Redemption.<br />The lua output must be clearly visible on-screen for all screenshots.</li><br />
-      <li>A screenshot of the Pok&eacute;mon Summary displaying both the stats and OT/TID of the Pok&eacute;mon that was obtained (preferred) <u>or</u> your Trainer Card.<br />If an older Lua that doesn't show IVs was used, Summary screenshots <u>are mandatory!</u></li><br />
-      <li>A screenshot of the tool used to RNG abuse the Pok&eacute;mon. You must show your Seed and desired target frame along with any other specific configurations used.<br />{% include common/sensitive-info-paragraph.html %}</li><br />
+      <li>For <span class="fw-bold"><u>Encounters</u></span>, a screenshot of you hitting your target frame (i.e last button inputs for <u>Wild & Static</u>, or screen of generation for <u>Roamers</u>) and a screenshot of the encounter initiation (i.e the <code class="fw-bold">“Pok&eacute;mon appeared!”</code> screen or similar).</li><p></p>
+      <li>For <span class="fw-bold"><u>Redemptions</u></span>, a screenshot of you hitting your target frame (i.e <code class="fw-bold">“Player received Pok&eacute;mon!”</code> screen) and a screenshot of the summary screens cleary showing OT/TID, Nature and IVs.</li><p></p>
+      <li>For <span class="fw-bold"><u>Eggs</u></span>, a screenshot of you hitting your target frame (i.e <code class="fw-bold">"Would you like to take Pokémon? Y/N"</code> screen or similar) and a screenshot immediately after recieving the egg confirming the stats and internal details.</li>
     </ul>
-    We recommend using the most recent Luas for your RNGs so as to show &amp; prove the IVs of your Pok&eacute;mon, in addition to the Seed in the screenshots mentioned above.<br />
+
+    <blockquote>
+      {% include tooltips/overlays.html %} or lua script output must be visible in all of the above mentioned screenshots to prove the correct target frame has been hit.
+    </blockquote>
+
+    <ul>
+      <li>A screenshot of the Pok&eacute;mon Summary displaying both the stats and OT/TID of the Pok&eacute;mon that was obtained (preferred) <u>or</u> your Trainer Card.</li><p></p>
+      <li>A screenshot of the tool used to RNG abuse the Pok&eacute;mon. You must show your Seed and desired target frame along with any other specific configurations used.<br />{% include common/sensitive-info-paragraph.html %}</li>
+    </ul>
+
+    <blockquote>
+      If you are using an old lua script that does not prove the stats of yourPok&eacute;mon, summary screenshots showing the OT/TID and stats screens are mandatory! If you are able to prove the stats using lua scripts then a trainer card screenshot is acceptable.
+     </blockquote>
+
+     <ul>
+      <li>A screenshot of the tool used to RNG abuse the Pok&eacute;mon. You must show your Seed and desired target frame along with any other specific configurations used.<br />{% include common/sensitive-info-paragraph.html %}</li><p></p>
+    </ul>
+
+    <p>We recommend using the most recent Luas for your RNGs so as to show & prove the IVs of your Pokémon, in addition to the Seed in the screenshots mentioned above. If your Lua does not display the correct IVs/Nature of the Pokémon, Summary screenshots showcasing stats are considered mandatory.</p>
     <hr />
 
     <p><span class="fw-bold">For soft resetting and retail RNG abuse you must provide:</span></p>
     <ul>
-      <li>A full uncut video starting from a successful capture or redemption of your Pok&eacute;mon, leading into the in-box summary screens clearly showing the Stats, Nature, Ability, and OT/TID.</li><br />
-      <li>A screenshot of the tool used to RNG abuse the Pok&eacute;mon. You must show your Seed and desired target frame along with any other specific configurations used.<br />{% include common/sensitive-info-paragraph.html %}</li><br />
+      <li>A full uncut video starting from a successful capture or redemption of your Pok&eacute;mon, leading into the in-box summary screens clearly showing the Stats, Nature, Ability, and OT/TID.</li><p></p>
+      <li>A screenshot of the tool used to RNG abuse the Pok&eacute;mon. You must show your Seed and desired target frame along with any other specific configurations used.<br />{% include common/sensitive-info-paragraph.html %}</li>
     </ul>
 
     <details>
