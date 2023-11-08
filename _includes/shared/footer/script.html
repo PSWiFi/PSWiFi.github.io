@@ -20,7 +20,7 @@
       var blue = parseInt(link.style.backgroundColor.split(",")[2]);
 
       var textColorClass = (!isNaN(blue) && blue >= 0xa0 || link.className.includes("prize-shop-blue"))
-        ? "text-light"
+        ? "icon-light"
         : "text-secondary";
 
       icon.classList.add("bi", "bi-box-arrow-up-right", textColorClass);
