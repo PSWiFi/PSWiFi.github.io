@@ -1,17 +1,32 @@
 <script type="text/javascript">
   var url = window.location.pathname;
   var pathname = url.slice(1, url.indexOf("/", 1)).toLowerCase();
+  var page = url.split("/")[2]?.toLowerCase();
+
+  $(
+    Array.prototype.filter.call(
+      document.querySelectorAll("a"),
+      (e) =>
+        e.href.toLowerCase().includes(pathname + "/" + page) &&
+        e.classList.contains("dropdown-item")
+    )?.[0]
+  )?.addClass("active");
+
   switch (pathname) {
     case "misc":
-      $("#nav-misc").addClass("active").css("color", "#fff");
+      $("#MiscDropdown").addClass("active").css("color", "#fff");
+      break;
+
+    case "events":
+      $("#EventsDropdown").addClass("active").css("color", "#fff");
       break;
 
     case "proof-guidelines":
-      $("#nav-proof").addClass("active").css("color", "#fff");
+      $("#ProofDropdown").addClass("active").css("color", "#fff");
       break;
 
     case "rules":
-      $("#nav-rules").addClass("active").css("color", "#fff");
+      $("#RulesDropdown").addClass("active").css("color", "#fff");
       break;
 
     default:
