@@ -1,0 +1,302 @@
+---
+layout: default
+title: PkParse
+permalink: /misc/pkparse/
+---
+
+<h1 class="mb-0 pb-0">PkParse</h1>
+<small class="text-muted mb-3 mt-0"
+  >by
+  <a
+    class="text-decoration-none text-muted"
+    href="https://github.com/LegoFigure11"
+    >LegoFigure11</a
+  ></small
+>
+
+<hr />
+
+<div class="mb-3">
+  <input
+    type="file"
+    class="form-control"
+    id="formFile"
+    name="formFile"
+    accept=".pk9,.pk8,.pa8,.pb8,.pk7,.pk6"
+    multiple
+  />
+</div>
+
+<div id="results-container"></div>
+
+<script type="text/javascript" src="./data/size.js"></script>
+<script type="text/javascript" src="./data/nature.js"></script>
+<script type="text/javascript" src="./data/ball.js"></script>
+<script type="text/javascript" src="./data/gender.js"></script>
+<script type="text/javascript" src="./data/originGame.js"></script>
+<script type="text/javascript" src="./data/species.js"></script>
+<script>
+  var e = document.getElementById("formFile");
+  e.addEventListener("change", handleUpload);
+
+  function handleUpload() {
+    var container = document.getElementById("results-container");
+    while (container.firstChild) {
+      container.removeChild(container.lastChild);
+    }
+    process(e.files);
+  }
+
+  function getStringFromBuffer(data) {
+    var res = "";
+    for (var i = 0; i < 26; i += 2) {
+      var char = data.getUint16(i, true);
+      if (char == 0) break;
+      res += String.fromCharCode(char);
+    }
+    return res;
+  }
+
+  // Putting this in a recursive delayed loop allows time to clear the buffer, helping to prevent bad reads and race conditions
+  function process(files, delay = 150, i = 0) {
+    if (i >= files.length) {
+      return;
+    }
+
+    var file = files[i];
+    var fname = file.name;
+    var ext = fname.substring(fname.lastIndexOf("."));
+
+    var gen,
+      pidloc,
+      speciesloc,
+      otloc,
+      idsloc,
+      ivsloc,
+      natureloc,
+      genderloc,
+      ballloc,
+      ogloc;
+
+    // Sanity check file sizes and get offsets
+    switch (ext) {
+      case ".pk9": // SV
+        if (file.size != SIZE_9)
+          return alert(
+            "Incorrect file size!\nExpected: " + SIZE_9 + "\nGot: " + file.size
+          );
+        speciesloc = 0x08;
+        idsloc = 0x0c;
+        pidloc = 0x1c;
+        natureloc = 0x20;
+        genderloc = 0x22;
+        ivsloc = 0x8c;
+        otloc = 0xf8;
+        ballloc = 0x124;
+        ogloc = 0xce;
+        gen = 9;
+        break;
+
+      case ".pa8": // LA
+        if (file.size != SIZE_8A)
+          return alert(
+            "Incorrect file size!\nExpected: " + SIZE_8A + "\nGot: " + file.size
+          );
+        speciesloc = 0x08;
+        idsloc = 0x0c;
+        pidloc = 0x1c;
+        natureloc = 0x20;
+        genderloc = 0x22;
+        ivsloc = 0x94;
+        otloc = 0x110;
+        ballloc = 0x137;
+        ogloc = 0xee;
+        gen = 8;
+        break;
+
+      case ".pk8": // SWSH
+      case ".pb8": // BDSP
+        if (file.size != SIZE_8)
+          return alert(
+            "Incorrect file size!\nExpected: " + SIZE_8 + "\nGot: " + file.size
+          );
+        speciesloc = 0x08;
+        idsloc = 0x0c;
+        pidloc = 0x1c;
+        natureloc = 0x20;
+        genderloc = 0x22;
+        ivsloc = 0x8c;
+        otloc = 0xf8;
+        ballloc = 0x124;
+        ogloc = 0xde;
+        gen = 8;
+        break;
+
+      case ".pk7": // USUM
+        if (file.size != SIZE_7)
+          return alert(
+            "Incorrect file size!\nExpected: " + SIZE_7 + "\nGot: " + file.size
+          );
+        speciesloc = 0x08;
+        idsloc = 0x0c;
+        pidloc = 0x18;
+        natureloc = 0x1c;
+        genderloc = 0x1d;
+        ivsloc = 0x74;
+        otloc = 0xb0;
+        ballloc = 0xdc;
+        ogloc = 0xdf;
+        gen = 7;
+        break;
+
+      case ".pk6": // XYORAS
+        if (file.size != SIZE_6)
+          return alert(
+            "Incorrect file size!\nExpected: " + SIZE_6 + "\nGot: " + file.size
+          );
+        speciesloc = 0x08;
+        idsloc = 0x0c;
+        pidloc = 0x18;
+        natureloc = 0x1c;
+        genderloc = 0x1d;
+        ivsloc = 0x74;
+        otloc = 0xb0;
+        ballloc = 0xdc;
+        ogloc = 0xdf;
+        gen = 6;
+        break;
+
+      default: // Should never happen
+        return alert("Unsupported file type provided: " + fname);
+    }
+
+    file.arrayBuffer().then((buf) => {
+      var otarrbuf = buf.slice(otloc, otloc + 26);
+      var ot = getStringFromBuffer(new DataView(otarrbuf));
+      var data = new DataView(buf);
+      var devid = SPECIES[data.getUint16(speciesloc, true)];
+      var pid = data.getUint32(pidloc, true);
+      var ids = data.getUint32(idsloc, true);
+      var tid = ids & 0xffff;
+      var sid = ids >>> 16;
+      var shinyxor = (pid >>> 16) ^ (pid & 0xffff) ^ tid ^ sid;
+      var shiny = shinyxor === 0 ? "◼" : shinyxor < 16 ? "★" : "no";
+      var nature = NATURES[data.getUint8(natureloc)];
+      var gender =
+        GENDERS[
+          (gen === 8
+            ? (data.getUint8(gender) >>> 2) & 0x3
+            : (data.getUint8(gender) >>> 1) & 0x3) % 3
+        ];
+      var iv32 = data.getUint32(ivsloc, true);
+      var ivs = [
+        (iv32 >>> 0) & 0x1f,
+        (iv32 >>> 5) & 0x1f,
+        (iv32 >>> 10) & 0x1f,
+        (iv32 >>> 20) & 0x1f,
+        (iv32 >>> 25) & 0x1f,
+        (iv32 >>> 15) & 0x1f,
+      ];
+      var judge = [];
+      for (var i = 0; i < ivs.length; i++) {
+        var j = ivs[i];
+        if (j === 31) judge.push("B");
+        else if (j === 30) judge.push("F");
+        else if (j >= 26) judge.push("VG");
+        else if (j >= 16) judge.push("PG");
+        else if (j >= 1) judge.push("D");
+        else judge.push("NG");
+      }
+      var ball = BALLS[data.getUint8(ballloc)];
+      var origingame = ORIGIN_GAMES[data.getUint8(ogloc)];
+
+      var outstr = [
+        devid,
+        shiny,
+        ot,
+        tid.toString().padStart(5, "0"),
+        sid.toString().padStart(5, "0"),
+        judge.join("/"),
+        ivs.join("/"),
+        nature,
+        gender,
+        ball,
+        "", // Dummy for MetLocation
+        origingame,
+      ].join("\t");
+
+      var rand = Math.floor(Math.random() * 0xffffffff).toString(16);
+      var elem = document.createElement("div");
+      elem.classList.add("card", "mb-3", "border-success");
+
+      var cardHeader = document.createElement("div");
+      cardHeader.classList.add("card-header");
+
+      var headerRow = document.createElement("div");
+      headerRow.classList.add("row");
+
+      var cardTitle = document.createElement("div");
+      cardTitle.classList.add("col", "col-10");
+      cardTitle.textContent = fname;
+      headerRow.appendChild(cardTitle);
+
+      var copyButtonContainer = document.createElement("div");
+      copyButtonContainer.classList.add("col", "col-2", "d-flex");
+
+      var copyButton = document.createElement("button");
+      copyButton.classList.add("btn", "btn-success", "ms-auto", "copy-button");
+      copyButton.textContent = "\u{1F4CB}";
+      copyButton.setAttribute("data-copy-value", outstr);
+
+      copyButtonContainer.appendChild(copyButton);
+      headerRow.appendChild(copyButtonContainer);
+      cardHeader.appendChild(headerRow);
+      elem.appendChild(cardHeader);
+
+      var cardBody = document.createElement("div");
+      cardBody.classList.add("card-body");
+      cardBody.textContent = [
+        "Format: " + ext,
+        "Species: " + devid,
+        "Shiny: " + shiny,
+        "OT: " +
+          ot +
+          " (" +
+          tid.toString().padStart(5, "0") +
+          " / " +
+          sid.toString().padStart(5, "0") +
+          ")",
+        "Nature: " + nature,
+        "IVs: " + ivs.join("."),
+      ].join("\r\n");
+      cardBody.setAttribute("style", "white-space: pre;");
+      cardBody.setAttribute("id", rand + "-" + pid);
+      elem.appendChild(cardBody);
+
+      document.getElementById("results-container").appendChild(elem);
+
+      copyButton.addEventListener("click", copyContent);
+    });
+
+    i++;
+
+    setTimeout(() => {
+      process(files, delay, i);
+    }, delay);
+  }
+
+  function copyContent() {
+    var el = this;
+    el.setAttribute("title", "Copied to clipboard!");
+    var val = el.dataset.copyValue;
+    navigator.clipboard.writeText(val);
+    var tip = new bootstrap.Tooltip(el);
+    tip.enable();
+    tip.show();
+    setTimeout(function () {
+      el.setAttribute("title", "");
+      tip.hide();
+      tip.disable();
+    }, 1500);
+  }
+</script>
