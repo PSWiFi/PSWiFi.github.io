@@ -14,9 +14,8 @@ function getSpecies9(id) {
 }
 
 function getNational9(raw) {
-  var shift = raw - first;
-  if (shift >= table.length) return raw;
-  return raw + table[shift];
+  if (raw < first) return raw;
+  return raw + table[raw - first];
 }
 
 var SPECIES = [
