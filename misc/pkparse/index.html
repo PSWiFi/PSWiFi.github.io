@@ -74,6 +74,7 @@ permalink: /misc/pkparse/
       idsloc,
       ivsloc,
       natureloc,
+      fatefulloc,
       genderloc,
       ballloc,
       ogloc;
@@ -89,6 +90,7 @@ permalink: /misc/pkparse/
         idsloc = 0x0c;
         pidloc = 0x1c;
         natureloc = 0x20;
+        fatefulloc = 0x22;
         genderloc = 0x22;
         ivsloc = 0x8c;
         otloc = 0xf8;
@@ -106,6 +108,7 @@ permalink: /misc/pkparse/
         idsloc = 0x0c;
         pidloc = 0x1c;
         natureloc = 0x20;
+        fatefulloc = 0x22;
         genderloc = 0x22;
         ivsloc = 0x94;
         otloc = 0x110;
@@ -124,6 +127,7 @@ permalink: /misc/pkparse/
         idsloc = 0x0c;
         pidloc = 0x1c;
         natureloc = 0x20;
+        fatefulloc = 0x22;
         genderloc = 0x22;
         ivsloc = 0x8c;
         otloc = 0xf8;
@@ -141,6 +145,7 @@ permalink: /misc/pkparse/
         idsloc = 0x0c;
         pidloc = 0x18;
         natureloc = 0x1c;
+        fatefulloc = 0x1d;
         genderloc = 0x1d;
         ivsloc = 0x74;
         otloc = 0xb0;
@@ -158,6 +163,7 @@ permalink: /misc/pkparse/
         idsloc = 0x0c;
         pidloc = 0x18;
         natureloc = 0x1c;
+        fatefulloc = 0x1d;
         genderloc = 0x1d;
         ivsloc = 0x74;
         otloc = 0xb0;
@@ -185,8 +191,14 @@ permalink: /misc/pkparse/
       var fullid = sid * 65536 + tid;
       var tid7 = fullid % 1000000;
       var sid7 = ~~(fullid / 1000000);
+      var fateful = (data.getUint8(fatefulloc) & 1) === 1;
       var shinyxor = (pid >>> 16) ^ (pid & 0xffff) ^ tid ^ sid;
-      var shiny = shinyxor === 0 ? "◼" : shinyxor < 16 ? "★" : "no";
+      var shiny =
+        (shinyxor < 16 && fateful) || shinyxor === 0
+          ? "◼"
+          : shinyxor < 16
+          ? "★"
+          : "no";
       var nature = NATURES[data.getUint8(natureloc)];
       var gender =
         GENDERS[
