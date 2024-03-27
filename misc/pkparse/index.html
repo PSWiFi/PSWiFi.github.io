@@ -60,7 +60,7 @@ permalink: /misc/pkparse/
   // Putting this in a recursive delayed loop allows time to clear the buffer, helping to prevent bad reads and race conditions
   function process(files, delay = 150, i = 0) {
     if (i >= files.length) {
-      return;
+      return i >= 2 ? generateCopyAllButton() : 0;
     }
 
     var file = files[i];
@@ -260,6 +260,7 @@ permalink: /misc/pkparse/
 
       var cardTitle = document.createElement("div");
       cardTitle.classList.add("col", "col-10");
+      cardTitle.setAttribute("style", "padding-top: 0.375rem;")
       cardTitle.textContent = fname;
       headerRow.appendChild(cardTitle);
 
@@ -324,5 +325,23 @@ permalink: /misc/pkparse/
       tip.hide();
       tip.disable();
     }, 1500);
+  }
+
+  function generateCopyAllButton() {
+    var el = document.createElement("div");
+    el.classList.add("btn", "btn-success", "w-100");
+    el.textContent = "Copy all";
+
+    var data = [];
+    var all = document.getElementsByClassName("copy-button");
+
+    for (var i = 0; i < all.length; i++) {
+      data.push(all[i].dataset.copyValue);
+    };
+
+    el.setAttribute("data-copy-value", data.join("\r\n"));
+
+    document.getElementById("results-container").appendChild(el);
+    el.addEventListener("click", copyContent);
   }
 </script>
