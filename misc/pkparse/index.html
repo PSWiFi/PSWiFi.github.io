@@ -174,7 +174,10 @@ permalink: /misc/pkparse/
       var otarrbuf = buf.slice(otloc, otloc + 26);
       var ot = getStringFromBuffer(new DataView(otarrbuf));
       var data = new DataView(buf);
-      var devid = SPECIES[data.getUint16(speciesloc, true)];
+      var devid =
+        gen === 9
+          ? getSpecies9(data.getUint16(speciesloc, true))
+          : SPECIES[data.getUint16(speciesloc, true)];
       var pid = data.getUint32(pidloc, true);
       var ids = data.getUint32(idsloc, true);
       var tid = ids & 0xffff;
@@ -220,6 +223,7 @@ permalink: /misc/pkparse/
         ivs.join("/"),
         nature,
         gender,
+        "", // Dummy for ball sprite
         ball,
         "", // Dummy for MetLocation
         origingame,
