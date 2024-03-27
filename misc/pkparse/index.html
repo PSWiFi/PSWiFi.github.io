@@ -237,7 +237,6 @@ permalink: /misc/pkparse/
         origingame,
       ].join("\t");
 
-      var rand = Math.floor(Math.random() * 0xffffffff).toString(16);
       var elem = document.createElement("div");
       elem.classList.add("card", "mb-3", "border-success");
 
@@ -286,7 +285,6 @@ permalink: /misc/pkparse/
         "IVs: " + ivs.join("."),
       ].join("\r\n");
       cardBody.setAttribute("style", "white-space: pre;");
-      cardBody.setAttribute("id", rand + "-" + pid);
       elem.appendChild(cardBody);
 
       document.getElementById("results-container").appendChild(elem);
