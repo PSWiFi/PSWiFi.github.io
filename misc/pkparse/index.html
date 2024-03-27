@@ -182,6 +182,9 @@ permalink: /misc/pkparse/
       var ids = data.getUint32(idsloc, true);
       var tid = ids & 0xffff;
       var sid = ids >>> 16;
+      var fullid = sid * 65536 + tid;
+      var tid7 = fullid % 1000000;
+      var sid7 = ~~(fullid / 1000000);
       var shinyxor = (pid >>> 16) ^ (pid & 0xffff) ^ tid ^ sid;
       var shiny = shinyxor === 0 ? "◼" : shinyxor < 16 ? "★" : "no";
       var nature = NATURES[data.getUint8(natureloc)];
@@ -211,14 +214,19 @@ permalink: /misc/pkparse/
         else judge.push("NG");
       }
       var ball = BALLS[data.getUint8(ballloc)];
-      var origingame = ORIGIN_GAMES[data.getUint8(ogloc)];
+      var ogval = data.getUint8(ogloc);
+      var origingame = ORIGIN_GAMES[ogval];
 
       var outstr = [
         devid,
         shiny,
         ot,
-        tid.toString().padStart(5, "0"),
-        sid.toString().padStart(5, "0"),
+        ((ogval >= 30 & ogval <= 34) || (ogval >= 42))
+          ? tid7.toString().padStart(6, "0")
+          : tid.toString().padStart(5, "0"),
+        ((ogval >= 30 & ogval <= 34) || (ogval >= 42))
+          ? sid7.toString().padStart(4, "0")
+          : sid.toString().padStart(5, "0"),
         judge.join("/"),
         ivs.join("/"),
         nature,
@@ -266,9 +274,13 @@ permalink: /misc/pkparse/
         "OT: " +
           ot +
           " (" +
-          tid.toString().padStart(5, "0") +
+          (((ogval >= 30 & ogval <= 34) || (ogval >= 42))
+            ? tid7.toString().padStart(6, "0")
+            : tid.toString().padStart(5, "0")) +
           " / " +
-          sid.toString().padStart(5, "0") +
+          (((ogval >= 30 & ogval <= 34) || (ogval >= 42))
+            ? sid7.toString().padStart(4, "0")
+            : sid.toString().padStart(5, "0")) +
           ")",
         "Nature: " + nature,
         "IVs: " + ivs.join("."),
