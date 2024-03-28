@@ -10,7 +10,7 @@ var OUTPUT_OPTIONS = {
   /* Meta */
   "%gen%": "Current Generation of the *.pkm file as a number.",
   "%gen-roman%": "Current Generation of the *.pkm file as a roman numeral.",
-  "%dex%": "National Pok\u{00e9}dex number of the Pok\u{00e9}mon.",
+  "%dex%": "National Pok\u{00e9}dex number of the Pok\u{00e9}mon, padded to 4 digits with leading zeroes.",
   "%species%": "Species name of the Pok\u{00e9}mon.",
   // "%form%": 'Appends the form name of the Pok\u{00e9}mon preceeded by a hyphen if it has one, blank if it does not.', -- soontm
   // "%gmax%": '"-Gmax" is the Pok\u{00e9}mon can Gigantamax, blank if it can\'t.',                                      -- soontm
@@ -37,7 +37,7 @@ var OUTPUT_OPTIONS = {
   /* Info */
   "%pid%":
     "The Pok\u{00e9}mon's Personality ID as an 8-digit lowercase hex string.",
-  "%pid-caps%":
+  "%pid-upper%":
     "The Pok\u{00e9}mon's Personality ID as an 8-digit uppercase hex string.",
   "%shiny%": '"y" if the Pok\u{00e9}mon is shiny, "n" if it is not.',
   "%shiny-upper%": '"Y" if the Pok\u{00e9}mon is shiny, "N" if it is not.',
@@ -65,48 +65,48 @@ var OUTPUT_OPTIONS = {
     "The Pok\u{00e9}mon's HP IV as a number (does not take into account Hyper Training).",
   "%ivhp-judge%":
     "The Pok\u{00e9}mon's HP IV as a shortened version of the Judge evaluation (does not take into account Hyper Training).",
-  "%ivhp-ht%":
-    'The Pok\u{00e9}mon\'s HP IV as a number, or "HT" if HP is Hyper Trained.',
-  "%ivhp-judge-ht%":
-    'The Pok\u{00e9}mon\'s HP IV as a shortened version of the Judge evaluation, or "HT" if HP is Hyper Trained.',
+  // "%ivhp-ht%":
+  //   'The Pok\u{00e9}mon\'s HP IV as a number, or "HT" if HP is Hyper Trained.',
+  // "%ivhp-judge-ht%":
+  //   'The Pok\u{00e9}mon\'s HP IV as a shortened version of the Judge evaluation, or "HT" if HP is Hyper Trained.',
   "%ivatk%":
     "The Pok\u{00e9}mon's Attack IV as a number (does not take into account Hyper Training).",
   "%ivatk-judge%":
     "The Pok\u{00e9}mon's Attack IV as a shortened version of the Judge evaluation (does not take into account Hyper Training).",
-  "%ivatk-ht%":
-    'The Pok\u{00e9}mon\'s Attack IV as a number, or "HT" if Attack is Hyper Trained.',
-  "%ivatk-judge-ht%":
-    'The Pok\u{00e9}mon\'s Attack IV as a shortened version of the Judge evaluation, or "HT" if Attack is Hyper Trained.',
+  // "%ivatk-ht%":
+  //   'The Pok\u{00e9}mon\'s Attack IV as a number, or "HT" if Attack is Hyper Trained.',
+  // "%ivatk-judge-ht%":
+  //   'The Pok\u{00e9}mon\'s Attack IV as a shortened version of the Judge evaluation, or "HT" if Attack is Hyper Trained.',
   "%ivdef%":
     "The Pok\u{00e9}mon's Defense IV as a number (does not take into account Hyper Training).",
   "%ivdef-judge%":
     "The Pok\u{00e9}mon's Defense IV as a shortened version of the Judge evaluation (does not take into account Hyper Training).",
-  "%ivdef-ht%":
-    'The Pok\u{00e9}mon\'s Defense IV as a number, or "HT" if Defense is Hyper Trained.',
-  "%ivdef-judge-ht%":
-    'The Pok\u{00e9}mon\'s Defense IV as a shortened version of the Judge evaluation, or "HT" if Defense is Hyper Trained.',
+  // "%ivdef-ht%":
+  //   'The Pok\u{00e9}mon\'s Defense IV as a number, or "HT" if Defense is Hyper Trained.',
+  // "%ivdef-judge-ht%":
+  //  'The Pok\u{00e9}mon\'s Defense IV as a shortened version of the Judge evaluation, or "HT" if Defense is Hyper Trained.',
   "%ivspa%":
     "The Pok\u{00e9}mon's Sp. Atk. IV as a number (does not take into account Hyper Training).",
   "%ivspa-judge%":
     "The Pok\u{00e9}mon's Sp. Atk. IV as a shortened version of the Judge evaluation (does not take into account Hyper Training).",
-  "%ivspa-ht%":
-    'The Pok\u{00e9}mon\'s Sp. Atk. IV as a number, or "HT" if Sp. Atk. is Hyper Trained.',
-  "%ivspa-judge-ht%":
-    'The Pok\u{00e9}mon\'s Sp. Atk. IV as a shortened version of the Judge evaluation, or "HT" if Sp. Atk. is Hyper Trained.',
+  // "%ivspa-ht%":
+  //   'The Pok\u{00e9}mon\'s Sp. Atk. IV as a number, or "HT" if Sp. Atk. is Hyper Trained.',
+  // "%ivspa-judge-ht%":
+  //   'The Pok\u{00e9}mon\'s Sp. Atk. IV as a shortened version of the Judge evaluation, or "HT" if Sp. Atk. is Hyper Trained.',
   "%ivspd%":
     "The Pok\u{00e9}mon's Sp. Def. IV as a number (does not take into account Hyper Training).",
   "%ivspd-judge%":
     "The Pok\u{00e9}mon's Sp. Def. IV as a shortened version of the Judge evaluation (does not take into account Hyper Training).",
-  "%ivspd-ht%":
-    'The Pok\u{00e9}mon\'s Sp. Def. IV as a number, or "HT" if Sp. Def. is Hyper Trained.',
-  "%ivspd-judge-ht%":
-    'The Pok\u{00e9}mon\'s Sp. Def. IV as a shortened version of the Judge evaluation, or "HT" if Sp. Def. is Hyper Trained.',
+  // "%ivspd-ht%":
+  //   'The Pok\u{00e9}mon\'s Sp. Def. IV as a number, or "HT" if Sp. Def. is Hyper Trained.',
+  // "%ivspd-judge-ht%":
+  //   'The Pok\u{00e9}mon\'s Sp. Def. IV as a shortened version of the Judge evaluation, or "HT" if Sp. Def. is Hyper Trained.',
   "%ivspe%":
     "The Pok\u{00e9}mon's Speed IV as a number (does not take into account Hyper Training).",
   "%ivspe-judge%":
     "The Pok\u{00e9}mon's Speed IV as a shortened version of the Judge evaluation (does not take into account Hyper Training).",
-  "%ivspe-ht%":
-    'The Pok\u{00e9}mon\'s Speed IV as a number, or "HT" if Speed is Hyper Trained.',
-  "%ivspe-judge-ht%":
-    'The Pok\u{00e9}mon\'s Speed IV as a shortened version of the Judge evaluation, or "HT" if Speed is Hyper Trained.',
+  // "%ivspe-ht%":
+  //   'The Pok\u{00e9}mon\'s Speed IV as a number, or "HT" if Speed is Hyper Trained.',
+  // "%ivspe-judge-ht%":
+  //   'The Pok\u{00e9}mon\'s Speed IV as a shortened version of the Judge evaluation, or "HT" if Speed is Hyper Trained.',
 };

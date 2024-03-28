@@ -27,6 +27,17 @@ permalink: /misc/pkparse/
   />
 </div>
 
+<div class="mb-3">
+  <label for="format">Output format:</label>
+  <input
+    type="text"
+    class="form-control"
+    id="format"
+    name="format"
+    value="%species%\t%shiny-type-symbol-long%\t%ot%\t%tid%\t%sid%\t%ivhp-judge%/%ivatk-judge%/%ivdef-judge%/%ivspa-judge%/%ivspd-judge%/%ivspe-judge%\t%ivhp%/%ivatk%/%ivdef%/%ivspa%/%ivspd%/%ivspe%\t%nature%\t%gender-symbol%\t\t%ball%\t\t%origingame%"
+  />
+</div>
+
 <div id="results-container"></div>
 
 <script>
@@ -164,32 +175,36 @@ permalink: /misc/pkparse/
       var otarrbuf = buf.slice(otloc, otloc + 26);
       var ot = getStringFromBuffer(new DataView(otarrbuf));
       var data = new DataView(buf);
-      var devid =
-        gen === 9
-          ? getSpecies9(data.getUint16(speciesloc, true))
-          : SPECIES[data.getUint16(speciesloc, true)];
+      var devid = data.getUint16(speciesloc, true);
+      var species = gen === 9 ? getSpecies9(devid) : SPECIES[devid];
       var pid = data.getUint32(pidloc, true);
       var ids = data.getUint32(idsloc, true);
-      var tid = ids & 0xffff;
-      var sid = ids >>> 16;
-      var fullid = sid * 65536 + tid;
+      var tid5 = ids & 0xffff;
+      var sid5 = ids >>> 16;
+      var fullid = sid5 * 65536 + tid5;
       var tid7 = fullid % 1000000;
       var sid7 = ~~(fullid / 1000000);
+      var tid =
+        (ogval >= 30) & (ogval <= 34) || ogval >= 42
+          ? tid7.toString().padStart(6, "0")
+          : tid5.toString().padStart(5, "0");
+      var sid =
+        (ogval >= 30) & (ogval <= 34) || ogval >= 42
+          ? sid7.toString().padStart(4, "0")
+          : sid5.toString().padStart(5, "0");
       var fateful = (data.getUint8(fatefulloc) & 1) === 1;
-      var shinyxor = (pid >>> 16) ^ (pid & 0xffff) ^ tid ^ sid;
-      var shiny =
+      var shinyxor = (pid >>> 16) ^ (pid & 0xffff) ^ tid5 ^ sid5;
+      var shinytype =
         (shinyxor < 16 && fateful) || shinyxor === 0
-          ? "◼"
+          ? 2
           : shinyxor < 16
-          ? "★"
-          : "no";
+          ? 1
+          : 0;
       var nature = NATURES[data.getUint8(natureloc)];
       var gender =
-        GENDERS[
-          (gen === 8
-            ? (data.getUint8(gender) >>> 2) & 0x3
-            : (data.getUint8(gender) >>> 1) & 0x3) % 3
-        ];
+        (gen === 8
+          ? (data.getUint8(gender) >>> 2) & 0x3
+          : (data.getUint8(gender) >>> 1) & 0x3) % 3;
       var iv32 = data.getUint32(ivsloc, true);
       var ivs = [
         (iv32 >>> 0) & 0x1f,
@@ -210,31 +225,124 @@ permalink: /misc/pkparse/
         else judge.push("NG");
       }
       var [ivhp, ivatk, ivdef, ivspa, ivspd, ivspe] = ivs;
-      var [jhp, jatk, kdef, jspa, jspd, jspe] = judge;
+      var [jhp, jatk, jdef, jspa, jspd, jspe] = judge;
 
       var ball = BALLS[data.getUint8(ballloc)];
       var ogval = data.getUint8(ogloc);
       var origingame = ORIGIN_GAMES[ogval];
 
-      var outstr = [
-        devid,
-        shiny,
-        ot,
-        ((ogval >= 30 & ogval <= 34) || (ogval >= 42))
-          ? tid7.toString().padStart(6, "0")
-          : tid.toString().padStart(5, "0"),
-        ((ogval >= 30 & ogval <= 34) || (ogval >= 42))
-          ? sid7.toString().padStart(4, "0")
-          : sid.toString().padStart(5, "0"),
-        judge.join("/"),
-        ivs.join("/"),
-        nature,
-        gender,
-        "", // Dummy for ball sprite
-        ball,
-        "", // Dummy for MetLocation
-        origingame,
-      ].join("\t");
+      var outstr = document.getElementById("format").value?.toLowerCase();
+      if (!outstr)
+        outstr =
+          "%species%\t%shiny-type-symbol-long%\t%ot%\t%tid%\t%sid%\t%ivhp-judge%/%ivatk-judge%/%ivdef-judge%/%ivspa-judge%/%ivspd-judge%/%ivspe-judge%\t%ivhp%/%ivatk%/%ivdef%/%ivspa%/%ivspd%/%ivspe%\t%nature%\t%gender-symbol%\t\t%ball%\t\t%origingame%";
+
+      // Commence custom parser logic
+      if (outstr.includes("\\t")) outstr = outstr.replace(/\\t/g, "\t");
+      if (outstr.includes("\\n")) outstr = outstr.replace(/\\n/g, "\r\n");
+
+      if (outstr.includes("%gen%")) outstr = outstr.replace(/\%gen\%/g, gen);
+      if (outstr.includes("%gen-roman%"))
+        outstr = outstr.replace(/\%gen-roman\%/g, roman(gen));
+      if (outstr.includes("%dex%"))
+        outstr = outstr.replace(/\%dex\%/g, getNational9(devid));
+      if (outstr.includes("%species%"))
+        outstr = outstr.replace(/\%species\%/g, species);
+
+      if (outstr.includes("%origingame%"))
+        outstr = outstr.replace(/\%origingame\%/g, origingame);
+      if (outstr.includes("%ball%")) outstr = outstr.replace(/\%ball\%/g, ball);
+      if (outstr.includes("%ot%")) outstr = outstr.replace(/\%ot\%/g, ot);
+      if (outstr.includes("%tid%")) outstr = outstr.replace(/\%tid\%/g, tid);
+      if (outstr.includes("%sid%")) outstr = outstr.replace(/\%sid\%/g, sid);
+      if (outstr.includes("%tid5%"))
+        outstr = outstr.replace(/\%tid5\%/g, tid5.toString().padStart(5, "0"));
+      if (outstr.includes("%sid5%"))
+        outstr = outstr.replace(/\%sid5\%/g, sid5.toString().padStart(5, "0"));
+      if (outstr.includes("%tid7%"))
+        outstr = outstr.replace(/\%tid7\%/g, tid7.toString().padStart(6, "0"));
+      if (outstr.includes("%sid7%"))
+        outstr = outstr.replace(/\%sid7\%/g, sid7.toString().padStart(4, "0"));
+      if (outstr.includes("%gender%"))
+        outstr = outstr.replace(/\%gender\%/g, GENDER[gender]);
+      if (outstr.includes("%gender-upper%"))
+        outstr = outstr.replace(/\%gender-upper\%/g, GENDER_UPPER[gender]);
+      if (outstr.includes("%gender-symbol%"))
+        outstr = outstr.replace(/\%gender-symbol\%/g, GENDER_SYMBOL[gender]);
+
+      if (outstr.includes("%pid%"))
+        outstr = outstr.replace(/\%pid\%/g, pid.toString(16).padStart(8, "0"));
+      if (outstr.includes("%pid-upper%"))
+        outstr = outstr.replace(
+          /\%pid-upper\%/g,
+          pid.toString(16).padStart(8, "0").toUpperCase()
+        );
+      if (outstr.includes("%shiny%"))
+        outstr = outstr.replace(/\%shiny\%/g, shinytype === 0 ? "y" : "n");
+      if (outstr.includes("%shiny-upper%"))
+        outstr = outstr.replace(
+          /\%shiny-upper\%/g,
+          shinytype === 0 ? "Y" : "N"
+        );
+      if (outstr.includes("%shiny-long%"))
+        outstr = outstr.replace(
+          /\%shiny-long\%/g,
+          shinytype === 0 ? "yes" : "no"
+        );
+      if (outstr.includes("%shiny-long-upper%"))
+        outstr = outstr.replace(
+          /\%shiny-long-upper\%/g,
+          shinytype === 0 ? "Yes" : "No"
+        );
+      if (outstr.includes("%shiny-type-symbol%"))
+        outstr = outstr.replace(
+          /\%shiny-type-symbol\%/g,
+          SHINY_SYMBOL[shinytype]
+        );
+      if (outstr.includes("%shiny-type-symbol-upper%"))
+        outstr = outstr.replace(
+          /\%shiny-type-symbol-upper\%/g,
+          SHINY_SYMBOL[shinytype].toUpperCase()
+        );
+      if (outstr.includes("%shiny-type-long%"))
+        outstr = outstr.replace(/\%shiny-type-long\%/g, SHINY_LONG[shinytype]);
+      if (outstr.includes("%shiny-type-long-upper%"))
+        outstr = outstr.replace(
+          /\%shiny-type-long-upper\%/g,
+          SHINY_LONG[shinytype].toUpperCase()
+        );
+      if (outstr.includes("%shiny-type-symbol-long%"))
+        outstr = outstr.replace(
+          /\%shiny-type-symbol-long\%/g,
+          SHINY_SYMBOL_LONG[shinytype]
+        );
+      if (outstr.includes("%shiny-type-symbol-long-upper%"))
+        outstr = outstr.replace(
+          /\%shiny-type-symbol-long-upper\%/g,
+          SHINY_SYMBOL_LONG[shinytype].toUpperCase()
+        );
+      if (outstr.includes("%nature%"))
+        outstr = outstr.replace(/\%nature\%/g, nature);
+
+      if (outstr.includes("%ivhp%")) outstr = outstr.replace(/\%ivhp\%/g, ivhp);
+      if (outstr.includes("%ivhp-judge%"))
+        outstr = outstr.replace(/\%ivhp-judge\%/g, jhp);
+      if (outstr.includes("%ivatk%")) outstr = outstr.replace(/\%ivatk\%/g, ivatk);
+      if (outstr.includes("%ivatk-judge%"))
+        outstr = outstr.replace(/\%ivatk-judge\%/g, jatk);
+      if (outstr.includes("%ivdef%")) outstr = outstr.replace(/\%ivdef\%/g, ivdef);
+      if (outstr.includes("%ivdef-judge%"))
+        outstr = outstr.replace(/\%ivdef-judge\%/g, jdef);
+      if (outstr.includes("%ivspa%")) outstr = outstr.replace(/\%ivspa\%/g, ivspa);
+      if (outstr.includes("%ivspa-judge%"))
+        outstr = outstr.replace(/\%ivspa-judge\%/g, jspa);
+      if (outstr.includes("%ivspd%")) outstr = outstr.replace(/\%ivspd\%/g, ivspd);
+      if (outstr.includes("%ivspd-judge%"))
+        outstr = outstr.replace(/\%ivspd-judge\%/g, jspd);
+      if (outstr.includes("%ivspe%")) outstr = outstr.replace(/\%ivspe\%/g, ivspe);
+      if (outstr.includes("%ivspe-judge%"))
+        outstr = outstr.replace(/\%ivspe-judge\%/g, jspe);
+
+      // End custom parser logic
 
       var elem = document.createElement("div");
       elem.classList.add("card", "mb-3", "border-success");
@@ -247,7 +355,7 @@ permalink: /misc/pkparse/
 
       var cardTitle = document.createElement("div");
       cardTitle.classList.add("col", "col-10");
-      cardTitle.setAttribute("style", "padding-top: 0.375rem;")
+      cardTitle.setAttribute("style", "padding-top: 0.375rem;");
       cardTitle.textContent = fname;
       headerRow.appendChild(cardTitle);
 
@@ -266,25 +374,8 @@ permalink: /misc/pkparse/
 
       var cardBody = document.createElement("div");
       cardBody.classList.add("card-body");
-      cardBody.textContent = [
-        "Format: " + ext,
-        "Species: " + devid,
-        "Shiny: " + shiny,
-        "OT: " +
-          ot +
-          " (" +
-          (((ogval >= 30 & ogval <= 34) || (ogval >= 42))
-            ? tid7.toString().padStart(6, "0")
-            : tid.toString().padStart(5, "0")) +
-          " / " +
-          (((ogval >= 30 & ogval <= 34) || (ogval >= 42))
-            ? sid7.toString().padStart(4, "0")
-            : sid.toString().padStart(5, "0")) +
-          ")",
-        "Nature: " + nature,
-        "IVs: " + ivs.join("."),
-      ].join("\r\n");
-      cardBody.setAttribute("style", "white-space: pre;");
+      cardBody.textContent = outstr;
+      // cardBody.setAttribute("style", "white-space: pre;");
       elem.appendChild(cardBody);
 
       document.getElementById("results-container").appendChild(elem);
@@ -305,4 +396,6 @@ permalink: /misc/pkparse/
 <script type="text/javascript" src="./data/gender.js"></script>
 <script type="text/javascript" src="./data/originGame.js"></script>
 <script type="text/javascript" src="./data/species.js"></script>
+<script type="text/javascript" src="./data/shiny.js"></script>
 <script type="text/javascript" src="./data/utils.js"></script>
+<script type="text/javascript" src="./data/outputOptions.js"></script>
