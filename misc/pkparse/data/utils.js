@@ -23,6 +23,62 @@ function copyContent() {
   }, 1500);
 }
 
+function insertThis() {
+  var el = this;
+  el.setAttribute("title", "Inserted!");
+  var content = this.textContent;
+  document.getElementById("format").value += content;
+  var tip = new bootstrap.Tooltip(el);
+  tip.enable();
+  tip.show();
+  setTimeout(function () {
+    el.setAttribute("title", "");
+    tip.hide();
+    tip.disable();
+  }, 1500);
+}
+
+var colors = ["info", "danger", "warning", "secondary", "success"];
+
+function generateOutputOptions() {
+  var parent = document.getElementById("opts-container");
+  var keys = Object.keys(OUTPUT_OPTIONS);
+  var colorIndex = -1;
+  for (var i = 0; i < keys.length; i++) {
+    var k = keys[i];
+    var val = OUTPUT_OPTIONS[k];
+
+    if (!k.startsWith("%") && !k.startsWith("\\")) {
+      console.log(k);
+      colorIndex = Math.min(colorIndex + 1, colors.length - 1);
+      continue;
+    }
+
+    var row = document.createElement("div");
+    row.classList.add("row", "mb-3");
+
+    var col1 = document.createElement("div");
+    col1.classList.add("col", "col-3");
+
+    var col2 = document.createElement("div");
+    col2.classList.add("col", "col-9");
+    col2.textContent = val;
+
+    var btn = document.createElement("button");
+    btn.textContent = k;
+    btn.classList.add("btn", "btn-outline-" + colors[colorIndex]);
+
+    btn.addEventListener("click", insertThis);
+
+    col1.appendChild(btn);
+
+    row.appendChild(col1);
+    row.appendChild(col2);
+
+    parent.appendChild(row);
+  }
+}
+
 function generateCopyAllButton() {
   var el = document.createElement("div");
   el.classList.add("btn", "btn-success", "w-100");
