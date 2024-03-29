@@ -34,7 +34,7 @@ permalink: /misc/pkparse/
     class="form-control"
     id="format"
     name="format"
-    value="%species%%gmax%\t%shiny-type-symbol-long%\t%ot%\t%tid%\t%sid%\t%ivhp-judge%/%ivatk-judge%/%ivdef-judge%/%ivspa-judge%/%ivspd-judge%/%ivspe-judge%\t%ivhp%/%ivatk%/%ivdef%/%ivspa%/%ivspd%/%ivspe%\t%nature%\t%gender-symbol%\t\t%ball%\t\t%origingame%"
+    value="%species%%form%%gmax%\t%shiny-type-symbol-long%\t%ot%\t%tid%\t%sid%\t%ivhp-judge%/%ivatk-judge%/%ivdef-judge%/%ivspa-judge%/%ivspd-judge%/%ivspe-judge%\t%ivhp%/%ivatk%/%ivdef%/%ivspa%/%ivspd%/%ivspe%\t%nature%\t%gender-symbol%\t\t%ball%\t\t%origingame%"
   />
 </div>
 
@@ -96,6 +96,7 @@ permalink: /misc/pkparse/
       gmaxloc,
       ivsloc,
       natureloc,
+      formloc,
       statnatureloc,
       fatefulloc,
       genderloc,
@@ -119,6 +120,7 @@ permalink: /misc/pkparse/
         statnatureloc = 0x21;
         fatefulloc = 0x22;
         genderloc = 0x22;
+        formloc = 0x24;
         ivsloc = 0x8c;
         ogloc = 0xce;
         otloc = 0xf8;
@@ -141,6 +143,7 @@ permalink: /misc/pkparse/
         statnatureloc = 0x21;
         fatefulloc = 0x22;
         genderloc = 0x22;
+        formloc = 0x24;
         ogloc = 0xee;
         ivsloc = 0x94;
         otloc = 0x110;
@@ -165,6 +168,7 @@ permalink: /misc/pkparse/
         statnatureloc = 0x21;
         fatefulloc = 0x22;
         genderloc = 0x22;
+        formloc = 0x24;
         ivsloc = 0x8c;
         ogloc = 0xde;
         otloc = 0xf8;
@@ -186,6 +190,7 @@ permalink: /misc/pkparse/
         natureloc = 0x1c;
         fatefulloc = 0x1d;
         genderloc = 0x1d;
+        formloc = 0x1d;
         ivsloc = 0x74;
         otloc = 0xb0;
         ballloc = 0xdc;
@@ -207,6 +212,7 @@ permalink: /misc/pkparse/
         natureloc = 0x1c;
         fatefulloc = 0x1d;
         genderloc = 0x1d;
+        formloc = 0x1d;
         ivsloc = 0x74;
         otloc = 0xb0;
         ballloc = 0xdc;
@@ -226,6 +232,12 @@ permalink: /misc/pkparse/
       var species = gen === 9 ? getSpecies9(devid) : SPECIES[devid];
       var pid = data.getUint32(pidloc, true);
       var gmax = gmaxloc ? (data.getUint8(gmaxloc) & 16) !== 0 : false;
+      var formdata = data.getUint8(formloc);
+      var formval = gen <= 7 ? formdata >>> 3 : formdata;
+      var form =
+        formval > 0
+          ? FORMS[getNational9(devid)][formval].replace(species, "")
+          : "";
 
       var ability = data.getUint8(abilityloc);
       var abilitynum = data.getUint8(abilitynumloc) & 7; // & 7 not used in Gen 6 but has no effect on resulting value
@@ -308,7 +320,7 @@ permalink: /misc/pkparse/
       var outstr = document.getElementById("format").value?.toLowerCase();
       if (!outstr)
         outstr =
-          "%species%%gmax%\t%shiny-type-symbol-long%\t%ot%\t%tid%\t%sid%\t%ivhp-judge%/%ivatk-judge%/%ivdef-judge%/%ivspa-judge%/%ivspd-judge%/%ivspe-judge%\t%ivhp%/%ivatk%/%ivdef%/%ivspa%/%ivspd%/%ivspe%\t%nature%\t%gender-symbol%\t\t%ball%\t\t%origingame%";
+          "%species%%form%%gmax%\t%shiny-type-symbol-long%\t%ot%\t%tid%\t%sid%\t%ivhp-judge%/%ivatk-judge%/%ivdef-judge%/%ivspa-judge%/%ivspd-judge%/%ivspe-judge%\t%ivhp%/%ivatk%/%ivdef%/%ivspa%/%ivspd%/%ivspe%\t%nature%\t%gender-symbol%\t\t%ball%\t\t%origingame%";
 
       // Commence custom parser logic
       if (outstr.includes("\\t")) outstr = outstr.replace(/\\t/g, "\t");
@@ -321,6 +333,7 @@ permalink: /misc/pkparse/
         outstr = outstr.replace(/\%dex\%/g, getNational9(devid));
       if (outstr.includes("%species%"))
         outstr = outstr.replace(/\%species\%/g, species);
+      if (outstr.includes("%form%")) outstr = outstr.replace(/\%form\%/g, form);
       if (outstr.includes("%gmax%"))
         outstr = outstr.replace(/\%gmax\%/, gmax ? "-Gmax" : "");
 
@@ -522,4 +535,5 @@ permalink: /misc/pkparse/
 <script type="text/javascript" src="./data/species.js"></script>
 <script type="text/javascript" src="./data/shiny.js"></script>
 <script type="text/javascript" src="./data/type.js"></script>
+<script type="text/javascript" src="./data/form.js"></script>
 <script type="text/javascript" src="./data/utils.js"></script>
