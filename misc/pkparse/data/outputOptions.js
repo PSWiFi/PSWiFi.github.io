@@ -18,7 +18,7 @@ var OUTPUT_OPTIONS = {
 
   Met: "",
   "%origingame%": "Game in which the Pok\u{00e9}mon was met.",
-  "%ball%": "Name of the Pok\u{00e9}ball the \u{00e9}mon was caught in.",
+  "%ball%": "Name of the Pok\u{00e9}ball the Pok\u{00e9}mon was caught in.",
   "%ot%": "Name of the Pok\u{00e9}mon's Original Trainer.",
   "%tid%":
     "The Pok\u{00e9}mon's Trainer ID in the format of the game it was caught in, padded with leading zeroes.",

@@ -61,12 +61,12 @@ function generateOutputOptions() {
     col1.classList.add("col", "col-3");
 
     var col2 = document.createElement("div");
-    col2.classList.add("col", "col-9");
+    col2.classList.add("col", "col-9", "text-center");
     col2.textContent = val;
 
     var btn = document.createElement("button");
     btn.textContent = k;
-    btn.classList.add("btn", "btn-outline-" + colors[colorIndex]);
+    btn.classList.add("btn", "btn-outline-" + colors[colorIndex], "w-100");
 
     btn.addEventListener("click", insertThis);
 
