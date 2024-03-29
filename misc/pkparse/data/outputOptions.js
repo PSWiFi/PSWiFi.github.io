@@ -1,6 +1,6 @@
 var OUTPUT_OPTIONS = {
   // More soon uwu
-  // Hidden Power, Moves, EVs, TeraType
+  // Moves, EVs, TeraType
   // See https://docs.google.com/spreadsheets/d/14ARJEcfeHLAgLmximvjJkE-2iud1xYuFpgSLKJNNwKo/edit?usp=sharing for all required fields
 
   Special: "",
@@ -115,4 +115,6 @@ var OUTPUT_OPTIONS = {
     'The Pok\u{00e9}mon\'s Speed IV as a number, or "HT" if Speed is Hyper Trained.',
   "%ivspe-judge-ht%":
     'The Pok\u{00e9}mon\'s Speed IV as a shortened version of the Judge evaluation, or "HT" if Speed is Hyper Trained.',
+  "%hp-type%": "The Type of the move Hidden Power when used by this Pok\u{00e9}mon.",
+  "%hp-power%": "The Base Power of the move Hidden Power when used by this Pok\u{00e9}mon.",
 };
