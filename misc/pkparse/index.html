@@ -235,7 +235,7 @@ permalink: /misc/pkparse/
       var formdata = data.getUint8(formloc);
       var formval = gen <= 7 ? formdata >>> 3 : formdata;
       var form =
-        formval > 0
+        formval > 0 || devid === 666 || devid === 774 // Vivillon and Minior need special handling because of course they do
           ? FORMS[getNational9(devid)][formval].replace(species, "")
           : "";
 
