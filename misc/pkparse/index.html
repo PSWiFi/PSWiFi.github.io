@@ -258,6 +258,10 @@ permalink: /misc/pkparse/
         : nature;
       var gender = (data.getUint8(genderloc) >>> (gen === 8 ? 2 : 1)) & 0x3;
       var iv32 = data.getUint32(ivsloc, true);
+
+      var hpType = calcHPType(iv32);
+      var hpPower = calcHPPower(iv32);
+
       var ivs = [
         (iv32 >>> 0) & 0x1f,
         (iv32 >>> 5) & 0x1f,
@@ -456,6 +460,10 @@ permalink: /misc/pkparse/
         outstr = outstr.replace(/\%ivspe-ht\%/g, ivspeht);
       if (outstr.includes("%ivspe-judge-ht%"))
         outstr = outstr.replace(/\%ivspe-judge-ht\%/g, jspeht);
+      if (outstr.includes("%hp-type"))
+        outstr = outstr.replace(/\%hp-type\%/, hpType);
+      if (outstr.includes("%hp-power"))
+        outstr = outstr.replace(/\%hp-power\%/, hpPower);
 
       // End custom parser logic
 
@@ -513,4 +521,5 @@ permalink: /misc/pkparse/
 <script type="text/javascript" src="./data/originGame.js"></script>
 <script type="text/javascript" src="./data/species.js"></script>
 <script type="text/javascript" src="./data/shiny.js"></script>
+<script type="text/javascript" src="./data/type.js"></script>
 <script type="text/javascript" src="./data/utils.js"></script>

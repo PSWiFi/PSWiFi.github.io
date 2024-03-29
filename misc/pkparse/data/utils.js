@@ -96,6 +96,31 @@ function generateCopyAllButton() {
   el.addEventListener("click", copyContent);
 }
 
+var hpIdx = [
+  0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5,
+  6, 6, 6, 6, 7, 7, 7, 7, 8, 8, 8, 8, 9, 9, 9, 9, 10, 10, 10, 10, 10, 11, 11,
+  11, 11, 12, 12, 12, 12, 13, 13, 13, 13, 14, 14, 14, 14, 15,
+];
+
+function calcHPType(iv32) {
+  var bin = 0;
+  for (var i = 0; i < 6; i++) {
+    bin |= (iv32 & 1) << i;
+    iv32 >>>= 5;
+  }
+  var typeIdx = hpIdx[bin];
+  return TYPES[typeIdx + 1]; // HP Type can't be Normal so add 1
+}
+
+function calcHPPower(iv32) {
+  var bin = 0;
+  for (var i = 0; i < 6; i++) {
+    bin |= (iv32 & 3) > 1 ? 1 << i : 0;
+    iv32 >>>= 5;
+  }
+  return ~~((bin * 40) / 63) + 30;
+}
+
 function roman(num) {
   if (num < 1) {
     return "";
