@@ -341,14 +341,14 @@ permalink: /misc/pkparse/
       if (outstr.includes("%shiny-type-symbol-upper%"))
         outstr = outstr.replace(
           /\%shiny-type-symbol-upper\%/g,
-          SHINY_SYMBOL[shinytype].toUpperCase()
+          toTitleCase(SHINY_SYMBOL[shinytype])
         );
       if (outstr.includes("%shiny-type-long%"))
         outstr = outstr.replace(/\%shiny-type-long\%/g, SHINY_LONG[shinytype]);
       if (outstr.includes("%shiny-type-long-upper%"))
         outstr = outstr.replace(
           /\%shiny-type-long-upper\%/g,
-          SHINY_LONG[shinytype].toUpperCase()
+          toTitleCase(SHINY_LONG[shinytype])
         );
       if (outstr.includes("%shiny-type-symbol-long%"))
         outstr = outstr.replace(
@@ -358,7 +358,7 @@ permalink: /misc/pkparse/
       if (outstr.includes("%shiny-type-symbol-long-upper%"))
         outstr = outstr.replace(
           /\%shiny-type-symbol-long-upper\%/g,
-          SHINY_SYMBOL_LONG[shinytype].toUpperCase()
+          toTitleCase(SHINY_SYMBOL_LONG[shinytype])
         );
       if (outstr.includes("%nature%"))
         outstr = outstr.replace(/\%nature\%/g, nature);
