@@ -34,7 +34,7 @@ permalink: /misc/pkparse/
     class="form-control"
     id="format"
     name="format"
-    value="%species%\t%shiny-type-symbol-long%\t%ot%\t%tid%\t%sid%\t%ivhp-judge%/%ivatk-judge%/%ivdef-judge%/%ivspa-judge%/%ivspd-judge%/%ivspe-judge%\t%ivhp%/%ivatk%/%ivdef%/%ivspa%/%ivspd%/%ivspe%\t%nature%\t%gender-symbol%\t\t%ball%\t\t%origingame%"
+    value="%species%%gmax%\t%shiny-type-symbol-long%\t%ot%\t%tid%\t%sid%\t%ivhp-judge%/%ivatk-judge%/%ivdef-judge%/%ivspa-judge%/%ivspd-judge%/%ivspe-judge%\t%ivhp%/%ivatk%/%ivdef%/%ivspa%/%ivspd%/%ivspe%\t%nature%\t%gender-symbol%\t\t%ball%\t\t%origingame%"
   />
 </div>
 
@@ -67,6 +67,7 @@ permalink: /misc/pkparse/
       speciesloc,
       otloc,
       idsloc,
+      gmaxloc,
       ivsloc,
       natureloc,
       fatefulloc,
@@ -120,6 +121,7 @@ permalink: /misc/pkparse/
           );
         speciesloc = 0x08;
         idsloc = 0x0c;
+        gmaxloc = 0x16;
         pidloc = 0x1c;
         natureloc = 0x20;
         fatefulloc = 0x22;
@@ -178,6 +180,7 @@ permalink: /misc/pkparse/
       var devid = data.getUint16(speciesloc, true);
       var species = gen === 9 ? getSpecies9(devid) : SPECIES[devid];
       var pid = data.getUint32(pidloc, true);
+      var gmax = gmaxloc ? (data.getUint8(gmaxloc) & 16) !== 0 : false;
       var ids = data.getUint32(idsloc, true);
       var tid5 = ids & 0xffff;
       var sid5 = ids >>> 16;
@@ -231,7 +234,7 @@ permalink: /misc/pkparse/
       var outstr = document.getElementById("format").value?.toLowerCase();
       if (!outstr)
         outstr =
-          "%species%\t%shiny-type-symbol-long%\t%ot%\t%tid%\t%sid%\t%ivhp-judge%/%ivatk-judge%/%ivdef-judge%/%ivspa-judge%/%ivspd-judge%/%ivspe-judge%\t%ivhp%/%ivatk%/%ivdef%/%ivspa%/%ivspd%/%ivspe%\t%nature%\t%gender-symbol%\t\t%ball%\t\t%origingame%";
+          "%species%%gmax%\t%shiny-type-symbol-long%\t%ot%\t%tid%\t%sid%\t%ivhp-judge%/%ivatk-judge%/%ivdef-judge%/%ivspa-judge%/%ivspd-judge%/%ivspe-judge%\t%ivhp%/%ivatk%/%ivdef%/%ivspa%/%ivspd%/%ivspe%\t%nature%\t%gender-symbol%\t\t%ball%\t\t%origingame%";
 
       // Commence custom parser logic
       if (outstr.includes("\\t")) outstr = outstr.replace(/\\t/g, "\t");
@@ -244,6 +247,8 @@ permalink: /misc/pkparse/
         outstr = outstr.replace(/\%dex\%/g, getNational9(devid));
       if (outstr.includes("%species%"))
         outstr = outstr.replace(/\%species\%/g, species);
+      if (outstr.includes("%gmax%"))
+        outstr = outstr.replace(/\%gmax\%/, gmax ? "-Gmax" : "");
 
       if (outstr.includes("%origingame%"))
         outstr = outstr.replace(/\%origingame\%/g, origingame);
@@ -323,19 +328,24 @@ permalink: /misc/pkparse/
       if (outstr.includes("%ivhp%")) outstr = outstr.replace(/\%ivhp\%/g, ivhp);
       if (outstr.includes("%ivhp-judge%"))
         outstr = outstr.replace(/\%ivhp-judge\%/g, jhp);
-      if (outstr.includes("%ivatk%")) outstr = outstr.replace(/\%ivatk\%/g, ivatk);
+      if (outstr.includes("%ivatk%"))
+        outstr = outstr.replace(/\%ivatk\%/g, ivatk);
       if (outstr.includes("%ivatk-judge%"))
         outstr = outstr.replace(/\%ivatk-judge\%/g, jatk);
-      if (outstr.includes("%ivdef%")) outstr = outstr.replace(/\%ivdef\%/g, ivdef);
+      if (outstr.includes("%ivdef%"))
+        outstr = outstr.replace(/\%ivdef\%/g, ivdef);
       if (outstr.includes("%ivdef-judge%"))
         outstr = outstr.replace(/\%ivdef-judge\%/g, jdef);
-      if (outstr.includes("%ivspa%")) outstr = outstr.replace(/\%ivspa\%/g, ivspa);
+      if (outstr.includes("%ivspa%"))
+        outstr = outstr.replace(/\%ivspa\%/g, ivspa);
       if (outstr.includes("%ivspa-judge%"))
         outstr = outstr.replace(/\%ivspa-judge\%/g, jspa);
-      if (outstr.includes("%ivspd%")) outstr = outstr.replace(/\%ivspd\%/g, ivspd);
+      if (outstr.includes("%ivspd%"))
+        outstr = outstr.replace(/\%ivspd\%/g, ivspd);
       if (outstr.includes("%ivspd-judge%"))
         outstr = outstr.replace(/\%ivspd-judge\%/g, jspd);
-      if (outstr.includes("%ivspe%")) outstr = outstr.replace(/\%ivspe\%/g, ivspe);
+      if (outstr.includes("%ivspe%"))
+        outstr = outstr.replace(/\%ivspe\%/g, ivspe);
       if (outstr.includes("%ivspe-judge%"))
         outstr = outstr.replace(/\%ivspe-judge\%/g, jspe);
 
