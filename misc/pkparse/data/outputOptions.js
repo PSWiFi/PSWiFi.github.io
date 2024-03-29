@@ -13,7 +13,8 @@ var OUTPUT_OPTIONS = {
   "%dex%":
     "National Pok\u{00e9}dex number of the Pok\u{00e9}mon, padded to 4 digits with leading zeroes.",
   "%species%": "Species name of the Pok\u{00e9}mon.",
-  // "%form%": 'Appends the form name of the Pok\u{00e9}mon preceeded by a hyphen if it has one, blank if it does not.', -- soontm
+  "%form%":
+    "Appends the form name of the Pok\u{00e9}mon preceeded by a hyphen if it has one, blank if it does not.",
   "%gmax%": '"-Gmax" if the Pok\u{00e9}mon can Gigantamax, blank if it can\'t.',
 
   Met: "",
@@ -115,6 +116,8 @@ var OUTPUT_OPTIONS = {
     'The Pok\u{00e9}mon\'s Speed IV as a number, or "HT" if Speed is Hyper Trained.',
   "%ivspe-judge-ht%":
     'The Pok\u{00e9}mon\'s Speed IV as a shortened version of the Judge evaluation, or "HT" if Speed is Hyper Trained.',
-  "%hp-type%": "The Type of the move Hidden Power when used by this Pok\u{00e9}mon.",
-  "%hp-power%": "The Base Power of the move Hidden Power when used by this Pok\u{00e9}mon.",
+  "%hp-type%":
+    "The Type of the move Hidden Power when used by this Pok\u{00e9}mon.",
+  "%hp-power%":
+    "The Base Power of the move Hidden Power when used by this Pok\u{00e9}mon.",
 };
