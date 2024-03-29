@@ -63,10 +63,12 @@ permalink: /misc/pkparse/
     var ext = fname.substring(fname.lastIndexOf("."));
 
     var gen,
+      idsloc,
+      abilityloc,
+      abilitynumloc,
       pidloc,
       speciesloc,
       otloc,
-      idsloc,
       gmaxloc,
       ivsloc,
       natureloc,
@@ -84,6 +86,8 @@ permalink: /misc/pkparse/
           );
         speciesloc = 0x08;
         idsloc = 0x0c;
+        abilityloc = 0x14;
+        abilitynumloc = 0x16;
         pidloc = 0x1c;
         natureloc = 0x20;
         fatefulloc = 0x22;
@@ -102,6 +106,8 @@ permalink: /misc/pkparse/
           );
         speciesloc = 0x08;
         idsloc = 0x0c;
+        abilityloc = 0x14;
+        abilitynumloc = 0x16;
         pidloc = 0x1c;
         natureloc = 0x20;
         fatefulloc = 0x22;
@@ -121,6 +127,8 @@ permalink: /misc/pkparse/
           );
         speciesloc = 0x08;
         idsloc = 0x0c;
+        abilityloc = 0x14;
+        abilitynumloc = 0x16;
         gmaxloc = 0x16;
         pidloc = 0x1c;
         natureloc = 0x20;
@@ -140,6 +148,8 @@ permalink: /misc/pkparse/
           );
         speciesloc = 0x08;
         idsloc = 0x0c;
+        abilityloc = 0x14;
+        abilitynumloc = 0x15;
         pidloc = 0x18;
         natureloc = 0x1c;
         fatefulloc = 0x1d;
@@ -158,6 +168,8 @@ permalink: /misc/pkparse/
           );
         speciesloc = 0x08;
         idsloc = 0x0c;
+        abilityloc = 0x14;
+        abilitynumloc = 0x15;
         pidloc = 0x18;
         natureloc = 0x1c;
         fatefulloc = 0x1d;
@@ -181,6 +193,10 @@ permalink: /misc/pkparse/
       var species = gen === 9 ? getSpecies9(devid) : SPECIES[devid];
       var pid = data.getUint32(pidloc, true);
       var gmax = gmaxloc ? (data.getUint8(gmaxloc) & 16) !== 0 : false;
+
+      var ability = data.getUint8(abilityloc);
+      var abilitynum = data.getUint8(abilitynumloc) & 7; // & 7 not used in Gen 6 but has no effect on resulting value
+
       var ids = data.getUint32(idsloc, true);
       var tid5 = ids & 0xffff;
       var sid5 = ids >>> 16;
@@ -324,6 +340,18 @@ permalink: /misc/pkparse/
         );
       if (outstr.includes("%nature%"))
         outstr = outstr.replace(/\%nature\%/g, nature);
+      if (outstr.includes("%ability%"))
+        outstr = outstr.replace(/\%ability\%/g, ABILITIES[ability]);
+      if (outstr.includes("%abilitynum%"))
+        outstr = outstr.replace(
+          /\%abilitynum\%/g,
+          abilitynum === 4 ? "h" : abilitynum
+        );
+      if (outstr.includes("%abilitynum-upper%"))
+        outstr = outstr.replace(
+          /\%abilitynum-upper\%/g,
+          abilitynum === 4 ? "H" : abilitynum
+        );
 
       if (outstr.includes("%ivhp%")) outstr = outstr.replace(/\%ivhp\%/g, ivhp);
       if (outstr.includes("%ivhp-judge%"))
@@ -397,6 +425,7 @@ permalink: /misc/pkparse/
   }
 </script>
 <script type="text/javascript" src="./data/size.js"></script>
+<script type="text/javascript" src="./data/ability.js"></script>
 <script type="text/javascript" src="./data/nature.js"></script>
 <script type="text/javascript" src="./data/ball.js"></script>
 <script type="text/javascript" src="./data/gender.js"></script>

@@ -1,6 +1,6 @@
 var OUTPUT_OPTIONS = {
   // More soon uwu
-  // Hidden Power, Moves, Abilities, EVs, TeraType
+  // Hidden Power, Moves, EVs, TeraType
   // See https://docs.google.com/spreadsheets/d/14ARJEcfeHLAgLmximvjJkE-2iud1xYuFpgSLKJNNwKo/edit?usp=sharing for all required fields
 
   /* Special */
@@ -10,7 +10,8 @@ var OUTPUT_OPTIONS = {
   /* Meta */
   "%gen%": "Current Generation of the *.pkm file as a number.",
   "%gen-roman%": "Current Generation of the *.pkm file as a roman numeral.",
-  "%dex%": "National Pok\u{00e9}dex number of the Pok\u{00e9}mon, padded to 4 digits with leading zeroes.",
+  "%dex%":
+    "National Pok\u{00e9}dex number of the Pok\u{00e9}mon, padded to 4 digits with leading zeroes.",
   "%species%": "Species name of the Pok\u{00e9}mon.",
   // "%form%": 'Appends the form name of the Pok\u{00e9}mon preceeded by a hyphen if it has one, blank if it does not.', -- soontm
   "%gmax%": '"-Gmax" is the Pok\u{00e9}mon can Gigantamax, blank if it can\'t.',
@@ -59,6 +60,11 @@ var OUTPUT_OPTIONS = {
   "%nature%": "Nature the Pok\u{00e9}mon had when it was captured.",
   // "%nature-minted%":                                                                                       -- soontm
   //  "The Nature currently affecting the Pok\u{00e9}mon's stats (identical to %nature% if prior to Gen 8).", -- soontm
+  "%ability%": "The Pok\u{00e9}mon's Ability.",
+  "%abilitynum%":
+    'The Pok\u{00e9}mon\'s Ability Number ("1" for Ability 1, "2" for Ability 2, or "h" for Hidden Ability).',
+  "%abilitynum-upper%":
+    'The Pok\u{00e9}mon\'s Ability Number ("1" for Ability 1, "2" for Ability 2, or "H" for Hidden Ability).',
 
   /* IVs */
   "%ivhp%":
