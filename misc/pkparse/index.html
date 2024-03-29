@@ -201,10 +201,7 @@ permalink: /misc/pkparse/
           ? 1
           : 0;
       var nature = NATURES[data.getUint8(natureloc)];
-      var gender =
-        (gen === 8
-          ? (data.getUint8(gender) >>> 2) & 0x3
-          : (data.getUint8(gender) >>> 1) & 0x3) % 3;
+      var gender = (data.getUint8(genderloc) >>> (gen === 8 ? 2 : 1)) & 0x3;
       var iv32 = data.getUint32(ivsloc, true);
       var ivs = [
         (iv32 >>> 0) & 0x1f,
@@ -375,7 +372,6 @@ permalink: /misc/pkparse/
       var cardBody = document.createElement("div");
       cardBody.classList.add("card-body");
       cardBody.textContent = outstr;
-      // cardBody.setAttribute("style", "white-space: pre;");
       elem.appendChild(cardBody);
 
       document.getElementById("results-container").appendChild(elem);
