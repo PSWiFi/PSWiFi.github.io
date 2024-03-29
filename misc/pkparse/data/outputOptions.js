@@ -13,7 +13,7 @@ var OUTPUT_OPTIONS = {
   "%dex%": "National Pok\u{00e9}dex number of the Pok\u{00e9}mon, padded to 4 digits with leading zeroes.",
   "%species%": "Species name of the Pok\u{00e9}mon.",
   // "%form%": 'Appends the form name of the Pok\u{00e9}mon preceeded by a hyphen if it has one, blank if it does not.', -- soontm
-  // "%gmax%": '"-Gmax" is the Pok\u{00e9}mon can Gigantamax, blank if it can\'t.',                                      -- soontm
+  "%gmax%": '"-Gmax" is the Pok\u{00e9}mon can Gigantamax, blank if it can\'t.',
 
   /* Met */
   "%origingame%": "Game in which the Pok\u{00e9}mon was met.",
