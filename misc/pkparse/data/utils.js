@@ -49,7 +49,6 @@ function generateOutputOptions() {
     var val = OUTPUT_OPTIONS[k];
 
     if (!k.startsWith("%") && !k.startsWith("\\")) {
-      console.log(k);
       colorIndex = Math.min(colorIndex + 1, colors.length - 1);
       continue;
     }
@@ -119,4 +118,8 @@ function roman(num) {
   if (num >= 1) {
     return "I" + roman(num - 1);
   }
+}
+
+function toTitleCase(text) {
+  return text.charAt(0).toUpperCase() + text.substr(1).toLowerCase();
 }
