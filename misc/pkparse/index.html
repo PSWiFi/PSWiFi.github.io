@@ -51,10 +51,12 @@ permalink: /misc/pkparse/
   </button>
   <div class="collapse" id="opts-collapse">
     <div class="card card-body" id="opts-container">
-      <!-- Generated Dynamically -->
+      <!-- Generated dynamically, see generateOutputOptions() in /data/utils.js -->
     </div>
   </div>
 </div>
+
+<hr />
 
 <div id="results-container"></div>
 
@@ -94,10 +96,12 @@ permalink: /misc/pkparse/
       gmaxloc,
       ivsloc,
       natureloc,
+      statnatureloc,
       fatefulloc,
       genderloc,
       ballloc,
-      ogloc;
+      ogloc,
+      htflagsloc;
 
     // Sanity check file sizes and get offsets
     switch (ext) {
@@ -112,12 +116,14 @@ permalink: /misc/pkparse/
         abilitynumloc = 0x16;
         pidloc = 0x1c;
         natureloc = 0x20;
+        statnatureloc = 0x21;
         fatefulloc = 0x22;
         genderloc = 0x22;
         ivsloc = 0x8c;
+        ogloc = 0xce;
         otloc = 0xf8;
         ballloc = 0x124;
-        ogloc = 0xce;
+        htflagsloc = 0x126;
         gen = 9;
         break;
 
@@ -132,12 +138,14 @@ permalink: /misc/pkparse/
         abilitynumloc = 0x16;
         pidloc = 0x1c;
         natureloc = 0x20;
+        statnatureloc = 0x21;
         fatefulloc = 0x22;
         genderloc = 0x22;
+        ogloc = 0xee;
         ivsloc = 0x94;
         otloc = 0x110;
         ballloc = 0x137;
-        ogloc = 0xee;
+        htflagsloc = 0x13e;
         gen = 8;
         break;
 
@@ -154,12 +162,14 @@ permalink: /misc/pkparse/
         gmaxloc = 0x16;
         pidloc = 0x1c;
         natureloc = 0x20;
+        statnatureloc = 0x21;
         fatefulloc = 0x22;
         genderloc = 0x22;
         ivsloc = 0x8c;
+        ogloc = 0xde;
         otloc = 0xf8;
         ballloc = 0x124;
-        ogloc = 0xde;
+        htflagsloc = 0x126;
         gen = 8;
         break;
 
@@ -179,6 +189,7 @@ permalink: /misc/pkparse/
         ivsloc = 0x74;
         otloc = 0xb0;
         ballloc = 0xdc;
+        htflagsloc = 0xde;
         ogloc = 0xdf;
         gen = 7;
         break;
@@ -242,6 +253,9 @@ permalink: /misc/pkparse/
           ? 1
           : 0;
       var nature = NATURES[data.getUint8(natureloc)];
+      var statnature = statnatureloc
+        ? NATURES[data.getUint8(statnatureloc)]
+        : nature;
       var gender = (data.getUint8(genderloc) >>> (gen === 8 ? 2 : 1)) & 0x3;
       var iv32 = data.getUint32(ivsloc, true);
       var ivs = [
@@ -262,8 +276,26 @@ permalink: /misc/pkparse/
         else if (j >= 1) judge.push("D");
         else judge.push("NG");
       }
+      var htFlags = htflagsloc ? data.getUint8(htflagsloc) : 0;
+      var ht = [
+        ((htFlags >> 0) & 1) == 1,
+        ((htFlags >> 1) & 1) == 1,
+        ((htFlags >> 2) & 1) == 1,
+        ((htFlags >> 3) & 1) == 1,
+        ((htFlags >> 4) & 1) == 1,
+        ((htFlags >> 5) & 1) == 1,
+      ];
       var [ivhp, ivatk, ivdef, ivspa, ivspd, ivspe] = ivs;
       var [jhp, jatk, jdef, jspa, jspd, jspe] = judge;
+      var ivsht = [];
+      var jht = [];
+      for (var i = 0; i < ht.length; i++) {
+        var isht = ht[i];
+        ivsht.push(isht ? "HT" : ivs[i]);
+        jht.push(isht ? "HT" : judge[i]);
+      }
+      var [ivhpht, ivatkht, ivdefht, ivspaht, ivspdht, ivspeht] = ivsht;
+      var [jhpht, jatkht, jdefht, jspaht, jspdht, jspeht] = jht;
 
       var ball = BALLS[data.getUint8(ballloc)];
       var ogval = data.getUint8(ogloc);
@@ -362,6 +394,8 @@ permalink: /misc/pkparse/
         );
       if (outstr.includes("%nature%"))
         outstr = outstr.replace(/\%nature\%/g, nature);
+      if (outstr.includes("%nature-minted%"))
+        outstr = outstr.replace(/\%nature-minted\%/g, statnature);
       if (outstr.includes("%ability%"))
         outstr = outstr.replace(/\%ability\%/g, ABILITIES[ability]);
       if (outstr.includes("%abilitynum%"))
@@ -378,26 +412,50 @@ permalink: /misc/pkparse/
       if (outstr.includes("%ivhp%")) outstr = outstr.replace(/\%ivhp\%/g, ivhp);
       if (outstr.includes("%ivhp-judge%"))
         outstr = outstr.replace(/\%ivhp-judge\%/g, jhp);
+      if (outstr.includes("%ivhp-ht%"))
+        outstr = outstr.replace(/\%ivhp-ht\%/g, ivhpht);
+      if (outstr.includes("%ivhp-judge-ht%"))
+        outstr = outstr.replace(/\%ivhp-judge-ht\%/g, jhpht);
       if (outstr.includes("%ivatk%"))
         outstr = outstr.replace(/\%ivatk\%/g, ivatk);
       if (outstr.includes("%ivatk-judge%"))
         outstr = outstr.replace(/\%ivatk-judge\%/g, jatk);
+      if (outstr.includes("%ivatk-ht%"))
+        outstr = outstr.replace(/\%ivatk-ht\%/g, ivatkht);
+      if (outstr.includes("%ivatk-judge-ht%"))
+        outstr = outstr.replace(/\%ivatk-judge-ht\%/g, jatkht);
       if (outstr.includes("%ivdef%"))
         outstr = outstr.replace(/\%ivdef\%/g, ivdef);
       if (outstr.includes("%ivdef-judge%"))
         outstr = outstr.replace(/\%ivdef-judge\%/g, jdef);
+      if (outstr.includes("%ivdef-ht%"))
+        outstr = outstr.replace(/\%ivdef-ht\%/g, ivdefht);
+      if (outstr.includes("%ivdef-judge-ht%"))
+        outstr = outstr.replace(/\%ivdef-judge-ht\%/g, jdefht);
       if (outstr.includes("%ivspa%"))
         outstr = outstr.replace(/\%ivspa\%/g, ivspa);
       if (outstr.includes("%ivspa-judge%"))
         outstr = outstr.replace(/\%ivspa-judge\%/g, jspa);
+      if (outstr.includes("%ivspa-ht%"))
+        outstr = outstr.replace(/\%ivspa-ht\%/g, ivspaht);
+      if (outstr.includes("%ivspa-judge-ht%"))
+        outstr = outstr.replace(/\%ivspa-judge-ht\%/g, jspaht);
       if (outstr.includes("%ivspd%"))
         outstr = outstr.replace(/\%ivspd\%/g, ivspd);
       if (outstr.includes("%ivspd-judge%"))
         outstr = outstr.replace(/\%ivspd-judge\%/g, jspd);
+      if (outstr.includes("%ivspd-ht%"))
+        outstr = outstr.replace(/\%ivspd-ht\%/g, ivspdht);
+      if (outstr.includes("%ivspd-judge-ht%"))
+        outstr = outstr.replace(/\%ivspd-judge-ht\%/g, jspdht);
       if (outstr.includes("%ivspe%"))
         outstr = outstr.replace(/\%ivspe\%/g, ivspe);
       if (outstr.includes("%ivspe-judge%"))
         outstr = outstr.replace(/\%ivspe-judge\%/g, jspe);
+      if (outstr.includes("%ivspe-ht%"))
+        outstr = outstr.replace(/\%ivspe-ht\%/g, ivspeht);
+      if (outstr.includes("%ivspe-judge-ht%"))
+        outstr = outstr.replace(/\%ivspe-judge-ht\%/g, jspeht);
 
       // End custom parser logic
 
