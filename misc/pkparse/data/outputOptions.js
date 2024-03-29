@@ -4,8 +4,8 @@ var OUTPUT_OPTIONS = {
   // See https://docs.google.com/spreadsheets/d/14ARJEcfeHLAgLmximvjJkE-2iud1xYuFpgSLKJNNwKo/edit?usp=sharing for all required fields
 
   Special: "",
-  "\\t": "Inserts a Tab character.",
-  "\\n": "Inserts a Newline character.",
+  "\\t": "Inserts a Tab character (goes to the next column in a spreadsheet).",
+  "\\n": "Inserts a Newline character (goes to the next row in a spreadsheet).",
 
   Meta: "",
   "%gen%": "Current Generation of the *.pkm file as a number.",
