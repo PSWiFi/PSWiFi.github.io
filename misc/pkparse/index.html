@@ -27,7 +27,7 @@ permalink: /misc/pkparse/
   />
 </div>
 
-<div class="mb-3">
+<div class="mb-2">
   <label for="format">Output format:</label>
   <input
     type="text"
@@ -38,11 +38,33 @@ permalink: /misc/pkparse/
   />
 </div>
 
+<div class="mb-3">
+  <button
+    class="btn btn-primary w-100"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#opts-collapse"
+    aria-expanded="false"
+    aria-controls="opts-collapse"
+  >
+    All Output Options...
+  </button>
+  <div class="collapse" id="opts-collapse">
+    <div class="card card-body" id="opts-container">
+      <!-- Generated Dynamically -->
+    </div>
+  </div>
+</div>
+
 <div id="results-container"></div>
 
 <script>
   var e = document.getElementById("formFile");
   e.addEventListener("change", handleUpload);
+
+  $(document).ready(function () {
+    generateOutputOptions();
+  });
 
   function handleUpload() {
     var container = document.getElementById("results-container");
@@ -424,6 +446,7 @@ permalink: /misc/pkparse/
     }, delay);
   }
 </script>
+<script type="text/javascript" src="./data/outputOptions.js"></script>
 <script type="text/javascript" src="./data/size.js"></script>
 <script type="text/javascript" src="./data/ability.js"></script>
 <script type="text/javascript" src="./data/nature.js"></script>
@@ -433,4 +456,3 @@ permalink: /misc/pkparse/
 <script type="text/javascript" src="./data/species.js"></script>
 <script type="text/javascript" src="./data/shiny.js"></script>
 <script type="text/javascript" src="./data/utils.js"></script>
-<script type="text/javascript" src="./data/outputOptions.js"></script>

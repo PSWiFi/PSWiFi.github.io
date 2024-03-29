@@ -3,11 +3,11 @@ var OUTPUT_OPTIONS = {
   // Hidden Power, Moves, EVs, TeraType
   // See https://docs.google.com/spreadsheets/d/14ARJEcfeHLAgLmximvjJkE-2iud1xYuFpgSLKJNNwKo/edit?usp=sharing for all required fields
 
-  /* Special */
+  Special: "",
   "\\t": "Inserts a Tab character.",
   "\\n": "Inserts a Newline character.",
 
-  /* Meta */
+  Meta: "",
   "%gen%": "Current Generation of the *.pkm file as a number.",
   "%gen-roman%": "Current Generation of the *.pkm file as a roman numeral.",
   "%dex%":
@@ -16,7 +16,7 @@ var OUTPUT_OPTIONS = {
   // "%form%": 'Appends the form name of the Pok\u{00e9}mon preceeded by a hyphen if it has one, blank if it does not.', -- soontm
   "%gmax%": '"-Gmax" is the Pok\u{00e9}mon can Gigantamax, blank if it can\'t.',
 
-  /* Met */
+  Met: "",
   "%origingame%": "Game in which the Pok\u{00e9}mon was met.",
   "%ball%": "Name of the Pok\u{00e9}ball the \u{00e9}mon was caught in.",
   "%ot%": "Name of the Pok\u{00e9}mon's Original Trainer.",
@@ -35,7 +35,7 @@ var OUTPUT_OPTIONS = {
   "%gender-symbol%":
     '"♂" if the Pok\u{00e9}mon is Male, "♀" if it is Female, "⚲" if it is Unknown.',
 
-  /* Info */
+  Info: "",
   "%pid%":
     "The Pok\u{00e9}mon's Personality ID as an 8-digit lowercase hex string.",
   "%pid-upper%":
@@ -66,7 +66,7 @@ var OUTPUT_OPTIONS = {
   "%abilitynum-upper%":
     'The Pok\u{00e9}mon\'s Ability Number ("1" for Ability 1, "2" for Ability 2, or "H" for Hidden Ability).',
 
-  /* IVs */
+  Stats: "",
   "%ivhp%":
     "The Pok\u{00e9}mon's HP IV as a number (does not take into account Hyper Training).",
   "%ivhp-judge%":
