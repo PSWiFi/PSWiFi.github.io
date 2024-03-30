@@ -1,6 +1,6 @@
 var OUTPUT_OPTIONS = {
   // More soon uwu
-  // Moves, EVs, TeraType
+  // Moves, EVs
   // See https://docs.google.com/spreadsheets/d/14ARJEcfeHLAgLmximvjJkE-2iud1xYuFpgSLKJNNwKo/edit?usp=sharing for all required fields
 
   Special: "",
@@ -8,17 +8,17 @@ var OUTPUT_OPTIONS = {
   "\\n": "Inserts a Newline character (goes to the next row in a spreadsheet).",
 
   Meta: "",
-  "%gen%": "Current Generation of the *.pkm file as a number.",
-  "%gen-roman%": "Current Generation of the *.pkm file as a roman numeral.",
+  "%gen%": "The current Generation of the *.pkm file as a number.",
+  "%gen-roman%": "The current Generation of the *.pkm file as a roman numeral.",
   "%dex%":
-    "National Pok\u{00e9}dex number of the Pok\u{00e9}mon, padded to 4 digits with leading zeroes.",
+    "The National Pok\u{00e9}dex number of the Pok\u{00e9}mon, padded to 4 digits with leading zeroes.",
   "%species%": "Species name of the Pok\u{00e9}mon.",
   "%form%":
     "Appends the form name of the Pok\u{00e9}mon preceeded by a hyphen if it has one, blank if it does not.",
   "%gmax%": '"-Gmax" if the Pok\u{00e9}mon can Gigantamax, blank if it can\'t.',
 
   Met: "",
-  "%origingame%": "Game in which the Pok\u{00e9}mon was met.",
+  "%origingame%": "The game in which the Pok\u{00e9}mon was met.",
   "%ball%": "Name of the Pok\u{00e9}ball the Pok\u{00e9}mon was caught in.",
   "%ot%": "Name of the Pok\u{00e9}mon's Original Trainer.",
   "%tid%":
@@ -66,6 +66,7 @@ var OUTPUT_OPTIONS = {
     'The Pok\u{00e9}mon\'s Ability Number ("1" for Ability 1, "2" for Ability 2, or "h" for Hidden Ability).',
   "%abilitynum-upper%":
     'The Pok\u{00e9}mon\'s Ability Number ("1" for Ability 1, "2" for Ability 2, or "H" for Hidden Ability).',
+  "%teratype%": "The Pok\u{00e9}mon's Tera Type (blank prior to Gen 9).",
 
   Stats: "",
   "%ivhp%":

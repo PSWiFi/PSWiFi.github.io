@@ -121,6 +121,11 @@ function calcHPPower(iv32) {
   return ~~((bin * 40) / 63) + 30;
 }
 
+function getTeraType(original, override) {
+  if (override <= 17 || override == 99) return TYPES[Math.min(override, 19)];
+  return TYPES[Math.min(original, 19)];
+}
+
 function roman(num) {
   if (num < 1) {
     return "";
