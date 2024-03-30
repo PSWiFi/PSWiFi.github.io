@@ -38,7 +38,7 @@ function insertThis() {
   }, 1500);
 }
 
-var colors = ["info", "danger", "warning", "secondary", "success"];
+var colors = ["info", "danger", "warning", "secondary", "primary", "success"];
 
 function generateOutputOptions() {
   var parent = document.getElementById("opts-container");
