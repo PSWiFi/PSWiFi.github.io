@@ -98,6 +98,7 @@ permalink: /misc/pkparse/
       natureloc,
       formloc,
       formargloc,
+      evsloc,
       statnatureloc,
       fatefulloc,
       genderloc,
@@ -126,6 +127,7 @@ permalink: /misc/pkparse/
         fatefulloc = 0x22;
         genderloc = 0x22;
         formloc = 0x24;
+        evsloc = 0x26;
         moveloc = 0x72;
         relearnloc = 0x82;
         ivsloc = 0x8c;
@@ -154,6 +156,7 @@ permalink: /misc/pkparse/
         fatefulloc = 0x22;
         genderloc = 0x22;
         formloc = 0x24;
+        evsloc = 0x26;
         moveloc = 0x54;
         relearnloc = 0x8a;
         ivsloc = 0x94;
@@ -182,6 +185,7 @@ permalink: /misc/pkparse/
         fatefulloc = 0x22;
         genderloc = 0x22;
         formloc = 0x24;
+        evsloc = 0x26;
         moveloc = 0x72;
         relearnloc = 0x82;
         ivsloc = 0x8c;
@@ -207,6 +211,7 @@ permalink: /misc/pkparse/
         fatefulloc = 0x1d;
         genderloc = 0x1d;
         formloc = 0x1d;
+        evsloc = 0x1e;
         formargloc = 0x3c;
         moveloc = 0x5a;
         relearnloc = 0x6a;
@@ -232,6 +237,7 @@ permalink: /misc/pkparse/
         fatefulloc = 0x1d;
         genderloc = 0x1d;
         formloc = 0x1d;
+        evsloc = 0x1e;
         formargloc = 0x3c;
         moveloc = 0x5a;
         relearnloc = 0x6a;
@@ -345,14 +351,18 @@ permalink: /misc/pkparse/
       var [ivhpht, ivatkht, ivdefht, ivspaht, ivspdht, ivspeht] = ivsht;
       var [jhpht, jatkht, jdefht, jspaht, jspdht, jspeht] = jht;
 
+      var evs = [];
+      for (var i = 0; i < 6; i++) {
+        evs.push(data.getUint8(evsloc + i));
+      }
+      var [evhp, evatk, evdef, evspe, evspa, evspd] = evs;
+
       var moves = [];
       var relearn = [];
       for (var i = 0; i < 4; i++) {
         moves.push(MOVES[data.getUint16(moveloc + i * 0x02, true)]);
         relearn.push(MOVES[data.getUint16(relearnloc + i * 0x02, true)]);
       }
-
-      console.log(moves, relearn);
 
       var ball = BALLS[data.getUint8(ballloc)];
       var ogval = data.getUint8(ogloc);
@@ -376,7 +386,7 @@ permalink: /misc/pkparse/
         outstr = outstr.replace(/\%species\%/g, species);
       if (outstr.includes("%form%")) outstr = outstr.replace(/\%form\%/g, form);
       if (outstr.includes("%gmax%"))
-        outstr = outstr.replace(/\%gmax\%/, gmax ? "-GMax" : "");
+        outstr = outstr.replace(/\%gmax\%/g, gmax ? "-GMax" : "");
 
       if (outstr.includes("%origingame%"))
         outstr = outstr.replace(/\%origingame\%/g, origingame);
@@ -407,7 +417,7 @@ permalink: /misc/pkparse/
           pid.toString(16).padStart(8, "0").toUpperCase()
         );
       if (outstr.includes("%teratype"))
-        outstr = outstr.replace(/\%teratype\%/, teraType);
+        outstr = outstr.replace(/\%teratype\%/g, teraType);
       if (outstr.includes("%shiny%"))
         outstr = outstr.replace(/\%shiny\%/g, shinytype === 0 ? "y" : "n");
       if (outstr.includes("%shiny-upper%"))
@@ -534,9 +544,21 @@ permalink: /misc/pkparse/
       if (outstr.includes("%ivspe-judge-ht%"))
         outstr = outstr.replace(/\%ivspe-judge-ht\%/g, jspeht);
       if (outstr.includes("%hp-type"))
-        outstr = outstr.replace(/\%hp-type\%/, hpType);
+        outstr = outstr.replace(/\%hp-type\%/g, hpType);
       if (outstr.includes("%hp-power"))
-        outstr = outstr.replace(/\%hp-power\%/, hpPower);
+        outstr = outstr.replace(/\%hp-power\%/g, hpPower);
+
+      if (outstr.includes("%evhp%")) outstr = outstr.replace(/\%evhp\%/g, evhp);
+      if (outstr.includes("%evatk%"))
+        outstr = outstr.replace(/\%evatk\%/g, evatk);
+      if (outstr.includes("%evdef%"))
+        outstr = outstr.replace(/\%evdef\%/g, evdef);
+      if (outstr.includes("%evspa%"))
+        outstr = outstr.replace(/\%evspa\%/g, evspa);
+      if (outstr.includes("%evspd%"))
+        outstr = outstr.replace(/\%evspd\%/g, evspd);
+      if (outstr.includes("%evspe%"))
+        outstr = outstr.replace(/\%evspe\%/g, evspe);
 
       // End custom parser logic
 

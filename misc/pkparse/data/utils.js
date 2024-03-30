@@ -38,7 +38,15 @@ function insertThis() {
   }, 1500);
 }
 
-var colors = ["info", "danger", "warning", "secondary", "primary", "success"];
+var colors = [
+  "info",
+  "danger",
+  "warning",
+  "secondary",
+  "primary",
+  "dark",
+  "success",
+];
 
 function generateOutputOptions() {
   var parent = document.getElementById("opts-container");
