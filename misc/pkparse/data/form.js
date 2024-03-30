@@ -388,3 +388,13 @@ var FORMS = {
   ], // ogerpon
   1024: ["Terapagos", "Terapagos-Terastal", "Terapagos-Stellar"], // terapagos
 };
+
+var ALCREMIE_SWEETS = [
+  "Strawberry Sweet",
+  "Berry Sweet",
+  "Love Sweet",
+  "Star Sweet",
+  "Clover Sweet",
+  "Flower Sweet",
+  "Ribbon Sweet",
+];

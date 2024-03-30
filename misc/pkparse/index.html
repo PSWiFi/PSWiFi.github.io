@@ -97,6 +97,7 @@ permalink: /misc/pkparse/
       ivsloc,
       natureloc,
       formloc,
+      formargloc,
       statnatureloc,
       fatefulloc,
       genderloc,
@@ -127,6 +128,7 @@ permalink: /misc/pkparse/
         teratypeoriginalloc = 0x94;
         teratypeoverrideloc = 0x95;
         ogloc = 0xce;
+        formargloc = 0xd0;
         otloc = 0xf8;
         ballloc = 0x124;
         htflagsloc = 0x126;
@@ -150,6 +152,7 @@ permalink: /misc/pkparse/
         formloc = 0x24;
         ivsloc = 0x94;
         ogloc = 0xee;
+        formargloc = 0xf4;
         otloc = 0x110;
         ballloc = 0x137;
         htflagsloc = 0x13e;
@@ -175,6 +178,7 @@ permalink: /misc/pkparse/
         formloc = 0x24;
         ivsloc = 0x8c;
         ogloc = 0xde;
+        formargloc = 0xe4;
         otloc = 0xf8;
         ballloc = 0x124;
         htflagsloc = 0x126;
@@ -195,6 +199,7 @@ permalink: /misc/pkparse/
         fatefulloc = 0x1d;
         genderloc = 0x1d;
         formloc = 0x1d;
+        formargloc = 0x3c;
         ivsloc = 0x74;
         otloc = 0xb0;
         ballloc = 0xdc;
@@ -217,6 +222,7 @@ permalink: /misc/pkparse/
         fatefulloc = 0x1d;
         genderloc = 0x1d;
         formloc = 0x1d;
+        formargloc = 0x3c;
         ivsloc = 0x74;
         otloc = 0xb0;
         ballloc = 0xdc;
@@ -242,6 +248,8 @@ permalink: /misc/pkparse/
         formval > 0 || devid === 666 || devid === 774 // Vivillon and Minior need special handling because of course they do
           ? FORMS[getNational9(devid)][formval].replace(species, "")
           : "";
+      var formarg = data.getUint32(formargloc, true);
+      if (devid === 869) form += " (" + ALCREMIE_SWEETS[formarg] + ")"; // Special handling for Alcremie Sweets
 
       var ability = data.getUint8(abilityloc);
       var abilitynum = data.getUint8(abilitynumloc) & 7; // & 7 not used in Gen 6 but has no effect on resulting value
