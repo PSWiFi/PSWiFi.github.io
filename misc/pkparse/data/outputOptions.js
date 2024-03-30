@@ -1,8 +1,4 @@
 var OUTPUT_OPTIONS = {
-  // More soon uwu
-  // Moves, EVs
-  // See https://docs.google.com/spreadsheets/d/14ARJEcfeHLAgLmximvjJkE-2iud1xYuFpgSLKJNNwKo/edit?usp=sharing for all required fields
-
   Special: "",
   "\\t": "Inserts a Tab character (goes to the next column in a spreadsheet).",
   "\\n": "Inserts a Newline character (goes to the next row in a spreadsheet).",
@@ -79,7 +75,15 @@ var OUTPUT_OPTIONS = {
   "%relearn3%": "The Move in the Pok\u{00e9}mon's third relearn move slot.",
   "%relearn4%": "The Move in the Pok\u{00e9}mon's fourth relearn move slot.",
 
-  Stats: "",
+  EVs: "",
+  "%evhp%": "The Pok\u{00e9}mon's HP Effort Value as a number.",
+  "%evatk%": "The Pok\u{00e9}mon's Attack Effort Value as a number.",
+  "%evdef%": "The Pok\u{00e9}mon's Defense Effort Value as a number.",
+  "%evspa%": "The Pok\u{00e9}mon's Sp. Attack Effort Value as a number.",
+  "%evspd%": "The Pok\u{00e9}mon's Sp. Defense Effort Value as a number.",
+  "%evspe%": "The Pok\u{00e9}mon's HP Speed Value as a number.",
+
+  IVs: "",
   "%ivhp%":
     "The Pok\u{00e9}mon's HP IV as a number (does not take into account Hyper Training).",
   "%ivhp-judge%":
