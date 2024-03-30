@@ -17,5 +17,6 @@ var TYPES = [
   "Dragon",
   "Dark",
   "Fairy",
+  "None",
   "Stellar",
 ];

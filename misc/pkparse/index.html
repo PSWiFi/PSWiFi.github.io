@@ -102,6 +102,8 @@ permalink: /misc/pkparse/
       genderloc,
       ballloc,
       ogloc,
+      teratypeoriginalloc,
+      teratypeoverrideloc,
       htflagsloc;
 
     // Sanity check file sizes and get offsets
@@ -122,6 +124,8 @@ permalink: /misc/pkparse/
         genderloc = 0x22;
         formloc = 0x24;
         ivsloc = 0x8c;
+        teratypeoriginalloc = 0x94;
+        teratypeoverrideloc = 0x95;
         ogloc = 0xce;
         otloc = 0xf8;
         ballloc = 0x124;
@@ -144,8 +148,8 @@ permalink: /misc/pkparse/
         fatefulloc = 0x22;
         genderloc = 0x22;
         formloc = 0x24;
-        ogloc = 0xee;
         ivsloc = 0x94;
+        ogloc = 0xee;
         otloc = 0x110;
         ballloc = 0x137;
         htflagsloc = 0x13e;
@@ -242,6 +246,14 @@ permalink: /misc/pkparse/
       var ability = data.getUint8(abilityloc);
       var abilitynum = data.getUint8(abilitynumloc) & 7; // & 7 not used in Gen 6 but has no effect on resulting value
 
+      var teraType =
+        teratypeoriginalloc && teratypeoverrideloc
+          ? getTeraType(
+              data.getUint8(teratypeoriginalloc),
+              data.getUint8(teratypeoverrideloc)
+            )
+          : "";
+
       var ids = data.getUint32(idsloc, true);
       var tid5 = ids & 0xffff;
       var sid5 = ids >>> 16;
@@ -249,11 +261,11 @@ permalink: /misc/pkparse/
       var tid7 = fullid % 1000000;
       var sid7 = ~~(fullid / 1000000);
       var tid =
-        (ogval >= 30) & (ogval <= 34) || ogval >= 42
+        (ogval >= 30) & (ogval <= 34) || ogval >= 42 // Exclude VC
           ? tid7.toString().padStart(6, "0")
           : tid5.toString().padStart(5, "0");
       var sid =
-        (ogval >= 30) & (ogval <= 34) || ogval >= 42
+        (ogval >= 30) & (ogval <= 34) || ogval >= 42 // Exclude VC
           ? sid7.toString().padStart(4, "0")
           : sid5.toString().padStart(5, "0");
       var fateful = (data.getUint8(fatefulloc) & 1) === 1;
@@ -365,6 +377,8 @@ permalink: /misc/pkparse/
           /\%pid-upper\%/g,
           pid.toString(16).padStart(8, "0").toUpperCase()
         );
+      if (outstr.includes("%teratype"))
+        outstr = outstr.replace(/\%teratype\%/, teraType);
       if (outstr.includes("%shiny%"))
         outstr = outstr.replace(/\%shiny\%/g, shinytype === 0 ? "y" : "n");
       if (outstr.includes("%shiny-upper%"))
