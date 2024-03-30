@@ -15,7 +15,7 @@ var OUTPUT_OPTIONS = {
   "%species%": "Species name of the Pok\u{00e9}mon.",
   "%form%":
     "Appends the form name of the Pok\u{00e9}mon preceeded by a hyphen if it has one, blank if it does not.",
-  "%gmax%": '"-Gmax" if the Pok\u{00e9}mon can Gigantamax, blank if it can\'t.',
+  "%gmax%": '"-GMax" if the Pok\u{00e9}mon can Gigantamax, blank if it can\'t.',
 
   Met: "",
   "%origingame%": "The game in which the Pok\u{00e9}mon was met.",

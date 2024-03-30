@@ -249,7 +249,7 @@ permalink: /misc/pkparse/
           ? FORMS[getNational9(devid)][formval].replace(species, "")
           : "";
       var formarg = data.getUint32(formargloc, true);
-      if (devid === 869) form += " (" + ALCREMIE_SWEETS[formarg] + ")"; // Special handling for Alcremie Sweets
+      if (devid === 869) form += ALCREMIE_SWEETS[formarg]; // Special handling for Alcremie Sweets
 
       var ability = data.getUint8(abilityloc);
       var abilitynum = data.getUint8(abilitynumloc) & 7; // & 7 not used in Gen 6 but has no effect on resulting value
@@ -355,7 +355,7 @@ permalink: /misc/pkparse/
         outstr = outstr.replace(/\%species\%/g, species);
       if (outstr.includes("%form%")) outstr = outstr.replace(/\%form\%/g, form);
       if (outstr.includes("%gmax%"))
-        outstr = outstr.replace(/\%gmax\%/, gmax ? "-Gmax" : "");
+        outstr = outstr.replace(/\%gmax\%/, gmax ? "-GMax" : "");
 
       if (outstr.includes("%origingame%"))
         outstr = outstr.replace(/\%origingame\%/g, origingame);

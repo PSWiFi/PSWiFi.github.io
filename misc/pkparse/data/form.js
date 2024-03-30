@@ -390,11 +390,11 @@ var FORMS = {
 };
 
 var ALCREMIE_SWEETS = [
-  "Strawberry Sweet",
-  "Berry Sweet",
-  "Love Sweet",
-  "Star Sweet",
-  "Clover Sweet",
-  "Flower Sweet",
-  "Ribbon Sweet",
+  "-Strawberry",
+  "-Berry",
+  "-Love",
+  "-Star",
+  "-Clover",
+  "-Flower",
+  "-Ribbon",
 ];
