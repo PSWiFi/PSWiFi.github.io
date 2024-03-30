@@ -105,6 +105,8 @@ permalink: /misc/pkparse/
       ogloc,
       teratypeoriginalloc,
       teratypeoverrideloc,
+      moveloc,
+      relearnloc,
       htflagsloc;
 
     // Sanity check file sizes and get offsets
@@ -124,6 +126,8 @@ permalink: /misc/pkparse/
         fatefulloc = 0x22;
         genderloc = 0x22;
         formloc = 0x24;
+        moveloc = 0x72;
+        relearnloc = 0x82;
         ivsloc = 0x8c;
         teratypeoriginalloc = 0x94;
         teratypeoverrideloc = 0x95;
@@ -150,6 +154,8 @@ permalink: /misc/pkparse/
         fatefulloc = 0x22;
         genderloc = 0x22;
         formloc = 0x24;
+        moveloc = 0x54;
+        relearnloc = 0x8a;
         ivsloc = 0x94;
         ogloc = 0xee;
         formargloc = 0xf4;
@@ -176,6 +182,8 @@ permalink: /misc/pkparse/
         fatefulloc = 0x22;
         genderloc = 0x22;
         formloc = 0x24;
+        moveloc = 0x72;
+        relearnloc = 0x82;
         ivsloc = 0x8c;
         ogloc = 0xde;
         formargloc = 0xe4;
@@ -200,6 +208,8 @@ permalink: /misc/pkparse/
         genderloc = 0x1d;
         formloc = 0x1d;
         formargloc = 0x3c;
+        moveloc = 0x5a;
+        relearnloc = 0x6a;
         ivsloc = 0x74;
         otloc = 0xb0;
         ballloc = 0xdc;
@@ -223,6 +233,8 @@ permalink: /misc/pkparse/
         genderloc = 0x1d;
         formloc = 0x1d;
         formargloc = 0x3c;
+        moveloc = 0x5a;
+        relearnloc = 0x6a;
         ivsloc = 0x74;
         otloc = 0xb0;
         ballloc = 0xdc;
@@ -332,6 +344,15 @@ permalink: /misc/pkparse/
       }
       var [ivhpht, ivatkht, ivdefht, ivspaht, ivspdht, ivspeht] = ivsht;
       var [jhpht, jatkht, jdefht, jspaht, jspdht, jspeht] = jht;
+
+      var moves = [];
+      var relearn = [];
+      for (var i = 0; i < 4; i++) {
+        moves.push(MOVES[data.getUint16(moveloc + i * 0x02, true)]);
+        relearn.push(MOVES[data.getUint16(relearnloc + i * 0x02, true)]);
+      }
+
+      console.log(moves, relearn);
 
       var ball = BALLS[data.getUint8(ballloc)];
       var ogval = data.getUint8(ogloc);
@@ -448,6 +469,23 @@ permalink: /misc/pkparse/
           abilitynum === 4 ? "H" : abilitynum
         );
 
+      if (outstr.includes("%move1%"))
+        outstr = outstr.replace(/\%move1\%/g, moves[0]);
+      if (outstr.includes("%move2%"))
+        outstr = outstr.replace(/\%move2\%/g, moves[1]);
+      if (outstr.includes("%move3%"))
+        outstr = outstr.replace(/\%move3\%/g, moves[2]);
+      if (outstr.includes("%move4%"))
+        outstr = outstr.replace(/\%move4\%/g, moves[3]);
+      if (outstr.includes("%relearn1%"))
+        outstr = outstr.replace(/\%relearn1\%/g, relearn[0]);
+      if (outstr.includes("%relearn2%"))
+        outstr = outstr.replace(/\%relearn2\%/g, relearn[1]);
+      if (outstr.includes("%relearn3%"))
+        outstr = outstr.replace(/\%relearn3\%/g, relearn[2]);
+      if (outstr.includes("%relearn4%"))
+        outstr = outstr.replace(/\%relearn4\%/g, relearn[3]);
+
       if (outstr.includes("%ivhp%")) outstr = outstr.replace(/\%ivhp\%/g, ivhp);
       if (outstr.includes("%ivhp-judge%"))
         outstr = outstr.replace(/\%ivhp-judge\%/g, jhp);
@@ -558,4 +596,6 @@ permalink: /misc/pkparse/
 <script type="text/javascript" src="./data/shiny.js"></script>
 <script type="text/javascript" src="./data/type.js"></script>
 <script type="text/javascript" src="./data/form.js"></script>
+<script type="text/javascript" src="./data/move.js"></script>
+<!-- utils mut be include last as it contains references to other files -->
 <script type="text/javascript" src="./data/utils.js"></script>

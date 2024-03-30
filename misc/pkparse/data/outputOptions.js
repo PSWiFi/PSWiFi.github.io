@@ -68,6 +68,17 @@ var OUTPUT_OPTIONS = {
     'The Pok\u{00e9}mon\'s Ability Number ("1" for Ability 1, "2" for Ability 2, or "H" for Hidden Ability).',
   "%teratype%": "The Pok\u{00e9}mon's Tera Type (blank prior to Gen 9).",
 
+  Moves: "",
+  "%move1%": "The Move in the Pok\u{00e9}mon's first move slot.",
+  "%move2%": "The Move in the Pok\u{00e9}mon's second move slot.",
+  "%move3%": "The Move in the Pok\u{00e9}mon's third move slot.",
+  "%move4%": "The Move in the Pok\u{00e9}mon's fourth move slot.",
+
+  "%relearn1%": "The Move in the Pok\u{00e9}mon's first relearn move slot.",
+  "%relearn2%": "The Move in the Pok\u{00e9}mon's second relearn move slot.",
+  "%relearn3%": "The Move in the Pok\u{00e9}mon's third relearn move slot.",
+  "%relearn4%": "The Move in the Pok\u{00e9}mon's fourth relearn move slot.",
+
   Stats: "",
   "%ivhp%":
     "The Pok\u{00e9}mon's HP IV as a number (does not take into account Hyper Training).",
