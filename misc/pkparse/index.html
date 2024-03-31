@@ -77,6 +77,17 @@ permalink: /misc/pkparse/
 
 <hr />
 
+<div class="col progress d-none mb-3" id="progress-container" style="height: 38px; border: 1px solid #0dcaf0;">
+  <div
+    class="progress-bar bg-info"
+    role="progressbar"
+    aria-valuenow="0"
+    aria-valuemin="0"
+    aria-valuemax="100"
+    id="progress"
+  ></div>
+</div>
+
 <div id="results-container"></div>
 
 <script>
@@ -120,12 +131,14 @@ permalink: /misc/pkparse/
     while (container.firstChild) {
       container.removeChild(container.lastChild);
     }
+    document.getElementById("progress-container").classList.remove("d-none");
     process(e.files);
   }
 
   // Putting this in a recursive delayed loop allows time to clear the buffer, helping to prevent bad reads and race conditions
   function process(files, delay = 150, i = 0) {
     if (i >= files.length) {
+      document.getElementById("progress-container").classList.add("d-none");
       return i >= 2 ? generateCopyAllButton() : 0;
     }
 
@@ -438,7 +451,10 @@ permalink: /misc/pkparse/
       if (outstr.includes("%gen-roman%"))
         outstr = outstr.replace(/\%gen-roman\%/g, roman(gen));
       if (outstr.includes("%dex%"))
-        outstr = outstr.replace(/\%dex\%/g, (getNational9(devid) + "").padStart(4, "0"));
+        outstr = outstr.replace(
+          /\%dex\%/g,
+          (getNational9(devid) + "").padStart(4, "0")
+        );
       if (outstr.includes("%species%"))
         outstr = outstr.replace(/\%species\%/g, species);
       if (outstr.includes("%form%")) outstr = outstr.replace(/\%form\%/g, form);
@@ -665,6 +681,10 @@ permalink: /misc/pkparse/
     });
 
     i++;
+
+    var progress = document.getElementById("progress");
+    progress.setAttribute("style", "width: " + (i / files.length) * 100 + "%;");
+    progress.textContent = i + " / " + files.length;
 
     setTimeout(() => {
       process(files, delay, i);
