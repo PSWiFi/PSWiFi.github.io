@@ -30,6 +30,8 @@ var OUTPUT_OPTIONS = {
   "%gender-upper%":
     '"M" if the Pok\u{00e9}mon is Male, "F" if it is Female, "-" if it is Unknown.',
   "%gender-symbol%":
+    '"♂" if the Pok\u{00e9}mon is Male, "♀" if it is Female, "-" if it is Unknown.',
+  "%gender-symbol-fancy%":
     '"♂" if the Pok\u{00e9}mon is Male, "♀" if it is Female, "⚲" if it is Unknown.',
 
   Info: "",

@@ -408,6 +408,11 @@ permalink: /misc/pkparse/
         outstr = outstr.replace(/\%gender-upper\%/g, GENDER_UPPER[gender]);
       if (outstr.includes("%gender-symbol%"))
         outstr = outstr.replace(/\%gender-symbol\%/g, GENDER_SYMBOL[gender]);
+      if (outstr.includes("%gender-symbol-fancy%"))
+        outstr = outstr.replace(
+          /\%gender-symbol-fancy\%/g,
+          GENDER_SYMBOL_FANCY[gender]
+        );
 
       if (outstr.includes("%pid%"))
         outstr = outstr.replace(/\%pid\%/g, pid.toString(16).padStart(8, "0"));
