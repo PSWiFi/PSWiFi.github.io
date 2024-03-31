@@ -1,5 +1,5 @@
 var MOVES = [
-  "———",
+  "-",
   "Pound",
   "Karate Chop",
   "Double Slap",
