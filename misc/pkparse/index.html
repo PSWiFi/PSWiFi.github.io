@@ -438,7 +438,7 @@ permalink: /misc/pkparse/
       if (outstr.includes("%gen-roman%"))
         outstr = outstr.replace(/\%gen-roman\%/g, roman(gen));
       if (outstr.includes("%dex%"))
-        outstr = outstr.replace(/\%dex\%/g, getNational9(devid));
+        outstr = outstr.replace(/\%dex\%/g, (getNational9(devid) + "").padStart(4, "0"));
       if (outstr.includes("%species%"))
         outstr = outstr.replace(/\%species\%/g, species);
       if (outstr.includes("%form%")) outstr = outstr.replace(/\%form\%/g, form);
