@@ -86,6 +86,31 @@ function generateOutputOptions() {
   }
 }
 
+var names = [
+  "No output preset selected...",
+  "PS! Wi-Fi Trade Sheet Template",
+  "PS! Wi-Fi Hackmons Sheet",
+];
+function regenerateDefaults() {
+  var parent = document.getElementById("output-preset");
+  parent.options.length = 0; // force regen all
+
+  var defaultKeys = Object.keys(OUTPUT_DEFAULTS);
+  for (var i = 0; i < defaultKeys.length; i++) {
+    parent.options.add(new Option(names[i], defaultKeys[i]));
+  }
+
+  var storageKeys = Object.keys(localStorage);
+  for (var i = 0; i < storageKeys.length; i++) {
+    parent.options.add(
+      new Option(
+        storageKeys[i].replace("custom-", ""),
+        localStorage.getItem(storageKeys[i])
+      )
+    );
+  }
+}
+
 function generateCopyAllButton() {
   var el = document.createElement("div");
   el.classList.add("btn", "btn-success", "w-100");
