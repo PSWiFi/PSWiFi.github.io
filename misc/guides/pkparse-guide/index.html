@@ -1,0 +1,63 @@
+---
+layout: default
+title: PkParse guide
+permalink: /misc/guides/pkparse/
+---
+
+<div class="bg-dark title">
+  <h1 class="text-light text-center pt-3 pb-3">PkParse guide</h1>
+</div><hr />
+
+<p>This page contains a small guide that explains how to use <a href="https://pswifi.github.io/misc/pkparse/">PkParse</a>, a tool used to parse pk* files to human readable text. This tool can be used to automate the process of adding new Pok&eacute;mon to your spreadsheets.</p>
+
+<p>This tool provides the user with custom parse outputs, which means you will be able to parse a pk* file in countless different orders. We also provide a pre-set layout for our official Trade Sheet in an attempt to make it easy and simple for those with access to pk* files to fill their tradesheet.</p>
+
+<p><span class="fw-bold">The following pk* file types are supported:</span></p>
+<ul>
+  <li>pk8 (Sword/Shield)</li>
+  <li>pb8 (Brilliant Diamond/Shining Pearl)</li>
+  <li>pa8 (Legends: Arceus)</li>
+  <li>pk9 (Scarlet/Violet)</li>
+</ul>
+
+<small>This tool is intended to be used for Switch titles. Do not expect full support for games that existed prior to Sword/Shield.</small>
+
+<hr /><div class="bg-dark title">
+  <h1 class="text-light text-center pt-3 pb-3">How To Use</h1>
+</div><hr />
+
+<p>First, you will need to select an output format, this tool provides presets to use with the official PS! Wi-Fi tradesheet template, select <code>PS! Wi-Fi Trade Sheet Template</code> if you are using a copy of our <a href="https://docs.google.com/spreadsheets/d/14ARJEcfeHLAgLmximvjJkE-2iud1xYuFpgSLKJNNwKo/edit?usp=sharing">Official Trade Sheet</a>.</p>
+
+<span class="fw-bold">Selecting an output option...</span><p></p>
+<img src="" style="width:675px;height:400px;"><br /><br />
+
+<p>If you are using an edited version of this sheet, or a custom spreadsheet, read over the custom output options by selecting <code>All output options</code> to avoid pasting over cells that contain sprites/images, add an extra tab (<code>\t</code>).</p>
+
+<p>You can save custom outputs locally by using the <code>Save</code> option! This is helpful for quick access to parse outputs that you plan to use later.</p>
+
+<span class="fw-bold">Creating a custom output...</span><p></p>
+<img src="" style="width:675px;height:400px;"><br /><br />
+
+<p>After selecting an output option, select your pk* file by clicking the <code>Choose files...</code> button, you can select multiple files from a folder if you wish.</p>
+
+<p><span class="fw-bold">Note:</span> This is a local upload from your machine, files uploaded to the website will not be saved, stored or seen by PS! Wi-Fi.</p>
+
+<span class="fw-bold">Selecting files from a folder...</span><p></p>
+<img src="" style="width:675px;height:400px;"><br /><br />
+
+<p>Once you have selected the files you should see that they have sucessfully been parsed into text and copied to the clipboard. Now you can simply paste them into the correct row of your spreadsheet to fill in all the information about your Pok&eacute;mon automatically!</p>
+
+<span class="fw-bold">Adding parsed output to your spreadsheet...</span><p></p>
+<img src="" style="width:675px;height:400px;"><br /><br />
+
+<p>After pasting the output into your sheet, you can fix the sprites by simply dragging the formula from a working sprite cell down into cells that contain the recently copied data, as seen in the below GIF.</p>
+
+<span class="fw-bold">Fixing sprites...</span><p></p>
+<img src="" style="width:675px;height:400px;"><br /><br />
+
+<a type="button" class="list-group-item list-group-item-primary text-end" style="border-radius: 0.25rem;" href="/">
+  <span class="fw-bold">I want to use PkParse now! Send me there!</span>
+  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+  </svg>
+</a>
