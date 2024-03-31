@@ -15,43 +15,62 @@ permalink: /misc/pkparse/
 >
 
 <hr />
-
-<div class="mb-3">
-  <input
-    type="file"
-    class="form-control"
-    id="formFile"
-    name="formFile"
-    accept=".pk9,.pk8,.pa8,.pb8,.pk7,.pk6"
-    multiple
-  />
+<div class="row">
+  <div class="col mb-3">
+    <input
+      type="file"
+      class="form-control"
+      id="formFile"
+      name="formFile"
+      accept=".pk9,.pk8,.pa8,.pb8,.pk7,.pk6"
+      multiple
+    />
+  </div>
 </div>
 
-<div class="mb-2">
-  <label for="format">Output format:</label>
-  <input
-    type="text"
-    class="form-control"
-    id="format"
-    name="format"
-    value="%species%%form%%gmax%\t%shiny-type-symbol-long%\t%ot%\t%tid%\t%sid%\t%ivhp-judge%/%ivatk-judge%/%ivdef-judge%/%ivspa-judge%/%ivspd-judge%/%ivspe-judge%\t%ivhp%/%ivatk%/%ivdef%/%ivspa%/%ivspd%/%ivspe%\t%nature%\t%gender-symbol%\t\t%ball%\t\t%origingame%"
-  />
+<div class="row mb-1">
+  <div class="col">
+    <label for="format">Output format:</label>
+    <input
+      type="text"
+      class="form-control"
+      id="format"
+      name="format"
+      placeholder="Select a preset, view output options, or start typing to get started!"
+    />
+  </div>
 </div>
 
-<div class="mb-3">
-  <button
-    class="btn btn-primary w-100"
-    type="button"
-    data-bs-toggle="collapse"
-    data-bs-target="#opts-collapse"
-    aria-expanded="false"
-    aria-controls="opts-collapse"
-  >
-    All output options...
-  </button>
-  <div class="collapse" id="opts-collapse">
-    <div class="card card-body" id="opts-container">
-      <!-- Generated dynamically, see generateOutputOptions() in /data/utils.js -->
+<div class="row mb-2">
+  <div class="col col-8">
+    <select class="form-select" id="output-preset">
+      <!-- Generated dynamically, see regenerateDefaults() in /data/utils.js -->
+    </select>
+  </div>
+  <div class="col col-2">
+    <button class="btn btn-success w-100" id="b-save">Save</button>
+  </div>
+  <div class="col col-2">
+    <button class="btn btn-danger w-100" id="b-delete">Delete</button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <button
+      class="btn btn-primary w-100"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#opts-collapse"
+      aria-expanded="false"
+      aria-controls="opts-collapse"
+    >
+      All output options...
+    </button>
+    <div class="collapse" id="opts-collapse">
+      <div class="card card-body" id="opts-container">
+        <!-- Generated dynamically, see generateOutputOptions() in /data/utils.js -->
+      </div>
     </div>
   </div>
 </div>
@@ -66,6 +85,34 @@ permalink: /misc/pkparse/
 
   $(document).ready(function () {
     generateOutputOptions();
+    regenerateDefaults();
+  });
+
+  $("#b-save").click(function () {
+    var name = prompt("Please enter a name to save the template as:");
+    if (!name) return;
+    var val = document.getElementById("format").value;
+    localStorage.setItem("custom-" + name, val);
+    alert("Saved!");
+    regenerateDefaults();
+  });
+
+  $("#b-delete").click(function () {
+    var el = document.getElementById("output-preset");
+    var val = el.selectedOptions[0].text;
+    if (el.selectedIndex < 3) return alert("Unable to delete this preset!");
+    localStorage.removeItem("custom-" + val);
+    alert("Deleted preset: " + val);
+    regenerateDefaults();
+  });
+
+  $("#output-preset").change(function () {
+    var key = $(this).val();
+    var val = OUTPUT_DEFAULTS[key];
+    var text = document.getElementById("output-preset").selectedOptions[0].text;
+    if (!val) val = localStorage.getItem("custom-" + text);
+    if (!val) val = "";
+    document.getElementById("format").value = val;
   });
 
   function handleUpload() {
@@ -252,7 +299,14 @@ permalink: /misc/pkparse/
         return alert("Unsupported file type provided: " + fname);
     }
 
+    var outstr_c = document.getElementById("format").value?.toLowerCase();
+    if (!outstr_c)
+      return alert(
+        "No output format detected!\nPlease select a preset or enter a custom format to get started."
+      );
+
     file.arrayBuffer().then((buf) => {
+      var outstr = outstr_c;
       var otarrbuf = buf.slice(otloc, otloc + 26);
       var ot = getStringFromBuffer(new DataView(otarrbuf));
       var data = new DataView(buf);
@@ -367,11 +421,6 @@ permalink: /misc/pkparse/
       var ball = BALLS[data.getUint8(ballloc)];
       var ogval = data.getUint8(ogloc);
       var origingame = ORIGIN_GAMES[ogval];
-
-      var outstr = document.getElementById("format").value?.toLowerCase();
-      if (!outstr)
-        outstr =
-          "%species%%form%%gmax%\t%shiny-type-symbol-long%\t%ot%\t%tid%\t%sid%\t%ivhp-judge%/%ivatk-judge%/%ivdef-judge%/%ivspa-judge%/%ivspd-judge%/%ivspe-judge%\t%ivhp%/%ivatk%/%ivdef%/%ivspa%/%ivspd%/%ivspe%\t%nature%\t%gender-symbol%\t\t%ball%\t\t%origingame%";
 
       // Commence custom parser logic
       if (outstr.includes("\\t")) outstr = outstr.replace(/\\t/g, "\t");
@@ -612,6 +661,7 @@ permalink: /misc/pkparse/
     }, delay);
   }
 </script>
+<script type="text/javascript" src="./data/defaults.js"></script>
 <script type="text/javascript" src="./data/outputOptions.js"></script>
 <script type="text/javascript" src="./data/size.js"></script>
 <script type="text/javascript" src="./data/ability.js"></script>
