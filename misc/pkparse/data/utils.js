@@ -114,7 +114,7 @@ function regenerateDefaults() {
 
 function generateCopyAllButton() {
   var el = document.createElement("div");
-  el.classList.add("btn", "btn-success", "w-100");
+  el.classList.add("btn", "btn-success", "w-100", "mb-3");
   el.textContent = "Copy all";
 
   var data = [];
@@ -126,7 +126,7 @@ function generateCopyAllButton() {
 
   el.setAttribute("data-copy-value", data.join("\r\n"));
 
-  document.getElementById("results-container").appendChild(el);
+  document.getElementById("results-container").prepend(el);
   el.addEventListener("click", copyContent);
 }
 
