@@ -140,6 +140,7 @@ permalink: /misc/pkparse/
       pidloc,
       speciesloc,
       otloc,
+      nicknameloc,
       gmaxloc,
       ivsloc,
       natureloc,
@@ -175,6 +176,7 @@ permalink: /misc/pkparse/
         genderloc = 0x22;
         formloc = 0x24;
         evsloc = 0x26;
+        nicknameloc = 0x58;
         moveloc = 0x72;
         relearnloc = 0x82;
         ivsloc = 0x8c;
@@ -205,6 +207,7 @@ permalink: /misc/pkparse/
         formloc = 0x24;
         evsloc = 0x26;
         moveloc = 0x54;
+        nicknameloc = 0x60;
         relearnloc = 0x8a;
         ivsloc = 0x94;
         ogloc = 0xee;
@@ -233,6 +236,7 @@ permalink: /misc/pkparse/
         genderloc = 0x22;
         formloc = 0x24;
         evsloc = 0x26;
+        nicknameloc = 0x58;
         moveloc = 0x72;
         relearnloc = 0x82;
         ivsloc = 0x8c;
@@ -260,6 +264,7 @@ permalink: /misc/pkparse/
         formloc = 0x1d;
         evsloc = 0x1e;
         formargloc = 0x3c;
+        nicknameloc = 0x40;
         moveloc = 0x5a;
         relearnloc = 0x6a;
         ivsloc = 0x74;
@@ -286,6 +291,7 @@ permalink: /misc/pkparse/
         formloc = 0x1d;
         evsloc = 0x1e;
         formargloc = 0x3c;
+        nicknameloc = 0x40;
         moveloc = 0x5a;
         relearnloc = 0x6a;
         ivsloc = 0x74;
@@ -309,6 +315,8 @@ permalink: /misc/pkparse/
       var outstr = outstr_c;
       var otarrbuf = buf.slice(otloc, otloc + 26);
       var ot = getStringFromBuffer(new DataView(otarrbuf));
+      var nickarrbuf = buf.slice(nicknameloc, nicknameloc + 26);
+      var nickname = getStringFromBuffer(new DataView(nickarrbuf));
       var data = new DataView(buf);
       var devid = data.getUint16(speciesloc, true);
       var species = gen === 9 ? getSpecies9(devid) : SPECIES[devid];
@@ -436,6 +444,8 @@ permalink: /misc/pkparse/
       if (outstr.includes("%form%")) outstr = outstr.replace(/\%form\%/g, form);
       if (outstr.includes("%gmax%"))
         outstr = outstr.replace(/\%gmax\%/g, gmax ? "-GMax" : "");
+      if (outstr.includes("%nickname%"))
+        outstr = outstr.replace(/\%nickname\%/g, nickname);
 
       if (outstr.includes("%origingame%"))
         outstr = outstr.replace(/\%origingame\%/g, origingame);
