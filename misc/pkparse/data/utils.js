@@ -102,9 +102,10 @@ function regenerateDefaults() {
 
   var storageKeys = Object.keys(localStorage);
   for (var i = 0; i < storageKeys.length; i++) {
+    if (!storageKeys[i].startsWith("pkparse-custom-")) continue;
     parent.options.add(
       new Option(
-        storageKeys[i].replace("custom-", ""),
+        storageKeys[i].replace("pkparse-custom-", ""),
         localStorage.getItem(storageKeys[i])
       )
     );

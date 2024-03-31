@@ -92,7 +92,7 @@ permalink: /misc/pkparse/
     var name = prompt("Please enter a name to save the template as:");
     if (!name) return;
     var val = document.getElementById("format").value;
-    localStorage.setItem("custom-" + name, val);
+    localStorage.setItem("pkparse-custom-" + name, val);
     alert("Saved!");
     regenerateDefaults();
   });
@@ -101,7 +101,7 @@ permalink: /misc/pkparse/
     var el = document.getElementById("output-preset");
     var val = el.selectedOptions[0].text;
     if (el.selectedIndex < 3) return alert("Unable to delete this preset!");
-    localStorage.removeItem("custom-" + val);
+    localStorage.removeItem("pkparse-custom-" + val);
     alert("Deleted preset: " + val);
     regenerateDefaults();
   });
@@ -110,7 +110,7 @@ permalink: /misc/pkparse/
     var key = $(this).val();
     var val = OUTPUT_DEFAULTS[key];
     var text = document.getElementById("output-preset").selectedOptions[0].text;
-    if (!val) val = localStorage.getItem("custom-" + text);
+    if (!val) val = localStorage.getItem("pkparse-custom-" + text);
     if (!val) val = "";
     document.getElementById("format").value = val;
   });
