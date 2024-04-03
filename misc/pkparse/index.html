@@ -11,7 +11,8 @@ permalink: /misc/pkparse/
     class="text-decoration-none text-muted"
     href="https://github.com/LegoFigure11"
     >LegoFigure11</a
-  >, structs and data from <a
+  >, structs and data from
+  <a
     class="text-decoration-none text-muted"
     href="https://www.nuget.org/packages/PKHeX.Core"
     >PKHeX.Core</a
@@ -81,7 +82,11 @@ permalink: /misc/pkparse/
 
 <hr />
 
-<div class="col progress d-none mb-3" id="progress-container" style="height: 38px; border: 1px solid #0dcaf0;">
+<div
+  class="col progress d-none mb-3"
+  id="progress-container"
+  style="height: 38px; border: 1px solid #0dcaf0"
+>
   <div
     class="progress-bar bg-info"
     role="progressbar"
@@ -366,11 +371,11 @@ permalink: /misc/pkparse/
       var tid7 = fullid % 1000000;
       var sid7 = ~~(fullid / 1000000);
       var tid =
-        (ogval >= 30) & (ogval <= 34) || ogval >= 42 // Exclude VC
+        (ogval >= 30 && ogval <= 34) || ogval >= 42 // Exclude VC
           ? tid7.toString().padStart(6, "0")
           : tid5.toString().padStart(5, "0");
       var sid =
-        (ogval >= 30) & (ogval <= 34) || ogval >= 42 // Exclude VC
+        (ogval >= 30 && ogval <= 34) || ogval >= 42 // Exclude VC
           ? sid7.toString().padStart(4, "0")
           : sid5.toString().padStart(5, "0");
       var fateful = (data.getUint8(fatefulloc) & 1) === 1;
