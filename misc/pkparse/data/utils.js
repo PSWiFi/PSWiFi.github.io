@@ -91,7 +91,7 @@ var names = [
   "PS! Wi-Fi Trade Sheet Template",
   "PS! Wi-Fi Hackmons Sheet",
   "PS! Wi-Fi Prizes Sheet - OGA/BR/High Value",
-  // "PS! Wi-Fi Prizes Sheet - Bred Pok\u{00e9}mon",
+  "PS! Wi-Fi Prizes Sheet - Bred Pok\u{00e9}mon",
 ];
 function regenerateDefaults() {
   var parent = document.getElementById("output-preset");
