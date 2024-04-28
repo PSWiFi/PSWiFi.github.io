@@ -16,7 +16,10 @@ var OUTPUT_OPTIONS = {
 
   Met: "",
   "%origingame%": "The game in which the Pok\u{00e9}mon was met.",
-  "%ball%": "Name of the Pok\u{00e9}ball the Pok\u{00e9}mon was caught in.",
+  "%ball%":
+    'Name of the Pok\u{00e9}ball the Pok\u{00e9}mon was caught in, followed by " Ball".',
+  "%ball-name-only%":
+    "Name of the Pok\u{00e9}ball the Pok\u{00e9}mon was caught in.",
   "%ot%": "Name of the Pok\u{00e9}mon's Original Trainer.",
   "%tid%":
     "The Pok\u{00e9}mon's Trainer ID in the format of the game it was caught in, padded with leading zeroes.",
@@ -45,6 +48,7 @@ var OUTPUT_OPTIONS = {
   "%shiny-long%": '"yes" if the Pok\u{00e9}mon is shiny, "no" if it is not.',
   "%shiny-long-upper%":
     '"Yes" if the Pok\u{00e9}mon is shiny, "No" if it is not.',
+  "%shiny-symbol%": '"★" if the Pok\u{00e9}mon is shiny, blank if it is not.',
   "%shiny-type-symbol%":
     '"◼" if the Pok\u{00e9}mon is Square Shiny, "★" if it is Star Shiny, or "n" if it is neither.',
   "%shiny-type-symbol-upper%":
@@ -60,6 +64,8 @@ var OUTPUT_OPTIONS = {
   "%nature%": "Nature the Pok\u{00e9}mon had when it was captured.",
   "%nature-minted%":
     "The Nature currently affecting the Pok\u{00e9}mon's stats (identical to %nature% if prior to Gen 8).",
+  "%is-minted%":
+    '"Y" if the Pok\u{00e9}mon has had its nature changed by a Mint, or "N" if it has not.',
   "%ability%": "The Pok\u{00e9}mon's Ability.",
   "%abilitynum%":
     'The Pok\u{00e9}mon\'s Ability Number ("1" for Ability 1, "2" for Ability 2, or "h" for Hidden Ability).',

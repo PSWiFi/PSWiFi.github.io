@@ -16,9 +16,9 @@ permalink: /misc/pkparse/
     class="text-decoration-none text-muted"
     href="https://www.nuget.org/packages/PKHeX.Core"
     >PKHeX.Core</a
-  > | <a
-    class="text-decoration-none text-muted"
-    href="/misc/guides/pkparse/"
+  >
+  |
+  <a class="text-decoration-none text-muted" href="/misc/guides/pkparse/"
     >Guide</a
   ></small
 >
@@ -479,6 +479,11 @@ permalink: /misc/pkparse/
       if (outstr.includes("%origingame%"))
         outstr = outstr.replace(/\%origingame\%/g, origingame);
       if (outstr.includes("%ball%")) outstr = outstr.replace(/\%ball\%/g, ball);
+      if (outstr.includes("%ball-name-only%"))
+        outstr = outstr.replace(
+          /\%ball-name-only\%/g,
+          ball.replace(" Ball", "")
+        );
       if (outstr.includes("%ot%")) outstr = outstr.replace(/\%ot\%/g, ot);
       if (outstr.includes("%tid%")) outstr = outstr.replace(/\%tid\%/g, tid);
       if (outstr.includes("%sid%")) outstr = outstr.replace(/\%sid\%/g, sid);
@@ -517,6 +522,11 @@ permalink: /misc/pkparse/
         outstr = outstr.replace(
           /\%shiny-upper\%/g,
           shinytype === 0 ? "Y" : "N"
+        );
+      if (outstr.includes("%shiny-symbol%"))
+        outstr = outstr.replace(
+          /\%shiny-symbol\%/g,
+          shinytype === 0 ? "★" : ""
         );
       if (outstr.includes("%shiny-long%"))
         outstr = outstr.replace(
@@ -559,6 +569,11 @@ permalink: /misc/pkparse/
         outstr = outstr.replace(/\%nature\%/g, nature);
       if (outstr.includes("%nature-minted%"))
         outstr = outstr.replace(/\%nature-minted\%/g, statnature);
+      if (outstr.includes("%is-minted%"))
+        outstr = outstr.replace(
+          /\%is-minted\%/g,
+          nature === statnature ? "Y" : "N"
+        );
       if (outstr.includes("%ability%"))
         outstr = outstr.replace(/\%ability\%/g, ABILITIES[ability]);
       if (outstr.includes("%abilitynum%"))
