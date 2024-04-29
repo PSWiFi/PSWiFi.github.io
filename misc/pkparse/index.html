@@ -521,22 +521,22 @@ permalink: /misc/pkparse/
       if (outstr.includes("%shiny-upper%"))
         outstr = outstr.replace(
           /\%shiny-upper\%/g,
-          shinytype === 0 ? "Y" : "N"
+          shinytype !== 0 ? "Y" : "N"
         );
       if (outstr.includes("%shiny-symbol%"))
         outstr = outstr.replace(
           /\%shiny-symbol\%/g,
-          shinytype === 0 ? "★" : ""
+          shinytype !== 0 ? "★" : ""
         );
       if (outstr.includes("%shiny-long%"))
         outstr = outstr.replace(
           /\%shiny-long\%/g,
-          shinytype === 0 ? "yes" : "no"
+          shinytype !== 0 ? "yes" : "no"
         );
       if (outstr.includes("%shiny-long-upper%"))
         outstr = outstr.replace(
           /\%shiny-long-upper\%/g,
-          shinytype === 0 ? "Yes" : "No"
+          shinytype !== 0 ? "Yes" : "No"
         );
       if (outstr.includes("%shiny-type-symbol%"))
         outstr = outstr.replace(
@@ -572,7 +572,7 @@ permalink: /misc/pkparse/
       if (outstr.includes("%is-minted%"))
         outstr = outstr.replace(
           /\%is-minted\%/g,
-          nature === statnature ? "Y" : "N"
+          nature !== statnature ? "Y" : "N"
         );
       if (outstr.includes("%ability%"))
         outstr = outstr.replace(/\%ability\%/g, ABILITIES[ability]);
