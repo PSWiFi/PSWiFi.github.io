@@ -152,8 +152,8 @@ permalink: /misc/pkparse/
       case 49:
       case 50:
       case 51:
-        f = (a % 80) + (b % 81);
-        g = (c % 80) + (d % 81);
+        f = (a % 0x80) + (b % 0x81);
+        g = (c % 0x80) + (d % 0x81);
         break;
 
       case 42:
