@@ -139,6 +139,49 @@ permalink: /misc/pkparse/
     document.getElementById("format").value = val;
   });
 
+  function n(o, p, e) {
+    var a = p >>> 16;
+    var b = p & 0xffff;
+    var c = e >>> 16;
+    var d = e & 0xffff;
+    var f, g;
+    switch (o) {
+      case 44:
+      case 45:
+      case 48:
+      case 49:
+      case 50:
+      case 51:
+        f = (a % 80) + (b % 81);
+        g = (c % 80) + (d % 81);
+        break;
+
+      case 42:
+      case 43:
+        f = a % 0xff;
+        g = b % 0xff;
+        break;
+
+      default:
+        f = 0x12;
+        g = 0x97;
+    }
+    return [f, g];
+  }
+
+  function l(a, u, r, e, l) {
+    var [eh, ew] = n(a, u, r);
+    console.log(eh, ew);
+    if (!e || !l) return "Analysis Not Available.";
+    var pass = e !== eh || l !== ew;
+    var s = [
+      "Verdict: " + (pass ? "Passes signing check!" : "FAIL"),
+      "Actual: " + e + ", " + l,
+      "Generated: " + eh + ", " + ew,
+    ];
+    return [pass, s.join("\r\n")];
+  }
+
   function handleUpload() {
     var container = document.getElementById("results-container");
     while (container.firstChild) {
@@ -182,7 +225,9 @@ permalink: /misc/pkparse/
       teratypeoverrideloc,
       moveloc,
       relearnloc,
-      htflagsloc;
+      htflagsloc,
+      heightloc,
+      weightloc;
 
     // Sanity check file sizes and get offsets
     switch (ext) {
@@ -202,6 +247,8 @@ permalink: /misc/pkparse/
         genderloc = 0x22;
         formloc = 0x24;
         evsloc = 0x26;
+        heightloc = 0x48;
+        weightloc = 0x49;
         nicknameloc = 0x58;
         moveloc = 0x72;
         relearnloc = 0x82;
@@ -232,6 +279,8 @@ permalink: /misc/pkparse/
         genderloc = 0x22;
         formloc = 0x24;
         evsloc = 0x26;
+        heightloc = 0x50;
+        weightloc = 0x51;
         moveloc = 0x54;
         nicknameloc = 0x60;
         relearnloc = 0x8a;
@@ -262,6 +311,8 @@ permalink: /misc/pkparse/
         genderloc = 0x22;
         formloc = 0x24;
         evsloc = 0x26;
+        heightloc = 0x50;
+        weightloc = 0x51;
         nicknameloc = 0x58;
         moveloc = 0x72;
         relearnloc = 0x82;
@@ -338,12 +389,14 @@ permalink: /misc/pkparse/
       );
 
     file.arrayBuffer().then((buf) => {
+      var pass = true;
       var outstr = outstr_c;
       var otarrbuf = buf.slice(otloc, otloc + 26);
       var ot = getStringFromBuffer(new DataView(otarrbuf));
       var nickarrbuf = buf.slice(nicknameloc, nicknameloc + 26);
       var nickname = getStringFromBuffer(new DataView(nickarrbuf));
       var data = new DataView(buf);
+      var ec = data.getUint32(0, true);
       var devid = data.getUint16(speciesloc, true);
       var species = gen === 9 ? getSpecies9(devid) : SPECIES[devid];
       var pid = data.getUint32(pidloc, true);
@@ -456,9 +509,18 @@ permalink: /misc/pkparse/
       var ogval = data.getUint8(ogloc);
       var origingame = ORIGIN_GAMES[ogval];
 
+      var height = heightloc ? data.getUint8(heightloc) : null;
+      var weight = weightloc ? data.getUint8(weightloc) : null;
+
       // Commence custom parser logic
       if (outstr.includes("\\t")) outstr = outstr.replace(/\\t/g, "\t");
       if (outstr.includes("\\n")) outstr = outstr.replace(/\\n/g, "\r\n");
+
+      if (outstr.includes("%alm%")) {
+        var analysis;
+        [pass, analysis] = l(ogval, pid, ec, height, weight);
+        outstr = outstr.replace(/\%alm\%/g, analysis);
+      }
 
       if (outstr.includes("%gen%")) outstr = outstr.replace(/\%gen\%/g, gen);
       if (outstr.includes("%gen-roman%"))
@@ -671,7 +733,11 @@ permalink: /misc/pkparse/
       // End custom parser logic
 
       var elem = document.createElement("div");
-      elem.classList.add("card", "mb-3", "border-success");
+      elem.classList.add(
+        "card",
+        "mb-3",
+        pass ? "border-success" : "border-danger"
+      );
 
       var cardHeader = document.createElement("div");
       cardHeader.classList.add("card-header");
