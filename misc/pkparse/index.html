@@ -654,6 +654,11 @@ permalink: /misc/pkparse/
           abilitynum === 4 ? "H" : abilitynum
         );
 
+      if (outstr.includes("%form-val%"))
+        outstr = outstr.replace(/\%form-val\%/g, formval);
+      if (outstr.includes("%formarg-val%"))
+        outstr = outstr.replace(/\%formarg-val\%/g, formarg);
+
       if (outstr.includes("%move1%"))
         outstr = outstr.replace(/\%move1\%/g, moves[0]);
       if (outstr.includes("%move2%"))

@@ -71,6 +71,8 @@ var OUTPUT_OPTIONS = {
     'The Pok\u{00e9}mon\'s Ability Number ("1" for Ability 1, "2" for Ability 2, or "h" for Hidden Ability).',
   "%abilitynum-upper%":
     'The Pok\u{00e9}mon\'s Ability Number ("1" for Ability 1, "2" for Ability 2, or "H" for Hidden Ability).',
+  "%form-val%": "The Pok\u{00e9}mon's internal form value.",
+  "%formarg-val%": "The Pok\u{00e9}mon's internal form argument value.",
   "%teratype%": "The Pok\u{00e9}mon's Tera Type (blank prior to Gen 9).",
 
   Moves: "",
