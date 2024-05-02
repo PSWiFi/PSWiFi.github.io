@@ -169,17 +169,22 @@ permalink: /misc/pkparse/
     return [f, g];
   }
 
+  var FISH = 5;
   function l(a, u, r, e, l) {
     var [eh, ew] = n(a, u, r);
-    console.log(eh, ew);
     if (!e || !l) return "Analysis Not Available.";
-    var pass = e !== eh || l !== ew;
-    var s = [
-      "Verdict: " + (pass ? "Passes signing check!" : "FAIL"),
-      "Actual: " + e + ", " + l,
-      "Generated: " + eh + ", " + ew,
-    ];
-    return [pass, s.join("\r\n")];
+    var flags = 0;
+    flags += (e !== eh || l !== ew ? 0 : 1) << 0;
+    flags += (Math.abs(e - eh) < FISH && Math.abs(l - ew) < FISH ? 1 : 0) << 1;
+    var v = (flags & (1 << 0)) ? "Fail!" : (flags & (1 << 1)) ? "Fishy!" : "Pass!";
+    var s = "Verdict: " + v + " (" + (e - eh) + ", " + (l - ew) + ")";
+    return [flags, s];
+  }
+
+  function getPassClass(v) {
+    if (v & (1 << 0)) return "border-danger";
+    if (v & (1 << 1)) return "border-warning";
+    return "border-success";
   }
 
   function handleUpload() {
@@ -389,7 +394,7 @@ permalink: /misc/pkparse/
       );
 
     file.arrayBuffer().then((buf) => {
-      var pass = true;
+      var pass = 0;
       var outstr = outstr_c;
       var otarrbuf = buf.slice(otloc, otloc + 26);
       var ot = getStringFromBuffer(new DataView(otarrbuf));
@@ -732,11 +737,13 @@ permalink: /misc/pkparse/
 
       // End custom parser logic
 
+      passClass = getPassClass(pass);
+
       var elem = document.createElement("div");
       elem.classList.add(
         "card",
         "mb-3",
-        pass ? "border-success" : "border-danger"
+        passClass,
       );
 
       var cardHeader = document.createElement("div");
