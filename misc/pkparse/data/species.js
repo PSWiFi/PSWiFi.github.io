@@ -269,7 +269,7 @@ var SPECIES = [
   "Pupitar",
   "Tyranitar",
   "Lugia",
-  "HoOh",
+  "Ho-Oh",
   "Celebi",
   "Treecko",
   "Grovyle",
