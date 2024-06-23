@@ -426,6 +426,9 @@ permalink: /misc/pkparse/
             )
           : "";
 
+      var ogval = data.getUint8(ogloc);
+      var origingame = ORIGIN_GAMES[ogval];
+
       var ids = data.getUint32(idsloc, true);
       var tid5 = ids & 0xffff;
       var sid5 = ids >>> 16;
@@ -511,8 +514,6 @@ permalink: /misc/pkparse/
       }
 
       var ball = BALLS[data.getUint8(ballloc)];
-      var ogval = data.getUint8(ogloc);
-      var origingame = ORIGIN_GAMES[ogval];
 
       var height = heightloc ? data.getUint8(heightloc) : null;
       var weight = weightloc ? data.getUint8(weightloc) : null;
