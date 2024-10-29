@@ -415,8 +415,9 @@ permalink: /misc/pkparse/
       var formarg = data.getUint32(formargloc, true);
       if (devid === 869) form += ALCREMIE_SWEETS[formarg]; // Special handling for Alcremie Sweets
 
-      var ability = data.getUint8(abilityloc);
+      var ability = gen <= 7 ? data.getUint8(abilityloc) : data.getUint16(abilityloc, true);
       var abilitynum = data.getUint8(abilitynumloc) & 7; // & 7 not used in Gen 6 but has no effect on resulting value
+      console.log(ability, ABILITIES[ability]);
 
       var teraType =
         teratypeoriginalloc && teratypeoverrideloc
