@@ -1,0 +1,171 @@
+---
+layout: default
+title: Proof Guidelines Test
+permalink: /proof-guidelines/test/
+---
+
+<div class="title" style="background-color: #6d2280;" id="ds-guidelines">
+  <h1 class="text-light text-center pt-3 pb-3"><img src="/images/icons/consoleicon/DS.png" class="rounded float" style="width:55px;height:55px;"> DS Proof Guidelines <img src="/images/icons/consoleicon/DS.png" class="rounded float"
+      style="width:55px;height:55px;"></h1>
+</div><hr />
+
+<p>This section of the page covers how to create proof for Pok&eacute;mon obtained in Gen 4 and Gen 5 games. In all cases, your <span class="fw-bold">PS! Username <u>must</u> be visible</span> somewhere within your proof link so that we can easily verify exactly where the Pok&eacute;mon has come from. {% include common/sensitive-info-paragraph.html %} This includes RNG tool screenshots and any script outputs that display sensitive information.</p>
+
+<div class="card border-dark">
+  <div class="card-header" style="background-color: #7a298f;" id="ds-overall-proof-requirements">
+    <span class="fw-bold text-light">Overall Requirement Reminder:</span>
+  </div>
+  <div class="card-body card-bg">
+    <p>Pok&eacute;mon obtained in the above mentioned DS titles that meet the description of anything listed directly below need proof to trade inside the PS! Wi-Fi room.</p>
+
+    <p><span class="fw-bold">Pok&eacute;mon obtained from Wild/Roaming/Static Encounters &amp; Egg/Gift Redemptions:</span></p>
+    <ul>
+      <li>3 IV+ shiny Pok&eacute;mon</li>
+      <li>4 IV+ non-shiny Pok&eacute;mon</li>
+    </ul>
+
+    <p><span class="fw-bold">Pok&eacute;mon obtained from Event Distributions:</span></p>
+    <u>Distributions with 0 guaranteed IVs</u>
+    <ul>
+      <li>4 IV+ non-shiny/shiny Pok&eacute;mon</li>
+    </ul>
+
+    <u>Distributions with 2+ guaranteed IVs</u>
+    <ul>
+      <li>6 IV non-shiny/shiny Pok&eacute;mon</li>
+    </ul>
+
+    <u>Other</u>
+    <ul>
+      <li>Nicknamed Event Pok&eacute;mon made possible by RNGing matching trainer information</li>
+      <li>"Sometimes Shiny" Shiny Event Pok&eacute;mon (e.g Kyushu Trains Events)</li>
+      <li>ALL Shiny Egg Event Pok&eacute;mon made possible to hatch as shiny exclusively via trading. (e.g Manaphy Egg)</li>
+    </ul>
+  </div>
+</div>
+
+<hr /><div class="title" style="background-color: #6d2280;" id="ds-guidelines-lua-script">
+  <h1 class="text-light text-center pt-3 pb-3"><img src="/images/icons/consoleicon/DS.png" class="rounded float" style="width:55px;height:55px;"> Lua Script Proof <img src="/images/icons/consoleicon/DS.png" class="rounded float"
+      style="width:55px;height:55px;"></h1>
+</div><hr />
+
+<p>We recommend using the most up to date .lua scripts, recent luas make it easier to display all the information you need for creating a suitable proof album. If you are using old .lua scripts, you may need to provide extra screenshots to account for missing information.</p>
+
+<p>Follow along with the checkboxes below to ensure that the proof album you are creating or viewing contains all of the relevant information required for trading.</p> 
+
+<div class="card border-dark">
+  <div class="card-header" style="background-color: #7a298f;" id="lua-script-requirements">
+    <span class="fw-bold text-light">Requirements (DeSmuME/BizHawk/Other with .lua scripts):</span>
+  </div>
+  <div class="card-body card-bg">
+    <!--Encounter checklist starting point, for readability.-->
+
+    <span class="fw-bold">Encounter Checklist:</span><br>
+      <label>
+        <input type="checkbox" id="checkbox-encounter-1-ds">
+        Provide a screenshot of the {% include tooltips/ds/encounter-initiation.html %}, display the .lua script to confirm the current seed and target frame. (<a href="https://i.imgur.com/Lotpeq5.png" class="image-link" data-image="https://i.imgur.com/Lotpeq5.png">Image</a>)
+      </label><p></p>
+
+      <label>
+        <input type="checkbox" id="checkbox-encounter-2-ds">
+        Provide a screenshot immediately after the Pok&eacute;mon appears, such as the <code class="fw-bold">“Pok&eacute;mon appeared!”</code> screen. The .lua script should show the internal details of the Pok&eacute;mon where possible. (<a href="https://i.imgur.com/Lotpeq5.png" class="image-link" data-image="https://i.imgur.com/Lotpeq5.png">Image</a>)
+      </label><p></p>
+
+      <label>
+        <input type="checkbox" id="checkbox-encounter-3-ds">
+        Provide a screenshot of the Pok&eacute;mon summary screen, showing its stats and OT/TID, and/or a screenshot of your Trainer Card. (<a href="https://i.imgur.com/Lotpeq5.png" class="image-link" data-image="https://i.imgur.com/Lotpeq5.png">Image</a>)
+      </label><p></p>
+
+      <label>
+        <input type="checkbox" id="checkbox-encounter-4-ds">
+        Provide a screenshot of the tool used for RNG manipulation. You must show the seed, target frame, and any other specific configurations used. (<a href="https://i.imgur.com/Lotpeq5.png" class="image-link" data-image="https://i.imgur.com/Lotpeq5.png">Image</a>)
+      </label><p></p>
+
+      <label>
+        <input type="checkbox" id="checkbox-encounter-5-ds">
+        For <span class="fw-bold">RNG with C-Gear specifically</span> (e.g Entralink RNG), provide a screenshot of you hitting your C-Gear Seed. (<a href="https://i.imgur.com/Lotpeq5.png" class="image-link" data-image="https://i.imgur.com/Lotpeq5.png">Image</a>)
+      </label><hr />
+
+      <!--Gift redemption checklist starting point, for readability.-->
+
+      <h6><span class="fw-bold">Redemption Checklist:</span></h6>
+      <label>
+        <input type="checkbox" id="checkbox-redemption-1-ds">
+        Provide a screenshot of the {% include tooltips/ds/gift-redemption.html %}, with the .lua script displaying that you have reached the correct seed and target frame. (<a href="https://i.imgur.com/Lotpeq5.png" class="image-link" data-image="https://i.imgur.com/Lotpeq5.png">Image</a>)
+      </label><p></p>
+  
+        <label>
+          <input type="checkbox" id="checkbox-redemption-2-ds">
+          Provide a screenshot immediately after the Pok&eacute;mon was redeemed, with the .lua script on display showcasing the internal details of the Pok&eacute;mon, or a screenshot of the summary screens clearly displaying the stats of the Pok&eacute;mon. (<a href="https://i.imgur.com/Lotpeq5.png" class="image-link" data-image="https://i.imgur.com/Lotpeq5.png">Image</a>)
+        </label><p></p>
+  
+        <label>
+          <input type="checkbox" id="checkbox-redemption-3-ds">
+          Provide a screenshot of the Pok&eacute;mon summary screens, displaying the stats and OT/TID of the Pok&eacute;mon that was obtained and/or your Trainer Card. Trainer Card is mandatory for event Pok&eacute;mon that inherit the trainer information of the player. (<a href="https://i.imgur.com/Lotpeq5.png" class="image-link" data-image="https://i.imgur.com/Lotpeq5.png">Image</a>)
+        </label><p></p>
+  
+        <label>
+          <input type="checkbox" id="checkbox-redemption-4-ds">
+          Provide a screenshot of the tool used for RNG manipulation. You must show the seed, target frame, and any other specific configurations used. (<a href="https://i.imgur.com/Lotpeq5.png" class="image-link" data-image="https://i.imgur.com/Lotpeq5.png">Image</a>)
+        </label><hr />
+
+        <!--Egg redemption checklist starting point, for readability.-->
+
+        <h6><span class="fw-bold">Egg Checklist:</span></h6>
+        <label>
+          <input type="checkbox" id="checkbox-egg-1-ds">
+          Provide a screenshot of the {% include tooltips/ds/egg-redemption.html %}, with the .lua script displaying that you have reached the correct seed and target frame. (<a href="https://i.imgur.com/Lotpeq5.png" class="image-link" data-image="https://i.imgur.com/Lotpeq5.png">Image</a>)
+        </label><p></p>
+    
+          <label>
+            <input type="checkbox" id="checkbox-egg-2-ds">
+            Provide a screenshot immediately after the egg was redeemed, with the .lua script on display showcasing the internal details of the Pok&eacute;mon, or a screenshot of the summary screens clearly displaying the stats of the Pok&eacute;mon. (<a href="https://i.imgur.com/Lotpeq5.png" class="image-link" data-image="https://i.imgur.com/Lotpeq5.png">Image</a>)
+          </label><p></p>
+    
+          <label>
+            <input type="checkbox" id="checkbox-egg-3-ds">
+            Provide a screenshot of the summary screens after hatching, displaying both the stats and OT/TID of the Pok&eacute;mon that was obtained and/or your Trainer Card. (<a href="https://i.imgur.com/Lotpeq5.png" class="image-link" data-image="https://i.imgur.com/Lotpeq5.png">Image</a>)
+          </label><p></p>
+    
+          <label>
+            <input type="checkbox" id="checkbox-egg-4-ds">
+            Provide a screenshot of the tool used for RNG manipulation. You must show the seed, target frame, and any other specific configurations used. (<a href="https://i.imgur.com/Lotpeq5.png" class="image-link" data-image="https://i.imgur.com/Lotpeq5.png">Image</a>)
+          </label>
+
+  </div>
+</div><br />
+
+<hr /><div class="title" style="background-color: #6d2280;" id="ds-guidelines-retail-hardware">
+  <h1 class="text-light text-center pt-3 pb-3"><img src="/images/icons/consoleicon/DS.png" class="rounded float" style="width:55px;height:55px;"> Retail Proof <img src="/images/icons/consoleicon/DS.png" class="rounded float"
+      style="width:55px;height:55px;"></h1>
+</div><hr />
+
+<p>For retail proof in DS titles, the requirements are the same across the board. Follow along with the checkboxes below to ensure that the proof album you are creating or viewing contains all of the relevant information required for trading.</p>
+
+<div class="card border-dark">
+  <div class="card-header" style="background-color: #7a298f;" id="retail-hardware-proof-requirements">
+    <span class="fw-bold text-light">Requirements (Retail hardware):</span>
+  </div>
+  <div class="card-body card-bg">
+    <span class="fw-bold">Retail Checklist:</span><br>
+      <label>
+        <input type="checkbox" id="checkbox-retail-1-ds">
+        Provide a full, uncut video starting from a successful capture or redemption, leading into the party summary screens (or in-box if party is not available). The video must clearly show the Stats, Nature, Ability, and OT/TID of the Pokémon.
+      </label><p></p>
+
+      <label>
+        <input type="checkbox" id="checkbox-retail-2-ds">
+        Provide a screenshot of the RNG tool used, showing the Seed, target frame, and any relevant settings.
+      </label><p></p>
+
+  </div>
+</div>
+
+<!-- Image pop up html -->
+<div id="image-popup" class="popup">
+  <span class="popup-close">&times;</span>
+  <img id="popup-image" class="popup-image" src="" alt="Image not available">
+</div>
+
+  <!-- js reference -->
+  <script src="/proof-guidelines/script.js"></script>
