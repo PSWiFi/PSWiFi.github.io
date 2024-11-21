@@ -9,7 +9,7 @@ permalink: /proof-guidelines/test/combined-test/
         Proof Guidelines
     </h1>
 </div>
-<small class="text-muted mb-3 mt-0">A checklist for creating & verifying a proof album in any game.</small>
+<small class="text-muted mb-3 mt-0">A checklist for creating &amp; verifying a proof album in any game.</small>
 <hr />
 
 <p>
@@ -277,8 +277,6 @@ permalink: /proof-guidelines/test/combined-test/
     $("#enc-select").change(() => {
         var o = document.getElementById("enc-select").options;
         var s = o[o.selectedIndex];
-
-        console.log(s);
 
         $(".enc").addClass("d-none");
         $(".enc-" + s.dataset.console).removeClass("d-none");
