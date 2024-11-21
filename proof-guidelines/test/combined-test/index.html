@@ -4,324 +4,341 @@ title: Proof Guidelines Combined Test
 permalink: /proof-guidelines/test/combined-test/
 ---
 
-<h1>Proof Guidelines:</h1>
+<div class="title" style="background-color: #6d2280;">
+    <h1 class="text-light text-center pt-3 pb-3">
+        Proof Guidelines
+    </h1>
+</div>
+<small class="text-muted mb-3 mt-0">A checklist for creating & verifying a proof album in any game.</small>
+<hr />
+
+<p>
+    Certain rare or high-value Pok&eacute;mon require verification (proof) before being traded. The specific requirements vary based on the game, and the type of encounter.
+    Please select a console, game, and encounter type from the options below to generate a detailed list of the information required for a proof album.
+</p>
 
 <div class="mb-3 w-100">
-  <div class="row row-cols-1 row-cols-md-3">
-    <div class="col col-md-4 mb-2">
-      <label for="console-select">Choose Console:</label>
-      <select id="console-select" class="form-select"></select>
+    <div class="row row-cols-1 row-cols-md-3">
+        <div class="col col-md-4 mb-2">
+            <label for="console-select"><span class="fw-bold">Choose Console:</span></label>
+            <select id="console-select" class="form-select"></select>
+        </div>
+        <div class="col col-md-4 mb-2">
+            <label for="game-select"><span class="fw-bold">Choose Game:</span></label>
+            <select id="game-select" class="form-select"></select>
+        </div>
+        <div class="col col-md-4 mb-2">
+            <label for="enc-select"><span class="fw-bold">Choose Encounter Type:</span></label>
+            <select id="enc-select" class="form-select"></select>
+        </div>
     </div>
-    <div class="col col-md-4 mb-2">
-      <label for="game-select">Choose Game:</label>
-      <select id="game-select" class="form-select"></select>
-    </div>
-    <div class="col col-md-4 mb-2">
-      <label for="enc-select">Choose Enounter Type:</label>
-      <select id="enc-select" class="form-select"></select>
-    </div>
-  </div>
 </div>
 
 <div class="enc enc-switch d-none">
-  {% include_relative switch/common.html %}
+    {% include_relative switch/common.html %}
 
-  <div class="enc enc-9 d-none">
-    {% include_relative switch/sv/index.html %}
+    <div class="enc enc-9 d-none">
+        {% include_relative switch/sv/index.html %}
 
-    <div class="enc enc-wild d-none">
-      {% include_relative switch/sv/wild/index.html %}
+        <div class="enc enc-wild d-none">
+            {% include_relative switch/sv/wild/index.html %}
+        </div>
+        <div class="enc enc-static d-none">
+            {% include_relative switch/sv/static/index.html %}
+        </div>
+        <div class="enc enc-gift d-none">
+            {% include_relative switch/sv/gift/index.html %}
+        </div>
+        <div class="enc enc-raid d-none">
+            {% include_relative switch/sv/raid/index.html %}
+        </div>
     </div>
-    <div class="enc enc-static d-none">
-      {% include_relative switch/sv/static/index.html %}
-    </div>
-    <div class="enc enc-gift d-none">
-      {% include_relative switch/sv/gift/index.html %}
-    </div>
-    <div class="enc enc-raid d-none">
-      {% include_relative switch/sv/raid/index.html %}
-    </div>
-  </div>
-  <div class="enc enc-8a d-none">
-    {% include_relative switch/la/index.html %}
+    <div class="enc enc-8a d-none">
+        {% include_relative switch/la/index.html %}
 
-    <div class="enc enc-static d-none">
-      {% include_relative switch/la/static/index.html %}
+        <div class="enc enc-static d-none">
+            {% include_relative switch/la/static/index.html %}
+        </div>
+        <div class="enc enc-gift d-none">
+            {% include_relative switch/la/gift/index.html %}
+        </div>
+        <div class="enc enc-outbreak d-none">
+            {% include_relative switch/la/outbreak/index.html %}
+        </div>
+        <div class="enc enc-spawner d-none">
+            {% include_relative switch/la/spawner/index.html %}
+        </div>
     </div>
-    <div class="enc enc-gift d-none">
-      {% include_relative switch/la/gift/index.html %}
-    </div>
-    <div class="enc enc-outbreak d-none">
-      {% include_relative switch/la/outbreak/index.html %}
-    </div>
-    <div class="enc enc-spawner d-none">
-      {% include_relative switch/la/spawner/index.html %}
-    </div>
-  </div>
-  <div class="enc enc-8b d-none">
-    {% include_relative switch/bdsp/index.html %}
+    <div class="enc enc-8b d-none">
+        {% include_relative switch/bdsp/index.html %}
 
-    <div class="enc enc-wild d-none">
-      {% include_relative switch/bdsp/wild/index.html %}
+        <div class="enc enc-wild d-none">
+            {% include_relative switch/bdsp/wild/index.html %}
+        </div>
+        <div class="enc enc-static d-none">
+            {% include_relative switch/bdsp/static/index.html %}
+        </div>
+        <div class="enc enc-gift d-none">
+            {% include_relative switch/bdsp/gift/index.html %}
+        </div>
+        <div class="enc enc-pokeradar d-none">
+            {% include_relative switch/bdsp/pokeradar/index.html %}
+        </div>
     </div>
-    <div class="enc enc-static d-none">
-      {% include_relative switch/bdsp/static/index.html %}
-    </div>
-    <div class="enc enc-gift d-none">
-      {% include_relative switch/bdsp/gift/index.html %}
-    </div>
-    <div class="enc enc-pokeradar d-none">
-      {% include_relative switch/bdsp/pokeradar/index.html %}
-    </div>
-  </div>
-  <div class="enc enc-8 d-none">
-    {% include_relative switch/swsh/index.html %}
+    <div class="enc enc-8 d-none">
+        {% include_relative switch/swsh/index.html %}
 
-    <div class="enc enc-wild d-none">
-      {% include_relative switch/swsh/wild/index.html %}
+        <div class="enc enc-wild d-none">
+            {% include_relative switch/swsh/wild/index.html %}
+        </div>
+        <div class="enc enc-static d-none">
+            {% include_relative switch/swsh/static/index.html %}
+        </div>
+        <div class="enc enc-gift d-none">
+            {% include_relative switch/swsh/gift/index.html %}
+        </div>
+        <div class="enc enc-raid d-none">
+            {% include_relative switch/swsh/raid/index.html %}
+        </div>
     </div>
-    <div class="enc enc-static d-none">
-      {% include_relative switch/swsh/static/index.html %}
-    </div>
-    <div class="enc enc-gift d-none">
-      {% include_relative switch/swsh/gift/index.html %}
-    </div>
-    <div class="enc enc-raid d-none">
-      {% include_relative switch/swsh/raid/index.html %}
-    </div>
-  </div>
-  <div class="enc enc-7b d-none">
-    {% include_relative switch/lgpe/index.html %}
+    <div class="enc enc-7b d-none">
+        {% include_relative switch/lgpe/index.html %}
 
-    <div class="enc enc-all-encounter-types d-none">
-      {% include_relative switch/lgpe/all/index.html %}
+        <div class="enc enc-all-encounter-types d-none">
+            {% include_relative switch/lgpe/all/index.html %}
+        </div>
     </div>
-  </div>
 </div>
 <div class="enc enc-3ds d-none">
-  {% include_relative 3ds/common.html %}
+    {% include_relative 3ds/common.html %}
 
-  <div class="enc enc-7 d-none">
-    {% include_relative 3ds/usum/index.html %}
+    <div class="enc enc-7 d-none">
+        {% include_relative 3ds/usum/index.html %}
 
-    <div class="enc enc-wild d-none">
-      {% include_relative 3ds/usum/wild/index.html %}
+        <div class="enc enc-wild d-none">
+            {% include_relative 3ds/usum/wild/index.html %}
+        </div>
+        <div class="enc enc-static d-none">
+            {% include_relative 3ds/usum/static/index.html %}
+        </div>
+        <div class="enc enc-gift d-none">
+            {% include_relative 3ds/usum/gift/index.html %}
+        </div>
+        <div class="enc enc-egg d-none">
+            {% include_relative 3ds/usum/egg/index.html %}
+        </div>
+        <div class="enc enc-sos d-none">
+            {% include_relative 3ds/usum/sos/index.html %}
+        </div>
     </div>
-    <div class="enc enc-static d-none">
-      {% include_relative 3ds/usum/static/index.html %}
-    </div>
-    <div class="enc enc-gift d-none">
-      {% include_relative 3ds/usum/gift/index.html %}
-    </div>
-    <div class="enc enc-egg d-none">
-      {% include_relative 3ds/usum/egg/index.html %}
-    </div>
-    <div class="enc enc-sos d-none">
-      {% include_relative 3ds/usum/sos/index.html %}
-    </div>
-  </div>
-  <div class="enc enc-6 d-none">
-    {% include_relative 3ds/xyoras/index.html %}
+    <div class="enc enc-6 d-none">
+        {% include_relative 3ds/xyoras/index.html %}
 
-    <div class="enc enc-wild d-none">
-      {% include_relative 3ds/xyoras/wild/index.html %}
+        <div class="enc enc-wild d-none">
+            {% include_relative 3ds/xyoras/wild/index.html %}
+        </div>
+        <div class="enc enc-static d-none">
+            {% include_relative 3ds/xyoras/static/index.html %}
+        </div>
+        <div class="enc enc-gift d-none">
+            {% include_relative 3ds/xyoras/gift/index.html %}
+        </div>
+        <div class="enc enc-egg d-none">
+            {% include_relative 3ds/xyoras/egg/index.html %}
+        </div>
     </div>
-    <div class="enc enc-static d-none">
-      {% include_relative 3ds/xyoras/static/index.html %}
-    </div>
-    <div class="enc enc-gift d-none">
-      {% include_relative 3ds/xyoras/gift/index.html %}
-    </div>
-    <div class="enc enc-egg d-none">
-      {% include_relative 3ds/xyoras/egg/index.html %}
-    </div>
-  </div>
 </div>
 <div class="enc enc-ds d-none">
-  {% include_relative ds/common.html %}
+    {% include_relative ds/common.html %}
 
-  <div class="enc enc-5 d-none">
-    {% include_relative ds/bw/index.html %}
+    <div class="enc enc-5 d-none">
+        {% include_relative ds/bw/index.html %}
 
-    <div class="enc enc-wild d-none">
-      {% include_relative ds/bw/wild/index.html %}
+        <div class="enc enc-wild d-none">
+            {% include_relative ds/bw/wild/index.html %}
+        </div>
+        <div class="enc enc-static d-none">
+            {% include_relative ds/bw/static/index.html %}
+        </div>
+        <div class="enc enc-gift d-none">
+            {% include_relative ds/bw/gift/index.html %}
+        </div>
+        <div class="enc enc-egg d-none">
+            {% include_relative ds/bw/egg/index.html %}
+        </div>
     </div>
-    <div class="enc enc-static d-none">
-      {% include_relative ds/bw/static/index.html %}
-    </div>
-    <div class="enc enc-gift d-none">
-      {% include_relative ds/bw/gift/index.html %}
-    </div>
-    <div class="enc enc-egg d-none">
-      {% include_relative ds/bw/egg/index.html %}
-    </div>
-  </div>
-  <div class="enc enc-4 d-none">
-    {% include_relative ds/dppthgss/index.html %}
+    <div class="enc enc-4 d-none">
+        {% include_relative ds/dppthgss/index.html %}
 
-    <div class="enc enc-wild d-none">
-      {% include_relative ds/dppthgss/wild/index.html %}
+        <div class="enc enc-wild d-none">
+            {% include_relative ds/dppthgss/wild/index.html %}
+        </div>
+        <div class="enc enc-static d-none">
+            {% include_relative ds/dppthgss/static/index.html %}
+        </div>
+        <div class="enc enc-gift d-none">
+            {% include_relative ds/dppthgss/gift/index.html %}
+        </div>
+        <div class="enc enc-egg d-none">
+            {% include_relative ds/dppthgss/egg/index.html %}
+        </div>
     </div>
-    <div class="enc enc-static d-none">
-      {% include_relative ds/dppthgss/static/index.html %}
-    </div>
-    <div class="enc enc-gift d-none">
-      {% include_relative ds/dppthgss/gift/index.html %}
-    </div>
-    <div class="enc enc-egg d-none">
-      {% include_relative ds/dppthgss/egg/index.html %}
-    </div>
-  </div>
 </div>
 <div class="enc enc-gba d-none">
-  {% include_relative gba/common.html %}
+    {% include_relative gba/common.html %}
 
-  <div class="enc enc-3 d-none">
-    {% include_relative gba/rsefrlg/index.html %}
+    <div class="enc enc-3 d-none">
+        {% include_relative gba/rsefrlg/index.html %}
 
-    <div class="enc enc-wild d-none">
-      {% include_relative gba/rsefrlg/wild/index.html %}
+        <div class="enc enc-wild d-none">
+            {% include_relative gba/rsefrlg/wild/index.html %}
+        </div>
+        <div class="enc enc-static d-none">
+            {% include_relative gba/rsefrlg/static/index.html %}
+        </div>
+        <div class="enc enc-gift d-none">
+            {% include_relative gba/rsefrlg/gift/index.html %}
+        </div>
+        <div class="enc enc-egg d-none">
+            {% include_relative gba/rsefrlg/egg/index.html %}
+        </div>
     </div>
-    <div class="enc enc-static d-none">
-      {% include_relative gba/rsefrlg/static/index.html %}
-    </div>
-    <div class="enc enc-gift d-none">
-      {% include_relative gba/rsefrlg/gift/index.html %}
-    </div>
-    <div class="enc enc-egg d-none">
-      {% include_relative gba/rsefrlg/egg/index.html %}
-    </div>
-  </div>
 </div>
 <div class="enc enc-gamecube d-none">
-  {% include_relative gc/common.html %}
+    {% include_relative gc/common.html %}
 
-  <div class="enc enc-cxd d-none">
-    {% include_relative gc/cxd/index.html %}
+    <div class="enc enc-cxd d-none">
+        {% include_relative gc/cxd/index.html %}
 
-    <div class="enc enc-encounter d-none">
-      {% include_relative gc/cxd/encounter/index.html %}
+        <div class="enc enc-encounter d-none">
+            {% include_relative gc/cxd/encounter/index.html %}
+        </div>
+        <div class="enc enc-gift d-none">
+            {% include_relative gc/cxd/gift/index.html %}
+        </div>
     </div>
-    <div class="enc enc-gift d-none">
-      {% include_relative gc/cxd/gift/index.html %}
-    </div>
-  </div>
-  <div class="enc enc-gcbd d-none">
-    {% include_relative gc/gcbd/index.html %}
+    <div class="enc enc-gcbd d-none">
+        {% include_relative gc/gcbd/index.html %}
 
-    <div class="enc enc-all-bonus-discs d-none">
-      {% include_relative gc/gcbd/all/index.html %}
+        <div class="enc enc-all-bonus-discs d-none">
+            {% include_relative gc/gcbd/all/index.html %}
+        </div>
     </div>
-  </div>
 </div>
 <div class="enc enc-virtual-console d-none">
-  {% include_relative vc/common.html %}
+    {% include_relative vc/common.html %}
 
-  <div class="enc enc-vc d-none">
-    {% include_relative vc/vc/index.html %}
+    <div class="enc enc-vc d-none">
+        {% include_relative vc/vc/index.html %}
 
-    <div class="enc enc-wild d-none">
-      {% include_relative vc/vc/wild/index.html %}
+        <div class="enc enc-wild d-none">
+            {% include_relative vc/vc/wild/index.html %}
+        </div>
+        <div class="enc enc-gift d-none">
+            {% include_relative vc/vc/gift/index.html %}
+        </div>
+        <div class="enc enc-egg d-none">
+            {% include_relative vc/vc/egg/index.html %}
+        </div>
     </div>
-    <div class="enc enc-gift d-none">
-      {% include_relative vc/vc/gift/index.html %}
-    </div>
-    <div class="enc enc-egg d-none">
-      {% include_relative vc/vc/egg/index.html %}
-    </div>
-  </div>
 </div>
 <div class="enc enc-mobile d-none">
-  {% include_relative mobile/common.html %}
+    {% include_relative mobile/common.html %}
 
-  <div class="enc enc-go d-none">
-    {% include_relative mobile/go/index.html %}
+    <div class="enc enc-go d-none">
+        {% include_relative mobile/go/index.html %}
 
-    <div class="enc enc-all-transfers d-none">
-      {% include_relative mobile/go/all/index.html %}
+        <div class="enc enc-all-transfers d-none">
+            {% include_relative mobile/go/all/index.html %}
+        </div>
     </div>
-  </div>
 </div>
 
 <script src="/proof-guidelines/script.js"></script>
 <script src="./data.js"></script>
 <script>
-  $(document).ready(() => {
-    for (let console of Object.keys(data)) {
-      var el = new Option();
-      el.value = console;
-      el.innerText = console;
-      $("#console-select").append(el);
-    }
-    populateGameOptions();
-  });
+    $(document).ready(() => {
+        for (let console of Object.keys(data)) {
+            var el = new Option();
+            el.value = console;
+            el.innerText = console;
+            $("#console-select").append(el);
+        }
+        populateGameOptions();
+    });
 
-  $("#console-select").change(() => {
-    populateGameOptions();
-  });
+    $("#console-select").change(() => {
+        populateGameOptions();
+    });
 
-  $("#game-select").change(() => {
-    populateEncOptions();
-  });
+    $("#game-select").change(() => {
+        populateEncOptions();
+    });
 
-  $("#enc-select").change(() => {
-    var o = document.getElementById("enc-select").options;
-    var s = o[o.selectedIndex];
+    $("#enc-select").change(() => {
+        var o = document.getElementById("enc-select").options;
+        var s = o[o.selectedIndex];
 
-    console.log(s);
+        console.log(s);
 
-    $(".enc").addClass("d-none");
-    $(".enc-" + s.dataset.console).removeClass("d-none");
-    $(".enc-" + s.dataset.gen).removeClass("d-none");
-    $(".enc-" + s.value).removeClass("d-none");
-  });
+        $(".enc").addClass("d-none");
+        $(".enc-" + s.dataset.console).removeClass("d-none");
+        $(".enc-" + s.dataset.gen).removeClass("d-none");
+        $(".enc-" + s.value).removeClass("d-none");
+    });
 
-  function populateGameOptions() {
-    var parent = document.getElementById("game-select");
-    var o = document.getElementById("console-select").options;
-    var s = o[o.selectedIndex];
+    function populateGameOptions() {
+        var parent = document.getElementById("game-select");
+        var o = document.getElementById("console-select").options;
+        var s = o[o.selectedIndex];
 
-    // clear existing options
-    while (parent.firstChild) {
-      parent.removeChild(parent.lastChild);
-    }
+        // clear existing options
+        while (parent.firstChild) {
+            parent.removeChild(parent.lastChild);
+        }
 
-    // populate new options
-    for (const game of Object.keys(data[s.value])) {
-      var el = new Option();
-      el.value = game;
-      el.innerText = game;
-      var d = data[s.value][game];
-      el.dataset.console = s.value.toLowerCase().replace(/\s/, "-");
-      el.dataset.gen = d.gen;
-      el.dataset.enc = d.enc;
-      parent.appendChild(el);
-    }
+        // populate new options
+        for (const game of Object.keys(data[s.value])) {
+            var el = new Option();
+            el.value = game;
+            el.innerText = game;
+            var d = data[s.value][game];
+            el.dataset.console = s.value.toLowerCase().replace(/\s/, "-");
+            el.dataset.gen = d.gen;
+            el.dataset.enc = d.enc;
+            parent.appendChild(el);
+        }
 
-    $("#game-select").change();
-  }
-
-  function populateEncOptions() {
-    var parent = document.getElementById("enc-select");
-    var o = document.getElementById("game-select").options;
-    var s = o[o.selectedIndex];
-    var enc = s.dataset.enc.split(",");
-
-    // clear existing options
-    while (parent.firstChild) {
-      parent.removeChild(parent.lastChild);
+        $("#game-select").change();
     }
 
-    // populate new options
-    for (var e of enc) {
-      var el = new Option();
-      el.value = e.toLowerCase().replace(/\s/g, "-").replace("\u{00e9}", "e");
-      el.innerText = e;
-      el.dataset.console = s.dataset.console;
-      el.dataset.gen = s.dataset.gen;
-      parent.appendChild(el);
-    }
+    function populateEncOptions() {
+        var parent = document.getElementById("enc-select");
+        var o = document.getElementById("game-select").options;
+        var s = o[o.selectedIndex];
+        var enc = s.dataset.enc.split(",");
 
-    $("#enc-select").change();
-  }
+        // clear existing options
+        while (parent.firstChild) {
+            parent.removeChild(parent.lastChild);
+        }
+
+        // populate new options
+        for (var e of enc) {
+            var el = new Option();
+            el.value = e.toLowerCase().replace(/\s/g, "-").replace("\u{00e9}", "e");
+            el.innerText = e;
+            el.dataset.console = s.dataset.console;
+            el.dataset.gen = s.dataset.gen;
+            parent.appendChild(el);
+        }
+
+        $("#enc-select").change();
+    }
 </script>
+
+<!-- Image pop up html -->
+<div id="image-popup" class="popup">
+    <span class="popup-close">&times;</span>
+    <img id="popup-image" class="popup-image" src="" alt="Image not available">
+</div>
