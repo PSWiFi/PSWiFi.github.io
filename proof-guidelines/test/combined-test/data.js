@@ -2,11 +2,11 @@ var data = {
   Switch: {
     Scarlet: {
       gen: 9,
-      enc: ["Wild", "Static", "Gift", "Raid"],
+      enc: ["Wild", "Static", "Gift", "Raid", "Untradable"],
     },
     Violet: {
       gen: 9,
-      enc: ["Wild", "Static", "Gift", "Raid"],
+      enc: ["Wild", "Static", "Gift", "Raid", "Untradable"],
     },
     "Legends: Arceus": {
       gen: "8a",
