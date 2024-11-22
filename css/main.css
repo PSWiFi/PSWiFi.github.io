@@ -54,8 +54,30 @@ blockquote {
   color: #f00;
 }
 
+.accordion-button {
+    background-color: #7a298f;
+    color: white; /* Ensure the text is readable */
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #7a298f;
+    color: white; 
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+}
+
+.accordion-body {
+    background-color: #d1d1d1;
+    color: black;
+    border: 1px solid #343a40;
+    border-radius: 5px;
+    padding: 1rem;
+}
+
 .warn {
-  color: #b80303;
+    color: #b80303;
 }
 
 .prize-shop-blue {
