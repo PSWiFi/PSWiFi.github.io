@@ -22,11 +22,11 @@ var data = {
     },
     Sword: {
       gen: 8,
-      enc: ["Wild", "Static", "Gift", "Raid"],
+      enc: ["Wild", "Static", "Gift", "Raid", "Untradable"],
     },
     Shield: {
       gen: 8,
-      enc: ["Wild", "Static", "Gift", "Raid"],
+      enc: ["Wild", "Static", "Gift", "Raid", "Untradable"],
     },
     "Let's GO! Pikachu": {
       gen: "7b",
