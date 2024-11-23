@@ -1,41 +1,42 @@
 <!--Content added here will apply to any SV selection.-->
 
-<div class="accordion" id="do-i-need-proof-9">
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="accordion-header-9">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-body-9" aria-expanded="false" aria-controls="accordion-body-9">
-        <span class="text-center text-light fw-bold flex-grow-1">Does my Pok&eacute;mon need proof?</span>
-      </button>
-    </h2>
-    <div id="accordion-body-9" class="accordion-collapse collapse" aria-labelledby="accordion-header-9" data-bs-parent="#do-i-need-proof-9">
-      <div class="accordion-body card-bg">
-        <p>When obtained in Scarlet/Violet, any Pok&eacute;mon that meet the conditions of this list requires proof when trading.</p>
+{% include proof-accordion/top.html gen="9" %}
 
-        <h6 span class="fw-bold">Encounters &amp; Gifts with less than 3 guaranteed IVs</h6>
-        <ul>
-          <li>3 IV+ shiny Pok&eacute;mon</li>
-          <li>4 IV+ non-shiny Pok&eacute;mon</li>
-        </ul>
+<p>
+  When obtained in Scarlet/Violet, any Pok&eacute;mon that meet the conditions
+  of this list requires proof when trading.
+</p>
 
-        <h6 span class="fw-bold">Encounters &amp; Gifts with more than 3 guaranteed IVs</h6>
-        <ul>
-          <li>5 IV+ shiny Pok&eacute;mon</li>
-          <li>6 IV or flawless non-shiny Pok&eacute;mon</li>
-        </ul>
+<h6 span class="fw-bold">
+  Encounters &amp; Gifts with less than 3 guaranteed IVs
+</h6>
+<ul>
+  <li>3 IV+ shiny Pok&eacute;mon</li>
+  <li>4 IV+ non-shiny Pok&eacute;mon</li>
+</ul>
 
-        <h6 span class="fw-bold">Tera Raid Encounters</h6>
-        <ul>
-          <li>5 IV+ shiny Pok&eacute;mon</li>
-          <li>6 IV or flawless non-shiny Pok&eacute;mon</li>
-        </ul>
+<h6 span class="fw-bold">
+  Encounters &amp; Gifts with more than 3 guaranteed IVs
+</h6>
+<ul>
+  <li>5 IV+ shiny Pok&eacute;mon</li>
+  <li>6 IV or flawless non-shiny Pok&eacute;mon</li>
+</ul>
 
-        <h6 span class="fw-bold">Mystery Gifts</h6>
-        <ul>
-          <li>4 IV+ Pok&eacute;mon from distributions with less than 3 guaranteed IVs</li>
-          <li>6 IV Pok&eacute;mon from distributions with more than 3 guaranteed IVs</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-<br />
+<h6 span class="fw-bold">Tera Raid Encounters</h6>
+<ul>
+  <li>5 IV+ shiny Pok&eacute;mon</li>
+  <li>6 IV or flawless non-shiny Pok&eacute;mon</li>
+</ul>
+
+<h6 span class="fw-bold">Mystery Gifts</h6>
+<ul>
+  <li>
+    4 IV+ Pok&eacute;mon from distributions with less than 3 guaranteed IVs
+  </li>
+  <li>
+    6 IV Pok&eacute;mon from distributions with more than 3 guaranteed IVs
+  </li>
+</ul>
+
+{% include proof-accordion/bottom.html %}
