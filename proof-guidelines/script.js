@@ -5,7 +5,7 @@ $(document).ready(() => {
   // Get the modal elements
   const popup = document.getElementById("image-popup");
   const popupImage = document.getElementById("popup-image");
-  const closePopup = document.querySelector(".popup-close");
+  const closePopupElement = document.querySelector(".popup-close");
 
   // Add click event listeners to each image link
   imageLinks.forEach((link) => {
@@ -19,10 +19,9 @@ $(document).ready(() => {
   });
 
   // Add event listener to close button
-  if (closePopup) {
-    closePopup.addEventListener("click", () => {
-      popup.style.display = "none"; // Hide the popup
-      popupImage.src = ""; // Clear the image source
+  if (closePopupElement) {
+    closePopupElement.addEventListener("click", () => {
+      closePopup();
     });
   }
 
@@ -30,9 +29,21 @@ $(document).ready(() => {
   if (popup) {
     popup.addEventListener("click", (event) => {
       if (event.target === popup) {
-        popup.style.display = "none"; // Hide the popup
-        popupImage.src = ""; // Clear the image source
+        closePopup();
       }
     });
   }
+
+  $(document).keydown(e => {
+    if (e.keyCode === 27) { // esc
+      closePopup();
+  } });
+
+  function closePopup() {
+    if (popup) {
+      popup.style.display = "none";
+      popupImage.src = "";
+    }
+  }
 });
+
