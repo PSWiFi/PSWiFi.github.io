@@ -14,11 +14,11 @@ var data = {
     },
     "Brilliant Diamond": {
       gen: "8b",
-      enc: ["Wild", "Static", "Gift", "Pok\u{00e9}Radar"],
+      enc: ["Wild", "Gift", "Pok\u{00e9}Radar", "Untradable"],
     },
     "Shining Pearl": {
       gen: "8b",
-      enc: ["Wild", "Static", "Gift", "Pok\u{00e9}Radar"],
+      enc: ["Wild", "Gift", "Pok\u{00e9}Radar", "Untradable"],
     },
     Sword: {
       gen: 8,
@@ -36,11 +36,6 @@ var data = {
       gen: "7b",
       enc: ["All encounter types", "Gift"],
         },
-
-
-
-
-
   },
   "3DS": {
     "Ultra Sun": {
