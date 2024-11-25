@@ -10,7 +10,7 @@ var data = {
     },
     "Legends: Arceus": {
       gen: "8a",
-      enc: ["Static", "Gift", "Outbreak", "Spawner"],
+      enc: ["Encounters", "Gift"],
     },
     "Brilliant Diamond": {
       gen: "8b",
@@ -30,12 +30,17 @@ var data = {
     },
     "Let's GO! Pikachu": {
       gen: "7b",
-      enc: ["All encounter types"],
+      enc: ["All encounter types", "Gift"],
     },
     "Let's GO! Eevee": {
       gen: "7b",
-      enc: ["All encounter types"],
-    },
+      enc: ["All encounter types", "Gift"],
+        },
+
+
+
+
+
   },
   "3DS": {
     "Ultra Sun": {
