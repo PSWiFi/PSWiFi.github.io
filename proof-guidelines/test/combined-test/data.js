@@ -134,11 +134,11 @@ var data = {
   GameCube: {
     Colosseum: {
       gen: "cxd",
-      enc: ["Encounter", "Gift"],
+      enc: ["Everything"],
     },
     XD: {
       gen: "cxd",
-      enc: ["Encounter", "Gift"],
+      enc: ["Everything"],
     },
     "Bonus Disc": {
       gen: "gcbd",
