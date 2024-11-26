@@ -142,7 +142,7 @@ var data = {
     },
     "Bonus Disc": {
       gen: "gcbd",
-      enc: ["All Bonus Discs"],
+      enc: ["Celebi Bonus Disc", "Jirachi Bonus Disc", "Channel Jirachi"],
     },
   },
   "Virtual Console": {
