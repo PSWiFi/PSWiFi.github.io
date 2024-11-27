@@ -74,61 +74,61 @@ var data = {
   DS: {
     "Black 2": {
       gen: 5,
-      enc: ["Wild", "Static", "Egg", "Gift"],
+      enc: ["Wild", "Egg", "Gift"],
     },
     "White 2": {
       gen: 5,
-      enc: ["Wild", "Static", "Egg", "Gift"],
+      enc: ["Wild", "Egg", "Gift"],
     },
     Black: {
       gen: 5,
-      enc: ["Wild", "Static", "Egg", "Gift"],
+      enc: ["Wild", "Egg", "Gift"],
     },
     White: {
       gen: 5,
-      enc: ["Wild", "Static", "Egg", "Gift"],
+      enc: ["Wild", "Egg", "Gift"],
     },
     HeartGold: {
       gen: 4,
-      enc: ["Wild", "Static", "Egg", "Gift"],
+      enc: ["Wild", "Egg", "Gift"],
     },
     SoulSilver: {
       gen: 4,
-      enc: ["Wild", "Static", "Egg", "Gift"],
+      enc: ["Wild", "Egg", "Gift"],
     },
     Platinum: {
       gen: 4,
-      enc: ["Wild", "Static", "Egg", "Gift"],
+      enc: ["Wild", "Egg", "Gift"],
     },
     Diamond: {
       gen: 4,
-      enc: ["Wild", "Static", "Egg", "Gift"],
+      enc: ["Wild", "Egg", "Gift"],
     },
     Pearl: {
       gen: 4,
-      enc: ["Wild", "Static", "Egg", "Gift"],
+      enc: ["Wild", "Egg", "Gift"],
     },
   },
   GBA: {
     Emerald: {
       gen: 3,
-      enc: ["Wild", "Static", "Egg", "Gift"],
+      enc: ["Wild", "Egg", "Gift", "Untradable"],
     },
     FireRed: {
       gen: 3,
-      enc: ["Wild", "Static", "Egg", "Gift"],
+      enc: ["Wild", "Egg", "Gift", "Untradable"],
     },
     LeafGreen: {
       gen: 3,
-      enc: ["Wild", "Static", "Egg", "Gift"],
+      enc: ["Wild", "Egg", "Gift", "Untradable"],
     },
     Ruby: {
       gen: 3,
-      enc: ["Wild", "Static", "Egg", "Gift"],
+      enc: ["Wild", "Egg", "Gift", "Untradable"],
     },
     Sapphire: {
       gen: 3,
-      enc: ["Wild", "Static", "Egg", "Gift"],
+      enc: ["Wild", "Egg", "Gift", "Untradable"],
     },
   },
   GameCube: {
