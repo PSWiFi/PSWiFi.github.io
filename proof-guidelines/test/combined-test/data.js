@@ -40,35 +40,35 @@ var data = {
   "3DS": {
     "Ultra Sun": {
       gen: 7,
-      enc: ["Wild", "Egg", "Gift", "Untradable"],
+      enc: ["Wild", "Gift", "Untradable"],
     },
     "Ultra Moon": {
       gen: 7,
-      enc: ["Wild", "Egg", "Gift", "Untradable"],
+      enc: ["Wild", "Gift", "Untradable"],
     },
     Sun: {
       gen: 7,
-      enc: ["Wild", "Egg", "Gift", "Untradable"],
+      enc: ["Wild", "Gift", "Untradable"],
     },
     Moon: {
       gen: 7,
-      enc: ["Wild", "Egg", "Gift", "Untradable"],
+      enc: ["Wild", "Gift", "Untradable"],
     },
     "Omega Ruby": {
       gen: 6,
-      enc: ["Wild", "Egg", "Gift", "Untradable"],
+      enc: ["Wild", "Gift", "Untradable"],
     },
     "Alpha Sapphire": {
       gen: 6,
-      enc: ["Wild", "Egg", "Gift", "Untradable"],
+      enc: ["Wild", "Gift", "Untradable"],
     },
     X: {
       gen: 6,
-      enc: ["Wild", "Egg", "Gift", "Untradable"],
+      enc: ["Wild", "Gift", "Untradable"],
     },
     Y: {
       gen: 6,
-      enc: ["Wild", "Egg", "Gift", "Untradable"],
+      enc: ["Wild", "Gift", "Untradable"],
     },
   },
   DS: {
