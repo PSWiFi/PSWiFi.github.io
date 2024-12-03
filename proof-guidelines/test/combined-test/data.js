@@ -2,11 +2,11 @@ var data = {
   Switch: {
     Scarlet: {
       gen: 9,
-      enc: ["Wild", "Static", "Gift", "Raid", "Untradable"],
+      enc: ["Wild", "Gift", "Raid", "Untradable"],
     },
     Violet: {
       gen: 9,
-      enc: ["Wild", "Static", "Gift", "Raid", "Untradable"],
+      enc: ["Wild", "Gift", "Raid", "Untradable"],
     },
     "Legends: Arceus": {
       gen: "8a",
@@ -40,35 +40,35 @@ var data = {
   "3DS": {
     "Ultra Sun": {
       gen: 7,
-      enc: ["Wild", "Static", "Egg", "Gift", "SOS"],
+      enc: ["Wild", "Egg", "Gift", "Untradable"],
     },
     "Ultra Moon": {
       gen: 7,
-      enc: ["Wild", "Static", "Egg", "Gift", "SOS"],
+      enc: ["Wild", "Egg", "Gift", "Untradable"],
     },
     Sun: {
       gen: 7,
-      enc: ["Wild", "Static", "Egg", "Gift", "SOS"],
+      enc: ["Wild", "Egg", "Gift", "Untradable"],
     },
     Moon: {
       gen: 7,
-      enc: ["Wild", "Static", "Egg", "Gift", "SOS"],
+      enc: ["Wild", "Egg", "Gift", "Untradable"],
     },
     "Omega Ruby": {
       gen: 6,
-      enc: ["Wild", "Static", "Egg", "Gift"],
+      enc: ["Wild", "Egg", "Gift", "Untradable"],
     },
     "Alpha Sapphire": {
       gen: 6,
-      enc: ["Wild", "Static", "Egg", "Gift"],
+      enc: ["Wild", "Egg", "Gift", "Untradable"],
     },
     X: {
       gen: 6,
-      enc: ["Wild", "Static", "Egg", "Gift"],
+      enc: ["Wild", "Egg", "Gift", "Untradable"],
     },
     Y: {
       gen: 6,
-      enc: ["Wild", "Static", "Egg", "Gift"],
+      enc: ["Wild", "Egg", "Gift", "Untradable"],
     },
   },
   DS: {
