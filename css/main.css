@@ -54,6 +54,10 @@ blockquote {
   color: #f00;
 }
 
+.clickable-image {
+    cursor: pointer !important;
+}
+
 .accordion-button {
   background-color: #7a298f;
   color: #f8f9fa; /* Ensure the text is readable */
