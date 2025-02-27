@@ -1,0 +1,98 @@
+---
+layout: default
+title: Contributing
+permalink: /contributing/
+---
+<div class="title" style="background-color: #dabbed;">
+  <h1 class="text-dark text-center pt-3 pb-3">Contributing</h1>
+</div>
+<hr />
+
+<span>You may be wondering how to contribute and make changes to the PS Wi-Fi website. This page will cover everything you need to know!</span><br /><br />
+
+<div class="card border-dark">
+  <div class="card-header text-dark" style="background-color: #decade;">
+    <span class="fw-bold">You will need:</span>
+  </div>
+  <div class="card-body card-bg">
+    <ul>
+      <li><a href="https://code.visualstudio.com/download">Visual Studio Code</a></li>
+      <li><a href="https://www.ruby-lang.org/en/downloads/">Ruby</a></li>
+      <li><a href="https://www.ruby-lang.org/en/downloads/">A GitHub Account</a></li>
+    </ul><hr />
+    Go through for Visual Studio Code and Ruby that match the Operating System you are currently using (i.e if you're on Windows, go through the Windows setup instructions).
+  </div>
+</div><br />
+<hr />
+
+<div class="card border-dark">
+  <div class="card-header text-dark" style="background-color: #decade;">
+    <span class="fw-bold">1. Cloning PSWiFi.github.io</span>
+  </div>
+  <div class="card-body card-bg">
+    <p>After following the setup instructions, you will need to clone the repository in Visual Studio Code by doing the following:</p>
+    <ul>
+      <li><span class="fw-bold">Fork the repository using GitHub</span> &mdash; Forking the repository creates your own copy of the site to which you can make changes.</li>
+      <li><span class="fw-bold">Open a new window in Visual Studio Code</span> &mdash; If you already have something open, click <code>file > New Window</code>.</li>
+      <li><span class="fw-bold">Click <code>Clone git Repository</code></span> &mdash; Select a known location on your PC for the repositiory to be copied into.</li>
+    </ul>
+    <hr />
+    If done correctly, you should end up with <a class="clickable-image" data-image="/images/contributing/cloned.png" href="/images/contributing/cloned.png">something like this</a>.
+  </div>
+</div>
+<br />
+
+<div class="card border-dark">
+  <div class="card-header text-dark" style="background-color: #decade;">
+    <span class="fw-bold">2a. Command Line Instructions (First Time)</span>
+  </div>
+  <div class="card-body card-bg">
+    <p>For first time setup, you will need to do the following:</p>
+    <ul>
+      <li>Open the folder that contains the repository in File Explorer.</li>
+      <li>Type <code>cmd</code> inside the <a class="clickable-image" data-image="/images/contributing/path-bar.png" href="/images/contributing/path-bar.png">path bar</a>.</li>
+      <ul>
+        <li>A Terminal/Command Prompt window should now be visible.</li>
+      </ul>
+      <li>Type <code>bundle install</code> and press <code>Enter</code> to install all the relevant dependencies.</li>
+    </ul>
+  </div>
+</div>
+<br />
+
+<div class="card border-dark">
+  <div class="card-header text-dark" style="background-color: #decade;">
+    <span class="fw-bold">2b. Command Line Instructions (Running the Site)</span>
+  </div>
+  <div class="card-body card-bg">
+    <p>The following steps assume you have a terminal/command prompt window opened in the folder containing the site. Please follow the instructions under Section 2a to do this if you are now sure how.</p>
+    <ul>
+      <li>Type <code>bundle exec jekyll serve --livereload</code> inside the terminal window, then wait for the website to finish generating.</li>
+      <li>Once the website has generated, you will be able to view it using your browser by visiting <a href="http://localhost:4000">http://localhost:4000</a>.</li>
+    </ul>
+    <hr />
+    You can now make any changes you like using Visual Studio Code. After saving the changes they will be live on your locally hosted version of the website, refresh the page you are editing on <a href="http://localhost:4000">http://localhost:4000</a> to make sure everything is correct.
+  </div>
+</div>
+<br />
+
+<div class="card border-dark">
+  <div class="card-header text-dark" style="background-color: #decade;">
+    <span class="fw-bold">3. Submitting a Pull Request</span>
+  </div>
+  <div class="card-body card-bg">
+    <ul>
+      <li>Save and commit your changes onto your GitHub fork with a descriptive commit name.</li>
+      <li>Follow <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork">these instructions</a> to submit your pull request.</li>
+      <li>Ping <code>@Website</code> in the <code>#website</code> discord channel to say you have a PR that is pending approval.</li>
+    </ul>
+  </div>
+</div>
+<br />
+
+<a type="button" class="list-group-item list-group-item-primary text-end" style="border-radius: 0.25rem;" href="/">
+  I'm done reading this page! Send me home!
+  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+  </svg>
+</a>
