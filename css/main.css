@@ -5,10 +5,34 @@
   border-bottom-left-radius: 0.2rem !important;
 }
 
+/* Margin styling */
+
+/* Applies to all lists, ignores navbar */
+ul li,
+ol li {
+    margin-bottom: 10px;
+}
+
+.navbar li {
+    margin-bottom: 0;
+}
+
+/* Applies to all alert boxes */
+.alert {
+    margin-bottom: 20px;
+}
+
+/* Applies to all page buttons */
+a.list-group-item {
+    margin-bottom: 20px;
+}
+
+/* Applies dotted lines to tooltips */
 .tooltip-underline {
   border-bottom: 1px dotted black;
 }
 
+/* Applies styling to <blockquote> tags */
 blockquote {
   background: #c5c5c5;
   border: 1px solid #9e9e9e;
