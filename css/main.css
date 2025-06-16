@@ -111,6 +111,39 @@ blockquote {
   padding: 1rem;
 }
 
+.cloner-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+    .cloner-table thead {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+    }
+
+        .cloner-table thead th {
+            position: sticky;
+            top: 0;
+            z-index: 2;
+            background: #212529;
+            color: #fff;
+        }
+
+    .cloner-table tbody {
+        display: block;
+        height: 60vh; /* Adjust as needed */
+        overflow-y: auto;
+        border: 1px solid #000;
+        width: 100%;
+    }
+
+        .cloner-table tbody tr {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+        }
+
 .warn {
   color: #b80303;
 }

@@ -5,313 +5,323 @@ permalink: /misc/cloning/
 ---
 
 <div class="bg-dark title">
-  <h1 class="text-light text-center pt-3 pb-3">Cloning Information</h1>
-</div><hr />
+    <h1 class="text-light text-center pt-3 pb-3">Cloning Information</h1>
+</div>
+<hr />
 
-<p>This page contains a list of PS! Wi-Fi room cloners, these users can be approached to ask for cloning services.</p>
-    
-<p><span class="fw-bold warn">Do NOT send offline messages requesting cloning to any of these users, you may be restricted from cloning services for a period of time if this occurs</span>.</p>
+<p>This page contains a list of PS! Wi-Fi room cloners, these users can be approached to ask for cloning services. Be sure to check the Showdown status of a user, sometimes cloners will change their status to indicate they are not currently cloning. You can view a users status by clicking their name in the userlist. In the event that a cloner has their status set to indicate they are not currently cloning, avoid messaging them with requests.</p>
 
-<p>Be sure to check the Showdown status of a user, sometimes cloners will change their status to indicate they are not currently cloning. You can view a users status by clicking their name in the userlist. In the event that a cloner has their status set to indicate they are not currently cloning, avoid messaging them with requests.</p>
+<div class="alert alert-danger" style="border: 1px solid #b60606; border-radius: 8px; padding: 15px; background-color: #f8d7da; color: #721c24;">
+    <span class="fw-bold">Important - </span>Do NOT send offline messages requesting cloning to anybody, this is considered an invasion of privacy and doing this may result in you being restricted from cloning services for an extended period of time. The length of time you will be restricted from cloning will be decided by room staff and will not be up for debate.
+</div>
 
 <form>
-  <div class="form-row">
-    <div class="col">
-      <label for="username-search">Search by PS! Username:</label>
-      <input type="text" id="username-search" class="form-control">
+    <div class="form-row">
+        <div class="col">
+            <label for="username-search"><span class="fw-bold">Search by PS! Username:</span></label>
+            <input type="text" id="username-search" class="form-control">
+        </div>
     </div>
-  </div>
-  <br />
-  <div class="form-row">
-    <div class="col">
-      Filter by console:
+    <div class="form-row" style="margin-top: 10px;">
+        <div class="col">
+            <span class="fw-bold">Filter by console:</span>
+        </div>
+        <div class="col">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input filter-trigger" type="checkbox" value="" id="check-filter-switch" checked>
+                <label class="form-check-label" for="check-filter-switch">
+                    Switch
+                </label>
+            </div>
+        </div>
     </div>
-    <div class="col">
-      <div class="form-check form-check-inline">
-        <input class="form-check-input filter-trigger" type="checkbox" value="" id="check-filter-switch" checked>
-        <label class="form-check-label" for="check-filter-switch">
-          Switch
-        </label>
-      </div>
-      <!--3DS cloning is no longer supported. Section has been commented as it may be re-used in future for another console.-->
-      <!--
-      <div class="form-check form-check-inline">
-        <input class="form-check-input filter-trigger" type="checkbox" value="" id="check-filter-3ds" checked>
-        <label class="form-check-label" for="check-filter-3ds">
-          3DS
-        </label>
-      </div> -->
+    <!--3DS cloning is no longer supported. Section has been commented as it may be re-used in future for another console.-->
+    <!--
+    <div class="form-check form-check-inline">
+      <input class="form-check-input filter-trigger" type="checkbox" value="" id="check-filter-3ds" checked>
+      <label class="form-check-label" for="check-filter-3ds">
+        3DS
+      </label>
+    </div> -->
+    <hr />
+    <div class="form-group">
+        <label id="result-label" for="results">Results</label>
+        <div class="table-container border" style="position: relative;">
+            <table class="table table-striped cloner-table" style="border-collapse: collapse; width: 100%;">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">Username</th>
+                        <th scope="col">Console</th>
+                        <th scope="col">Games</th>
+                        <th scope="col">IGNs</th>
+                        <th scope="col">Notes</th>
+                    </tr>
+                </thead>
+                <tbody id="results">
+                </tbody>
+            </table>
+        </div>
     </div>
-  </div>
-  <hr />
-  <div class="form-group">
-    <label id="result-label" for="results">Results</label>
-    <div class="table-container border" style="height: 66vh; overflow: auto;">
-      <table class="table table-striped">
-        <thead class="table-dark">
-          <tr class="sticky-top">
-            <th scope="col">Username</th>
-            <th scope="col">Console</th>
-            <th scope="col">Games</th>
-            <th scope="col">IGNs</th>
-            <th scope="col">Notes</th>
-          </tr>
-        </thead>
-        <tbody id="results">
-        </tbody>
-      </table>
-    </div>
-  </div>
+
 </form>
 
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 {% include shared/scripts/gooss.html %}
 <script src="https://unpkg.com/fuse.js@6.4.1/dist/fuse.js" integrity="sha384-U2HBuKzcVBmu3+scbSdB3/MI2tVE2A4MBPwrhUxfh74ICJ5pybEyBoz7nXsY5Po0" crossorigin="anonymous"></script>
 <script>
-  // Store the Blacklist object once gooss retrieves it from the sheet
-  var cloner = [];
-  $(function() {
-    // Fetch data from the sheet
-    gooss.data({
-        Cloners: {
-          url: "https://docs.google.com/spreadsheet/ccc?key=1zCoM9XM7x5NQX4S9-Zo_p86FjZxnt8sfESgQ1szFkps",
-          index: 0,
+    // Store the Blacklist object once gooss retrieves it from the sheet
+    var cloner = [];
+    $(function () {
+        // Fetch data from the sheet
+        gooss.data({
+            Cloners: {
+                url: "https://docs.google.com/spreadsheet/ccc?key=1zCoM9XM7x5NQX4S9-Zo_p86FjZxnt8sfESgQ1szFkps",
+                index: 0,
+            },
         },
-      },
-      function(err, data) {
-        if (err) return alert(err);
-        // Sort sheet data alphabetically and store results
-        cloner = data.Cloners.sort(function(a, b) {
-          if (a.USERNAME < b.USERNAME) {
-            return -1;
-          }
-          if (a.USERNAME > b.USERNAME) {
-            return 1;
-          }
-          return 0;
-        });
+            function (err, data) {
+                if (err) return alert(err);
+                // Sort sheet data alphabetically and store results
+                cloner = data.Cloners.sort(function (a, b) {
+                    if (a.USERNAME < b.USERNAME) {
+                        return -1;
+                    }
+                    if (a.USERNAME > b.USERNAME) {
+                        return 1;
+                    }
+                    return 0;
+                });
 
-        // Page is ready! Get rid of the loader and display the contents
-        updateResults(cloner.length);
-        $("#loader").addClass("d-none");
-        $("#content").removeClass("d-none");
-        $("#footer").removeClass("d-none");
+                // Page is ready! Get rid of the loader and display the contents
+                updateResults(cloner.length);
+                $("#loader").addClass("d-none");
+                $("#content").removeClass("d-none");
+                $("#footer").removeClass("d-none");
 
-        // Log blacklist object - useful in case something goes wrong!
-        // console.log(cloner);
+                // Log blacklist object - useful in case something goes wrong!
+                // console.log(cloner);
 
-        // Populate results table with the data
+                // Populate results table with the data
+                var $results = $("#results");
+                for (var entry of cloner) {
+                    $results.append(formatEntry(entry));
+                }
+            }
+        );
+    });
+
+    $("#username-search, .filter-trigger").on("keyup change", function () {
+        // Test validity of input - All characters, 19 digits max as per the Showdown name limit, then populate the table with search data
+        var testArr = $("#username-search").val().split("");
+        var resultArr = [];
+        for (var i in testArr) {
+            if (i < 19) {
+                resultArr.push(testArr[i]);
+            }
+            $("#username-search").val(resultArr.join(""));
+        }
         var $results = $("#results");
-        for (var entry of cloner) {
-          $results.append(formatEntry(entry));
+        $results.html("");
+
+        var i = 0;
+        if ($("#username-search").val().trim() === "") {
+            for (var entry of cloner) {
+                // Filter by console checkboxes
+                if (checkResultValidGame(entry)) {
+                    // Passes, update
+                    $results.append(formatEntry(entry));
+                    i++;
+                }
+            }
+            updateResults(i);
+        } else {
+            // Set up options for our fuzzy search
+            var options = {
+                includeScore: true,
+                threshold: 0.3, // More or less arbitrary, lower value = less "fuzziness" i.e. user must type more accurately
+                keys: ["USERNAME"],
+            };
+            // Initialize and run search
+            var fuse = new Fuse(cloner, options);
+            var search = fuse.search($("#username-search").val());
+            for (var entry of cloner) {
+                if (!entry["USERNAME"]) continue;
+            }
+
+            var i = 0;
+            for (var result of search) {
+                // Filter by console checkboxes
+                if (checkResultValidGame(result.item)) {
+                    // Add our search results to the table
+                    addToTable(result, $results);
+                    i++;
+                }
+            }
+            updateResults(i);
         }
-      }
-    );
-  });
+    });
 
-  $("#username-search, .filter-trigger").on("keyup change", function() {
-    // Test validity of input - All characters, 19 digits max as per the Showdown name limit, then populate the table with search data
-    var testArr = $("#username-search").val().split("");
-    var resultArr = [];
-    for (var i in testArr) {
-      if (i < 19) {
-        resultArr.push(testArr[i]);
-      }
-      $("#username-search").val(resultArr.join(""));
+    function checkResultValidGame(entry) {
+        return (
+            entry.CONSOLE === "Switch" && $("#check-filter-switch").prop("checked") ||
+            entry.CONSOLE === "3DS" && $("#check-filter-3ds").prop("checked")
+        );
     }
-    var $results = $("#results");
-    $results.html("");
 
-    var i = 0;
-    if ($("#username-search").val().trim() === "") {
-      for (var entry of cloner) {
-        // Filter by console checkboxes
-        if (checkResultValidGame(entry)) {
-          // Passes, update
-          $results.append(formatEntry(entry));
-          i++;
+    function formatEntry(entry) {
+        return "<tr>" + "\n" +
+            "<th scope=\"row\">" + (entry.USERNAME ? entry.USERNAME : "&mdash;") + "</th>" + "\n" +
+            "<td>" + (entry.CONSOLE ? entry.CONSOLE : "&mdash;") + "</th>" + "\n" +
+            "<td>" + (entry["GAME"] ? formatGames(entry["GAME"]) : "&mdash;") + "</td>" + "\n" +
+            "<td>" + (entry["OT"] ? entry["OT"] : "&mdash;") + "</td>" + "\n" +
+            "<td>" + (entry["Cloner Notes"] ? entry["Cloner Notes"] : "&mdash;") + "</td>";
+    }
+
+    function formatGames(gameString) {
+        var games = gameString.trim().split("/");
+        var o = [];
+        for (var i = 0; i < games.length; i++) {
+            var game = games[i].toLowerCase().replace(/[^a-z]/g, "");
+            o.push("<img alt=\"" + game + "\" title=\"" + games[i] + "\" src=\"/images/icons/home/gameicon/" + game[0].toUpperCase() + game.slice(1) + ".png\" width=\"20\" height=\"20\">");
         }
-      }
-      updateResults(i);
-    } else {
-      // Set up options for our fuzzy search
-      var options = {
-        includeScore: true,
-        threshold: 0.3, // More or less arbitrary, lower value = less "fuzziness" i.e. user must type more accurately
-        keys: ["USERNAME"],
-      };
-      // Initialize and run search
-      var fuse = new Fuse(cloner, options);
-      var search = fuse.search($("#username-search").val());
-      for (var entry of cloner) {
-        if (!entry["USERNAME"]) continue;
-      }
+        return o.join(" ");
+    }
 
-      var i = 0;
-      for (var result of search) {
-        // Filter by console checkboxes
-        if (checkResultValidGame(result.item)) {
-          // Add our search results to the table
-          addToTable(result, $results);
-          i++;
+    function updateResults(num) {
+        return $("#result-label").html("Results (" + num + ")");
+    }
+
+    function addToTable(result, $results) {
+        // Results returned by the search will have the .item property, ones that we added manually will not
+        if (result.item) {
+            // Check for duplicates - we don't want to add the same entry twice in the case that we search for "Multiple"
+            if (!$("#results").html().includes(formatEntry(result.item))) {
+                $results.append(formatEntry(result.item));
+            }
+        } else {
+            // Check for duplicates - we don't want to add the same entry twice in the case that we search for "Multiple"
+            if (!$("#results").html().includes(formatEntry(result))) {
+                $results.append(formatEntry(result));
+            }
         }
-      }
-      updateResults(i);
     }
-  });
-
-  function checkResultValidGame(entry) {
-    return (
-      entry.CONSOLE === "Switch" && $("#check-filter-switch").prop("checked") ||
-      entry.CONSOLE === "3DS" && $("#check-filter-3ds").prop("checked")
-    );
-  }
-
-  function formatEntry(entry) {
-    return "<tr>" + "\n" +
-      "<th scope=\"row\">" + (entry.USERNAME ? entry.USERNAME : "&mdash;") + "</th>" + "\n" +
-      "<td>" + (entry.CONSOLE ? entry.CONSOLE : "&mdash;") + "</th>" + "\n" +
-      "<td>" + (entry["GAME"] ? formatGames(entry["GAME"]) : "&mdash;") + "</td>" + "\n" +
-      "<td>" + (entry["OT"] ? entry["OT"] : "&mdash;") + "</td>" + "\n" +
-      "<td>" + (entry["Cloner Notes"] ? entry["Cloner Notes"] : "&mdash;") + "</td>";
-  }
-
-  function formatGames(gameString) {
-    var games = gameString.trim().split("/");
-    var o = [];
-    for (var i = 0; i < games.length; i++) {
-      var game = games[i].toLowerCase().replace(/[^a-z]/g, "");
-      o.push("<img alt=\"" + game + "\" title=\"" + games[i] + "\" src=\"/images/icons/home/gameicon/" + game[0].toUpperCase() + game.slice(1) + ".png\" width=\"20\" height=\"20\">");
-    }
-    return o.join(" ");
-  }
-
-  function updateResults(num) {
-    return $("#result-label").html("Results (" + num + ")");
-  }
-
-  function addToTable(result, $results) {
-    // Results returned by the search will have the .item property, ones that we added manually will not
-    if (result.item) {
-      // Check for duplicates - we don't want to add the same entry twice in the case that we search for "Multiple"
-      if (!$("#results").html().includes(formatEntry(result.item))) {
-        $results.append(formatEntry(result.item));
-      }
-    } else {
-      // Check for duplicates - we don't want to add the same entry twice in the case that we search for "Multiple"
-      if (!$("#results").html().includes(formatEntry(result))) {
-        $results.append(formatEntry(result));
-      }
-    }
-  }
 </script>
 
 <hr />
 
 <div class="card border-dark">
-  <div class="card-header text-light" style="background-color: #000000;" id="about-approved-cloning"><span class="fw-bold">About Approved Cloning</span>
-  </div>
-  <div class="card-body card-bg">
-    <p><span class="fw-bold">Wondering what cloners do, or hoping to become an approved cloner?</span></p>
-      
-    <p>PS! Wi-Fi permits the use of cloning for legitimate Pok&eacute;mon. Cloning is essentially of copy/pasting existing Pok&eacute;mon data in order to have multiple copies. If done correctly, the Pok&eacute;mon data will not be altered, thus remaining legitimate by PS Wi-Fi standards.</p>
-    
-    <p>Cloning methods that alter Pok&eacute;mon data in any way is strictly banned and will render the Pok&eacute;mon as illegitimate/hacked.</p>
+    <div class="card-header text-light" style="background-color: #000000;" id="about-approved-cloning">
+        <span class="fw-bold">About Approved Cloning</span>
+    </div>
+    <div class="card-body card-bg">
+        <p><span class="fw-bold">Wondering what cloners do, or hoping to become an approved cloner?</span></p>
 
-    <h6><span class="fw-bold">Supported Games:</span></h6>
-    <ul>
-      <li>Scarlet & Violet</li>
-      <li>Sword & Shield</li>
-      <li>Legends: Arceus</li>
-      <li>Let's Go Pikachu & Eevee</li>
-    </ul>
+        <p>PS! Wi-Fi permits the use of cloning for legitimate Pok&eacute;mon. Cloning is essentially of copy/pasting existing Pok&eacute;mon data in order to have multiple copies. If done correctly, the Pok&eacute;mon data will not be altered, thus remaining legitimate by PS Wi-Fi standards.</p>
 
-    <small><span class="fw-bold">Important Note:</span> We do not support cloning in Brilliant Diamond/Shining Pearl, this is due to the game having clone detection, which is capable of detecting clones and will block them from being traded or ever leaving BDSP.</small><hr />
+        <p>Cloning methods that alter Pok&eacute;mon data in any way is strictly banned and will render the Pok&eacute;mon as illegitimate/hacked.</p>
 
-    <h5><span class="fw-bold">How to apply:</span></h5>
-    <p>Contact a member of Wi-Fi Room Staff when you see them available in the room to request the approved cloners form, only do so if you have a suitable cloning method (allowed methods are listed towards the bottom of this page).</p>
+        <h6><span class="fw-bold">Supported Games:</span></h6>
+        <ul>
+            <li>Scarlet & Violet</li>
+            <li>Sword & Shield</li>
+            <li>Legends: Arceus</li>
+            <li>Let's Go Pikachu & Eevee</li>
+        </ul>
 
-  </div>
-</div><br />
+        <small><span class="fw-bold">Important Note:</span> We do not support cloning in Brilliant Diamond/Shining Pearl, this is due to the game having clone detection, which is capable of detecting clones and will block them from being traded or ever leaving BDSP.</small><hr />
 
-<span class="fw-bold warn">We do not support or condone using cloned Pok&eacute;mon in official competitions. Do not use cloned Pok&eacute;mon in battle or in trades with those who are unaware cloned Pok&eacute;mon are in use.</span><hr />
+        <h5><span class="fw-bold">How to apply:</span></h5>
+        <p>Contact a member of Wi-Fi Room Staff when you see them available in the room to request the approved cloners form, only do so if you have a suitable cloning method (allowed methods are listed towards the bottom of this page).</p>
+
+    </div>
+</div>
+<br />
+
+<div class="alert alert-danger" style="border: 1px solid #b60606; border-radius: 8px; padding: 15px; background-color: #f8d7da; color: #721c24;">
+    <span class="fw-bold">Important - </span>We do not support or condone using cloned Pok&eacute;mon in official competitions. Do not use cloned Pok&eacute;mon in battle or in trades with those who are unaware cloned Pok&eacute;mon are in use.
+</div>
+<hr />
 
 <div class="card border-dark">
-  <div class="card-header text-light" style="background-color: #000000;" id="cloning-requirements-and-info"><span class="fw-bold">Cloning Requirements &amp; Important Information</span>
-  </div>
-  <div class="card-body card-bg">
-    <h6><span class="fw-bold">Approved Cloners Must:</span></h6> 
-    <ol>
-      <li>Have a solid grasp of room and proof rules.</li>
-      <li>Use a cloning method that allows for quick and efficient hack checks.</li>
-      <li>Be able to identify a hacked or illegal Pok&eacute;mon reliably.</li>
-      <li>Be an active and positive presence in the room for an extended period of time. (Activity should be continued after joining the approved cloner team)</li>
-    </ol>
+    <div class="card-header text-light" style="background-color: #000000;" id="cloning-requirements-and-info">
+        <span class="fw-bold">Cloning Requirements &amp; Important Information</span>
+    </div>
+    <div class="card-body card-bg">
+        <h6><span class="fw-bold">Approved Cloners Must:</span></h6>
+        <ol>
+            <li>Have a solid grasp of room and proof rules.</li>
+            <li>Use a cloning method that allows for quick and efficient hack checks.</li>
+            <li>Be able to identify a hacked or illegal Pok&eacute;mon reliably.</li>
+            <li>Be an active and positive presence in the room for an extended period of time. (Activity should be continued after joining the approved cloner team)</li>
+        </ol>
 
-    <p>Room and proof rule knowledge and hack checking competency will be tested before you are approved for cloning! This is an open-book test so you will be able to refer to any information you need while the test is ongoing.</p>
+        <p>Room and proof rule knowledge and hack checking competency will be tested before you are approved for cloning! This is an open-book test so you will be able to refer to any information you need while the test is ongoing.</p>
 
-    <h6><span class="fw-bold">Important Information:</span></h6>
-    <ul>
-      <li>Poor behaviour or extended hiatus from cloning will result in removal from our approved cloning team.</li>
-      <li>Cloners must not give away Pok&eacute;mon for free when negotiating trades or cloning, keep trade offers fair to support the trade economy.</li>
-      <li>Cloners may be given privileged access to information and resources (including Pok&eacute;mon), abuse of privileged positioning will result in removal.</li>
-      <li>Scamming or trading hacked Pok&eacute;mon in a position of trust will result in immediate removal and room punishment.</li>
-      <li>If you need a second opinion on a hack check, approach a member of <code>/roomstaff</code>. (% or higher)</li>
-      <li>If you get a suspicious cloning request, clone the Pok&eacute;mon, return it, then approach a <code>/roomstaff</code> member with the Pok&eacute;mon and logs of the conversation.</li>
-    </ul>
-  </div>
-</div><br />
-
-
+        <h6><span class="fw-bold">Important Information:</span></h6>
+        <ul>
+            <li>Poor behaviour or extended hiatus from cloning will result in removal from our approved cloning team.</li>
+            <li>Cloners must not give away Pok&eacute;mon for free when negotiating trades or cloning, keep trade offers fair to support the trade economy.</li>
+            <li>Cloners may be given privileged access to information and resources (including Pok&eacute;mon), abuse of privileged positioning will result in removal.</li>
+            <li>Scamming or trading hacked Pok&eacute;mon in a position of trust will result in immediate removal and room punishment.</li>
+            <li>If you need a second opinion on a hack check, approach a member of <code>/roomstaff</code>. (% or higher)</li>
+            <li>If you get a suspicious cloning request, clone the Pok&eacute;mon, return it, then approach a <code>/roomstaff</code> member with the Pok&eacute;mon and logs of the conversation.</li>
+        </ul>
+    </div>
+</div>
+<br />
 
 <a type="button" class="list-group-item list-group-item-primary text-end" style="border-radius: 0.25rem;" href="/proof-guidelines/min-requirement">
-  Looking for the Proofing Guidelines? <span class="fw-bold">Click me!</span>
-  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-  </svg>
+    Looking for the Proofing Guidelines? <span class="fw-bold">Click me!</span>
+    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+    </svg>
 </a>
-<br>
 
 <hr /><div class="bg-dark title">
-  <h1 class="text-light text-center pt-3 pb-3">Approvable Cloning Methods</h1>
-</div><hr />
+    <h1 class="text-light text-center pt-3 pb-3">Approvable Cloning Methods</h1>
+</div>
+<hr />
 
 <p>This section of the page will cover all the cloning methods we allow, and which ones are immediately disallowed.</p>
 
 <div class="card border-dark">
-  <div class="card-header text-light" style="background-color: #000000;" id="switch-cloning-methods"><span class="fw-bold">Switch</span>
-  </div>
-  <div class="card-body card-bg">
-    <ul>
-      <li><span class="fw-bold">PKHeX</span> - We allow and recommend cloning using PKHeX as the tool is widely known and accepted for making accurate clones of Pok&eacute;mon when used responsibly.</li>
-      <li><span class="fw-bold">Livehex</span> - This is a plugin that communicates with PKHeX and your console which allows the capability to clone while the game is running.</li>
-    </ul>
+    <div class="card-header text-light" style="background-color: #000000;" id="switch-cloning-methods">
+        <span class="fw-bold">Switch</span>
+    </div>
+    <div class="card-body card-bg">
+        <ul>
+            <li><span class="fw-bold">PKHeX</span> - We allow and recommend cloning using PKHeX as the tool is widely known and accepted for making accurate clones of Pok&eacute;mon when used responsibly.</li>
+            <li><span class="fw-bold">Livehex</span> - This is a plugin that communicates with PKHeX and your console which allows the capability to clone while the game is running.</li>
+        </ul>
 
-    <p>It is extremely important to not misuse any of the above mentioned tools, as this will most definitely result in removal from the cloning team and/or room punishment!</p>
+        <p>It is extremely important to not misuse any of the above mentioned tools, as this will most definitely result in removal from the cloning team and/or room punishment!</p>
 
-  </div>
-</div><br />
+    </div>
+</div>
+<br />
 
 <div class="card border-dark">
-  <div class="card-header text-light" style="background-color: #b60606;" id="unapprovable-cloning-methods"><span class="fw-bold">Unapproved</span>
-  </div>
-  <div class="card-body card-bg">
-    <ul>
-      <li>Action Replay.</li>
-      <li>Powersaves.</li>
-      <li>God Eggs.</li>
-      <li>Other alternative cheating engines, tools, or glitches.</li>
-      <li>Someone else's tool; for example, a bot.</li>
-      <li>Anything not mentioned in the approved methods sections.</li>
-    </ul>
+    <div class="card-header text-light" style="background-color: #b60606;" id="unapprovable-cloning-methods">
+        <span class="fw-bold">Unapproved</span>
+    </div>
+    <div class="card-body card-bg">
+        <ul>
+            <li>Action Replay.</li>
+            <li>Powersaves.</li>
+            <li>God Eggs.</li>
+            <li>Other alternative cheating engines, tools, or glitches.</li>
+            <li>Someone else's tool; for example, a bot.</li>
+            <li>Anything not mentioned in the approved methods sections.</li>
+        </ul>
 
-    <small><span class="fw-bold">Note -</span> Cloning for yourself using any of the above method is permitted, these clones must be exact copies of the original Pok&eacute;mon however. Some of the cloning methods in this list may result in improper clones, and trading improperly cloned Pok&eacute;mon will result in punishment up to a room Blacklist.</small>
-  </div>
-</div><br />
+        <small><span class="fw-bold">Note -</span> Cloning for yourself using any of the above method is permitted, these clones must be exact copies of the original Pok&eacute;mon however. Some of the cloning methods in this list may result in improper clones, and trading improperly cloned Pok&eacute;mon will result in punishment up to a room Blacklist.</small>
+    </div>
+</div>
+<br />
 
 <a type="button" class="list-group-item list-group-item-primary text-end" style="border-radius: 0.25rem;" href="/">
-  I don't want to be a cloner! <span class="fw-bold">Send me home!</span>
-  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-  </svg>
+    I don't want to be a cloner! <span class="fw-bold">Send me home!</span>
+    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+    </svg>
 </a>
