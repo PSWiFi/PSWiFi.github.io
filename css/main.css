@@ -78,6 +78,17 @@ blockquote {
   color: #f00;
 }
 
+.spoiler {
+    background-color: gray;
+    color: transparent;
+    user-select: none;
+}
+
+    .spoiler:hover {
+        background-color: inherit;
+        color: inherit;
+    }
+
 .clickable-image {
     cursor: pointer !important;
 }
@@ -111,39 +122,153 @@ blockquote {
   padding: 1rem;
 }
 
-.cloner-table {
-    border-collapse: collapse;
-    width: 100%;
+/* Scrollable tables used for in the Misc pages */
+
+.table-container {
+    max-height: 60vh;
+    overflow-x: auto; 
+    overflow-y: auto; 
+    position: relative;
+    border: 1px solid black; 
 }
 
-    .cloner-table thead {
-        display: table;
-        width: 100%;
-        table-layout: fixed;
+/* Hackmon blacklist table specifics */
+.blacklist-table {
+    border-collapse: collapse;
+    table-layout: auto;
+    text-align: center;
+    border-spacing: 0;
+    margin: 0;
+    max-width: 100%;
+    width: auto;
+}
+
+.blacklist-table th,
+.blacklist-table td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 0.75rem;
+    border: none;
+}
+
+.blacklist-table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: #212529;
+    color: #fff;
+    padding: 0.75rem;
+    border: none;
+    text-align: center;
+}
+    .blacklist-table thead th:nth-child(3),
+    .blacklist-table tbody td:nth-child(3) {
+        min-width: 180px; 
+        white-space: normal;
+        word-break: break-word;
+        text-align: center;
     }
 
-        .cloner-table thead th {
-            position: sticky;
-            top: 0;
-            z-index: 2;
-            background: #212529;
-            color: #fff;
-        }
-
-    .cloner-table tbody {
-        display: block;
-        height: 60vh; /* Adjust as needed */
-        overflow-y: auto;
-        border: 1px solid #000;
-        width: 100%;
+    .blacklist-table thead th:nth-child(4),
+    .blacklist-table tbody td:nth-child(4) {
+        min-width: 250px;
+        white-space: normal;
+        word-break: break-word;
+        text-align: center;
     }
 
-        .cloner-table tbody tr {
-            display: table;
-            width: 100%;
-            table-layout: fixed;
+/* Cloner table specifics */
+.cloner-table {
+    border-collapse: collapse;
+    table-layout: auto;
+    text-align: center;
+    border-spacing: 0;
+    margin: 0;
+    max-width: 100%;
+    width: auto;
+}
+
+.cloner-table th,
+.cloner-table td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 0.75rem;
+    border: none;
+}
+
+.cloner-table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: #212529;
+    color: #fff;
+    padding: 0.75rem;
+    border: none;
+    text-align: center;
+}
+
+    .cloner-table thead th:nth-child(3),
+    .cloner-table tbody td:nth-child(3) {
+        min-width: 180px;
+        white-space: normal;
+        word-break: break-word;
+        text-align: center;
+    }
+
+    .cloner-table thead th:nth-child(4),
+    .cloner-table tbody td:nth-child(4) {
+        min-width: 180px;
+        white-space: normal;
+        word-break: break-word;
+        text-align: center;
+    }
+
+    .cloner-table thead th:nth-child(5),
+    .cloner-table tbody td:nth-child(5) {
+        min-width: 350px;
+        white-space: normal;
+        word-break: break-word;
+        text-align: center;
+    }
+
+/* Jargon table specifics */
+.jargon-table {
+    border-collapse: collapse;
+    table-layout: auto;
+    text-align: center;
+    border-spacing: 0;
+    margin: 0;
+    max-width: 100%;
+    width: auto;
+}
+
+    .jargon-table thead th {
+        position: sticky;
+        top: 0;
+        z-index: 2;
+        background: #212529;
+        color: #fff;
+        padding: 0.75rem;
+        border: none; /* no border on header cells */
+        text-align: center;
+    }
+
+    .jargon-table tbody th,
+    .jargon-table tbody td {
+        border: 1px solid #000; /* borders only on body cells */
+        text-align: center;
+        vertical-align: middle;
+        padding: 0.75rem;
+    }
+
+        /* Left-align definitions (2nd column) for readability */
+        .jargon-table tbody td:nth-child(2) {
+            text-align: left;
         }
 
+/* End of table section */
+
+/* Namecolors for the Prize Shop section */
 .warn {
   color: #b80303;
 }
