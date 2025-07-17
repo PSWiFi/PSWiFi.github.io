@@ -270,9 +270,9 @@ blockquote {
 
 /* PS Chat */
 .ps-chat-sample {
-  border: 2px solid #ccc; 
-  background-color: #f9f9f9; 
-  font-family: monospace; 
+  border: 2px solid #ccc;
+  background-color: #f9f9f9;
+  font-family: monospace;
   margin: 0;
   margin-bottom: 10px;
   padding-left: 2px;
@@ -300,16 +300,24 @@ blockquote {
   color: #ba1263;
 }
 
-.chimera {
-  color: #32a925;
-}
-
 .argynt {
   color: #8aa139;
 }
 
+.arnavchawla {
+  color: #25b5ae;
+}
+
+.beastball {
+  color: #c2150f;
+}
+
 .billo {
   color: #b94c97;
+}
+
+.chimera {
+  color: #32a925;
 }
 
 .ciran {
@@ -332,10 +340,6 @@ blockquote {
   color: #8024e9;
 }
 
-.kaylubiso {
-  color: #be5c36;
-}
-
 .loethalion {
   color: #2a87c6;
 }
@@ -352,12 +356,12 @@ blockquote {
   color: #9518e2;
 }
 
-.ouinvestigation {
-  color: #3b8091;
-}
-
 .pooof {
   color: #9e4ac8;
+}
+
+.ryxxlym {
+  color: #b145bf;
 }
 
 .sexymalasada {
@@ -368,12 +372,20 @@ blockquote {
   color: #40a610;
 }
 
-.shuutsukiyama {
-  color: #d77b11;
+.shelbito {
+  color: #84a031;
 }
 
 .slugwithswagger {
   color: #8b9e1f;
+}
+
+.thisnameperhaps {
+  color: #a153be;
+}
+
+.valerian {
+  color: #d70f3a;
 }
 
 .wigglytree {
@@ -393,6 +405,10 @@ blockquote {
   color: #bf487f;
 }
 
+.kaylubiso {
+  color: #be5c36;
+}
+
 .lego {
   color: #1e6bb8;
 }
@@ -405,12 +421,16 @@ blockquote {
   color: #c78023;
 }
 
+.ouinvestigation {
+  color: #3b8091;
+}
+
 .queeni {
   color: #26a863;
 }
 
-.ryxxlym {
-  color: #b145bf;
+.shuutsukiyama {
+  color: #d77b11;
 }
 
 .skies {
