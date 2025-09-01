@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: loader
 permalink: /misc/gallery/oga-archive/
 title: OGA Archive
 ---
@@ -20,6 +20,9 @@ title: OGA Archive
 <script>
     var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     var years = [...new Set(...[imgdata.map(e => e.year)])];
+    if (!window.events) window.events = {};
+    if (!window.maxevents) window.maxevents = [...imgdata].length;
+
     for (var year of years) {
         var div = document.createElement("div");
         div.id = "year-container-" + year;
@@ -57,6 +60,25 @@ title: OGA Archive
             img.classList.add("card-img-top", "clickable-image");
             img.src = "/images/gallery/oga-archive/" + data.filename;
             img.dataset.image = "/images/gallery/oga-archive/" + data.filename;
+            img.dataset.fname = data.filename;
+
+            window.events[data.filename] = false;
+
+            img.onload = function() {
+                window.events[this.dataset.fname] = true;
+                
+                var count = Object.values(window.events).filter(bool => bool === true).length;
+                console.log(count);
+                if (count === window.maxevents) {
+                    // Dynamically load masonry after all elements have loaded, should help avoid layout issues
+                    var script = document.createElement("script");
+                    script.src = "https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js";
+                    document.getElementsByClassName("container")[0].appendChild(script);
+
+                    document.getElementById("loader").classList.add("d-none");
+                    document.getElementById("content").classList.remove("d-none");
+                }
+            }
             
             cardtitle.textContent = data.oga_theme;
             cardsubtitle.textContent = MONTHS[data.month_numerical - 1];
@@ -108,11 +130,6 @@ title: OGA Archive
 
         document.getElementById("gallery-container").appendChild(div);
     }
-
-    // Dynamically load masonry after all elements have created, should avoid loading issues
-    var script = document.createElement("script");
-    script.src = "https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js";
-    document.getElementsByClassName("container")[0].appendChild(script);
 
     $("document").ready(() => {
         document.getElementById("popup-image").classList.add("mt-4");
