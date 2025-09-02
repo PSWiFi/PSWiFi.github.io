@@ -37,7 +37,7 @@ title: OGA Archive
 
         div.appendChild(images);
 
-        var thisYear = [...imgdata.filter(e => e.year === year)].sort((a, b) => a.month_numerical - b.month_numerical);
+        var thisYear = [...imgdata.filter(e => e.year === year)].sort((a, b) => b.month_numerical - a.month_numerical);
         for (var data of thisYear) {
             var container = document.createElement("div");
             container.classList.add("col", "col-sm-6", "col-lg-4", "mb-4");
@@ -68,7 +68,7 @@ title: OGA Archive
                 window.events[this.dataset.fname] = true;
                 
                 var count = Object.values(window.events).filter(bool => bool === true).length;
-                console.log(count);
+
                 if (count === window.maxevents) {
                     // Dynamically load masonry after all elements have loaded, should help avoid layout issues
                     var script = document.createElement("script");
