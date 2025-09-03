@@ -1,0 +1,477 @@
+---
+layout: default
+permalink: /misc/gallery/oga-archive/applet/
+title: OGA Archive Helper
+---
+
+<h1 class="mb-0 pb-0">OGA Archive Upload Helper</h1>
+<hr />
+<div class="h2">Instructions</div>
+<div>
+  This is a web applet to help artists upload their work to the OGA Archive.
+</div>
+<div class="mt-2 card border-dark">
+  <div class="card-header text-dark" style="background-color: #decade">
+    <span class="fw-bold">Overview:</span>
+  </div>
+  <div class="card-body card-bg">
+    <ul>
+      <li>
+        Use the <code>Choose Files</code> button at the bottom of this page to
+        choose the files you wish to upload.
+      </li>
+      <li>
+        Fill out the required information for each image, and confirm each one
+        to add its data to the code.
+      </li>
+      <li>
+        Upload all of the images to the
+        <a
+          href="https://github.com/PSWiFi/PSWiFi.github.io/tree/master/images/gallery/oga-archive"
+          >/images/gallery/oga-archive/</a
+        >
+        folder in the site repository.
+      </li>
+      <li>
+        Copy the entire contents of the <code>Code</code> box below these
+        instructions and paste it into
+        <a
+          href="https://github.com/PSWiFi/PSWiFi.github.io/blob/master/misc/gallery/oga-archive/imgdata.js"
+          >/misc/gallery/oga-archive/imgdata.js</a
+        >, replacing all of the existing contents.
+      </li>
+    </ul>
+  </div>
+</div>
+<br />
+<div class="h2">Details</div>
+<div class="mt-2 card border-dark">
+  <div class="card-header text-dark" style="background-color: #decade">
+    <span class="fw-bold">You will need:</span>
+  </div>
+  <div class="card-body card-bg">
+    <ul>
+      <li><a href="https://github.com/signup">A GitHub Account</a>.</li>
+      <li>
+        A profile in the site's
+        <a
+          href="https://github.com/PSWiFi/PSWiFi.github.io/blob/master/misc/gallery/oga-archive/userdata.js"
+          >list of OGA artists</a
+        >, assuming you are trying to upload your own art (contact Lego for
+        assistance with this if you're unsure). So far, one is set up for
+        <span id="artusers"></span>.
+      </li>
+      <li>
+        (Optional, recommended especially if uploading several images at once) A
+        git client such as
+        <a href="https://desktop.github.com/download/">GitHub Desktop</a> or
+        <a href="https://code.visualstudio.com/download">Visual Studio Code</a>.
+      </li>
+    </ul>
+  </div>
+</div>
+<div>
+  For the purposes of this guide, we will be using
+  <span class="fw-bold">GitHub Desktop</span> as it is the easiest solution for
+  our needs.
+</div>
+<div class="mt-2 card border-dark">
+  <div class="card-header text-dark" style="background-color: #decade">
+    <span class="fw-bold">First-time setup:</span>
+  </div>
+  <div class="card-body card-bg">
+    <ul>
+      <li>
+        Log in to GitHub and <span class="fw-bold">fork</span> the
+        <code>PSWiFi/PSWifi.github.io</code> repository by going to
+        <a href="https://github.com/PSWiFi/PSWiFi.github.io"
+          >https://github.com/PSWiFi/PSWiFi.github.io</a
+        >
+        and clicking the <code>Fork</code> button in the top right corner. This
+        will create your own copy of the respository that you can edit at will
+        without changing anything on the live version of the site, and allow you
+        to submit your changes for approval on the main repository.
+      </li>
+      <li>
+        Open <code></code>GitHub Desktop on your computer, go to
+        <code>File > Clone Repository</code>, and clone your fork of
+        PSWiFi.github.io. This will add the files from the website to your
+        computer, allowing you to edit them. If asked, say you want to
+        contribute to the parent respository.
+      </li>
+    </ul>
+  </div>
+</div>
+<br />
+<div class="mt-2 card border-dark">
+  <div class="card-header text-dark" style="background-color: #decade">
+    <span class="fw-bold">Using the tool:</span>
+  </div>
+  <div class="card-body card-bg">
+    <ul>
+      <li>
+        Using the file selector at the bottom of this page, choose the images
+        you wish to add.
+      </li>
+      <li>
+        Fill out the required information for each image, and confirm when done
+        to remove it from the list. This will add its data to the
+        <code>Code</code> box below.
+      </li>
+    </ul>
+  </div>
+</div>
+<br />
+<div class="mt-2 card border-dark">
+  <div class="card-header text-dark" style="background-color: #decade">
+    <span class="fw-bold">Code changes:</span>
+  </div>
+  <div class="card-body card-bg">
+    <ul>
+      <li>
+        Copy the entirety of the contents of the <code>Code</code> box below to
+        your clipboard.
+      </li>
+      <li>
+        In GitHub desktop, click the <code>Pull Origin</code> button along the
+        top, if it exists. If it does not, ignore this instruction.
+      </li>
+      <li>
+        In GitHub Desktop, go to <code>Repository > Show in Explorer</code> in
+        the top bar, then navigate to the
+        <code>/misc/gallery/oga-archive/</code> folder.
+      </li>
+      <li>
+        Open the <code>imgdata.js</code> file in any text editor (Notepad, np++,
+        Visual Studio Code, basically anything that isn't google docs or word
+        will work fine).
+      </li>
+      <li>
+        Delete the entire contents of the file and paste the code from this
+        website. If linebreaks are removed, that's ok!
+      </li>
+      <li>Save your changes and close the text editor.</li>
+    </ul>
+  </div>
+</div>
+<br />
+<div class="mt-2 card border-dark">
+  <div class="card-header text-dark" style="background-color: #decade">
+    <span class="fw-bold">Adding the images:</span>
+  </div>
+  <div class="card-body card-bg">
+    <ul>
+      <li>
+        In GitHub Desktop, go to <code>Repository > Show in Explorer</code> in
+        the top bar, then navigate to the
+        <code>/images/gallery/oga-archive/</code> folder.
+      </li>
+      <li>
+        Copy + paste all the new images you wish to upload into this folder.
+      </li>
+    </ul>
+  </div>
+</div>
+<br />
+<div class="mt-2 card border-dark">
+  <div class="card-header text-dark" style="background-color: #decade">
+    <span class="fw-bold">Submitting your changes:</span>
+  </div>
+  <div class="card-body card-bg">
+    <ul>
+      <li>
+        In GitHub Desktop, you should see all of your changes summarised in the
+        left bar. Make sure the box next to every file you're changing is
+        checked.
+      </li>
+      <li>
+        Write a summary of your changes in the <code>Summary</code> box in the
+        bottom-left corner (such as "Update OGA Archive"), then click
+        <code>Commit to master</code>. Once that's done, click
+        <code>Push origin</code> in the top bar. This syncs your changes to your
+        fork on the web.
+      </li>
+      <li>To get your changes on the main version of the site, open a Pull Request by following <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork">these instructions</a>.</li>
+    </ul>
+  </div>
+</div>
+<hr />
+<br />
+<h3>Code:</h3>
+<textarea id="code" class="w-100 font-monospace" rows="5"></textarea>
+<hr />
+<div class="row">
+  <div class="col mb-3">
+    <input
+      type="file"
+      class="form-control"
+      id="formFile"
+      name="formFile"
+      accept=".jpg,.jpeg,.png,.jfif,.webp,.gif"
+      multiple
+    />
+  </div>
+</div>
+
+<div
+  class="col progress d-none mb-3"
+  id="progress-container"
+  style="height: 38px; border: 1px solid #0dcaf0"
+>
+  <div
+    class="progress-bar bg-info"
+    role="progressbar"
+    aria-valuenow="0"
+    aria-valuemin="0"
+    aria-valuemax="100"
+    id="progress"
+  ></div>
+</div>
+
+<div id="results-container"></div>
+<script src="../imgdata.js"></script>
+<script src="../userdata.js"></script>
+<script>
+  var MONTHS = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  var CODE_PREFIX = "var imgdata = ";
+
+  $(document).ready(() => {
+    window.json = {};
+    var script = imgdata;
+    window.json = script;
+    update();
+    var users = Object.values(userdata).map((e) => e.display_name);
+    users[users.length - 1] = "and " + users[users.length - 1];
+    $("#artusers").text(users.join(", "));
+  });
+
+  function update() {
+    document.getElementById("code").value =
+      CODE_PREFIX + JSON.stringify(window.json);
+  }
+
+  var e = document.getElementById("formFile");
+  e.addEventListener("change", handleUpload);
+
+  function handleUpload() {
+    var container = document.getElementById("results-container");
+    while (container.firstChild) {
+      container.removeChild(container.lastChild);
+    }
+    document.getElementById("progress-container").classList.remove("d-none");
+    process(e.files);
+  }
+
+  function removecard(card) {
+    $(card).closest(".card").remove();
+  }
+
+  function validate(card) {
+    var $card = $(card).closest(".card");
+    var filename = $card.find(".filename").val();
+    if (filename.length === 0) return alert("Please enter the file name!");
+    var artists = $card.find(".authors").val();
+    var a = [];
+    var spl = artists.split(",").map((e) => e.trim().toLowerCase());
+    for (var artist of spl) {
+      if (!userdata[artist])
+        return alert(
+          "No artist data for " +
+            artist +
+            " found! Please contact Lego to help make a profile for them."
+        );
+      a.push(artist);
+    }
+    var theme = $card.find(".theme").val();
+    if (theme.length === 0)
+      return alert("Please enter the theme for this OGA!");
+
+    var month = $card.find(".month").val();
+    var year = $card.find(".year").val();
+
+    if (year.length === 0) return alert("Please enter the year!");
+
+    var entry = {
+      filename: filename,
+      authors: a,
+      oga_theme: theme,
+      month_numerical: ~~month,
+      year: ~~year,
+    };
+
+    json = window.json;
+    var existsname = json.filter((e) => e.filename === entry.filename);
+    if (existsname.length > 0)
+      return alert(
+        "An entry for " +
+          entry.filename +
+          " already exists! Try renaming the file?"
+      );
+    var existsdate = json.filter(
+      (e) =>
+        e.month_numerical === entry.month_numerical && e.year === entry.year
+    );
+    if (existsdate.length > 0)
+      return alert(
+        "An entry for " +
+          MONTHS[entry.month_numerical - 1] +
+          " " +
+          entry.year +
+          " already exists!"
+      );
+
+    json.push(entry);
+    window.json = json;
+    alert("Added!");
+    update();
+    $card.remove();
+  }
+
+  // Putting this in a recursive delayed loop allows time to clear the buffer, helping to prevent bad reads and race conditions
+  function process(files, delay = 200, i = 0) {
+    if (i >= files.length) {
+      document.getElementById("progress-container").classList.add("d-none");
+      return 0;
+    }
+    console.log(i);
+    var container = document.getElementById("results-container");
+
+    var file = files[i];
+    var fname = file.name;
+    var ext = fname.substring(fname.lastIndexOf("."));
+
+    var card = document.createElement("div");
+    card.classList.add("card", "mb-4");
+
+    var img = document.createElement("img");
+    var reader = new FileReader();
+    reader.onload = function () {
+      img.src = reader.result;
+    };
+    reader.readAsDataURL(file);
+    img.classList.add("card-img-top");
+
+    var cardheader = document.createElement("div");
+    cardheader.classList.add("card-header");
+    cardheader.textContent = fname;
+
+    var cardbody = document.createElement("div");
+    cardbody.classList.add("card-body");
+
+    var filename = document.createElement("div");
+    filename.classList.add("form-group", "row", "mx-2");
+    filename.textContent = "File name (case sensitive): ";
+
+    var filenameinput = document.createElement("input");
+    filenameinput.type = "text";
+    filenameinput.classList.add("form-control", "filename");
+    filenameinput.value = fname;
+    filename.appendChild(filenameinput);
+
+    var authors = document.createElement("div");
+    authors.classList.add("form-group", "row", "mx-2");
+    authors.textContent = "Artist/s (lower-case, comma separated):";
+
+    var authorsinput = document.createElement("input");
+    authorsinput.type = "text";
+    authorsinput.classList.add("form-control", "authors");
+    authorsinput.value = "ciran";
+    authors.appendChild(authorsinput);
+
+    var theme = document.createElement("div");
+    theme.classList.add("form-group", "row", "mx-2");
+    theme.textContent = "OGA Theme:";
+
+    var themeinput = document.createElement("input");
+    themeinput.type = "text";
+    themeinput.classList.add("form-control", "theme");
+    theme.appendChild(themeinput);
+
+    var month = document.createElement("div");
+    month.classList.add("form-group", "row", "mx-2");
+    month.textContent = "Month:";
+
+    var monthinput = document.createElement("select");
+    monthinput.classList.add("form-control", "form-select", "month");
+    for (var k = 0; k < MONTHS.length; k++) {
+      var option = document.createElement("option");
+      option.value = k + 1;
+      option.text = MONTHS[k];
+      monthinput.options.add(option);
+    }
+    month.appendChild(monthinput);
+
+    var year = document.createElement("div");
+    year.classList.add("form-group", "row", "mx-2");
+    year.textContent = "Year:";
+
+    var yearinput = document.createElement("input");
+    yearinput.type = "number";
+    yearinput.classList.add("form-control", "year");
+    yearinput.value = new Date().getFullYear();
+    year.appendChild(yearinput);
+
+    var buttons = document.createElement("div");
+    buttons.classList.add("form-group", "row", "row-cols-2", "mt-3");
+
+    var rmcol = document.createElement("div");
+    rmcol.classList.add("col", "col-4", "ms-2");
+    var remove = document.createElement("button");
+    remove.classList.add("form-control", "btn", "btn-outline-danger", "w-100");
+    remove.textContent = "Delete";
+
+    rmcol.appendChild(remove);
+    buttons.appendChild(rmcol);
+
+    var addcol = document.createElement("div");
+    addcol.classList.add("col", "col-7", "me-2", "flex-grow-1");
+    var confirm = document.createElement("button");
+    confirm.classList.add("form-control", "btn", "btn-success", "w-100");
+    confirm.textContent = "Confirm";
+
+    addcol.appendChild(confirm);
+    buttons.appendChild(addcol);
+
+    card.appendChild(img);
+    card.appendChild(cardheader);
+    card.appendChild(cardbody);
+    cardbody.appendChild(filename);
+    cardbody.appendChild(authors);
+    cardbody.appendChild(theme);
+    cardbody.appendChild(month);
+    cardbody.appendChild(year);
+    cardbody.appendChild(buttons);
+
+    remove.onclick = function () {
+      removecard(this);
+    };
+    confirm.onclick = function () {
+      validate(this);
+    };
+
+    container.appendChild(card);
+
+    i++;
+
+    var progress = document.getElementById("progress");
+    progress.setAttribute("style", "width: " + (i / files.length) * 100 + "%;");
+    progress.textContent = i + " / " + files.length;
+
+    setTimeout(() => {
+      process(files, delay, i);
+    }, delay);
+  }
+</script>
