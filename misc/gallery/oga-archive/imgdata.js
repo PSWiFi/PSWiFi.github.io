@@ -300,4 +300,18 @@ var imgdata = [
     month_numerical: 1,
     year: 2022,
   },
+  {
+    filename: "lpk3C1Z.png",
+    authors: ["ciran"],
+    oga_theme: "Return to Sinnoh",
+    month_numerical: 12,
+    year: 2021,
+  },
+  {
+    filename: "drvsS8z.png",
+    authors: ["ciran"],
+    oga_theme: "Galar Endgame",
+    month_numerical: 10,
+    year: 2021,
+  },
 ];

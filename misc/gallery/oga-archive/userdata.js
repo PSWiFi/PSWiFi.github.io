@@ -23,4 +23,10 @@ var userdata = {
     social_name: "Smogon Forums",
     social_link: "https://www.smogon.com/forums/threads/3700362/",
   },
+  lunell: {
+    display_name: "Lunell",
+    class_name: "lunell",
+    social_name: "Smogon Forums",
+    social_link: "https://www.smogon.com/forums/threads/3725322/",
+  },
 };
