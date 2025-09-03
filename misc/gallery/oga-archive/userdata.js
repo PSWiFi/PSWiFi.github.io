@@ -17,4 +17,10 @@ var userdata = {
     social_name: "Smogon Forums",
     social_link: "https://www.smogon.com/forums/threads/3720593/",
   },
+  swiffix: {
+    display_name: "Swiffix",
+    class_name: "swiffix",
+    social_name: "Smogon Forums",
+    social_link: "https://www.smogon.com/forums/threads/3700362/",
+  },
 };
