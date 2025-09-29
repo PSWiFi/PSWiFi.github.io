@@ -384,4 +384,11 @@ var imgdata = [
     month_numerical: 12,
     year: 2020,
   },
+  {
+    filename: "4HoVQ8a.png",
+    authors: ["chimera"],
+    oga_theme: "Mega Giveaway!",
+    month_numerical: 9,
+    year: 2025,
+  },
 ];
