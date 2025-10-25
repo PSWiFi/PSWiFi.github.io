@@ -8,9 +8,13 @@ var data = {
       gen: 9,
       enc: ["Wild", "Gift", "Raid", "Untradable"],
     },
+    "Legends: Z-A": {
+      gen: "9a",
+      enc: ["Encounters", "Gift", "Untradable"],
+    },
     "Legends: Arceus": {
       gen: "8a",
-      enc: ["Encounters", "Gift"],
+      enc: ["Encounters", "Gift", "Untradable"],
     },
     "Brilliant Diamond": {
       gen: "8b",
