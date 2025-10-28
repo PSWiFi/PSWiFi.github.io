@@ -31,7 +31,7 @@ permalink: /misc/pkparse/
       class="form-control"
       id="formFile"
       name="formFile"
-      accept=".pk9,.pk8,.pa8,.pb8,.pk7,.pk6"
+      accept=".pa9,.pk9,.pk8,.pa8,.pb8,.pk7,.pk6"
       multiple
     />
   </div>
@@ -216,6 +216,7 @@ permalink: /misc/pkparse/
       otloc,
       nicknameloc,
       gmaxloc,
+      alphaloc,
       ivsloc,
       natureloc,
       formloc,
@@ -236,6 +237,37 @@ permalink: /misc/pkparse/
 
     // Sanity check file sizes and get offsets
     switch (ext) {
+      case ".pa9": // LZA
+        if (file.size != SIZE_9A)
+          return alert(
+            "Incorrect file size!\nExpected: " + SIZE_9 + "\nGot: " + file.size
+          );
+        speciesloc = 0x08;
+        idsloc = 0x0c;
+        abilityloc = 0x14;
+        abilitynumloc = 0x16;
+        pidloc = 0x1c;
+        natureloc = 0x20;
+        statnatureloc = 0x21;
+        fatefulloc = 0x22;
+        genderloc = 0x22;
+        alphaloc = 0x23;
+        formloc = 0x24;
+        evsloc = 0x26;
+        heightloc = 0x48;
+        weightloc = 0x49;
+        nicknameloc = 0x58;
+        moveloc = 0x72;
+        relearnloc = 0x82;
+        ivsloc = 0x8c;
+        ogloc = 0xce;
+        formargloc = 0xd0;
+        otloc = 0xf8;
+        ballloc = 0x124;
+        htflagsloc = 0x126;
+        gen = 9;
+        break;
+
       case ".pk9": // SV
         if (file.size != SIZE_9)
           return alert(
@@ -277,6 +309,7 @@ permalink: /misc/pkparse/
         idsloc = 0x0c;
         abilityloc = 0x14;
         abilitynumloc = 0x16;
+        alphaloc = 0x16;
         pidloc = 0x1c;
         natureloc = 0x20;
         statnatureloc = 0x21;
@@ -417,7 +450,6 @@ permalink: /misc/pkparse/
 
       var ability = gen <= 7 ? data.getUint8(abilityloc) : data.getUint16(abilityloc, true);
       var abilitynum = data.getUint8(abilitynumloc) & 7; // & 7 not used in Gen 6 but has no effect on resulting value
-      console.log(ability, ABILITIES[ability]);
 
       var teraType =
         teratypeoriginalloc && teratypeoverrideloc
@@ -519,6 +551,8 @@ permalink: /misc/pkparse/
       var height = heightloc ? data.getUint8(heightloc) : null;
       var weight = weightloc ? data.getUint8(weightloc) : null;
 
+      var isalpha = alphaloc ? ((gen === 9 && data[alphaloc] !== 0) || (gen === 8 && data[alphaloc] & 32 !== 0)) : "";
+
       // Commence custom parser logic
       if (outstr.includes("\\t")) outstr = outstr.replace(/\\t/g, "\t");
       if (outstr.includes("\\n")) outstr = outstr.replace(/\\n/g, "\r\n");
@@ -542,6 +576,10 @@ permalink: /misc/pkparse/
       if (outstr.includes("%form%")) outstr = outstr.replace(/\%form\%/g, form);
       if (outstr.includes("%gmax%"))
         outstr = outstr.replace(/\%gmax\%/g, gmax ? "-GMax" : "");
+      if (outstr.includes("%alpha-prepend%"))
+        ourstr = outstr.replace(/\%alpha-prepend\%/g, "α-");
+      if (outstr.includes("%alpha-append%"))
+        ourstr = outstr.replace(/\%alpha-append\%/g, "-α");
       if (outstr.includes("%nickname%"))
         outstr = outstr.replace(/\%nickname\%/g, nickname);
 

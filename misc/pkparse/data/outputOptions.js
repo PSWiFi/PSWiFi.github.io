@@ -12,6 +12,8 @@ var OUTPUT_OPTIONS = {
   "%form%":
     "Appends the form name of the Pok\u{00e9}mon preceeded by a hyphen if it has one, blank if it does not.",
   "%gmax%": '"-GMax" if the Pok\u{00e9}mon can Gigantamax, blank if it can\'t.',
+  "%aplha-prepend%": '"α-" if the Pok\u{00e9}mon is Alpha, blank if it is not.',
+  "%aplha-append%": '"-α" if the Pok\u{00e9}mon is Alpha, blank if it is not.',
   "%nickname%": "The Pok\u{00e9}mon's Nickname.",
 
   Met: "",

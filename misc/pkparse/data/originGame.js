@@ -41,4 +41,5 @@ var ORIGIN_GAMES = {
   49: "Shining Pearl",
   50: "Scarlet",
   51: "Violet",
+  52: "Legends: Z-A",
 };

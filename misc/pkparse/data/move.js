@@ -919,4 +919,5 @@ var MOVES = [
   "Psychic Noise",
   "Upper Hand",
   "Malignant Chain",
+  "Nihil Light",
 ];
