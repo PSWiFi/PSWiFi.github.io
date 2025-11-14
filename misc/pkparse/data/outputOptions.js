@@ -63,6 +63,8 @@ var OUTPUT_OPTIONS = {
     '"◼" if the Pok\u{00e9}mon is Square Shiny, "★" if it is Star Shiny, or "no" if it is neither.',
   "%shiny-type-symbol-long-upper%":
     '"◼" if the Pok\u{00e9}mon is Square Shiny, "★" if it is Star Shiny, or "No" if it is neither.',
+  "%alpha%": '"y" if the Pok\u{00e9}mon is alpha, "n" if it is not.',
+  "%alpha-upper%": '"Y" if the Pok\u{00e9}mon is alpha, "N" if it is not.',
   "%nature%": "Nature the Pok\u{00e9}mon had when it was captured.",
   "%nature-minted%":
     "The Nature currently affecting the Pok\u{00e9}mon's stats (identical to %nature% if prior to Gen 8).",

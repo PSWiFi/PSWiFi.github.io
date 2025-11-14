@@ -88,10 +88,12 @@ function generateOutputOptions() {
 
 var names = [
   "No output preset selected...",
-  "PS! Wi-Fi Trade Sheet Template",
-  "PS! Wi-Fi Hackmons Sheet",
-  "PS! Wi-Fi Prizes Sheet - OGA/BR/High Value",
-  "PS! Wi-Fi Prizes Sheet - Bred Pok\u{00e9}mon",
+  "[ZA] PS! Wi-Fi Trade Sheet Template",
+  "[ZA] PS! Wi-Fi Prizes Sheet - OGA/BR/High Value",
+  "[SV] PS! Wi-Fi Trade Sheet Template",
+  "[SV] PS! Wi-Fi Hackmons Sheet",
+  "[SV] PS! Wi-Fi Prizes Sheet - OGA/BR/High Value",
+  "[SV] PS! Wi-Fi Prizes Sheet - Bred Pok\u{00e9}mon",
 ];
 function regenerateDefaults() {
   var parent = document.getElementById("output-preset");

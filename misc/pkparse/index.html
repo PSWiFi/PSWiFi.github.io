@@ -551,7 +551,7 @@ permalink: /misc/pkparse/
       var height = heightloc ? data.getUint8(heightloc) : null;
       var weight = weightloc ? data.getUint8(weightloc) : null;
 
-      var isalpha = alphaloc ? ((gen === 9 && data[alphaloc] !== 0) || (gen === 8 && data[alphaloc] & 32 !== 0)) : "";
+      var isalpha = alphaloc ? ((gen === 9 && data[alphaloc] !== 0) || (gen === 8 && data[alphaloc] & 32 !== 0)) : null;
 
       // Commence custom parser logic
       if (outstr.includes("\\t")) outstr = outstr.replace(/\\t/g, "\t");
@@ -577,9 +577,9 @@ permalink: /misc/pkparse/
       if (outstr.includes("%gmax%"))
         outstr = outstr.replace(/\%gmax\%/g, gmax ? "-GMax" : "");
       if (outstr.includes("%alpha-prepend%"))
-        ourstr = outstr.replace(/\%alpha-prepend\%/g, "α-");
+        ourstr = outstr.replace(/\%alpha-prepend\%/g, isalpha ? "α-" : "");
       if (outstr.includes("%alpha-append%"))
-        ourstr = outstr.replace(/\%alpha-append\%/g, "-α");
+        ourstr = outstr.replace(/\%alpha-append\%/g, isalpha ? "-α" : "");
       if (outstr.includes("%nickname%"))
         outstr = outstr.replace(/\%nickname\%/g, nickname);
 
@@ -625,10 +625,17 @@ permalink: /misc/pkparse/
         outstr = outstr.replace(/\%teratype\%/g, teraType);
       if (outstr.includes("%shiny%"))
         outstr = outstr.replace(/\%shiny\%/g, shinytype === 0 ? "y" : "n");
+      if (outstr.includes("%alpha%"))
+        outstr = outstr.replace(/\%alpha\%/g, isalpha ? "y" : "n");
       if (outstr.includes("%shiny-upper%"))
         outstr = outstr.replace(
           /\%shiny-upper\%/g,
           shinytype !== 0 ? "Y" : "N"
+        );
+      if (outstr.includes("%alpha-upper%"))
+        outstr = outstr.replace(
+          /\%alpha-upper\%/g,
+         isalpha ? "Y" : "N"
         );
       if (outstr.includes("%shiny-symbol%"))
         outstr = outstr.replace(
