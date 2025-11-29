@@ -391,4 +391,11 @@ var imgdata = [
     month_numerical: 9,
     year: 2025,
   },
+  {
+    filename: "Nov2025_ZA.png",
+    authors: ["ciran"],
+    oga_theme: "Z-A Royale",
+    month_numerical: 11,
+    year: 2025,
+  },
 ];
