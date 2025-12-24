@@ -434,6 +434,13 @@ permalink: /misc/pkparse/
       var nickarrbuf = buf.slice(nicknameloc, nicknameloc + 26);
       var nickname = getStringFromBuffer(new DataView(nickarrbuf));
       var data = new DataView(buf);
+
+      /*const pkmn = {};
+      for (let x = 0; x < data.byteLength; x ++) {
+        pkmn[x + "".padStart(3 - x.toString().length, " ") + " | 0x" + x.toString(16).padStart(3, "0")] = data.getUint8(x).toString(16);
+      }
+      console.log(pkmn);*/
+
       var ec = data.getUint32(0, true);
       var devid = data.getUint16(speciesloc, true);
       var species = gen === 9 ? getSpecies9(devid) : SPECIES[devid];
@@ -551,7 +558,7 @@ permalink: /misc/pkparse/
       var height = heightloc ? data.getUint8(heightloc) : null;
       var weight = weightloc ? data.getUint8(weightloc) : null;
 
-      var isalpha = alphaloc ? ((gen === 9 && data[alphaloc] !== 0) || (gen === 8 && data[alphaloc] & 32 !== 0)) : null;
+      var isalpha = alphaloc ? ((gen === 9 && data.getUint8(alphaloc) !== 0) || (gen === 8 && data.getUint8(alphaloc) & 32 !== 0)) : null;
 
       // Commence custom parser logic
       if (outstr.includes("\\t")) outstr = outstr.replace(/\\t/g, "\t");
