@@ -14,5 +14,6 @@ platforms :mingw, :x64_mingw, :mswin, :jruby do
 end
 
 gem "webrick"
+gem 'csv' # Newer Ruby versions don't install this by default, apparently
 
 gem "jekyll", "~> 3.9.0"
