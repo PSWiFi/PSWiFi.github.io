@@ -2,7 +2,7 @@ const commands = [
     {
         name: "help, h",
         args: "command name",
-        desc: "Provides a more thorough explanation on the usage of a specific command.",
+        desc: "Provides a more thorough explanation on the usage of a specific command. Using it without a command name will list all commands.",
         perms: " ",
         category: "staff"
     }, {
