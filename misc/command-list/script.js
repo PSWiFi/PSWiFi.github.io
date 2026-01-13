@@ -98,8 +98,6 @@ $("#command-search").keyup(() => {
             scores[index] = score;
         }
 
-        console.log(scores);
-
         var candidates = [];
 
         var vals = Object.values(scores);
@@ -112,7 +110,7 @@ $("#command-search").keyup(() => {
         }
 
         clearOptions();
-
+        if (candidates.length === 0) populateAllOptions();
         for (var i = 0; i < candidates.length; i++) {
             var tr = candidates[i];
             container.appendChild(tr);
