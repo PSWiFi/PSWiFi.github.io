@@ -26,6 +26,8 @@ baseurl: ""
 url: "https://pswifi.github.io"
 github_username:  PSWiFi
 
+container_width: 800px
+
 # host: 0.0.0.0
 
 plugins_dir:
