@@ -24,6 +24,7 @@ function generateCommand(command) {
 
     var td_alias = document.createElement("td");
     td_alias.classList.add("text-center");
+    td_alias.style = "white-space: pre;";
     var alias = formatAlias(command);
     td_alias.innerText = alias;
 
