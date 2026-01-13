@@ -152,7 +152,7 @@ const commands = [
     }, {
         name: "roomevents add",
         args: "event name | date | description",
-        desc: "Adds a roomevent to the event box that can be displayed using <code>!events>/code>. Date should be formatted as YYYY-MM-DD HH:MM in GMT.",
+        desc: "Adds a roomevent to the event box that can be displayed using <code>!events</code>. Date should be formatted as YYYY-MM-DD HH:MM in GMT.",
         perms: "%",
         category: "events"
     }, {
