@@ -8,13 +8,13 @@ const commands = [
     }, {
         name: "mlid",
         args: "user",
-        desc: "Displays non-punishment moderation actions taken against the provided user (e.g. Giveaway wins).",
+        desc: "Searches a user's modlog and displays non-punishment moderation actions taken against the provided user (e.g. Giveaway wins).",
         perms: "%",
         category: "staff"
     }, {
         name: "plid",
         args: "user",
-        desc: "Displays punishment moderation actions taken against the provided user.",
+        desc: "Searches a user's punishment log and displays punishment moderation actions taken against the provided user.",
         perms: "%",
         category: "staff"
     }, {
@@ -78,7 +78,7 @@ const commands = [
         perms: "%",
         category: "staff"
     }, {
-        name: "warn, k",
+        name: "warn, k, kick",
         args: "user, reason",
         desc: "Typically used to escalate from a verbal warning. Effectively a bonk on the head of a user to get them to stop what they are doing. Can also be used instead of a verbal warning if you wish to quickly get your point across.",
         perms: "%",
@@ -108,7 +108,7 @@ const commands = [
         perms: "@",
         category: "staff"
     }, {
-        name: "blacklist",
+        name: "blacklist, bl",
         args: "user, reason",
         desc: "Prevents a user from entering the room for <span class=fw-bold>one year</span>, reserved for users with particularly terrible behaviour. Blacklists are typically voted on in <a href=https://discord.com/channels/271621566293344256/271694246690553856>#moderation</a> with the exception of cases like trading hacked Pokémon, in which case a vote is not required.<br />Blacklists can also be done by name or extended to <span class=fw-bold>ten years</span> if needed using the <code>/permablacklist</code> command (typically reserved for scammers).",
         perms: "#",

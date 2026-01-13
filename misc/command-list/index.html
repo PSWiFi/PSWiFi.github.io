@@ -14,9 +14,13 @@ within them changed when using actual commands in the room.
 
 <hr />
 
-<div id="table-responsive" style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
+<label for="command-search" class="form-label">Command Search:</label>
+<input type="text" id="command-search" class="form-control" placeholder='Try searching for a command (e.g. "help"), an action (e.g. "ban"), or a category (e.g. "events")'>
+
+<label for="command-table" class="form-label">Command List:</label>
+<div id="command-table" class="table-responsive">
     <table id="command-table" class="table table-striped table-hover align-middle">
-        <thead>
+        <thead class="bg-dark text-light sticky-top">
             <tr>
                 <th scope="col">Usage</th>
                 <th scope="col">Description</th>
@@ -46,6 +50,11 @@ within them changed when using actual commands in the room.
     After verifying a giveaway is okay, click the <code>Create Giveaway</code> button and it will be displayed in the
     main room. If a Giveaway does not meet the requirements or there is some other issue click the
     <code>Deny Giveaway</code> button.
+</div><br />
+<div>
+    For <span class="fw-bold dittio">Ditt-io</span> commands, please see the pinned messages in
+    <a href="https://discord.com/channels/271621566293344256/1135243566592041111">#ditt-io</a>. It is advised that you
+    read through all the information found here, as you may need to contact the bot host in case of emergency.
 </div>
 
 <script src="./commands.js"></script>
