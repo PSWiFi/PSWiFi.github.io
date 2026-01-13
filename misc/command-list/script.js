@@ -61,6 +61,7 @@ $("#command-search").keyup(() => {
     var terms = $("#command-search").val();
 
     if (terms.length === 0) {
+        clearOptions();
         populateAllOptions();
     } else {
         terms = terms.toLowerCase().replace(/\//g, "").split(" ");
