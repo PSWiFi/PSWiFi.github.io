@@ -121,8 +121,8 @@ const commands = [
         category: "staff"
     }, {
         name: "linecount",
-        args: "room (wifi), user=name",
-        desc: "Displays the number of lines the given user has had in the room in current/previous months, helpful for showcasing room activity.",
+        args: "room (wifi), month, user",
+        desc: "Displays the number of lines the given user has had in the room in current/previous months, helpful for showcasing room activity.<br />Month should be formatted as YYYY-MM, to get user <span class=\"lego fw-bold\">Lego</span>'s linecounts for January 2026 you would use <code>/linecount wifi, 2026-01, Lego</code>.",
         perms: " ",
         category: "nomination"
     }, {
