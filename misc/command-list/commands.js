@@ -92,7 +92,7 @@ const commands = [
     }, {
         name: "hourmute, hm",
         args: "user, reason",
-        desc: "Prevents a user from talking in the chat for <span class=fw-bold>one hour</span>, typically used to escalate a basic mute if a user continues to misbehave. If you are a driver and you are using hourmute in place of a ban, post the punishment in <a href=https://discord.com/channels/271621566293344256/271694246690553856>#moderation</a> and request a roomban.",
+        desc: "Prevents a user from talking in the chat for <span class=fw-bold>one hour</span>, typically used to escalate a basic mute if a user continues to misbehave. If you are a driver and you are using hourmute in place of a ban, post the punishment in #moderation and request a roomban.",
         perms: "%",
         category: "staff"
     }, {
@@ -110,7 +110,7 @@ const commands = [
     }, {
         name: "blacklist, bl",
         args: "user, reason",
-        desc: "Prevents a user from entering the room for <span class=fw-bold>one year</span>, reserved for users with particularly terrible behaviour. Blacklists are typically voted on in <a href=https://discord.com/channels/271621566293344256/271694246690553856>#moderation</a> with the exception of cases like trading hacked Pokémon, in which case a vote is not required.<br />Blacklists can also be done by name or extended to <span class=fw-bold>ten years</span> if needed using the <code>/permablacklist</code> command (typically reserved for scammers).",
+        desc: "Prevents a user from entering the room for <span class=fw-bold>one year</span>, reserved for users with particularly terrible behaviour. Blacklists are typically voted on in #moderation with the exception of cases like trading hacked Pokémon, in which case a vote is not required.<br />Blacklists can also be done by name or extended to <span class=fw-bold>ten years</span> if needed using the <code>/permablacklist</code> command (typically reserved for scammers).",
         perms: "#",
         category: "staff"
     }, {
