@@ -76,6 +76,7 @@ $("#command-search").keyup(() => {
 
             for (var j = 0; j < terms.length; j++) {
                 var term = terms[j];
+                if (term.trim().lenth === 0) continue;
 
                 var names = command.name.split(",")
                 for (var k = 0; k < names.length; k++) {
