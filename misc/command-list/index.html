@@ -1,0 +1,77 @@
+---
+layout: default
+title: Command List
+permalink: /misc/command-list/
+---
+
+<div class="title" style="background-color: #3d013f;">
+    <h1 class="text-light text-center pt-3 pb-3">Staff Command List</h1>
+</div>
+<hr />
+As staff you gain access to a plethora of new commands, this page serves as a quick reference for the most important
+commands and their use cases. <span class="fw-bold">[Square brackets]</span> should be removed and the placeholder text
+within them changed when using actual commands in the room.
+
+<hr />
+
+<div id="table-responsive" style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
+    <table id="command-table" class="table table-striped table-hover align-middle">
+        <thead>
+            <tr>
+                <th scope="col">Usage</th>
+                <th scope="col">Description</th>
+                <th scope="col">Permissions</th>
+                <th scope="col">Alias</th>
+            </tr>
+        </thead>
+        <tbody id="command-table-body">
+
+        </tbody>
+    </table>
+</div>
+
+<hr />
+
+<div>
+    For advice on how to set up and edit fancy HTML repeats, refer to <a
+        href=https://discord.com/channels/271621566293344256/387631917287079958/1270773641960886395>this message</a> and
+    navigate to the guide.
+</div><br />
+<div>
+    Giveaways submitted by users will pop-up in the room, if you are looking at the Pokémon or asking the user questions
+    about the giveaway before approving it, click the <code>claim</code> button so that staff members know you have it
+    under control already.
+</div><br />
+<div>
+    After verifying a giveaway is okay, click the <code>Create Giveaway</code> button and it will be displayed in the
+    main room. If a Giveaway does not meet the requirements or there is some other issue click the
+    <code>Deny Giveaway</code> button.
+</div>
+
+<script src="./commands.js"></script>
+<script>
+    function formatAlias(command) {
+        var names = command.name.split(",");
+        var out = [];
+        for (var i = 1; i < names.length; i++) {
+            var name = names[i].trim();
+            name = "/" + name;
+            out.push(name);
+        }
+        return out.join(", ");
+    }
+
+    function formatUsage(command) {
+        var name = "/" + command.name.split(",")[0].trim();
+        var sep = command.args.includes("|") ? " | " : ", ";
+        var args = command.args.split(sep);
+        var out = [];
+        for (var i = 0; i < args.length; i++) {
+            var arg = args[i].trim();
+            if (arg.length >= 1) out.push("[" + arg + "]");
+        }
+
+        return name + " " + out.join(sep);
+    }
+</script>
+<script src="./script.js#"></script>
