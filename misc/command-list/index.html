@@ -9,7 +9,7 @@ permalink: /misc/command-list/
 </div>
 <hr />
 As staff you gain access to a plethora of new commands, this page serves as a quick reference for the most important
-commands and their use cases. <span class="fw-bold">[Square brackets]</span> should be removed and the placeholder text
+commands and their use cases. <span class="fw-bold">&lt;Less than and greater than symbols&gt;</span> should be removed and the placeholder text
 within them changed when using actual commands in the room.
 
 <hr />
@@ -75,7 +75,8 @@ within them changed when using actual commands in the room.
         var out = [];
         for (var i = 0; i < args.length; i++) {
             var arg = args[i].trim();
-            if (arg.length >= 1) out.push("[" + arg + "]");
+            if (arg.includes("[") && arg.includes("]")) out.push(("[<" + arg.replace(/\[|\]/g, "")) + ">]");
+            else if (arg.length >= 1) out.push("<" + arg + ">");
         }
 
         return name + " " + out.join(sep);

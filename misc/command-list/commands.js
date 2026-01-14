@@ -24,9 +24,9 @@ const commands = [
         perms: "%",
         category: "staff"
     }, {
-        name: "modnote",
-        args: "user, note",
-        desc: "Used to put a note in a users modlog, you can modnote anything you consider to be useful information no matter how small. It is encouraged to modnote after a verbal warning has been given or if a user is being particularly shady.",
+        name: "modnote, mn",
+        args: "[user], note",
+        desc: "Used to put a note in a users modlog, you can modnote anything you consider to be useful information no matter how small. It is encouraged to modnote after a verbal warning has been given or if a user is being particularly shady.<br/ >User needs to be provided within [square brackets].",
         perms: "%",
         category: "staff"
     }, {
