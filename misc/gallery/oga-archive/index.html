@@ -19,9 +19,12 @@ title: OGA Archive
 
 <script>
     var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    var years = [...new Set(...[imgdata.map(e => e.year)])];
+    var years = [...new Set(...[imgdata.map(e => e.year)])].sort((a, b) => b - a);
     if (!window.events) window.events = {};
     if (!window.maxevents) window.maxevents = [...imgdata].length;
+    var loaded = 0;
+
+    $("#loading-text").text("Loading... (0 / " + window.maxevents + ")");
 
     for (var year of years) {
         var div = document.createElement("div");
@@ -66,6 +69,9 @@ title: OGA Archive
 
             img.onload = function() {
                 window.events[this.dataset.fname] = true;
+                loaded++;
+
+                $("#loading-text").text("Loading... (" + loaded + " / " + window.maxevents + ")");
                 
                 var count = Object.values(window.events).filter(bool => bool === true).length;
 
