@@ -132,6 +132,14 @@ blockquote {
     border: 1px solid black; 
 }
 
+/* Physical/Special split table image size control */
+
+#physical-special-split img {
+    height: 20px; 
+    width: auto;
+    margin: 2px;
+}
+
 /* Hackmon blacklist table specifics */
 .blacklist-table {
     border-collapse: collapse;
@@ -265,6 +273,8 @@ blockquote {
         .jargon-table tbody td:nth-child(2) {
             text-align: left;
         }
+
+
 
 /* End of table section */
 
