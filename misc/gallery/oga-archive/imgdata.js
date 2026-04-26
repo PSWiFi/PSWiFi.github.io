@@ -426,4 +426,11 @@ var imgdata = [
     month_numerical: 3,
     year: 2026,
   },
+  {
+    filename: "Apri2026_Champions.png",
+    authors: ["ciran"],
+    oga_theme: "It's Champion(s) Time! 🏆",
+    month_numerical: 4,
+    year: 2026,
+  },
 ];
