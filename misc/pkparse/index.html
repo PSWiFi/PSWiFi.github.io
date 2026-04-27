@@ -333,23 +333,23 @@ permalink: /misc/pkparse/
           break;
       }
 
-      var ec = Object.hasOwn(pk, "EncryptionConstant") ? pk.EncryptionConstant : pk.PID;
+      var ec = pk?.EncryptionConstant ?? pk.PID;
       var devid = pk.Species;
       var species = SPECIES[devid];
       var pid = pk.PID;
-      var gmax = Object.hasOwn(pk, "CanGigantamax") ? pk.CanGigantamax : false;
+      var gmax = pk?.CanGigantamax;
       var formval = pk.Form;
       var form =
         formval > 0 || devid === 666 || devid === 774 // Vivillon and Minior need special handling because of course they do
           ? FORMS[devid][formval].replace(species, "")
           : "";
-      var formarg = Object.hasOwn(pk, "FormArgument") ? pk.FormArgument : false;
+      var formarg = pk?.FormArgument;
       if (devid === 869) form += ALCREMIE_SWEETS[formarg]; // Special handling for Alcremie Sweets
 
       var ability = pk.Ability;
       var abilitynum = pk.AbilityNumber;
 
-      var teraType = Object.hasOwn(pk, "TeraType") ? getTeraType(pk.TeraType) : "";
+      var teraType = "TeraType" in pk ? getTeraType(pk.TeraType) : "";
 
       var ogval = pk.Version;
       var origingame = ORIGIN_GAMES[ogval];
@@ -376,7 +376,7 @@ permalink: /misc/pkparse/
           ? 1
           : 0;
       var nature = NATURES[pk.Nature];
-      var statnature = Object.hasOwn(pk, "StatNature")
+      var statnature = "StatNature" in pk
         ? NATURES[StatNature]
         : nature;
       var gender = pk.Gender;
@@ -404,7 +404,7 @@ permalink: /misc/pkparse/
         else judge.push("NG");
       }
 
-      var ht = Object.hasOwn(pk, "HyperTrainFlags") ? [
+      var ht = "HyperTrainFlags" in pk ? [
         pk.HT_HP,
         pk.HT_ATK,
         pk.HT_DEF,
@@ -427,14 +427,14 @@ permalink: /misc/pkparse/
       var [evhp, evatk, evdef, evspe, evspa, evspd] = [pk.EV_HP, pk.EV_ATK, pk.EV_DEF, pk.EV_SPA, pk.EV_SPD, pk.EV_SPE];
 
       var moves = [MOVES[pk.Move1], MOVES[pk.Move2], MOVES[pk.Move3], MOVES[pk.Move4]];
-      var relearn = Object.hasOwn(pk, "RelearnMove1") ? [MOVES[pk.RelearnMove1], MOVES[pk.RelearnMove2], MOVES[pk.RelearnMove3], MOVES[pk.RelearnMove4]] : [];
+      var relearn = "RelearnMove1" in pk ? [MOVES[pk.RelearnMove1], MOVES[pk.RelearnMove2], MOVES[pk.RelearnMove3], MOVES[pk.RelearnMove4]] : [];
 
       var ball = BALLS[pk.Ball];
 
-      var height = Object.hasOwn(pk, "HeightScalar") ? pk.HeightScalar : null;
-      var weight = Object.hasOwn(pk, "WeightScalar") ? pk.WeightScalar : null;
+      var height = pk?.HeightScalar ?? null;
+      var weight = pk?.WeightScalar ?? null;
 
-      var isalpha = Object.hasOwn(pk, "IsAlpha") ? pk.IsAlpha : null;
+      var isalpha = pk?.IsAlpha;
 
       var ot = pk.OriginalTrainerName;
       var nickname = pk.Nickname.length > 0 ? pk.Nickname : species;
