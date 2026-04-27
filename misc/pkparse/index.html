@@ -4,6 +4,9 @@ title: PkParse
 permalink: /misc/pkparse/
 ---
 
+<script src="https://unpkg.com/@not-a-waffle/pkmjs/index.min.js"></script>
+
+
 <h1 class="mb-0 pb-0">PkParse</h1>
 <small class="text-muted mb-3 mt-0"
   >by
@@ -11,7 +14,13 @@ permalink: /misc/pkparse/
     class="text-decoration-none text-muted"
     href="https://github.com/LegoFigure11"
     >LegoFigure11</a
-  >, structs and data from
+  >, powered by 
+  <a
+    class="text-decoration-none text-muted"
+    href="https://github.com/LegoFigure11/pkmjs"
+    >pkmjs</a
+  >
+  and
   <a
     class="text-decoration-none text-muted"
     href="https://www.nuget.org/packages/PKHeX.Core"
@@ -31,7 +40,7 @@ permalink: /misc/pkparse/
       class="form-control"
       id="formFile"
       name="formFile"
-      accept=".pa9,.pk9,.pk8,.pa8,.pb8,.pk7,.pk6"
+      accept=".pa9,.pk9,.pk8,.pa8,.pb8,.pk7,.pk6,.pk5,.pk4,.pk3"
       multiple
     />
   </div>
@@ -197,7 +206,7 @@ permalink: /misc/pkparse/
   }
 
   // Putting this in a recursive delayed loop allows time to clear the buffer, helping to prevent bad reads and race conditions
-  function process(files, delay = 150, i = 0) {
+  function process(files, delay = 300, i = 0) {
     if (i >= files.length) {
       document.getElementById("progress-container").classList.add("d-none");
       return i >= 2 ? generateCopyAllButton() : 0;
@@ -207,33 +216,9 @@ permalink: /misc/pkparse/
     var fname = file.name;
     var ext = fname.substring(fname.lastIndexOf("."));
 
-    var gen,
-      idsloc,
-      abilityloc,
-      abilitynumloc,
-      pidloc,
-      speciesloc,
-      otloc,
-      nicknameloc,
-      gmaxloc,
-      alphaloc,
-      ivsloc,
-      natureloc,
-      formloc,
-      formargloc,
-      evsloc,
-      statnatureloc,
-      fatefulloc,
-      genderloc,
-      ballloc,
-      ogloc,
-      teratypeoriginalloc,
-      teratypeoverrideloc,
-      moveloc,
-      relearnloc,
-      htflagsloc,
-      heightloc,
-      weightloc;
+    var gen;
+
+    var pk;
 
     // Sanity check file sizes and get offsets
     switch (ext) {
@@ -242,29 +227,6 @@ permalink: /misc/pkparse/
           return alert(
             "Incorrect file size!\nExpected: " + SIZE_9 + "\nGot: " + file.size
           );
-        speciesloc = 0x08;
-        idsloc = 0x0c;
-        abilityloc = 0x14;
-        abilitynumloc = 0x16;
-        pidloc = 0x1c;
-        natureloc = 0x20;
-        statnatureloc = 0x21;
-        fatefulloc = 0x22;
-        genderloc = 0x22;
-        alphaloc = 0x23;
-        formloc = 0x24;
-        evsloc = 0x26;
-        heightloc = 0x48;
-        weightloc = 0x49;
-        nicknameloc = 0x58;
-        moveloc = 0x72;
-        relearnloc = 0x82;
-        ivsloc = 0x8c;
-        ogloc = 0xce;
-        formargloc = 0xd0;
-        otloc = 0xf8;
-        ballloc = 0x124;
-        htflagsloc = 0x126;
         gen = 9;
         break;
 
@@ -273,30 +235,6 @@ permalink: /misc/pkparse/
           return alert(
             "Incorrect file size!\nExpected: " + SIZE_9 + "\nGot: " + file.size
           );
-        speciesloc = 0x08;
-        idsloc = 0x0c;
-        abilityloc = 0x14;
-        abilitynumloc = 0x16;
-        pidloc = 0x1c;
-        natureloc = 0x20;
-        statnatureloc = 0x21;
-        fatefulloc = 0x22;
-        genderloc = 0x22;
-        formloc = 0x24;
-        evsloc = 0x26;
-        heightloc = 0x48;
-        weightloc = 0x49;
-        nicknameloc = 0x58;
-        moveloc = 0x72;
-        relearnloc = 0x82;
-        ivsloc = 0x8c;
-        teratypeoriginalloc = 0x94;
-        teratypeoverrideloc = 0x95;
-        ogloc = 0xce;
-        formargloc = 0xd0;
-        otloc = 0xf8;
-        ballloc = 0x124;
-        htflagsloc = 0x126;
         gen = 9;
         break;
 
@@ -305,29 +243,6 @@ permalink: /misc/pkparse/
           return alert(
             "Incorrect file size!\nExpected: " + SIZE_8A + "\nGot: " + file.size
           );
-        speciesloc = 0x08;
-        idsloc = 0x0c;
-        abilityloc = 0x14;
-        abilitynumloc = 0x16;
-        alphaloc = 0x16;
-        pidloc = 0x1c;
-        natureloc = 0x20;
-        statnatureloc = 0x21;
-        fatefulloc = 0x22;
-        genderloc = 0x22;
-        formloc = 0x24;
-        evsloc = 0x26;
-        heightloc = 0x50;
-        weightloc = 0x51;
-        moveloc = 0x54;
-        nicknameloc = 0x60;
-        relearnloc = 0x8a;
-        ivsloc = 0x94;
-        ogloc = 0xee;
-        formargloc = 0xf4;
-        otloc = 0x110;
-        ballloc = 0x137;
-        htflagsloc = 0x13e;
         gen = 8;
         break;
 
@@ -337,29 +252,6 @@ permalink: /misc/pkparse/
           return alert(
             "Incorrect file size!\nExpected: " + SIZE_8 + "\nGot: " + file.size
           );
-        speciesloc = 0x08;
-        idsloc = 0x0c;
-        abilityloc = 0x14;
-        abilitynumloc = 0x16;
-        gmaxloc = 0x16;
-        pidloc = 0x1c;
-        natureloc = 0x20;
-        statnatureloc = 0x21;
-        fatefulloc = 0x22;
-        genderloc = 0x22;
-        formloc = 0x24;
-        evsloc = 0x26;
-        heightloc = 0x50;
-        weightloc = 0x51;
-        nicknameloc = 0x58;
-        moveloc = 0x72;
-        relearnloc = 0x82;
-        ivsloc = 0x8c;
-        ogloc = 0xde;
-        formargloc = 0xe4;
-        otloc = 0xf8;
-        ballloc = 0x124;
-        htflagsloc = 0x126;
         gen = 8;
         break;
 
@@ -368,25 +260,6 @@ permalink: /misc/pkparse/
           return alert(
             "Incorrect file size!\nExpected: " + SIZE_7 + "\nGot: " + file.size
           );
-        speciesloc = 0x08;
-        idsloc = 0x0c;
-        abilityloc = 0x14;
-        abilitynumloc = 0x15;
-        pidloc = 0x18;
-        natureloc = 0x1c;
-        fatefulloc = 0x1d;
-        genderloc = 0x1d;
-        formloc = 0x1d;
-        evsloc = 0x1e;
-        formargloc = 0x3c;
-        nicknameloc = 0x40;
-        moveloc = 0x5a;
-        relearnloc = 0x6a;
-        ivsloc = 0x74;
-        otloc = 0xb0;
-        ballloc = 0xdc;
-        htflagsloc = 0xde;
-        ogloc = 0xdf;
         gen = 7;
         break;
 
@@ -395,25 +268,19 @@ permalink: /misc/pkparse/
           return alert(
             "Incorrect file size!\nExpected: " + SIZE_6 + "\nGot: " + file.size
           );
-        speciesloc = 0x08;
-        idsloc = 0x0c;
-        abilityloc = 0x14;
-        abilitynumloc = 0x15;
-        pidloc = 0x18;
-        natureloc = 0x1c;
-        fatefulloc = 0x1d;
-        genderloc = 0x1d;
-        formloc = 0x1d;
-        evsloc = 0x1e;
-        formargloc = 0x3c;
-        nicknameloc = 0x40;
-        moveloc = 0x5a;
-        relearnloc = 0x6a;
-        ivsloc = 0x74;
-        otloc = 0xb0;
-        ballloc = 0xdc;
-        ogloc = 0xdf;
         gen = 6;
+        break;
+
+      case ".pk5": // BW(2)
+        gen = 5;
+        break;
+
+      case ".pk4": // DPPtHGSS
+        gen = 4;
+        break;
+
+      case ".pk3":
+        gen = 3;
         break;
 
       default: // Should never happen
@@ -429,52 +296,69 @@ permalink: /misc/pkparse/
     file.arrayBuffer().then((buf) => {
       var pass = 0;
       var outstr = outstr_c;
-      var otarrbuf = buf.slice(otloc, otloc + 26);
-      var ot = getStringFromBuffer(new DataView(otarrbuf));
-      var nickarrbuf = buf.slice(nicknameloc, nicknameloc + 26);
-      var nickname = getStringFromBuffer(new DataView(nickarrbuf));
-      var data = new DataView(buf);
 
-      /*const pkmn = {};
-      for (let x = 0; x < data.byteLength; x ++) {
-        pkmn[x + "".padStart(3 - x.toString().length, " ") + " | 0x" + x.toString(16).padStart(3, "0")] = data.getUint8(x).toString(16);
+      switch (ext) {
+        case ".pa9":
+          pk = new pkmjs.PA9(buf);
+          break;
+        case ".pk9":
+          pk = new pkmjs.PK9(buf);
+          break;
+        case ".pb8":
+          pk = new pkmjs.PB8(buf);
+          break;
+        case ".pa8":
+          pk = new pkmjs.PA8(buf);
+          break;
+        case ".pk8":
+          pk = new pkmjs.PK8(buf);
+          break;
+        case ".pb7":
+          pk = new pkmjs.PB7(buf);
+          break;
+        case ".pk7":
+          pk = new pkmjs.PK7(buf);
+          break;
+        case ".pk6":
+          pk = new pkmjs.PK6(buf);
+          break;
+        case ".pk5":
+          pk = new pkmjs.PK5(buf);
+          break;
+        case ".pk4":
+          pk = new pkmjs.PK4(buf);
+          break;
+        case ".pk3":
+          pk = new pkmjs.PK3(buf);
+          break;
       }
-      console.log(pkmn);*/
 
-      var ec = data.getUint32(0, true);
-      var devid = data.getUint16(speciesloc, true);
-      var species = gen === 9 ? getSpecies9(devid) : SPECIES[devid];
-      var pid = data.getUint32(pidloc, true);
-      var gmax = gmaxloc ? (data.getUint8(gmaxloc) & 16) !== 0 : false;
-      var formdata = data.getUint8(formloc);
-      var formval = gen <= 7 ? formdata >>> 3 : formdata;
+      var ec = Object.hasOwn(pk, "EncryptionConstant") ? pk.EncryptionConstant : pk.PID;
+      var devid = pk.Species;
+      var species = SPECIES[devid];
+      var pid = pk.PID;
+      var gmax = Object.hasOwn(pk, "CanGigantamax") ? pk.CanGigantamax : false;
+      var formval = pk.Form;
       var form =
         formval > 0 || devid === 666 || devid === 774 // Vivillon and Minior need special handling because of course they do
-          ? FORMS[getNational9(devid)][formval].replace(species, "")
+          ? FORMS[devid][formval].replace(species, "")
           : "";
-      var formarg = data.getUint32(formargloc, true);
+      var formarg = Object.hasOwn(pk, "FormArgument") ? pk.FormArgument : false;
       if (devid === 869) form += ALCREMIE_SWEETS[formarg]; // Special handling for Alcremie Sweets
 
-      var ability = gen <= 7 ? data.getUint8(abilityloc) : data.getUint16(abilityloc, true);
-      var abilitynum = data.getUint8(abilitynumloc) & 7; // & 7 not used in Gen 6 but has no effect on resulting value
+      var ability = pk.Ability;
+      var abilitynum = pk.AbilityNumber;
 
-      var teraType =
-        teratypeoriginalloc && teratypeoverrideloc
-          ? getTeraType(
-              data.getUint8(teratypeoriginalloc),
-              data.getUint8(teratypeoverrideloc)
-            )
-          : "";
+      var teraType = Object.hasOwn(pk, "TeraType") ? getTeraType(pk.TeraType) : "";
 
-      var ogval = data.getUint8(ogloc);
+      var ogval = pk.Version;
       var origingame = ORIGIN_GAMES[ogval];
 
-      var ids = data.getUint32(idsloc, true);
+      var ids = pk.ID32;
       var tid5 = ids & 0xffff;
       var sid5 = ids >>> 16;
-      var fullid = sid5 * 65536 + tid5;
-      var tid7 = fullid % 1000000;
-      var sid7 = ~~(fullid / 1000000);
+      var tid7 = ids % 1000000;
+      var sid7 = ~~(ids / 1000000);
       var tid =
         (ogval >= 30 && ogval <= 34) || ogval >= 42 // Exclude VC
           ? tid7.toString().padStart(6, "0")
@@ -483,31 +367,31 @@ permalink: /misc/pkparse/
         (ogval >= 30 && ogval <= 34) || ogval >= 42 // Exclude VC
           ? sid7.toString().padStart(4, "0")
           : sid5.toString().padStart(5, "0");
-      var fateful = (data.getUint8(fatefulloc) & 1) === 1;
-      var shinyxor = (pid >>> 16) ^ (pid & 0xffff) ^ tid5 ^ sid5;
+      var fateful = pk.FatefulEncounter;
+      var shinyxor = pk.ShinyXOR;
       var shinytype =
-        (shinyxor < 16 && fateful) || shinyxor === 0
+        pk.IsSquareShiny
           ? 2
-          : shinyxor < 16
+          : pk.IsStarShiny < 16
           ? 1
           : 0;
-      var nature = NATURES[data.getUint8(natureloc)];
-      var statnature = statnatureloc
-        ? NATURES[data.getUint8(statnatureloc)]
+      var nature = NATURES[pk.Nature];
+      var statnature = Object.hasOwn(pk, "StatNature")
+        ? NATURES[StatNature]
         : nature;
-      var gender = (data.getUint8(genderloc) >>> (gen === 8 ? 2 : 1)) & 0x3;
-      var iv32 = data.getUint32(ivsloc, true);
+      var gender = pk.Gender;
+      var iv32 = pk.IV32;
 
       var hpType = calcHPType(iv32);
       var hpPower = calcHPPower(iv32);
 
       var ivs = [
-        (iv32 >>> 0) & 0x1f,
-        (iv32 >>> 5) & 0x1f,
-        (iv32 >>> 10) & 0x1f,
-        (iv32 >>> 20) & 0x1f,
-        (iv32 >>> 25) & 0x1f,
-        (iv32 >>> 15) & 0x1f,
+        pk.IV_HP,
+        pk.IV_ATK,
+        pk.IV_DEF,
+        pk.IV_SPA,
+        pk.IV_SPD,
+        pk.IV_SPE
       ];
       var judge = [];
       for (var i = 0; i < ivs.length; i++) {
@@ -519,15 +403,15 @@ permalink: /misc/pkparse/
         else if (j >= 1) judge.push("D");
         else judge.push("NG");
       }
-      var htFlags = htflagsloc ? data.getUint8(htflagsloc) : 0;
-      var ht = [
-        ((htFlags >> 0) & 1) == 1,
-        ((htFlags >> 1) & 1) == 1,
-        ((htFlags >> 2) & 1) == 1,
-        ((htFlags >> 3) & 1) == 1,
-        ((htFlags >> 4) & 1) == 1,
-        ((htFlags >> 5) & 1) == 1,
-      ];
+
+      var ht = Object.hasOwn(pk, "HyperTrainFlags") ? [
+        pk.HT_HP,
+        pk.HT_ATK,
+        pk.HT_DEF,
+        pk.HT_SPA,
+        pk.HT_SPD,
+        pk.HT_SPE,
+      ] : [0, 0, 0, 0, 0, 0];
       var [ivhp, ivatk, ivdef, ivspa, ivspd, ivspe] = ivs;
       var [jhp, jatk, jdef, jspa, jspd, jspe] = judge;
       var ivsht = [];
@@ -540,25 +424,20 @@ permalink: /misc/pkparse/
       var [ivhpht, ivatkht, ivdefht, ivspaht, ivspdht, ivspeht] = ivsht;
       var [jhpht, jatkht, jdefht, jspaht, jspdht, jspeht] = jht;
 
-      var evs = [];
-      for (var i = 0; i < 6; i++) {
-        evs.push(data.getUint8(evsloc + i));
-      }
-      var [evhp, evatk, evdef, evspe, evspa, evspd] = evs;
+      var [evhp, evatk, evdef, evspe, evspa, evspd] = [pk.EV_HP, pk.EV_ATK, pk.EV_DEF, pk.EV_SPA, pk.EV_SPD, pk.EV_SPE];
 
-      var moves = [];
-      var relearn = [];
-      for (var i = 0; i < 4; i++) {
-        moves.push(MOVES[data.getUint16(moveloc + i * 0x02, true)]);
-        relearn.push(MOVES[data.getUint16(relearnloc + i * 0x02, true)]);
-      }
+      var moves = [MOVES[pk.Move1], MOVES[pk.Move2], MOVES[pk.Move3], MOVES[pk.Move4]];
+      var relearn = Object.hasOwn(pk, "RelearnMove1") ? [MOVES[pk.RelearnMove1], MOVES[pk.RelearnMove2], MOVES[pk.RelearnMove3], MOVES[pk.RelearnMove4]] : [];
 
-      var ball = BALLS[data.getUint8(ballloc)];
+      var ball = BALLS[pk.Ball];
 
-      var height = heightloc ? data.getUint8(heightloc) : null;
-      var weight = weightloc ? data.getUint8(weightloc) : null;
+      var height = Object.hasOwn(pk, "HeightScalar") ? pk.HeightScalar : null;
+      var weight = Object.hasOwn(pk, "WeightScalar") ? pk.WeightScalar : null;
 
-      var isalpha = alphaloc ? ((gen === 9 && data.getUint8(alphaloc) !== 0) || (gen === 8 && data.getUint8(alphaloc) & 32 !== 0)) : null;
+      var isalpha = Object.hasOwn(pk, "IsAlpha") ? pk.IsAlpha : null;
+
+      var ot = pk.OriginalTrainerName;
+      var nickname = pk.Nickname.length > 0 ? pk.Nickname : species;
 
       // Commence custom parser logic
       if (outstr.includes("\\t")) outstr = outstr.replace(/\\t/g, "\t");
