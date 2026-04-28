@@ -4,7 +4,7 @@ title: PkParse
 permalink: /misc/pkparse/
 ---
 
-<script src="https://unpkg.com/@not-a-waffle/pkmjs/index.min.js"></script>
+<script src="https://unpkg.com/@not-a-waffle/pkmjs/pkmjs.min.js"></script>
 
 
 <h1 class="mb-0 pb-0">PkParse</h1>
@@ -380,7 +380,6 @@ permalink: /misc/pkparse/
         ? NATURES[pk.StatNature]
         : nature;
       var gender = pk.Gender;
-      console.log(pk.Gender);
       var iv32 = pk.IV32;
 
       var hpType = calcHPType(iv32);
