@@ -377,9 +377,10 @@ permalink: /misc/pkparse/
           : 0;
       var nature = NATURES[pk.Nature];
       var statnature = "StatNature" in pk
-        ? NATURES[StatNature]
+        ? NATURES[pk.StatNature]
         : nature;
       var gender = pk.Gender;
+      console.log(pk.Gender);
       var iv32 = pk.IV32;
 
       var hpType = calcHPType(iv32);
