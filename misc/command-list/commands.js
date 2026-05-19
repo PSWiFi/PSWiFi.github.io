@@ -120,24 +120,6 @@ const commands = [
         perms: "%",
         category: "staff"
     }, {
-        name: "addusernotification, addusernotif",
-        args: "user, reason, optional pinglist",
-        desc: "Makes the bot notify <code>#moderation</code> when the specified user comes online. The pinglist expects a comma-separated list of <a href='https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID'>Discord User ID</a>s, and will default to @here if omitted.",
-        perms: "%",
-        category: "discord",
-    }, {
-        name: "getallusernotifications, getallusernotifs",
-        args: "",
-        desc: "Gets a list of all users with acive notifications set up.",
-        perms: "%",
-        category: "discord",
-    }, {
-        name: "deleteusernotification, deleteusernotif",
-        args: "user",
-        desc: "Deletes a user from he notification list.",
-        perms: "%",
-        category: "discord",
-    }, {
         name: "linecount",
         args: "room (wifi), month, user",
         desc: "Displays the number of lines the given user has had in the room in current/previous months, helpful for showcasing room activity.<br />Month should be formatted as YYYY-MM, to get user <span class=\"lego fw-bold\">Lego</span>'s linecounts for January 2026 you would use <code>/linecount wifi, 2026-01, Lego</code>.",
