@@ -440,4 +440,11 @@ var imgdata = [
     month_numerical: 5,
     year: 2026,
   },
+  {
+    filename: "Oga_Thingy.png",
+    authors: ["ciran", "dawolfkid"],
+    oga_theme: "ON Top of It!",
+    month_numerical: 6,
+    year: 2026,
+  },
 ];
