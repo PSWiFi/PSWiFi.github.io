@@ -454,4 +454,11 @@ var imgdata = [
     month_numerical: 7,
     year: 2026,
   },
+  {
+    filename: "OGA_Pokopia_2.png",
+    authors: ["ciran", "dawolfkid"],
+    oga_theme: "Pokopia",
+    month_numerical: 8,
+    year: 2026,
+  },
 ];
