@@ -461,4 +461,11 @@ var imgdata = [
     month_numerical: 8,
     year: 2026,
   },
+  {
+    filename: "Sept2026_AAAAAAAAA-fin.png",
+    authors: ["ciran"],
+    oga_theme: "AAAAAAAAAAAAAAAA",
+    month_numerical: 9,
+    year: 2026,
+  },
 ];
