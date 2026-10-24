@@ -31,6 +31,6 @@ container_width: 800px
 # host: 0.0.0.0
 
 plugins_dir:
-  - jekyll-avatar
+  - jekyll-titles-from-headings
   - jekyll-github-metadata
   - jekyll-seo-tag
