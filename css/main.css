@@ -330,10 +330,6 @@ blockquote {
   color: #659b41;
 }
 
-.clefable {
-  color: #e1197d;
-}
-
 .cosplayfurret {
   color: #0e91a0;
 }
@@ -429,6 +425,10 @@ blockquote {
 
 .castlebuilder {
   color: #bf487f;
+}
+
+.clefable {
+  color: #e1197d;
 }
 
 .kaylubiso {
