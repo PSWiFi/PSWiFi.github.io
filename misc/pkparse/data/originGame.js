@@ -42,4 +42,8 @@ var ORIGIN_GAMES = {
   50: "Scarlet",
   51: "Violet",
   52: "Legends: Z-A",
+  54: "Winds",
+  55: "Waves",
+  56: "FireRed (VC)",
+  57: "LeafGreen (VC)"
 };

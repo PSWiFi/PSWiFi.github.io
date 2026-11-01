@@ -360,11 +360,11 @@ permalink: /misc/pkparse/
       var tid7 = ids % 1000000;
       var sid7 = ~~(ids / 1000000);
       var tid =
-        (ogval >= 30 && ogval <= 34) || ogval >= 42 // Exclude VC
+        (ogval >= 30 && ogval <= 34) || (ogval >= 42 && (ogval != 56 && ogval != 57)) // Exclude VC
           ? tid7.toString().padStart(6, "0")
           : tid5.toString().padStart(5, "0");
       var sid =
-        (ogval >= 30 && ogval <= 34) || ogval >= 42 // Exclude VC
+        (ogval >= 30 && ogval <= 34) || (ogval >= 42 && (ogval != 56 && ogval != 57)) // Exclude VC
           ? sid7.toString().padStart(4, "0")
           : sid5.toString().padStart(5, "0");
       var fateful = pk.FatefulEncounter;
