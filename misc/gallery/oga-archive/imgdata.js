@@ -468,4 +468,11 @@ var imgdata = [
     month_numerical: 9,
     year: 2026,
   },
+  {
+    filename: "Oct2026_Halloqueen-.png",
+    authors: ["ciran"],
+    oga_theme: "HalloQueen",
+    month_numerical: 10,
+    year: 2026,
+  },
 ];
