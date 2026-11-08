@@ -322,10 +322,6 @@ blockquote {
   color: #c2150f;
 }
 
-.chimera {
-  color: #32a925;
-}
-
 .ciran {
   color: #659b41;
 }
@@ -425,6 +421,10 @@ blockquote {
 
 .castlebuilder {
   color: #bf487f;
+}
+
+.chimera {
+    color: #32a925;
 }
 
 .clefable {
